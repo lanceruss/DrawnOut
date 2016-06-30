@@ -17,6 +17,8 @@
 		F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */; };
 		F9B48FF01D22E7F10031C5FC /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */; };
 		F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF21D22E8620031C5FC /* MPCHandler.swift */; };
+		F9B48FF51D231C1D0031C5FC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF41D231C1D0031C5FC /* Player.swift */; };
+		F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameViewController.swift; sourceTree = "<group>"; };
 		F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		F9B48FF21D22E8620031C5FC /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		F9B48FF41D231C1D0031C5FC /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
+		F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiverHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,9 +53,9 @@
 		DBCFB4101D22DF5500200F10 = {
 			isa = PBXGroup;
 			children = (
-				F9B48FF11D22E84A0031C5FC /* MPCHandler */,
-				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
 				DBCFB41B1D22DF5500200F10 /* Fictionary */,
+				F9B48FF11D22E84A0031C5FC /* Networking */,
+				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
 				F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */,
 			);
@@ -69,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
+				F9B48FF41D231C1D0031C5FC /* Player.swift */,
 				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
@@ -88,12 +93,13 @@
 			name = JoinandStartGame;
 			sourceTree = "<group>";
 		};
-		F9B48FF11D22E84A0031C5FC /* MPCHandler */ = {
+		F9B48FF11D22E84A0031C5FC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				F9B48FF21D22E8620031C5FC /* MPCHandler.swift */,
+				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
 			);
-			name = MPCHandler;
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +134,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VCHC46W3FB;
+						DevelopmentTeam = U7TP39P5Y5;
 					};
 				};
 			};
@@ -171,8 +177,10 @@
 			files = (
 				DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */,
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
+				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
+				F9B48FF51D231C1D0031C5FC /* Player.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,10 +294,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Fictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codefriends.Fictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -297,10 +308,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Fictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codefriends.Fictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
