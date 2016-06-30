@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KBr-6v-fDe">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Caption Photo View Controller-->
+        <scene sceneID="zD1-O1-l3W">
+            <objects>
+                <viewController id="KBr-6v-fDe" customClass="CaptionPhotoViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hWI-Lh-lE0"/>
+                        <viewControllerLayoutGuide type="bottom" id="AJf-aT-X8b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n3d-GR-RAA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="penguin.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-vv-fgq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="494"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yI1-po-vu3">
+                                <rect key="frame" x="20" y="523" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1ge-TN-2nD"/>
+                                    <constraint firstAttribute="height" constant="30" id="QEN-Op-AgE"/>
+                                    <constraint firstAttribute="width" constant="560" id="ur1-82-2j7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1ge-TN-2nD"/>
+                                        <exclude reference="QEN-Op-AgE"/>
+                                        <exclude reference="ur1-82-2j7"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="KBr-6v-fDe" id="AyX-Gy-mGv"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="0VR-kA-kYQ"/>
+                            <constraint firstItem="ntf-vv-fgq" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" id="12U-fv-0CW"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="20" id="4Vy-ve-yn7"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="A4g-UR-cq9"/>
+                            <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="AnV-8Y-oVg"/>
+                            <constraint firstAttribute="trailing" secondItem="yI1-po-vu3" secondAttribute="trailing" constant="20" id="D5t-Gv-42B"/>
+                            <constraint firstItem="ntf-vv-fgq" firstAttribute="top" secondItem="n3d-GR-RAA" secondAttribute="top" id="Dgw-3M-mfO"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="GSf-eF-ljC"/>
+                            <constraint firstItem="ntf-vv-fgq" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" id="OJt-eJ-nlU"/>
+                            <constraint firstAttribute="trailing" secondItem="ntf-vv-fgq" secondAttribute="trailing" id="S46-nI-X8h"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="centerX" secondItem="n3d-GR-RAA" secondAttribute="centerX" id="WAn-kZ-Qum"/>
+                            <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="WNb-lL-w0P"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="aL4-Er-5Jt"/>
+                            <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="bcB-mb-baK"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="d05-49-m7q"/>
+                            <constraint firstAttribute="trailing" secondItem="ntf-vv-fgq" secondAttribute="trailing" id="fjA-2o-HzZ"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="j2k-Jb-seK"/>
+                            <constraint firstAttribute="trailing" secondItem="yI1-po-vu3" secondAttribute="trailing" constant="20" id="jia-Ef-uCL"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="20" id="nCd-OH-Ux9"/>
+                            <constraint firstAttribute="trailing" secondItem="yI1-po-vu3" secondAttribute="trailing" constant="20" id="qAA-eB-Vtv"/>
+                            <constraint firstItem="yI1-po-vu3" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="20" id="xkz-2P-umM"/>
+                            <constraint firstItem="ntf-vv-fgq" firstAttribute="top" secondItem="n3d-GR-RAA" secondAttribute="top" id="yRI-g1-32M"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dgw-3M-mfO"/>
+                                <exclude reference="fjA-2o-HzZ"/>
+                                <exclude reference="D5t-Gv-42B"/>
+                                <exclude reference="GSf-eF-ljC"/>
+                                <exclude reference="WAn-kZ-Qum"/>
+                                <exclude reference="aL4-Er-5Jt"/>
+                                <exclude reference="d05-49-m7q"/>
+                                <exclude reference="j2k-Jb-seK"/>
+                                <exclude reference="jia-Ef-uCL"/>
+                                <exclude reference="nCd-OH-Ux9"/>
+                                <exclude reference="xkz-2P-umM"/>
+                                <exclude reference="0VR-kA-kYQ"/>
+                                <exclude reference="WNb-lL-w0P"/>
+                                <exclude reference="bcB-mb-baK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="captionTextField" destination="yI1-po-vu3" id="2gi-hA-8ii"/>
+                        <outlet property="imageView" destination="ntf-vv-fgq" id="jDC-dH-Iak"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Oc-2V-5eJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520" y="495"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="penguin.jpg" width="831" height="961"/>
+    </resources>
+</document>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BL3-YL-Tuk">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Timer View Controller-->
+        <scene sceneID="aUN-cP-Ix7">
+            <objects>
+                <viewController id="BL3-YL-Tuk" customClass="TimerViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="czP-eC-LhP"/>
+                        <viewControllerLayoutGuide type="bottom" id="foG-eS-GQr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tzf-ft-lte">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time: 45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZP-U8-jAG">
+                                <rect key="frame" x="177" y="289" width="246" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLQ-Yp-e5x">
+                                <rect key="frame" x="277" y="318" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0nq-k1-IJS"/>
+                                    <constraint firstAttribute="width" constant="46" id="Vgl-00-TE8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onButtonTapped:" destination="BL3-YL-Tuk" eventType="touchUpInside" id="Xfu-YW-dwD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eZP-U8-jAG" firstAttribute="centerY" secondItem="Tzf-ft-lte" secondAttribute="centerY" id="4Qf-ck-vRh"/>
+                            <constraint firstItem="eZP-U8-jAG" firstAttribute="centerX" secondItem="Tzf-ft-lte" secondAttribute="centerX" id="8DG-EO-ynU"/>
+                            <constraint firstItem="yLQ-Yp-e5x" firstAttribute="centerX" secondItem="Tzf-ft-lte" secondAttribute="centerX" id="EfS-dV-JXJ"/>
+                            <constraint firstItem="yLQ-Yp-e5x" firstAttribute="top" secondItem="eZP-U8-jAG" secondAttribute="bottom" constant="8" id="Zqf-ST-2UR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="timeLabel" destination="eZP-U8-jAG" id="SIZ-R5-aa7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A0V-un-EHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="491" y="399"/>
+        </scene>
+    </scenes>
+</document>

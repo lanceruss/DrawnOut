@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lld-XT-mCI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="j8C-OZ-6cP">
+            <objects>
+                <viewController id="9Ea-c1-XXp" customClass="HomeViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tbh-Io-zHM"/>
+                        <viewControllerLayoutGuide type="bottom" id="gZf-Cw-dkg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iOo-ID-3UA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q2-6c-uha">
+                                <rect key="frame" x="223" y="84" width="154" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="FdD-9c-S7f"/>
+                                    <constraint firstAttribute="height" constant="30" id="nDb-US-4aS"/>
+                                </constraints>
+                                <state key="normal" title="Enter Game"/>
+                                <connections>
+                                    <action selector="onEnterGameButtonTapped:" destination="9Ea-c1-XXp" eventType="touchUpInside" id="hxe-OL-D0B"/>
+                                    <segue destination="Ev7-7Z-xXA" kind="show" id="Wab-v2-wHh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Q2-6c-uha" firstAttribute="top" secondItem="Tbh-Io-zHM" secondAttribute="bottom" constant="64" id="efq-js-1Ci"/>
+                            <constraint firstItem="0Q2-6c-uha" firstAttribute="centerX" secondItem="iOo-ID-3UA" secondAttribute="centerX" id="j1w-vt-CuW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EWd-Ko-vIG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMU-RH-FDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1562" y="433"/>
+        </scene>
+        <!--Enter Game View Controller-->
+        <scene sceneID="rHE-2t-zVi">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ev7-7Z-xXA" customClass="EnterGameViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="465-uu-1x0"/>
+                        <viewControllerLayoutGuide type="bottom" id="cdx-bz-4tl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zD4-KQ-E2P">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6L-TM-16x">
+                                <rect key="frame" x="64" y="64" width="472" height="264"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52Q-N4-86X">
+                                <rect key="frame" x="180" y="181" width="240" height="238"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="evl-Pt-fbL">
+                                <rect key="frame" x="171" y="512" width="259" height="68"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="ENn-qU-U9K"/>
+                                    <constraint firstAttribute="height" constant="68" id="Tko-CA-lHN"/>
+                                    <constraint firstAttribute="width" constant="495" id="haC-tZ-NEk"/>
+                                    <constraint firstAttribute="height" constant="68" id="rFd-Oa-oru"/>
+                                    <constraint firstAttribute="width" constant="259" id="tm1-VG-XIT"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tko-CA-lHN"/>
+                                        <exclude reference="haC-tZ-NEk"/>
+                                        <exclude reference="rFd-Oa-oru"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f6L-TM-16x" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="4Xr-rv-Kd9"/>
+                            <constraint firstItem="f6L-TM-16x" firstAttribute="leading" secondItem="zD4-KQ-E2P" secondAttribute="leadingMargin" constant="44" id="Pui-Kh-g4r"/>
+                            <constraint firstItem="52Q-N4-86X" firstAttribute="centerY" secondItem="zD4-KQ-E2P" secondAttribute="centerY" id="Tp5-Us-bbA"/>
+                            <constraint firstItem="evl-Pt-fbL" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="ZDe-qR-fi1"/>
+                            <constraint firstItem="evl-Pt-fbL" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" constant="-11.5" id="bSx-GG-QPO"/>
+                            <constraint firstItem="52Q-N4-86X" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="dGV-Wn-iZy"/>
+                            <constraint firstItem="f6L-TM-16x" firstAttribute="top" secondItem="465-uu-1x0" secondAttribute="bottom" id="dax-UA-TeU"/>
+                            <constraint firstItem="cdx-bz-4tl" firstAttribute="top" secondItem="evl-Pt-fbL" secondAttribute="bottom" constant="20" id="k2V-Gu-hg0"/>
+                            <constraint firstItem="f6L-TM-16x" firstAttribute="centerY" secondItem="zD4-KQ-E2P" secondAttribute="centerY" constant="-104" id="uHl-eG-w1j"/>
+                            <constraint firstItem="cdx-bz-4tl" firstAttribute="top" secondItem="evl-Pt-fbL" secondAttribute="bottom" constant="20" id="yys-mr-ilS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bSx-GG-QPO"/>
+                                <exclude reference="yys-mr-ilS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="debugTextView" destination="f6L-TM-16x" id="tvS-uo-iKV"/>
+                        <outlet property="facebookStatusTextView" destination="evl-Pt-fbL" id="aAe-et-0ZR"/>
+                        <outlet property="profileImageView" destination="52Q-N4-86X" id="jd5-m1-jap"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H7C-cc-8Nx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2248" y="433"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wJh-IW-Eg1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lld-XT-mCI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S4N-ca-aAy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Ea-c1-XXp" kind="relationship" relationship="rootViewController" id="Uqz-of-ehF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xag-L8-A7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="433"/>
+        </scene>
+    </scenes>
+</document>

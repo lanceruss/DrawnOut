@@ -7,14 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C720741A500D520BCBFC3DE6 /* Pods_Fictionary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257B97310A284A02CA560688 /* Pods_Fictionary.framework */; };
 		DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */; };
 		DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41E1D22DF5500200F10 /* ViewController.swift */; };
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
 		DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4231D22DF5500200F10 /* Assets.xcassets */; };
 		DBCFB4271D22DF5500200F10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */; };
+		FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */; };
+		FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */; };
+		FA0C67BD1D249B4C007ADE75 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */; };
+		FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */; };
+		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
+		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
+		FAB76FB71D230F950012A786 /* penguin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB61D230F950012A786 /* penguin.jpg */; };
+		FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB91D234A740012A786 /* Timer.storyboard */; };
+		FAB76FBC1D234A8F0012A786 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FBB1D234A8F0012A786 /* TimerViewController.swift */; };
+		FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FBE1D234E680012A786 /* SwipeStacks.storyboard */; };
+		FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FC01D234E740012A786 /* SwipeStacksViewController.swift */; };
+		FAB76FC31D2352A60012A786 /* StackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FC21D2352A60012A786 /* StackCell.swift */; };
+		FAB76FC91D23DF660012A786 /* everythingbutthesink.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FC41D23DF660012A786 /* everythingbutthesink.png */; };
+		FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FC51D23DF660012A786 /* bullinachinacloset.png */; };
+		FAB76FCB1D23DF660012A786 /* etphonehome.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FC61D23DF660012A786 /* etphonehome.png */; };
+		FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FC71D23DF660012A786 /* jackandjill.png */; };
+		FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FC81D23DF660012A786 /* cowjumpedoverthemoon.png */; };
+		FAB76FD51D23DFA30012A786 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FCE1D23DFA30012A786 /* image1.jpeg */; };
+		FAB76FD61D23DFA30012A786 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FCF1D23DFA30012A786 /* image2.jpg */; };
+		FAB76FD71D23DFA30012A786 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FD01D23DFA30012A786 /* image3.jpg */; };
+		FAB76FD81D23DFA30012A786 /* image4.gif in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FD11D23DFA30012A786 /* image4.gif */; };
+		FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FD21D23DFA30012A786 /* image5.jpg */; };
+		FAB76FDA1D23DFA30012A786 /* image6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FD31D23DFA30012A786 /* image6.jpg */; };
+		FAB76FDB1D23DFA30012A786 /* image7.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FD41D23DFA30012A786 /* image7.png */; };
+		FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FDC1D23E0980012A786 /* CustomTableViewCell.swift */; };
+		FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FDF1D24222D0012A786 /* RandomCaption.storyboard */; };
+		FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */; };
+		FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE31D2432280012A786 /* ViewImageViewController.swift */; };
+		FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FE61D244CCB0012A786 /* Home.storyboard */; };
+		FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE81D244CD50012A786 /* HomeViewController.swift */; };
+		FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		257B97310A284A02CA560688 /* Pods_Fictionary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fictionary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFED090B4BC4624C0BA6982 /* Pods-Fictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.release.xcconfig"; sourceTree = "<group>"; };
 		DBCFB4191D22DF5500200F10 /* Fictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCFB41E1D22DF5500200F10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +56,39 @@
 		DBCFB4231D22DF5500200F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBCFB4261D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBCFB4281D22DF5500200F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterGameViewController.swift; sourceTree = "<group>"; };
+		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
+		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
+		FAB76FB61D230F950012A786 /* penguin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin.jpg; sourceTree = "<group>"; };
+		FAB76FB91D234A740012A786 /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
+		FAB76FBB1D234A8F0012A786 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		FAB76FBE1D234E680012A786 /* SwipeStacks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SwipeStacks.storyboard; sourceTree = "<group>"; };
+		FAB76FC01D234E740012A786 /* SwipeStacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeStacksViewController.swift; sourceTree = "<group>"; };
+		FAB76FC21D2352A60012A786 /* StackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCell.swift; sourceTree = "<group>"; };
+		FAB76FC41D23DF660012A786 /* everythingbutthesink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = everythingbutthesink.png; sourceTree = "<group>"; };
+		FAB76FC51D23DF660012A786 /* bullinachinacloset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullinachinacloset.png; sourceTree = "<group>"; };
+		FAB76FC61D23DF660012A786 /* etphonehome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = etphonehome.png; sourceTree = "<group>"; };
+		FAB76FC71D23DF660012A786 /* jackandjill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jackandjill.png; sourceTree = "<group>"; };
+		FAB76FC81D23DF660012A786 /* cowjumpedoverthemoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cowjumpedoverthemoon.png; sourceTree = "<group>"; };
+		FAB76FCE1D23DFA30012A786 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
+		FAB76FCF1D23DFA30012A786 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		FAB76FD01D23DFA30012A786 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
+		FAB76FD11D23DFA30012A786 /* image4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image4.gif; sourceTree = "<group>"; };
+		FAB76FD21D23DFA30012A786 /* image5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image5.jpg; sourceTree = "<group>"; };
+		FAB76FD31D23DFA30012A786 /* image6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpg; sourceTree = "<group>"; };
+		FAB76FD41D23DFA30012A786 /* image7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image7.png; sourceTree = "<group>"; };
+		FAB76FDC1D23E0980012A786 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		FAB76FDF1D24222D0012A786 /* RandomCaption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RandomCaption.storyboard; sourceTree = "<group>"; };
+		FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCaptionViewController.swift; sourceTree = "<group>"; };
+		FAB76FE31D2432280012A786 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageViewController.swift; sourceTree = "<group>"; };
+		FAB76FE61D244CCB0012A786 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		FAB76FE81D244CD50012A786 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +96,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0C67BD1D249B4C007ADE75 /* FBSDKShareKit.framework in Frameworks */,
+				C720741A500D520BCBFC3DE6 /* Pods_Fictionary.framework in Frameworks */,
+				FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */,
+				FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5312449890C5E1B6CBC5E1DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */,
+				FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */,
+				FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */,
+				257B97310A284A02CA560688 /* Pods_Fictionary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A662609D5D658A4549107B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */,
+				ADFED090B4BC4624C0BA6982 /* Pods-Fictionary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DBCFB4101D22DF5500200F10 = {
 			isa = PBXGroup;
 			children = (
 				DBCFB41B1D22DF5500200F10 /* Fictionary */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
+				5A662609D5D658A4549107B8 /* Pods */,
+				5312449890C5E1B6CBC5E1DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +148,13 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
+				FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */,
+				FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */,
+				FAB76FE51D244CBD0012A786 /* Home */,
+				FAB76FDE1D24220B0012A786 /* Random Caption */,
+				FAB76FBD1D234E340012A786 /* SwipeStacks */,
+				FAB76FB81D234A5A0012A786 /* Timer */,
+				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
 				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
@@ -64,6 +164,68 @@
 			path = Fictionary;
 			sourceTree = "<group>";
 		};
+		FAB76FB11D2306F20012A786 /* CaptionPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */,
+				FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */,
+				FAB76FB61D230F950012A786 /* penguin.jpg */,
+			);
+			name = CaptionPhoto;
+			sourceTree = "<group>";
+		};
+		FAB76FB81D234A5A0012A786 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FB91D234A740012A786 /* Timer.storyboard */,
+				FAB76FBB1D234A8F0012A786 /* TimerViewController.swift */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		FAB76FBD1D234E340012A786 /* SwipeStacks */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FBE1D234E680012A786 /* SwipeStacks.storyboard */,
+				FAB76FE31D2432280012A786 /* ViewImageViewController.swift */,
+				FAB76FC01D234E740012A786 /* SwipeStacksViewController.swift */,
+				FAB76FC21D2352A60012A786 /* StackCell.swift */,
+				FAB76FDC1D23E0980012A786 /* CustomTableViewCell.swift */,
+				FAB76FC41D23DF660012A786 /* everythingbutthesink.png */,
+				FAB76FC51D23DF660012A786 /* bullinachinacloset.png */,
+				FAB76FC61D23DF660012A786 /* etphonehome.png */,
+				FAB76FC71D23DF660012A786 /* jackandjill.png */,
+				FAB76FC81D23DF660012A786 /* cowjumpedoverthemoon.png */,
+				FAB76FCE1D23DFA30012A786 /* image1.jpeg */,
+				FAB76FCF1D23DFA30012A786 /* image2.jpg */,
+				FAB76FD01D23DFA30012A786 /* image3.jpg */,
+				FAB76FD11D23DFA30012A786 /* image4.gif */,
+				FAB76FD21D23DFA30012A786 /* image5.jpg */,
+				FAB76FD31D23DFA30012A786 /* image6.jpg */,
+				FAB76FD41D23DFA30012A786 /* image7.png */,
+			);
+			name = SwipeStacks;
+			sourceTree = "<group>";
+		};
+		FAB76FDE1D24220B0012A786 /* Random Caption */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FDF1D24222D0012A786 /* RandomCaption.storyboard */,
+				FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */,
+			);
+			name = "Random Caption";
+			sourceTree = "<group>";
+		};
+		FAB76FE51D244CBD0012A786 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FE61D244CCB0012A786 /* Home.storyboard */,
+				FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */,
+				FAB76FE81D244CD50012A786 /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBCFB42B1D22DF5500200F10 /* Build configuration list for PBXNativeTarget "Fictionary" */;
 			buildPhases = (
+				197AFAC3364931BC563DE633 /* [CP] Check Pods Manifest.lock */,
 				DBCFB4151D22DF5500200F10 /* Sources */,
 				DBCFB4161D22DF5500200F10 /* Frameworks */,
 				DBCFB4171D22DF5500200F10 /* Resources */,
+				896416BFB3771C91E89E0B1D /* [CP] Embed Pods Frameworks */,
+				32C9E5A6FD0B9761B52F2A52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +261,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VCHC46W3FB;
+						DevelopmentTeam = 2R38GBAXHV;
 					};
 				};
 			};
@@ -123,21 +288,97 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */,
+				FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */,
+				FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */,
+				FAB76FD51D23DFA30012A786 /* image1.jpeg in Resources */,
 				DBCFB4271D22DF5500200F10 /* LaunchScreen.storyboard in Resources */,
+				FAB76FCB1D23DF660012A786 /* etphonehome.png in Resources */,
+				FAB76FD81D23DFA30012A786 /* image4.gif in Resources */,
+				FAB76FDA1D23DFA30012A786 /* image6.jpg in Resources */,
+				FAB76FC91D23DF660012A786 /* everythingbutthesink.png in Resources */,
+				FAB76FD71D23DFA30012A786 /* image3.jpg in Resources */,
+				FAB76FD61D23DFA30012A786 /* image2.jpg in Resources */,
 				DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */,
+				FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */,
+				FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */,
+				FAB76FB71D230F950012A786 /* penguin.jpg in Resources */,
+				FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */,
+				FAB76FDB1D23DFA30012A786 /* image7.png in Resources */,
+				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
+				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
+				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
+				FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */,
 				DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		197AFAC3364931BC563DE633 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		32C9E5A6FD0B9761B52F2A52 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		896416BFB3771C91E89E0B1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DBCFB4151D22DF5500200F10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB76FC31D2352A60012A786 /* StackCell.swift in Sources */,
+				FAB76FBC1D234A8F0012A786 /* TimerViewController.swift in Sources */,
 				DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */,
+				FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */,
+				FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */,
+				FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */,
+				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
+				FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
+				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
+				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,23 +489,41 @@
 		};
 		DBCFB42C1D22DF5500200F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Fictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codefriends.Fictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fictionary/Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		DBCFB42D1D22DF5500200F10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADFED090B4BC4624C0BA6982 /* Pods-Fictionary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Fictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codefriends.Fictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fictionary/Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -287,6 +546,7 @@
 				DBCFB42D1D22DF5500200F10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
