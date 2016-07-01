@@ -43,6 +43,7 @@
 		FA0C67D11D26ACCF007ADE75 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D01D26ACCF007ADE75 /* MyProfileViewController.swift */; };
 		FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */; };
 		FA0C67D51D26F178007ADE75 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */; };
+		FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */; };
 		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
 		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
 		FAB76FB71D230F950012A786 /* penguin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB61D230F950012A786 /* penguin.jpg */; };
@@ -114,6 +115,7 @@
 		FA0C67D01D26ACCF007ADE75 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
 		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
 		FAB76FB61D230F950012A786 /* penguin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin.jpg; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0C67CB1D267860007ADE75 /* Demo.storyboard */,
+				FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -396,7 +399,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = U7TP39P5Y5;
+						DevelopmentTeam = 2R38GBAXHV;
 					};
 				};
 			};
@@ -538,6 +541,7 @@
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
 				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
+				FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

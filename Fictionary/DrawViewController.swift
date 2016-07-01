@@ -15,7 +15,7 @@ class DrawViewController: UIViewController {
     var recievedCaption: String?
     @IBOutlet var captionLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
-    var secondsAllowed = 45
+    var secondsAllowed = 25
     var seconds = 0
     var timer = NSTimer()
 

@@ -8,7 +8,7 @@
         <!--Fictionary Demo-->
         <scene sceneID="1lE-DM-96S">
             <objects>
-                <viewController id="lcM-UL-QC2" sceneMemberID="viewController">
+                <viewController id="lcM-UL-QC2" customClass="DemoViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KPw-u1-9wC"/>
                         <viewControllerLayoutGuide type="bottom" id="EwP-aI-Sot"/>
@@ -18,32 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="jxZ-KZ-NN4">
-                                <rect key="frame" x="200" y="147.5" width="201" height="305"/>
+                                <rect key="frame" x="200" y="148" width="201" height="305"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNM-dm-Dxz">
-                                        <rect key="frame" x="81" y="0.0" width="38" height="30"/>
+                                        <rect key="frame" x="82" y="0.0" width="38" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <segue destination="qK2-NM-G9c" kind="show" id="J7e-Q8-yYq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZu-OV-La2">
-                                        <rect key="frame" x="43" y="55" width="114" height="30"/>
-                                        <state key="normal" title="Random Caption"/>
+                                        <rect key="frame" x="13" y="55" width="175" height="30"/>
+                                        <state key="normal" title="Caption / Drawing / Timer"/>
                                         <connections>
                                             <segue destination="fDq-GB-9Lb" kind="show" id="Kyt-R7-QbL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBy-Pa-5qj">
                                         <rect key="frame" x="0.0" y="110" width="201" height="30"/>
-                                        <state key="normal" title="Write a caption for a drawing."/>
+                                        <state key="normal" title="Write a caption for a drawing.">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <segue destination="m0w-9F-bvu" kind="show" id="giL-sB-aT2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-Bg-2lP">
-                                        <rect key="frame" x="80" y="165" width="40" height="30"/>
-                                        <state key="normal" title="Timer"/>
+                                        <rect key="frame" x="81" y="165" width="40" height="30"/>
+                                        <state key="normal" title="Timer">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <segue destination="kWZ-C5-Mec" kind="show" id="uLP-SZ-l8O"/>
                                         </connections>
@@ -56,7 +60,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-S3-6FH">
-                                        <rect key="frame" x="59" y="275" width="82" height="30"/>
+                                        <rect key="frame" x="60" y="275" width="82" height="30"/>
                                         <state key="normal" title="Game Logic"/>
                                         <connections>
                                             <segue destination="Lov-Ua-sHo" kind="show" id="bjC-B3-EYa"/>
@@ -64,12 +68,41 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎨 Fictionary🖌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-pP-hKm">
+                                <rect key="frame" x="0.0" y="100" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="4nR-dw-No8"/>
+                                    <constraint firstAttribute="height" constant="40" id="6dW-gg-fWN"/>
+                                    <constraint firstAttribute="width" constant="249" id="DDv-q5-Q2w"/>
+                                    <constraint firstAttribute="height" constant="40" id="wld-E5-7zD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6dW-gg-fWN"/>
+                                        <exclude reference="DDv-q5-Q2w"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ebe-pP-hKm" firstAttribute="centerX" secondItem="2ry-Gh-AFj" secondAttribute="centerX" id="B3v-F3-GQ0"/>
+                            <constraint firstItem="ebe-pP-hKm" firstAttribute="centerX" secondItem="jxZ-KZ-NN4" secondAttribute="centerX" id="LWA-Yy-QYD"/>
+                            <constraint firstItem="ebe-pP-hKm" firstAttribute="top" secondItem="KPw-u1-9wC" secondAttribute="bottom" constant="80" id="SGE-t9-A3E"/>
                             <constraint firstItem="jxZ-KZ-NN4" firstAttribute="centerY" secondItem="2ry-Gh-AFj" secondAttribute="centerY" id="V2a-Lp-ZbO"/>
                             <constraint firstItem="jxZ-KZ-NN4" firstAttribute="centerX" secondItem="2ry-Gh-AFj" secondAttribute="centerX" id="Y3q-11-h01"/>
+                            <constraint firstItem="jxZ-KZ-NN4" firstAttribute="top" secondItem="ebe-pP-hKm" secondAttribute="bottom" constant="8" id="ujf-8W-SaY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LWA-Yy-QYD"/>
+                                <exclude reference="SGE-t9-A3E"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Fictionary Demo" id="B3A-cB-ZLT"/>
                 </viewController>

@@ -25,6 +25,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+
+    
     
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
