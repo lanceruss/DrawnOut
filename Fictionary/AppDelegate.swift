@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // This instantiates an MPHandler object at the global level so we can have connections to other devices that are handled at the app level and not on a view controller by view controller basis.
         mpcHandler = MPCHandler()
         
         // Override point for customization after application launch.

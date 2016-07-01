@@ -99,8 +99,8 @@
 			children = (
 				F9B48FF21D22E8620031C5FC /* MPCHandler.swift */,
 				F9E341621D2622CF00BD0017 /* MessageHandler.swift */,
-				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
 				F9E341601D25E9AA00BD0017 /* Server.swift */,
+				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";

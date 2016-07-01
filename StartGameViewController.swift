@@ -14,19 +14,15 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
     let archiverHelper = ArchiverHelper()
     var messageHandler: MessageHandler!
     var appDelegate: AppDelegate!
-    
-    var profilePicture: NSData?
-    
+        
     var connectedUsers = [MCPeerID]()
-    var receivedImages = [UIImage]()
     
     var serverStatus: Server?
     
     @IBOutlet weak var serverClientStatusLabel: UILabel!
     @IBOutlet weak var connectedDevicesLabel: UILabel!
-    @IBOutlet var peerImageView: [UIImageView]!
     
-    
+    // DEMO ONLY
     @IBOutlet weak var changeBackgroundButton: UIButton!
     
     override func viewDidLoad() {
@@ -37,19 +33,18 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler?.mpcHandlerDelegate = self
         
+        // Instantiate a MessageHandler object, which is used to wrap and unwrap meessage dictionaries when sent and received among devices
         messageHandler = MessageHandler()
         
+        //Display a list of the connected users (DEMO ONLY)
         connectedUsers = appDelegate.mpcHandler.mcSession.connectedPeers
-        
         connectedDevicesLabel.text = connectedUsers.description
+        connectedDevicesLabel.numberOfLines = 0
         
         // Observe for notification of incoming data
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.handleReceivedData), name: "MPC_DataReceived", object: nil)
         
-        if let profilePicture = profilePicture {
-            appDelegate.mpcHandler.sendDataToDevice(data: profilePicture, peerIDs: connectedUsers)
-        }
-        
+         // DEMO ONLY- If device is a server, show the changeBackgroundButton and set the label to show that it is a server. If device is a client, hide changeBackgroundButton and set label to show that it is a client.
         if let serverStatus = serverStatus {
             if serverStatus.isServer == true {
                 serverClientStatusLabel.text = "I am the server."
@@ -61,34 +56,25 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-        if let profilePicture = profilePicture {
-            
-            appDelegate.mpcHandler.sendDataToDevice(data: profilePicture, peerIDs: connectedUsers)
-        }
-        
-    }
-    
     func handleReceivedData(notification: NSNotification) {
         
+        // Use archiverHelper to unwrap the received data and return an NSDictionary
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
         if let message = message {
+            
+            // Check the key of the received dictionary to see how to handle the data and handle it accordingly
             if message.objectForKey("string")?.isEqual("change_background") == true {
                 self.view.backgroundColor = UIColor.blueColor()
             } else if message.objectForKey("string")?.isEqual("dismiss_vc") == true {
                 dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        //            if let data = data {
-        //                let image = UIImage(data: data)
-        //                receivedImages.append(image!)
-        //            }
-        //
-        //            displayConnectedUsers()
     }
     
+    // DEMO ONLY
     @IBAction func dismissViewControllerButtonTapped(sender: AnyObject) {
+        
+        // Check whether a device is the server. If the device is the server, send a message to dismiss the view controller and do the same action locally. If device is a client, alert the user that they can't use the button.
         if let serverStatus = serverStatus {
             if serverStatus.isServer {
                 let message = ["string" : "dismiss_vc"]
@@ -103,26 +89,17 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         }
     }
     
+    //DEMO ONLY - Only the server can see and use this button.
     @IBAction func backgroundColorButtonTapped(sender: AnyObject) {
+
+        // Change the background color on the server device locally and send a message to the other devices to let them know to do the same.
         self.view.backgroundColor = UIColor.blueColor()
         
         let message = ["string" : "change_background"]
         messageHandler.sendMessage(messageDictionary: message, appDelegate: appDelegate)
     }
     
-    //    func displayConnectedUsers() {
-    //
-    //        for index in 0 ..< connectedUsers.count {
-    //
-    //            let image = receivedImages[index]
-    //
-    //            let imageToDisplay = image
-    //
-    //            peerImageView[index].hidden = false
-    //            peerImageView[index].image = imageToDisplay
-    //        }
-    //
-    //    }
+
 }
 
 
