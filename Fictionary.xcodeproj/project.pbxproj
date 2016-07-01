@@ -13,6 +13,16 @@
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
 		DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4231D22DF5500200F10 /* Assets.xcassets */; };
 		DBCFB4271D22DF5500200F10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */; };
+		DBCFB4881D25712400200F10 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4871D25712400200F10 /* DrawViewController.swift */; };
+		DBCFB48B1D25714A00200F10 /* Drawing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB48A1D25714A00200F10 /* Drawing.storyboard */; };
+		DBCFB48D1D25729500200F10 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB48C1D25729500200F10 /* DrawView.swift */; };
+		DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB48F1D25763500200F10 /* FreehandDrawController.swift */; };
+		DBCFB4921D25764A00200F10 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4911D25764A00200F10 /* Segment.swift */; };
+		DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4931D25766600200F10 /* WidthModulation.swift */; };
+		DBCFB4961D25769D00200F10 /* DrawCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4951D25769D00200F10 /* DrawCommands.swift */; };
+		DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4971D2576B000200F10 /* LineDrawCommand.swift */; };
+		DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */; };
+		DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */; };
 		FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */; };
 		FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */; };
 		FA0C67BD1D249B4C007ADE75 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */; };
@@ -56,6 +66,16 @@
 		DBCFB4231D22DF5500200F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBCFB4261D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBCFB4281D22DF5500200F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBCFB4871D25712400200F10 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		DBCFB48A1D25714A00200F10 /* Drawing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Drawing.storyboard; sourceTree = "<group>"; };
+		DBCFB48C1D25729500200F10 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		DBCFB48F1D25763500200F10 /* FreehandDrawController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreehandDrawController.swift; sourceTree = "<group>"; };
+		DBCFB4911D25764A00200F10 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		DBCFB4931D25766600200F10 /* WidthModulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidthModulation.swift; sourceTree = "<group>"; };
+		DBCFB4951D25769D00200F10 /* DrawCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCommands.swift; sourceTree = "<group>"; };
+		DBCFB4971D2576B000200F10 /* LineDrawCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawCommand.swift; sourceTree = "<group>"; };
+		DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawCommand.swift; sourceTree = "<group>"; };
+		DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedCommand.swift; sourceTree = "<group>"; };
 		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -156,12 +176,38 @@
 				FAB76FB81D234A5A0012A786 /* Timer */,
 				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
 				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
+				DBCFB4891D25713300200F10 /* Drawing */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
 				DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */,
 				DBCFB4281D22DF5500200F10 /* Info.plist */,
 			);
 			path = Fictionary;
+			sourceTree = "<group>";
+		};
+		DBCFB4891D25713300200F10 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				DBCFB48E1D2572A300200F10 /* DrawCommands */,
+				DBCFB48C1D25729500200F10 /* DrawView.swift */,
+				DBCFB4871D25712400200F10 /* DrawViewController.swift */,
+				DBCFB48F1D25763500200F10 /* FreehandDrawController.swift */,
+				DBCFB4911D25764A00200F10 /* Segment.swift */,
+				DBCFB4931D25766600200F10 /* WidthModulation.swift */,
+				DBCFB48A1D25714A00200F10 /* Drawing.storyboard */,
+			);
+			name = Drawing;
+			sourceTree = "<group>";
+		};
+		DBCFB48E1D2572A300200F10 /* DrawCommands */ = {
+			isa = PBXGroup;
+			children = (
+				DBCFB4951D25769D00200F10 /* DrawCommands.swift */,
+				DBCFB4971D2576B000200F10 /* LineDrawCommand.swift */,
+				DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */,
+				DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */,
+			);
+			name = DrawCommands;
 			sourceTree = "<group>";
 		};
 		FAB76FB11D2306F20012A786 /* CaptionPhoto */ = {
@@ -261,7 +307,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2R38GBAXHV;
+						DevelopmentTeam = 3367DBVN8H;
 					};
 				};
 			};
@@ -303,6 +349,7 @@
 				FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */,
 				FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */,
 				FAB76FB71D230F950012A786 /* penguin.jpg in Resources */,
+				DBCFB48B1D25714A00200F10 /* Drawing.storyboard in Resources */,
 				FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */,
 				FAB76FDB1D23DFA30012A786 /* image7.png in Resources */,
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
@@ -368,6 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCFB4881D25712400200F10 /* DrawViewController.swift in Sources */,
+				DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */,
+				DBCFB4921D25764A00200F10 /* Segment.swift in Sources */,
+				DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */,
 				FAB76FC31D2352A60012A786 /* StackCell.swift in Sources */,
 				FAB76FBC1D234A8F0012A786 /* TimerViewController.swift in Sources */,
 				DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */,
@@ -375,9 +426,14 @@
 				FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */,
 				FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */,
 				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
+				DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */,
+				DBCFB4961D25769D00200F10 /* DrawCommands.swift in Sources */,
+				DBCFB48D1D25729500200F10 /* DrawView.swift in Sources */,
 				FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
+				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
+				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

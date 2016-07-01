@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0UP-fy-3Rm">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Draw View Controller-->
+        <scene sceneID="i8E-u4-JJx">
+            <objects>
+                <viewController id="0UP-fy-3Rm" customClass="DrawViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rJ0-bI-Z0S"/>
+                        <viewControllerLayoutGuide type="bottom" id="inp-2z-RB8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RSZ-6F-5aG" customClass="DrawView" customModule="Fictionary" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-xc-dEh">
+                                <rect key="frame" x="556" y="28" width="24" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fTn-DE-D8v"/>
+                                    <constraint firstAttribute="width" constant="24" id="phk-70-2Qh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mls-he-ls3">
+                                <rect key="frame" x="20" y="28" width="509" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="509" id="7vw-S7-ko9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="obk-xc-dEh" secondAttribute="trailing" constant="20" id="9Qz-28-PFS"/>
+                            <constraint firstItem="Mls-he-ls3" firstAttribute="top" secondItem="rJ0-bI-Z0S" secondAttribute="bottom" constant="8" id="bFx-rA-gma"/>
+                            <constraint firstItem="Mls-he-ls3" firstAttribute="leading" secondItem="RSZ-6F-5aG" secondAttribute="leading" constant="20" id="cQp-CF-lbT"/>
+                            <constraint firstItem="obk-xc-dEh" firstAttribute="leading" secondItem="Mls-he-ls3" secondAttribute="trailing" constant="27" id="h26-PE-KZA"/>
+                            <constraint firstItem="obk-xc-dEh" firstAttribute="top" secondItem="rJ0-bI-Z0S" secondAttribute="bottom" constant="8" id="qOt-8Y-JfG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="captionLabel" destination="Mls-he-ls3" id="3vW-if-RKs"/>
+                        <outlet property="timerLabel" destination="obk-xc-dEh" id="LnL-35-l0g"/>
+                        <segue destination="Jm0-Ym-bZE" kind="show" identifier="ToCaption" id="HD6-f1-LDa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vO9-rA-KUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="389" y="367"/>
+        </scene>
+        <!--CaptionPhoto-->
+        <scene sceneID="bpo-DW-DDz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CaptionPhoto" id="Jm0-Ym-bZE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwI-aW-t6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.5" y="367"/>
+        </scene>
+    </scenes>
+</document>
