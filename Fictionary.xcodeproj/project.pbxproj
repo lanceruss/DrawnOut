@@ -23,6 +23,14 @@
 		DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4971D2576B000200F10 /* LineDrawCommand.swift */; };
 		DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */; };
 		DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */; };
+		F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */; };
+		F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */; };
+		F9B48FF01D22E7F10031C5FC /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */; };
+		F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF21D22E8620031C5FC /* MPCHandler.swift */; };
+		F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */; };
+		F9E3415F1D25A07400BD0017 /* JoinGameStartGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */; };
+		F9E341611D25E9AA00BD0017 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E341601D25E9AA00BD0017 /* Server.swift */; };
+		F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E341621D2622CF00BD0017 /* MessageHandler.swift */; };
 		FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */; };
 		FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */; };
 		FA0C67BD1D249B4C007ADE75 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */; };
@@ -77,6 +85,14 @@
 		DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawCommand.swift; sourceTree = "<group>"; };
 		DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedCommand.swift; sourceTree = "<group>"; };
 		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
+		F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
+		F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameViewController.swift; sourceTree = "<group>"; };
+		F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		F9B48FF21D22E8620031C5FC /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiverHelper.swift; sourceTree = "<group>"; };
+		F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinGameStartGame.storyboard; sourceTree = "<group>"; };
+		F9E341601D25E9AA00BD0017 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		F9E341621D2622CF00BD0017 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageHandler.swift; path = Fictionary/MessageHandler.swift; sourceTree = "<group>"; };
 		FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -120,6 +136,7 @@
 				C720741A500D520BCBFC3DE6 /* Pods_Fictionary.framework in Frameworks */,
 				FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */,
 				FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */,
+				F9B48FF01D22E7F10031C5FC /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +167,12 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB41B1D22DF5500200F10 /* Fictionary */,
+				F9B48FF11D22E84A0031C5FC /* Networking */,
+				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
 				5A662609D5D658A4549107B8 /* Pods */,
 				5312449890C5E1B6CBC5E1DB /* Frameworks */,
+				F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +228,27 @@
 				DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */,
 			);
 			name = DrawCommands;
+			sourceTree = "<group>";
+		};
+		F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */ = {
+			isa = PBXGroup;
+			children = (
+				F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */,
+				F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */,
+				F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */,
+			);
+			name = JoinandStartGame;
+			sourceTree = "<group>";
+		};
+		F9B48FF11D22E84A0031C5FC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F9B48FF21D22E8620031C5FC /* MPCHandler.swift */,
+				F9E341621D2622CF00BD0017 /* MessageHandler.swift */,
+				F9E341601D25E9AA00BD0017 /* Server.swift */,
+				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		FAB76FB11D2306F20012A786 /* CaptionPhoto */ = {
@@ -307,7 +348,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 3367DBVN8H;
+						DevelopmentTeam = U7TP39P5Y5;
 					};
 				};
 			};
@@ -345,6 +386,7 @@
 				FAB76FC91D23DF660012A786 /* everythingbutthesink.png in Resources */,
 				FAB76FD71D23DFA30012A786 /* image3.jpg in Resources */,
 				FAB76FD61D23DFA30012A786 /* image2.jpg in Resources */,
+				F9E3415F1D25A07400BD0017 /* JoinGameStartGame.storyboard in Resources */,
 				DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */,
 				FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */,
 				FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */,
@@ -435,6 +477,12 @@
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
 				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
+				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
+				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
+				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
+				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
+				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
+				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
