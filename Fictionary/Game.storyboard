@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fXF-Du-11c">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="aHI-Ce-Zc4">
+            <objects>
+                <viewController id="fXF-Du-11c" customClass="GameViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CHC-IJ-6h7"/>
+                        <viewControllerLayoutGuide type="bottom" id="ajD-Yd-z8x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XIK-sf-5VS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFJ-rA-1w3">
+                                <rect key="frame" x="0.0" y="48" width="600" height="552"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhx-X6-3M5">
+                                <rect key="frame" x="0.0" y="48" width="600" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLF-3p-fPq">
+                                <rect key="frame" x="550" y="28" width="30" height="30"/>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="fXF-Du-11c" eventType="touchUpInside" id="4iI-ZN-gU8"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cEH-kd-y5P">
+                                <rect key="frame" x="214" y="20" width="172" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="koH-06-KoD"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="4 Player"/>
+                                    <segment title="5 Player"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControl:" destination="fXF-Du-11c" eventType="valueChanged" id="SSj-yF-mNM"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cEH-kd-y5P" firstAttribute="centerX" secondItem="VFJ-rA-1w3" secondAttribute="centerX" id="2Tt-ai-PEv"/>
+                            <constraint firstItem="Rhx-X6-3M5" firstAttribute="centerY" secondItem="XIK-sf-5VS" secondAttribute="centerY" constant="19" id="66z-Kj-Bgb"/>
+                            <constraint firstItem="cEH-kd-y5P" firstAttribute="centerX" secondItem="Rhx-X6-3M5" secondAttribute="centerX" id="6Rd-Be-ztk"/>
+                            <constraint firstItem="VFJ-rA-1w3" firstAttribute="bottom" secondItem="ajD-Yd-z8x" secondAttribute="top" id="9OE-nK-olw"/>
+                            <constraint firstItem="ajD-Yd-z8x" firstAttribute="top" secondItem="Rhx-X6-3M5" secondAttribute="bottom" constant="10" id="CBS-L5-x5n"/>
+                            <constraint firstAttribute="trailing" secondItem="VFJ-rA-1w3" secondAttribute="trailing" id="Czu-tg-CoD"/>
+                            <constraint firstItem="VFJ-rA-1w3" firstAttribute="leading" secondItem="XIK-sf-5VS" secondAttribute="leading" id="Fze-MP-Oks"/>
+                            <constraint firstItem="cEH-kd-y5P" firstAttribute="top" secondItem="VFJ-rA-1w3" secondAttribute="top" constant="-28" id="RPU-L5-7kg"/>
+                            <constraint firstItem="Rhx-X6-3M5" firstAttribute="leading" secondItem="VFJ-rA-1w3" secondAttribute="leading" id="XBc-Ah-P6F"/>
+                            <constraint firstItem="FLF-3p-fPq" firstAttribute="top" secondItem="CHC-IJ-6h7" secondAttribute="bottom" constant="8" symbolic="YES" id="bLk-DN-Ntf"/>
+                            <constraint firstItem="VFJ-rA-1w3" firstAttribute="top" secondItem="CHC-IJ-6h7" secondAttribute="bottom" constant="28" id="jbK-3Q-NSv"/>
+                            <constraint firstItem="FLF-3p-fPq" firstAttribute="trailing" secondItem="XIK-sf-5VS" secondAttribute="trailingMargin" id="xqB-Yk-Fv7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="cEH-kd-y5P" id="zKV-gM-lRn"/>
+                        <outlet property="textView" destination="VFJ-rA-1w3" id="KZj-uw-4cr"/>
+                        <outlet property="textView6" destination="Rhx-X6-3M5" id="kRc-9T-GQ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8y9-mP-Avk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1202" y="376"/>
+        </scene>
+    </scenes>
+</document>

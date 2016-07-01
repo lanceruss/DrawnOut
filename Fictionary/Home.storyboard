@@ -27,13 +27,35 @@
                                 <state key="normal" title="Enter Game"/>
                                 <connections>
                                     <action selector="onEnterGameButtonTapped:" destination="9Ea-c1-XXp" eventType="touchUpInside" id="hxe-OL-D0B"/>
-                                    <segue destination="Ev7-7Z-xXA" kind="show" id="Wab-v2-wHh"/>
+                                    <segue destination="Ev7-7Z-xXA" kind="show" identifier="enterGameSegue" id="Wab-v2-wHh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOJ-A2-KoN">
+                                <rect key="frame" x="220" y="550" width="161" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HQZ-yx-5Oa"/>
+                                    <constraint firstAttribute="width" constant="161" id="htL-gi-6P7"/>
+                                </constraints>
+                                <state key="normal" title="Delete Player Object"/>
+                                <connections>
+                                    <action selector="onDeletePlayerTapped:" destination="9Ea-c1-XXp" eventType="touchUpInside" id="LVi-j3-kar"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igd-xw-AmI">
+                                <rect key="frame" x="550" y="72" width="30" height="30"/>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="9Ea-c1-XXp" eventType="touchUpInside" id="vPp-AJ-yAd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="igd-xw-AmI" firstAttribute="trailing" secondItem="iOo-ID-3UA" secondAttribute="trailingMargin" id="8rY-V8-Atf"/>
+                            <constraint firstItem="HOJ-A2-KoN" firstAttribute="centerX" secondItem="iOo-ID-3UA" secondAttribute="centerX" id="N3F-nY-ovG"/>
+                            <constraint firstItem="gZf-Cw-dkg" firstAttribute="top" secondItem="HOJ-A2-KoN" secondAttribute="bottom" constant="20" id="Ved-NK-xxA"/>
                             <constraint firstItem="0Q2-6c-uha" firstAttribute="top" secondItem="Tbh-Io-zHM" secondAttribute="bottom" constant="64" id="efq-js-1Ci"/>
+                            <constraint firstItem="igd-xw-AmI" firstAttribute="top" secondItem="Tbh-Io-zHM" secondAttribute="bottom" constant="8" symbolic="YES" id="fck-l6-2kg"/>
                             <constraint firstItem="0Q2-6c-uha" firstAttribute="centerX" secondItem="iOo-ID-3UA" secondAttribute="centerX" id="j1w-vt-CuW"/>
                         </constraints>
                     </view>
@@ -86,18 +108,36 @@
                                     </mask>
                                 </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCi-8O-Rdn">
+                                <rect key="frame" x="550" y="72" width="30" height="30"/>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="Ev7-7Z-xXA" eventType="touchUpInside" id="naS-f3-oZQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPg-PL-N8f">
+                                <rect key="frame" x="20" y="550" width="69" height="30"/>
+                                <state key="normal" title="My Profile"/>
+                                <connections>
+                                    <segue destination="ihp-ca-FWA" kind="show" id="BIh-eK-S7d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f6L-TM-16x" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="4Xr-rv-Kd9"/>
                             <constraint firstItem="f6L-TM-16x" firstAttribute="leading" secondItem="zD4-KQ-E2P" secondAttribute="leadingMargin" constant="44" id="Pui-Kh-g4r"/>
+                            <constraint firstItem="WCi-8O-Rdn" firstAttribute="top" secondItem="465-uu-1x0" secondAttribute="bottom" constant="8" symbolic="YES" id="Qie-6L-5w9"/>
                             <constraint firstItem="52Q-N4-86X" firstAttribute="centerY" secondItem="zD4-KQ-E2P" secondAttribute="centerY" id="Tp5-Us-bbA"/>
                             <constraint firstItem="evl-Pt-fbL" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="ZDe-qR-fi1"/>
                             <constraint firstItem="evl-Pt-fbL" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" constant="-11.5" id="bSx-GG-QPO"/>
                             <constraint firstItem="52Q-N4-86X" firstAttribute="centerX" secondItem="zD4-KQ-E2P" secondAttribute="centerX" id="dGV-Wn-iZy"/>
                             <constraint firstItem="f6L-TM-16x" firstAttribute="top" secondItem="465-uu-1x0" secondAttribute="bottom" id="dax-UA-TeU"/>
                             <constraint firstItem="cdx-bz-4tl" firstAttribute="top" secondItem="evl-Pt-fbL" secondAttribute="bottom" constant="20" id="k2V-Gu-hg0"/>
+                            <constraint firstItem="QPg-PL-N8f" firstAttribute="bottom" secondItem="evl-Pt-fbL" secondAttribute="bottom" id="sEC-Pr-whI"/>
                             <constraint firstItem="f6L-TM-16x" firstAttribute="centerY" secondItem="zD4-KQ-E2P" secondAttribute="centerY" constant="-104" id="uHl-eG-w1j"/>
+                            <constraint firstItem="QPg-PL-N8f" firstAttribute="leading" secondItem="zD4-KQ-E2P" secondAttribute="leadingMargin" id="ui1-dO-z9X"/>
+                            <constraint firstItem="WCi-8O-Rdn" firstAttribute="trailing" secondItem="zD4-KQ-E2P" secondAttribute="trailingMargin" id="yhY-cB-z4L"/>
                             <constraint firstItem="cdx-bz-4tl" firstAttribute="top" secondItem="evl-Pt-fbL" secondAttribute="bottom" constant="20" id="yys-mr-ilS"/>
                         </constraints>
                         <variation key="default">
@@ -116,6 +156,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7C-cc-8Nx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2248" y="433"/>
+        </scene>
+        <!--MyProfile-->
+        <scene sceneID="zmI-PY-i2d">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyProfile" id="ihp-ca-FWA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EAJ-9i-izU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2673.5" y="673"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wJh-IW-Eg1">

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Timer View Controller-->
@@ -34,13 +35,22 @@
                                     <action selector="onButtonTapped:" destination="BL3-YL-Tuk" eventType="touchUpInside" id="Xfu-YW-dwD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhW-DR-q2G">
+                                <rect key="frame" x="550" y="28" width="30" height="30"/>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="BL3-YL-Tuk" eventType="touchUpInside" id="TtW-r5-ACu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eZP-U8-jAG" firstAttribute="centerY" secondItem="Tzf-ft-lte" secondAttribute="centerY" id="4Qf-ck-vRh"/>
+                            <constraint firstItem="VhW-DR-q2G" firstAttribute="trailing" secondItem="Tzf-ft-lte" secondAttribute="trailingMargin" id="5p5-Dt-b6d"/>
                             <constraint firstItem="eZP-U8-jAG" firstAttribute="centerX" secondItem="Tzf-ft-lte" secondAttribute="centerX" id="8DG-EO-ynU"/>
                             <constraint firstItem="yLQ-Yp-e5x" firstAttribute="centerX" secondItem="Tzf-ft-lte" secondAttribute="centerX" id="EfS-dV-JXJ"/>
                             <constraint firstItem="yLQ-Yp-e5x" firstAttribute="top" secondItem="eZP-U8-jAG" secondAttribute="bottom" constant="8" id="Zqf-ST-2UR"/>
+                            <constraint firstItem="VhW-DR-q2G" firstAttribute="top" secondItem="czP-eC-LhP" secondAttribute="bottom" constant="8" symbolic="YES" id="yfd-kL-dMn"/>
                         </constraints>
                     </view>
                     <connections>

@@ -30,7 +30,10 @@ class RandomCaptionViewController: UIViewController {
                     "milking a cow",
                     "operating a jackhammer"]
     
-    
+    @IBAction func dismissButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

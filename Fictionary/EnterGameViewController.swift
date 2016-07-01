@@ -10,47 +10,58 @@ import UIKit
 import Firebase
 
 class EnterGameViewController: UIViewController {
+    
+    var player: Player!
+    var ref = FIRDatabase.database().reference()
 
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var facebookStatusTextView: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBAction func dismissButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref.child("users/\(player.firebaseUID!)/email").setValue("\(player.email!)")
+        ref.child("users/\(player.firebaseUID!)/facebookUID").setValue("\(player.facebookUID!)")
+        ref.child("users/\(player.firebaseUID!)/firebaseUID").setValue("\(player.firebaseUID!)")
+        ref.child("users/\(player.firebaseUID!)/photoURL").setValue("\(player.photoURL!)")
 
-        if let user = FIRAuth.auth()?.currentUser {
-            for profile in user.providerData {
-                let providerID = profile.providerID
-                let uid = profile.uid;  // Provider-specific UID
-                let name = profile.displayName
-                let email = profile.email
-                let photoURL = profile.photoURL
-                
-                self.debugTextView.text = "ProviderID: \(providerID) \nUID: \(uid)\nName: \(name!)\nEmail: \(email!)\nPhotoURL: \(photoURL!)\nFirebase-user-email: \(user.email!) "
-                
-            }
-        } else {
-            // No user is signed in.
+        
+        if player == nil {
+            print("******************************* ERROR! PLAYER IS NIL!!!!! *******************************")
         }
+        
+        print("player: \(player.displayName)")
+
+//        if let user = FIRAuth.auth()?.currentUser {
+//            for profile in user.providerData {
+//                let providerID = profile.providerID
+//                let uid = profile.uid;  // Provider-specific UID
+//                let name = profile.displayName
+//                let email = profile.email
+//                let photoURL = profile.photoURL
+//                
+
+        
+        self.debugTextView.text = "\nFROM PLAYER OBJECT:\nProviderID: \(player.facebookUID) \nUID: \(player.firebaseUID)\nName: \(player.displayName!)\nEmail: \(player.email!)\nPhotoURL: \(player.photoURL!)"
+//
+//            }
+//        } else {
+//            // No user is signed in.
+//        }
 
     
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
-            //They are logged in so show another view
-            print("FB User logged in")
-            
-            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-            
-            self.facebookStatusTextView.text = "FB USER *IS* LOGGED IN with \(credential)"
+        if(FBSDKAccessToken.currentAccessToken() == nil) {
 
-            
-            FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-                // ...
-            }
-        } else {
-            //They need to log in
             print("FB User not logged in")
             self.facebookStatusTextView.text = "FACEBOOK USER *NOT* LOGGED IN!!!"
+        } else {
+            print("FB User *IS LOGGED IN*")
+            self.facebookStatusTextView.text = "FACEBOOK USER *IS* LOGGED IN!!!"
         }
         
         // get photo http://everythingswift.com/blog/2015/12/26/swift-facebook-ios-sdk-retrieve-profile-picture/
@@ -91,6 +102,12 @@ class EnterGameViewController: UIViewController {
     
     
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dvc = segue.destinationViewController as! MyProfileViewController
+        dvc.player = player
+    }
+
 
 
 }

@@ -48,7 +48,7 @@ class StackCell: UICollectionViewCell {
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             print("didSelectRowAtIndexPath: \(indexPath) - \(array[indexPath.row])")
             print("from: \(array)")
-            self.messageLabel.text = array[indexPath.row]
+//            self.messageLabel.text = array[indexPath.row]
             
             rowWasSelectedForImage("\(array[indexPath.row])")
             

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Random Caption View Controller-->
@@ -34,15 +35,25 @@
                                     <action selector="onShuffleButtonTapped:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="eVT-hG-HAM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKa-s9-qPd">
+                                <rect key="frame" x="550" y="28" width="30" height="30"/>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="0Sv-M9-7QR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" constant="63" id="Bnq-4d-DfW"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="EtR-DA-H4p"/>
+                            <constraint firstItem="XKa-s9-qPd" firstAttribute="trailing" secondItem="uqS-eA-MHk" secondAttribute="trailingMargin" id="SVM-QO-9Pg"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="TiY-zx-YJA"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="246" id="aUZ-dX-23a"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="fpq-6X-DIN"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" id="g1K-Ok-MkV"/>
+                            <constraint firstItem="XKa-s9-qPd" firstAttribute="trailing" secondItem="qJd-Ch-Ham" secondAttribute="trailing" id="kRY-YY-0tq"/>
+                            <constraint firstItem="XKa-s9-qPd" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" symbolic="YES" id="rXQ-q1-2cV"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="sdU-YW-mx5"/>
                         </constraints>
                         <variation key="default">

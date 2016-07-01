@@ -14,8 +14,12 @@ class TimerViewController: UIViewController {
     
     var seconds = 0
     var timer = NSTimer()
-    var secondsAllowed = 10
+    var secondsAllowed = 45
     
+    @IBAction func dismissButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

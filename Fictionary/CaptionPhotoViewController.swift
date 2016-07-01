@@ -14,6 +14,10 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var captionTextField: UITextField!
     
     
+    @IBAction func dismissButton(sender: AnyObject) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
     override func viewDidLoad() {
