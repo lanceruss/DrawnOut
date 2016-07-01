@@ -16,6 +16,7 @@ class RandomCaptionViewController: UIViewController {
     var secondsAllowed = 10
     var seconds = 0
     var timer = NSTimer()
+    var passDictionary = [String : AnyObject]()
     
     var captions = ["making a pizza",
                     "delivering mail",
@@ -46,7 +47,6 @@ class RandomCaptionViewController: UIViewController {
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TimerViewController.subtractTime), userInfo: nil, repeats: true)
-
     }
 
 
@@ -73,6 +73,5 @@ class RandomCaptionViewController: UIViewController {
             dvc.recievedCaption = captionLabel.text
         }
     }
-    
     
 }

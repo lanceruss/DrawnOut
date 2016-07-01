@@ -19,7 +19,7 @@ class FreehandDrawController: NSObject {
     private var lastWidth: CGFloat?
     
     var color: UIColor = UIColor.blackColor()
-    var width: CGFloat = 3.2
+    var width: CGFloat = 4.2
     
     required init(canvas: protocol<Canvas, DrawCommandReceiver>, view: UIView) {
         

@@ -23,7 +23,7 @@ class DrawViewController: UIViewController {
         super.viewDidLoad()
 
         self.drawController = FreehandDrawController(canvas: self.drawView, view: self.drawView)
-        self.drawController.width = 3.2
+        self.drawController.width = 4.2
         
         self.drawView.multipleTouchEnabled = true
         
