@@ -12,13 +12,14 @@
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
 		DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4231D22DF5500200F10 /* Assets.xcassets */; };
 		DBCFB4271D22DF5500200F10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */; };
-		F9B48FE91D22E4A00031C5FC /* JoinGameStartGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B48FE81D22E4A00031C5FC /* JoinGameStartGame.storyboard */; };
 		F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */; };
 		F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */; };
 		F9B48FF01D22E7F10031C5FC /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */; };
 		F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF21D22E8620031C5FC /* MPCHandler.swift */; };
-		F9B48FF51D231C1D0031C5FC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF41D231C1D0031C5FC /* Player.swift */; };
 		F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */; };
+		F9E3415F1D25A07400BD0017 /* JoinGameStartGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */; };
+		F9E341611D25E9AA00BD0017 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E341601D25E9AA00BD0017 /* Server.swift */; };
+		F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E341621D2622CF00BD0017 /* MessageHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,13 +30,14 @@
 		DBCFB4231D22DF5500200F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBCFB4261D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBCFB4281D22DF5500200F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F9B48FE81D22E4A00031C5FC /* JoinGameStartGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinGameStartGame.storyboard; sourceTree = "<group>"; };
 		F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameViewController.swift; sourceTree = "<group>"; };
 		F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		F9B48FF21D22E8620031C5FC /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
-		F9B48FF41D231C1D0031C5FC /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
 		F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiverHelper.swift; sourceTree = "<group>"; };
+		F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinGameStartGame.storyboard; sourceTree = "<group>"; };
+		F9E341601D25E9AA00BD0017 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		F9E341621D2622CF00BD0017 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageHandler.swift; path = Fictionary/MessageHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
-				F9B48FF41D231C1D0031C5FC /* Player.swift */,
 				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
@@ -86,7 +87,7 @@
 		F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */ = {
 			isa = PBXGroup;
 			children = (
-				F9B48FE81D22E4A00031C5FC /* JoinGameStartGame.storyboard */,
+				F9E3415E1D25A07400BD0017 /* JoinGameStartGame.storyboard */,
 				F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */,
 				F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */,
 			);
@@ -97,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				F9B48FF21D22E8620031C5FC /* MPCHandler.swift */,
+				F9E341621D2622CF00BD0017 /* MessageHandler.swift */,
 				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
+				F9E341601D25E9AA00BD0017 /* Server.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -161,8 +164,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B48FE91D22E4A00031C5FC /* JoinGameStartGame.storyboard in Resources */,
 				DBCFB4271D22DF5500200F10 /* LaunchScreen.storyboard in Resources */,
+				F9E3415F1D25A07400BD0017 /* JoinGameStartGame.storyboard in Resources */,
 				DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */,
 				DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */,
 			);
@@ -177,10 +180,11 @@
 			files = (
 				DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */,
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
+				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
-				F9B48FF51D231C1D0031C5FC /* Player.swift in Sources */,
+				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

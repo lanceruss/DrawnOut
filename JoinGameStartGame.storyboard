@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzD-sS-6nr">
-                                <rect key="frame" x="150" y="110" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Inv-wp-v89"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-WJ-V8k">
                                 <rect key="frame" x="261" y="81" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,16 +31,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi1-Wv-OVf">
-                                <rect key="frame" x="261" y="466" width="78" height="30"/>
+                                <rect key="frame" x="261.5" y="499" width="78" height="30"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
-                                    <segue destination="Hih-l8-fdx" kind="show" id="0Iy-Ev-As2"/>
+                                    <action selector="startGameButtonTapped:" destination="f7V-Fl-HhR" eventType="touchUpInside" id="Z3I-fS-JzP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itD-LO-BH6">
-                                <rect key="frame" x="264" y="504" width="73" height="30"/>
-                                <state key="normal" title="Join Game"/>
+                                <rect key="frame" x="255" y="461" width="91" height="30"/>
+                                <state key="normal" title="Invite Players"/>
+                                <connections>
+                                    <action selector="joinGameButtonTapped:" destination="f7V-Fl-HhR" eventType="touchUpInside" id="L5I-Bv-PXh"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzD-sS-6nr">
+                                <rect key="frame" x="150" y="110" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Inv-wp-v89"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -58,18 +61,19 @@
                             <constraint firstItem="2hR-WJ-V8k" firstAttribute="centerX" secondItem="DzD-sS-6nr" secondAttribute="centerX" id="V0o-jL-Gon"/>
                             <constraint firstItem="DzD-sS-6nr" firstAttribute="top" secondItem="2hR-WJ-V8k" secondAttribute="bottom" constant="8" symbolic="YES" id="WHl-mS-FR0"/>
                             <constraint firstItem="DzD-sS-6nr" firstAttribute="centerX" secondItem="Gi1-Wv-OVf" secondAttribute="centerX" id="XrN-h2-luX"/>
-                            <constraint firstItem="itD-LO-BH6" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="8" symbolic="YES" id="h6v-HZ-hlM"/>
-                            <constraint firstItem="l2r-M6-ezt" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="104" id="mxn-Lx-TBF"/>
-                            <constraint firstItem="Gi1-Wv-OVf" firstAttribute="top" secondItem="DzD-sS-6nr" secondAttribute="bottom" constant="56" id="vTl-YF-oRg"/>
+                            <constraint firstItem="itD-LO-BH6" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="-68" id="h6v-HZ-hlM"/>
+                            <constraint firstItem="l2r-M6-ezt" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="71" id="mxn-Lx-TBF"/>
+                            <constraint firstItem="Gi1-Wv-OVf" firstAttribute="top" secondItem="DzD-sS-6nr" secondAttribute="bottom" constant="89" id="vTl-YF-oRg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="profilePictureImageView" destination="DzD-sS-6nr" id="Alm-pK-lHO"/>
+                        <segue destination="Hih-l8-fdx" kind="presentation" identifier="startGame" id="gf0-mp-24j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRi-UD-x9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309" y="213"/>
+            <point key="canvasLocation" x="353" y="213"/>
         </scene>
         <!--Start Game View Controller-->
         <scene sceneID="7xP-oB-0EA">
@@ -179,11 +183,24 @@
                                     <constraint firstItem="ar7-5o-Oum" firstAttribute="top" secondItem="aTu-dJ-tMO" secondAttribute="bottom" constant="15" id="uOc-Yt-WlL"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biu-qw-aLX">
-                                <rect key="frame" x="260" y="483" width="81" height="30"/>
-                                <state key="normal" title="Send String"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-K3-TFI">
+                                <rect key="frame" x="231" y="470" width="139" height="30"/>
+                                <state key="normal" title="Change background"/>
                                 <connections>
-                                    <action selector="sendString:" destination="Hih-l8-fdx" eventType="touchUpInside" id="pr7-2U-KeZ"/>
+                                    <action selector="backgroundColorButtonTapped:" destination="Hih-l8-fdx" eventType="touchUpInside" id="T0B-Eq-CnD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNW-2c-Cja">
+                                <rect key="frame" x="279" y="69" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUv-DJ-J3X">
+                                <rect key="frame" x="221" y="432" width="158" height="30"/>
+                                <state key="normal" title="Dismiss ViewController"/>
+                                <connections>
+                                    <action selector="dismissViewControllerButtonTapped:" destination="Hih-l8-fdx" eventType="touchUpInside" id="zA1-ZZ-Jd4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -191,16 +208,22 @@
                         <constraints>
                             <constraint firstItem="oT8-jY-MmE" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="1T2-3W-OIx"/>
                             <constraint firstItem="K5S-Ff-YZi" firstAttribute="top" secondItem="HKw-Hq-NTk" secondAttribute="bottom" constant="49" id="32S-5Q-lZy"/>
+                            <constraint firstItem="bNW-2c-Cja" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="86O-gl-qS0"/>
+                            <constraint firstItem="rYi-dQ-fvv" firstAttribute="top" secondItem="Cu9-x5-Txd" secondAttribute="bottom" constant="20" id="Aue-V2-Mps"/>
+                            <constraint firstItem="Tva-K3-TFI" firstAttribute="centerX" secondItem="HKw-Hq-NTk" secondAttribute="centerX" id="FrS-lS-RcA"/>
                             <constraint firstItem="HKw-Hq-NTk" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="LxP-tn-mSN"/>
-                            <constraint firstItem="HKw-Hq-NTk" firstAttribute="top" secondItem="biu-qw-aLX" secondAttribute="bottom" constant="8" symbolic="YES" id="WkM-S7-JQG"/>
-                            <constraint firstItem="rYi-dQ-fvv" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="ZAO-Cw-8wQ"/>
-                            <constraint firstItem="biu-qw-aLX" firstAttribute="centerX" secondItem="HKw-Hq-NTk" secondAttribute="centerX" id="cXh-zG-mZy"/>
+                            <constraint firstItem="FUv-DJ-J3X" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="N4S-A0-kAJ"/>
+                            <constraint firstItem="Tva-K3-TFI" firstAttribute="top" secondItem="FUv-DJ-J3X" secondAttribute="bottom" constant="8" id="P4U-Gw-eq2"/>
+                            <constraint firstItem="bNW-2c-Cja" firstAttribute="top" secondItem="rYi-dQ-fvv" secondAttribute="bottom" constant="8" id="bAv-rf-i0A"/>
+                            <constraint firstItem="HKw-Hq-NTk" firstAttribute="top" secondItem="Tva-K3-TFI" secondAttribute="bottom" constant="21" id="c88-qV-aqp"/>
+                            <constraint firstItem="rYi-dQ-fvv" firstAttribute="centerX" secondItem="PBS-PB-Ffp" secondAttribute="centerX" id="f8c-Rn-wPl"/>
                             <constraint firstItem="oT8-jY-MmE" firstAttribute="centerY" secondItem="PBS-PB-Ffp" secondAttribute="centerY" id="iVz-4q-EPN"/>
-                            <constraint firstItem="rYi-dQ-fvv" firstAttribute="top" secondItem="Cu9-x5-Txd" secondAttribute="bottom" constant="20" id="zig-6E-tT9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeBackgroundButton" destination="Tva-K3-TFI" id="R75-JY-ydD"/>
                         <outlet property="connectedDevicesLabel" destination="rYi-dQ-fvv" id="oCr-jW-vVH"/>
+                        <outlet property="serverClientStatusLabel" destination="bNW-2c-Cja" id="JnO-KK-X3v"/>
                         <outletCollection property="peerImageView" destination="QcY-Vv-kTc" collectionClass="NSMutableArray" id="N4i-TX-K1Q"/>
                         <outletCollection property="peerImageView" destination="fzK-3u-ORi" collectionClass="NSMutableArray" id="Typ-rv-hL8"/>
                         <outletCollection property="peerImageView" destination="P25-2U-3Pw" collectionClass="NSMutableArray" id="H0j-fr-Krx"/>

@@ -12,17 +12,22 @@ import MultipeerConnectivity
 class StartGameViewController: UIViewController, MPCHandlerDelegate {
     
     let archiverHelper = ArchiverHelper()
-    
+    var messageHandler: MessageHandler!
     var appDelegate: AppDelegate!
     
-    var userInfoToSend: NSData?
+    var profilePicture: NSData?
     
-    var connectedUsers = [[String : AnyObject]]()
-    var receivedImageData = [[String : AnyObject]]()
+    var connectedUsers = [MCPeerID]()
+    var receivedImages = [UIImage]()
     
+    var serverStatus: Server?
+    
+    @IBOutlet weak var serverClientStatusLabel: UILabel!
     @IBOutlet weak var connectedDevicesLabel: UILabel!
-    
     @IBOutlet var peerImageView: [UIImageView]!
+    
+    
+    @IBOutlet weak var changeBackgroundButton: UIButton!
     
     override func viewDidLoad() {
         
@@ -30,119 +35,94 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         
         // Get instance of the AppDelegate and the MPCHandler that was instantiated there for global use
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.mpcHandler = MPCHandler()
         appDelegate.mpcHandler?.mpcHandlerDelegate = self
+        
+        messageHandler = MessageHandler()
+        
+        connectedUsers = appDelegate.mpcHandler.mcSession.connectedPeers
+        
+        connectedDevicesLabel.text = connectedUsers.description
         
         // Observe for notification of incoming data
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.handleReceivedData), name: "MPC_DataReceived", object: nil)
         
+        if let profilePicture = profilePicture {
+            appDelegate.mpcHandler.sendDataToDevice(data: profilePicture, peerIDs: connectedUsers)
+        }
+        
+        if let serverStatus = serverStatus {
+            if serverStatus.isServer == true {
+                serverClientStatusLabel.text = "I am the server."
+                changeBackgroundButton.hidden = false
+            } else {
+                serverClientStatusLabel.text = "I am a client."
+                changeBackgroundButton.hidden = true
+            }
+        }
     }
     
-    //    @IBAction func sendString(sender: AnyObject) {
-    //
-    //        let randomNumber = "\(arc4random())"
-    //
-    //        let stringData = randomNumber.dataUsingEncoding(NSUTF8StringEncoding)
-    //
-    //        let peers = appDelegate.mpcHandler?.session.connectedPeers
-    //
-    //        appDelegate.mpcHandler?.sendDataToDevice(data: stringData!, peerIDs: peers!)
-    //
-    //    }
+    override func viewDidAppear(animated: Bool) {
+        
+        if let profilePicture = profilePicture {
+            
+            appDelegate.mpcHandler.sendDataToDevice(data: profilePicture, peerIDs: connectedUsers)
+        }
+        
+    }
     
     func handleReceivedData(notification: NSNotification) {
-        let userInfo = notification.object as! Dictionary<String, AnyObject>
-        let data = userInfo["data"] as? NSData
-        let senderPeerID = userInfo["peerID"] as? String
         
-        if let data = data {
-            let unarchivedData = archiverHelper.unarchiveData(data: data) as? NSData
-            
-            if let unarchivedData = unarchivedData {
-                let image = UIImage(data: unarchivedData)
-                
-                if let senderPeerID = senderPeerID {
-                    if let image = image {
-                        let imageData: [String : AnyObject] = ["peerID" : senderPeerID, "image" : image]
-                        
-                        receivedImageData.append(imageData)
-                        
-                    }
-                    
-                    displayConnectedUsers()
-                    //                    print(senderPeerID)
-                }
+        let message = messageHandler.unwrapReceivedMessage(notification: notification)
+        if let message = message {
+            if message.objectForKey("string")?.isEqual("change_background") == true {
+                self.view.backgroundColor = UIColor.blueColor()
+            } else if message.objectForKey("string")?.isEqual("dismiss_vc") == true {
+                dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        //            if let data = data {
+        //                let image = UIImage(data: data)
+        //                receivedImages.append(image!)
+        //            }
+        //
+        //            displayConnectedUsers()
+    }
+    
+    @IBAction func dismissViewControllerButtonTapped(sender: AnyObject) {
+        if let serverStatus = serverStatus {
+            if serverStatus.isServer {
+                let message = ["string" : "dismiss_vc"]
+                messageHandler.sendMessage(messageDictionary: message, appDelegate: appDelegate)
+                dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Uh Oh!", message: "Looks like you're only a client :-(", preferredStyle: UIAlertControllerStyle.Alert)
+                let action = UIAlertAction(title: "OK, I guess", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(action)
+                presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
     
-    func sendDataToNewPeer(newPeer: MCPeerID, state: MCSessionState) {
-        if state == MCSessionState.Connected {
-            if let userInfoToSend = self.userInfoToSend {
-                let data = self.archiverHelper.archiveData(data: userInfoToSend)
-                if let data = data {
-                    let peer = [newPeer]
-                    appDelegate.mpcHandler.sendDataToDevice(data: data, peerIDs: peer)
-                }
-            }
-        }
-    }
-    
-    func connectedDevicesChanged(manager: MPCHandler, connectedDevices: [String], state: MCSessionState) {
-        NSOperationQueue.mainQueue().addOperationWithBlock {
-            self.connectedDevicesLabel.text = "Connected Devices: \(connectedDevices)"
-            
-//            let newPeers = connectedDevices
-//            //            var peersToReceiveData = [String]()
-//            
-//            if state == MCSessionState.Connected {
-//                for peer in newPeers {
-//                    if !(connectedDevices.contains(peer)) {
-//                        if let userInfoToSend = self.userInfoToSend {
-//                            let data = self.archiverHelper.archiveData(data: userInfoToSend)
-//                            if let mpcHandler = self.appDelegate.mpcHandler {
-//                                let peers = mpcHandler.session.connectedPeers
-//                                
-//                                if let data = data {
-//                                    self.appDelegate.mpcHandler?.sendDataToDevice(data: data, peerIDs: peer)
-//                                    
-//                                }
-//                            }
-//                        }
-//                        
-//                    }
-//                }
-//            }
-//            
-//            //            if state == MCSessionState.Connected {
-//            //                                for image in self.receivedImageData {
-//            //                    let peerID = image["peerID"] as? String
-//            //                    if let peerID = peerID {
-//            //                        if connectedDevices.contains(peerID) == false {
-//            //                            self.connectedUsers.append(image)
-//            //                        }
-//            //                    }
-//            //                }
-//            //            }
-//        }
-    }
-    }
-    
-    
-    func displayConnectedUsers() {
+    @IBAction func backgroundColorButtonTapped(sender: AnyObject) {
+        self.view.backgroundColor = UIColor.blueColor()
         
-        for index in 0 ..< connectedUsers.count {
-            
-            let user = connectedUsers[index]
-            
-            let image = user["image"] as? UIImage
-            _ = user["peerID"] as? String
-            
-            peerImageView[index].hidden = false
-            peerImageView[index].image = image
-        }
-        
+        let message = ["string" : "change_background"]
+        messageHandler.sendMessage(messageDictionary: message, appDelegate: appDelegate)
     }
+    
+    //    func displayConnectedUsers() {
+    //
+    //        for index in 0 ..< connectedUsers.count {
+    //
+    //            let image = receivedImages[index]
+    //
+    //            let imageToDisplay = image
+    //
+    //            peerImageView[index].hidden = false
+    //            peerImageView[index].image = imageToDisplay
+    //        }
+    //
+    //    }
 }
 
 
