@@ -12,19 +12,16 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
-    
-    
-    @IBAction func dismissButton(sender: AnyObject) {
-        
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
+
+    var drawnImage: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        imageView.image = drawnImage
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: self.view.window)
 
     }
     

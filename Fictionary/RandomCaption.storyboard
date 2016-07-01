@@ -35,19 +35,23 @@
                                     <action selector="onShuffleButtonTapped:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="eVT-hG-HAM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKa-s9-qPd">
-                                <rect key="frame" x="550" y="28" width="30" height="30"/>
-                                <state key="normal" title="⏎"/>
-                                <connections>
-                                    <action selector="dismissButton:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="0Sv-M9-7QR"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-pK-lWO">
+                                <rect key="frame" x="557" y="28" width="23" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="Ewa-Q2-TaY"/>
+                                    <constraint firstAttribute="height" constant="21" id="NnP-YP-adN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2ac-pK-lWO" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" id="3t8-I3-ZaL"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" constant="63" id="Bnq-4d-DfW"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="EtR-DA-H4p"/>
-                            <constraint firstItem="XKa-s9-qPd" firstAttribute="trailing" secondItem="uqS-eA-MHk" secondAttribute="trailingMargin" id="SVM-QO-9Pg"/>
+                            <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="20" id="Lhf-Ru-dDc"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="TiY-zx-YJA"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="246" id="aUZ-dX-23a"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="fpq-6X-DIN"/>
@@ -66,11 +70,21 @@
                     </view>
                     <connections>
                         <outlet property="captionLabel" destination="qJd-Ch-Ham" id="UmL-hl-rl1"/>
+                        <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
+                        <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-dE-AJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="555" y="496"/>
+        </scene>
+        <!--Drawing-->
+        <scene sceneID="6Rj-yl-gTK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Drawing" id="Ec5-XY-tnl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBS-UT-ARX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023.5" y="527"/>
         </scene>
     </scenes>
 </document>
