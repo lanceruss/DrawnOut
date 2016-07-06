@@ -177,9 +177,13 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
         if segue.identifier == "ToDrawing" {
             let dvc = segue.destinationViewController as! DrawViewController
             dvc.receivedArray = receivedArray
+            dvc.serverStatus = serverStatus
         }
     }
     

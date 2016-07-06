@@ -73,15 +73,15 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
             self.serverStatus = Server(serverStatus: true, peerID: self.appDelegate.mpcHandler.mcSession.myPeerID)
             
             if let serverStatus = self.serverStatus {
-            if let peerID = serverStatus.id {
-                serverStatus.playersInOrder = [[peerID : []]]
-                for peer in self.appDelegate.mpcHandler.mcSession.connectedPeers {
-                    serverStatus.playersInOrder.append([peer : []])
+                if let peerID = serverStatus.id {
+                    serverStatus.playersInOrder = [[peerID : []]]
+                    for peer in self.appDelegate.mpcHandler.mcSession.connectedPeers {
+                        serverStatus.playersInOrder.append([peer : []])
+                    }
                 }
-            }
-            
-            //send message to trigger segue on Client phones and perform segue on Server phone
-            let message = self.messageHandler.createMessage(string: "start_game", object: serverStatus.playersInOrder, ready: nil)
+                
+                //send message to trigger segue on Client phones and perform segue on Server phone
+                let message = self.messageHandler.createMessage(string: "start_game", object: serverStatus.playersInOrder, ready: nil)
                 self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
             }
             self.performSegueWithIdentifier("startGame", sender: self)
@@ -109,7 +109,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
             if message.objectForKey("object")?.isEqual("") != true {
                 let playersInOrder = message.objectForKey("object") as! Array<NSDictionary>
                 if let serverStatus = serverStatus {
-                serverStatus.playersInOrder = playersInOrder
+                    serverStatus.playersInOrder = playersInOrder
                 }
             }
             
@@ -120,6 +120,8 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         
         // Pass along the serverStatus object so that we can keep checking the server/client status of each device. This object should be passed along for the duration fo the game!!!
         let dvc = segue.destinationViewController as! RandomCaptionViewController
