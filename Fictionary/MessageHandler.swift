@@ -11,8 +11,37 @@ import MultipeerConnectivity
 
 class MessageHandler: NSObject {
 
+    func createMessage(string string: String?, object: AnyObject?, ready: String?) -> [String : AnyObject] {
+       
+        var stringForMessage: String!
+        var objectForMessage: AnyObject!
+        var readyMessage: String!
+        
+        if object == nil {
+            objectForMessage = ""
+        } else {
+            objectForMessage = object
+        }
+        
+        if string == nil {
+            stringForMessage = ""
+        } else {
+            stringForMessage = string
+        }
+        
+        if ready == nil {
+            readyMessage = ""
+        } else {
+            readyMessage = ready
+        }
+        
+        let messageDictionary: [String : AnyObject] = ["string" : stringForMessage, "object" : objectForMessage, "ready" : readyMessage]
+        
+        return messageDictionary
+    }
+    
     // Takes an NSDictionary and an instance of the appDelegate as the parameters and sends that data to all of the connected peers. Remember that a device only sends the messages to everyone else, so any action you need to happen should ALSO be called on the device locally.
-    func sendMessage(messageDictionary messageDictionary: [String : AnyObject], appDelegate: AppDelegate) {
+    func sendMessage(messageDictionary messageDictionary: [String : AnyObject], toPeers: [MCPeerID], appDelegate: AppDelegate) {
             let archiverHelper = ArchiverHelper()
         
             do {
@@ -23,7 +52,7 @@ class MessageHandler: NSObject {
                 if let messageData = messageData {
                 
                     // Send the messageData object to all of the connected peers
-                    try appDelegate.mpcHandler.mcSession.sendData(messageData, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
+                    try appDelegate.mpcHandler.mcSession.sendData(messageData, toPeers: toPeers, withMode: MCSessionSendDataMode.Reliable)
                 }
             } catch {
                 print("error during MessageHandler.sendMessage(): \(error)")

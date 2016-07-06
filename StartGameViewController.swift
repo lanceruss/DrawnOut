@@ -43,15 +43,18 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         
         // Observe for notification of incoming data
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.handleReceivedData), name: "MPC_DataReceived", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: <#T##Selector#>, name: "Server_Ready", object: nil)
         
          // DEMO ONLY- If device is a server, show the changeBackgroundButton and set the label to show that it is a server. If device is a client, hide changeBackgroundButton and set label to show that it is a client.
         if let serverStatus = serverStatus {
             if serverStatus.isServer == true {
                 serverClientStatusLabel.text = "I am the server."
                 changeBackgroundButton.hidden = false
+                print(serverStatus.playersInOrder)
             } else {
                 serverClientStatusLabel.text = "I am a client."
                 changeBackgroundButton.hidden = true
+                print(serverStatus.playersInOrder)
             }
         }
     }
@@ -78,7 +81,7 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         if let serverStatus = serverStatus {
             if serverStatus.isServer {
                 let message = ["string" : "dismiss_vc"]
-                messageHandler.sendMessage(messageDictionary: message, appDelegate: appDelegate)
+                messageHandler.sendMessage(messageDictionary: message, toPeers:appDelegate.mpcHandler.mcSession.connectedPeers,  appDelegate: appDelegate)
                 dismissViewControllerAnimated(true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Uh Oh!", message: "Looks like you're only a client :-(", preferredStyle: UIAlertControllerStyle.Alert)
@@ -96,7 +99,7 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         self.view.backgroundColor = UIColor.blueColor()
         
         let message = ["string" : "change_background"]
-        messageHandler.sendMessage(messageDictionary: message, appDelegate: appDelegate)
+        messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
     }
     
 

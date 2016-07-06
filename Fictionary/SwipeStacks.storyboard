@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackCell" id="AGh-1v-IQu" customClass="StackCell" customModule="Fictionary" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="60" width="411" height="453"/>
+                                        <rect key="frame" x="5" y="59.5" width="411" height="453"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="411" height="453"/>
@@ -42,7 +42,7 @@
                                                             <rect key="frame" x="0.0" y="28" width="411" height="78"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wVa-YS-lbW" id="ZhQ-5I-MdD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="411" height="77"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="411" height="77.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uBC-cs-h1c">

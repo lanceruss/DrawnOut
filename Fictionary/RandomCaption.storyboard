@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Random Caption View Controller-->
@@ -42,7 +41,7 @@
                                     <constraint firstAttribute="height" constant="21" id="NnP-YP-adN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -56,8 +55,8 @@
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="246" id="aUZ-dX-23a"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="fpq-6X-DIN"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" id="g1K-Ok-MkV"/>
-                            <constraint firstItem="XKa-s9-qPd" firstAttribute="trailing" secondItem="qJd-Ch-Ham" secondAttribute="trailing" id="kRY-YY-0tq"/>
-                            <constraint firstItem="XKa-s9-qPd" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" symbolic="YES" id="rXQ-q1-2cV"/>
+                            <constraint firstAttribute="trailing" secondItem="qJd-Ch-Ham" secondAttribute="trailing" id="kRY-YY-0tq"/>
+                            <constraint firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" symbolic="YES" id="rXQ-q1-2cV"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="sdU-YW-mx5"/>
                         </constraints>
                         <variation key="default">

@@ -12,6 +12,8 @@ class DrawViewController: UIViewController {
     
     private var drawController: FreehandDrawController!
 
+    var receivedArray: Array = [AnyObject]()
+    
     var recievedCaption: String?
     @IBOutlet var captionLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
@@ -33,6 +35,7 @@ class DrawViewController: UIViewController {
         timerLabel.text = "\(seconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TimerViewController.subtractTime), userInfo: nil, repeats: true)
 
+        print(receivedArray.first)
     }
     
     var drawView: DrawView {
