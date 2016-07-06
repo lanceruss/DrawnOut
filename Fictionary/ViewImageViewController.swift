@@ -12,6 +12,7 @@ import Firebase
 class ViewImageViewController: UIViewController {
 
     @IBOutlet weak var imagePreview: UIImageView!
+    @IBOutlet weak var debugLabel: UILabel!
     
     var imageNamePassed = ""
     
@@ -25,9 +26,12 @@ class ViewImageViewController: UIViewController {
         if let user = FIRAuth.auth()?.currentUser {
             // User is signed in.
             firebaseUID = user.uid
+            debugLabel.text = user.uid
         } else {
             // No user is signed in.
         }
+        
+        
 
         
         print("*%*%*%*%*%*%*%* View Image VC Loaded *%*%*%**%*%*%*%*%*%*%*")

@@ -71,6 +71,9 @@
 		FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FE61D244CCB0012A786 /* Home.storyboard */; };
 		FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE81D244CD50012A786 /* HomeViewController.swift */; };
 		FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */; };
+		FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACB72251D2C1A0C0029AE1B /* Login.storyboard */; };
+		FACB72281D2C1A1E0029AE1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */; };
+		FACB722C1D2C2A540029AE1B /* SeeMyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +146,9 @@
 		FAB76FE61D244CCB0012A786 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FAB76FE81D244CD50012A786 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FACB72251D2C1A0C0029AE1B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeMyProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 				FA0C67CD1D26ACB2007ADE75 /* MyProfile */,
 				FA0C67CA1D267852007ADE75 /* Demo */,
 				FA0C67C31D259A3C007ADE75 /* GameStructure */,
+				FACB72241D2C19E50029AE1B /* Login */,
 				FAB76FE51D244CBD0012A786 /* Home */,
 				FAB76FDE1D24220B0012A786 /* Random Caption */,
 				FAB76FBD1D234E340012A786 /* SwipeStacks */,
@@ -364,6 +371,16 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		FACB72241D2C19E50029AE1B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FACB72251D2C1A0C0029AE1B /* Login.storyboard */,
+				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
+				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -450,6 +467,7 @@
 				FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */,
 				FAB76FDB1D23DFA30012A786 /* image7.png in Resources */,
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
+				FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
 				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
 				FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */,
@@ -524,6 +542,7 @@
 				FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */,
 				FA0C67C21D25754D007ADE75 /* Player.swift in Sources */,
 				FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */,
+				FACB72281D2C1A1E0029AE1B /* LoginViewController.swift in Sources */,
 				FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */,
 				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
 				DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */,
@@ -539,6 +558,7 @@
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
 				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
+				FACB722C1D2C2A540029AE1B /* SeeMyProfileViewController.swift in Sources */,
 				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
 				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
 				FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */,

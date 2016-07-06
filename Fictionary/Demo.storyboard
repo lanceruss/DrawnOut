@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="jxZ-KZ-NN4">
-                                <rect key="frame" x="200" y="148" width="201" height="305"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="jxZ-KZ-NN4">
+                                <rect key="frame" x="200" y="148" width="201" height="360"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNM-dm-Dxz">
                                         <rect key="frame" x="82" y="0.0" width="38" height="30"/>
@@ -27,15 +27,22 @@
                                             <segue destination="qK2-NM-G9c" kind="show" id="J7e-Q8-yYq"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg2-Qc-FQ2">
+                                        <rect key="frame" x="57" y="55" width="87" height="30"/>
+                                        <state key="normal" title="Login - NEW"/>
+                                        <connections>
+                                            <segue destination="XYn-Kn-5NN" kind="show" id="Rrk-YY-azW"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZu-OV-La2">
-                                        <rect key="frame" x="13" y="55" width="175" height="30"/>
+                                        <rect key="frame" x="13" y="110" width="175" height="30"/>
                                         <state key="normal" title="Caption / Drawing / Timer"/>
                                         <connections>
                                             <segue destination="fDq-GB-9Lb" kind="show" id="Kyt-R7-QbL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBy-Pa-5qj">
-                                        <rect key="frame" x="0.0" y="110" width="201" height="30"/>
+                                        <rect key="frame" x="0.0" y="165" width="201" height="30"/>
                                         <state key="normal" title="Write a caption for a drawing.">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -44,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-Bg-2lP">
-                                        <rect key="frame" x="81" y="165" width="40" height="30"/>
+                                        <rect key="frame" x="81" y="220" width="40" height="30"/>
                                         <state key="normal" title="Timer">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -53,14 +60,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcG-Gq-ANO">
-                                        <rect key="frame" x="48" y="220" width="105" height="30"/>
+                                        <rect key="frame" x="48" y="275" width="105" height="30"/>
                                         <state key="normal" title="Stacks &amp; Cards"/>
                                         <connections>
                                             <segue destination="6YK-BQ-pcI" kind="show" id="aAu-bH-oYl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-S3-6FH">
-                                        <rect key="frame" x="60" y="275" width="82" height="30"/>
+                                        <rect key="frame" x="60" y="330" width="82" height="30"/>
                                         <state key="normal" title="Game Logic"/>
                                         <connections>
                                             <segue destination="Lov-Ua-sHo" kind="show" id="bjC-B3-EYa"/>
@@ -68,7 +75,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎨 Fictionary🖌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-pP-hKm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="🎨 Fictionary🖌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-pP-hKm">
                                 <rect key="frame" x="0.0" y="100" width="600" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -157,6 +164,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6i-34-FdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804.5" y="404"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="pK6-LN-cd6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="XYn-Kn-5NN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N94-4S-y4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804.5" y="556"/>
         </scene>
     </scenes>
 </document>
