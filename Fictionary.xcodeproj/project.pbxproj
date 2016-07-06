@@ -192,9 +192,9 @@
 			children = (
 				FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */,
 				DBCFB41B1D22DF5500200F10 /* Fictionary */,
-				F9B48FF11D22E84A0031C5FC /* Networking */,
 				FAB76FDE1D24220B0012A786 /* Random Caption */,
 				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
+				F9B48FF11D22E84A0031C5FC /* Networking */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
 				5A662609D5D658A4549107B8 /* Pods */,
 				5312449890C5E1B6CBC5E1DB /* Frameworks */,
@@ -214,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
+				FA0C67C11D25754D007ADE75 /* Player.swift */,
 				FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */,
 				FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */,
 				FA0C67CD1D26ACB2007ADE75 /* MyProfile */,
@@ -367,7 +368,6 @@
 				FAB76FE61D244CCB0012A786 /* Home.storyboard */,
 				FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */,
 				FAB76FE81D244CD50012A786 /* HomeViewController.swift */,
-				FA0C67C11D25754D007ADE75 /* Player.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
