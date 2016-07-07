@@ -107,7 +107,8 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
                 }
                 
                 if message.objectForKey("string")?.isEqual("segue") == true {
-                        performSegueWithIdentifier("ToCaption", sender: self)
+                    
+                    segueSwitch()
                 }
                 
             }
@@ -122,8 +123,20 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
         let segueMessage = messageHandler.createMessage(string: "segue", object: nil, ready: nil)
         messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
         
-        performSegueWithIdentifier("ToCaption", sender: self)
+        segueSwitch()
+    }
+    
+    func segueSwitch() {
         
+        if let serverStatus = serverStatus {
+        let switchForSeque = serverStatus.gameOverCheck(receivedArray)
+        
+        if switchForSeque {
+            // segue to end of game
+        } else {
+            performSegueWithIdentifier("ToCaption", sender: self)
+        }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -133,6 +146,7 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
         if segue.identifier == "ToCaption" {
             let dvc = segue.destinationViewController as! CaptionPhotoViewController
             dvc.receivedArray = receivedArray
+            dvc.serverStatus = serverStatus
         }
     }
     
