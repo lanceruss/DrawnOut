@@ -27,8 +27,12 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     var archiveHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
+    var countdownFinished = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("CVC - receivedArray.count at caption page did load: \(receivedArray.count)")
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
@@ -41,7 +45,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TimerViewController.subtractTime), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: self.view.window)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: self.view.window)
@@ -58,17 +62,23 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if seconds == 0 {
             timer.invalidate()
             
-            var caption = ""
-            
-            if captionTextField.text != nil {
-                caption = captionTextField.text!
-            }
-            
-            receivedArray.append(caption)
-            
-            let message = messageHandler.createMessage(string: nil, object: receivedArray, ready: nil)
-            if let nextPlayer = serverStatus?.nextPlayer {
-                messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+            if !countdownFinished {
+                
+                countdownFinished = true
+                
+                var caption = ""
+                
+                if captionTextField.text != nil {
+                    caption = captionTextField.text!
+                }
+                
+                receivedArray.append(caption)
+                print("CVC - receivedArray.count at append caption: \(receivedArray.count)")
+
+                let message = messageHandler.createMessage(string: nil, object: receivedArray, ready: nil)
+                if let nextPlayer = serverStatus?.nextPlayer {
+                    messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+                }
             }
         }
     }
@@ -91,8 +101,13 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     }
                 }
                 
-                if message.objectForKey("string")?.isEqual("segue") == true {
-                    segueSwitch()
+                if message.objectForKey("string")?.isEqual("ExitSegue") == true {
+
+                    performSegueWithIdentifier("ExitSegue", sender: self)
+               
+                } else if message.objectForKey("string")?.isEqual("ToDraw") == true {
+                    
+                    performSegueWithIdentifier("ToDraw", sender: self)
                 }
                 
             }
@@ -104,10 +119,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             serverStatus.countForReadyCheck = 0
         }
         
-        let segueMessage = messageHandler.createMessage(string: "segue", object: nil, ready: nil)
-        messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-        
         segueSwitch()
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -145,12 +158,21 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     func segueSwitch() {
         
+        print("CVC - receivedArray.count at caption segueSwitch: \(receivedArray.count)")
+        
         if let serverStatus = serverStatus {
             let switchForSeque = serverStatus.gameOverCheck(receivedArray)
+            print("CVC - receivedArray.count after gOC: \(receivedArray.count)")
             
             if switchForSeque {
-                // segue to end of game
+                
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: nil, ready: nil)
+                messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                performSegueWithIdentifier("ExitSegue", sender: self)
             } else {
+                
+                let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, ready: nil)
+                messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ToDraw", sender: self)
             }
         }
@@ -163,7 +185,15 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             let dvc = segue.destinationViewController as! DrawViewController
             dvc.receivedArray = receivedArray
             dvc.serverStatus = serverStatus
-        }
+            
+            print("CVC - receivedArray.count at segue from caption: \(receivedArray.count)")
+            print("CVC - \(receivedArray)")
+            
+        } else if segue.identifier == "ExitSegue" {
+            //do something different
+            
+            print("DVC - receivedArray.count at exit segue: \(receivedArray.count)")
+            print("DVC - \(receivedArray)")        }
     }
     
 }

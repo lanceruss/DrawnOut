@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vTv-zW-Yvx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Demo Exit View Controller-->
+        <scene sceneID="Qhj-Io-tlW">
+            <objects>
+                <viewController id="vTv-zW-Yvx" customClass="DemoExitViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B07-Uo-Qde"/>
+                        <viewControllerLayoutGuide type="bottom" id="rq2-Ta-lRi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VbT-i6-oKt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjq-3h-2LU">
+                                <rect key="frame" x="251" y="28" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-wK-DYk">
+                                <rect key="frame" x="20" y="57" width="560" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellID" id="tTp-Hs-VOj">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tTp-Hs-VOj" id="TaE-h8-odw">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vTv-zW-Yvx" id="hxU-0u-PHN"/>
+                                    <outlet property="delegate" destination="vTv-zW-Yvx" id="dbT-qu-U6l"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hjq-3h-2LU" firstAttribute="centerX" secondItem="VbT-i6-oKt" secondAttribute="centerX" id="EKb-t9-BCE"/>
+                            <constraint firstItem="Hvp-wK-DYk" firstAttribute="bottom" secondItem="rq2-Ta-lRi" secondAttribute="top" id="dYN-wn-KbD"/>
+                            <constraint firstItem="Hvp-wK-DYk" firstAttribute="top" secondItem="hjq-3h-2LU" secondAttribute="bottom" constant="8" symbolic="YES" id="hG6-L7-Lff"/>
+                            <constraint firstItem="Hvp-wK-DYk" firstAttribute="leading" secondItem="VbT-i6-oKt" secondAttribute="leadingMargin" id="hb2-Ab-Woc"/>
+                            <constraint firstItem="Hvp-wK-DYk" firstAttribute="centerX" secondItem="hjq-3h-2LU" secondAttribute="centerX" id="man-9n-AAZ"/>
+                            <constraint firstItem="hjq-3h-2LU" firstAttribute="centerY" secondItem="VbT-i6-oKt" secondAttribute="centerY" constant="-261.5" id="v87-ry-jhP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcF-r3-iHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="380"/>
+        </scene>
+    </scenes>
+</document>

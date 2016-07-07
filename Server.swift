@@ -13,7 +13,6 @@ class Server: NSObject {
     
     var countForReadyCheck = 0
     let messageHandler = MessageHandler()
-    let mpcHanadler = MPCHandler()
     
     var isServer = Bool()
     var id: MCPeerID?
@@ -52,11 +51,12 @@ class Server: NSObject {
             }
     }
     
-    func gameOverCheck(receivedArray: [AnyObject]) -> Bool {
+    func gameOverCheck(arrayToCheck: [AnyObject]) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         var isGameOver = false
         
-        if receivedArray.count == mpcHanadler.mcSession.connectedPeers.count + 1 {
+        if arrayToCheck.count == (appDelegate.mpcHandler.mcSession.connectedPeers.count + 2) {
             isGameOver = true
         }
         

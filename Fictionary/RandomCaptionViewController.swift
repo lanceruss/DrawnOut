@@ -72,7 +72,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         // Find the next player and store that player's PeerID
         if let serverStatus = serverStatus {
-            print(serverStatus.playersInOrder)
             // Find next player
             
             var indexOfCurrentPlayer: Int?
@@ -131,8 +130,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             }
             
             let message = messageHandler.createMessage(string: nil, object: stackArray, ready: nil)
+            print("---------------- \n \(serverStatus?.nextPlayer)  \n --------------")
             if let nextPlayer = serverStatus?.nextPlayer {
                 messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+                print(">>>>>>>>  \n  \(message)  \n >>>>>>>>>>>")
             }
         }
     }
@@ -141,37 +142,39 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
         
         if let serverStatus = serverStatus {
-        if let message = message {
-            if message.objectForKey("object")?.isEqual("") != true {
-                let messageArray = message.objectForKey("object") as! Array<AnyObject>
-                receivedArray = messageArray
-                print("\(serverStatus.id) \(receivedArray.first)")
-                serverStatus.isReady()
-            }
-            
-            if message.objectForKey("ready")?.isEqual("ready") == true {
-                if serverStatus.isServer == true {
-                serverStatus.checkReady()
+            if let message = message {
+                if message.objectForKey("object")?.isEqual("") != true {
+                    let messageArray = message.objectForKey("object") as! Array<AnyObject>
+                    receivedArray = messageArray
+                    serverStatus.isReady()
+                    print("111111111111111111")
+                }
+                
+                if message.objectForKey("ready")?.isEqual("ready") == true {
+                    if serverStatus.isServer == true {
+                        serverStatus.checkReady()
+                        print("222222222222222222")
+                    }
+                }
+                
+                
+                if message.objectForKey("string")?.isEqual("segue") == true {
+                    performSegueWithIdentifier("ToDrawing", sender: self)
+                    print("3333333333333333333")
+                    
                 }
             }
-            
-            
-            if message.objectForKey("string")?.isEqual("segue") == true {
-                performSegueWithIdentifier("ToDrawing", sender: self)
-                
-            }
-        }
         }
     }
     
     func performSegue() {
         if let serverStatus = serverStatus {
-        serverStatus.countForReadyCheck = 0
+            serverStatus.countForReadyCheck = 0
         }
         
         let segueMessage = messageHandler.createMessage(string: "segue", object: nil, ready: nil)
         messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-    
+        
         performSegueWithIdentifier("ToDrawing", sender: self)
         
     }

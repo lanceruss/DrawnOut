@@ -108,12 +108,21 @@
                         <outlet property="imageView" destination="ntf-vv-fgq" id="jDC-dH-Iak"/>
                         <outlet property="timerLabel" destination="exd-za-uIW" id="Tr7-fF-2vG"/>
                         <segue destination="x4X-vX-Jew" kind="show" identifier="ToDraw" id="TJH-q2-KI6"/>
+                        <segue destination="O5n-gi-e4i" kind="show" identifier="ExitSegue" id="rHV-Ag-PS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Oc-2V-5eJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Oo2-F8-9wf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="511" y="418"/>
+        </scene>
+        <!--DemoExit-->
+        <scene sceneID="13m-pH-03i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DemoExit" id="O5n-gi-e4i" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r9t-1k-BDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032.5" y="224"/>
         </scene>
         <!--Drawing-->
         <scene sceneID="cwC-Hi-udP">

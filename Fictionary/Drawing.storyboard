@@ -50,11 +50,20 @@
                         <outlet property="captionLabel" destination="Mls-he-ls3" id="3vW-if-RKs"/>
                         <outlet property="timerLabel" destination="obk-xc-dEh" id="LnL-35-l0g"/>
                         <segue destination="Jm0-Ym-bZE" kind="show" identifier="ToCaption" id="HD6-f1-LDa"/>
+                        <segue destination="Xq8-Ks-KgF" kind="show" identifier="ExitSegue" id="S6l-wa-sAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO9-rA-KUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="389" y="367"/>
+        </scene>
+        <!--DemoExit-->
+        <scene sceneID="1uv-ha-CPS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DemoExit" id="Xq8-Ks-KgF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVj-Zh-tME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.5" y="66"/>
         </scene>
         <!--CaptionPhoto-->
         <scene sceneID="bpo-DW-DDz">
