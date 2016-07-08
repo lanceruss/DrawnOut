@@ -14,10 +14,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBOutlet var timerLabel: UILabel!
+    
     var secondsAllowed = 10
     var seconds = 0
     var timer = NSTimer()
-    var passDictionary = [String : AnyObject]()
     
     var captions = ["making a pizza",
                     "delivering mail",
@@ -42,8 +42,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     var archiveHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
-    var stackArray: Array = [AnyObject]()
     var receivedArray: Array = [AnyObject]()
+    var arrayForOrder: Array<MCPeerID> = [MCPeerID]()
+    
+    var turnCounter = 1
     
     @IBAction func dismissButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -72,35 +74,35 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         // Find the next player and store that player's PeerID
         if let serverStatus = serverStatus {
-            // Find next player
-            
-            var indexOfCurrentPlayer: Int?
-            
-            // Get the index of the player in the playersInOrder array
-            for i in 0 ..< serverStatus.playersInOrder.count {
-                for (key, _) in serverStatus.playersInOrder[i] {
-                    if key.isEqual(serverStatus.id) {
-                        indexOfCurrentPlayer = i
+            if serverStatus.isServer == true {
+                if let playersInOrder = serverStatus.playersInOrder {
+                    // Find next player
+                    
+                    //                    var indexOfCurrentPlayer: Int?
+                    
+                    // Get the index of the player in the playersInOrder array
+                    for (key, _) in playersInOrder {
+                        arrayForOrder.append(key as! MCPeerID)
                     }
-                }
-            }
-            
-            // Find the next player
-            var nextPlayer: NSDictionary?
-            
-            if let indexOfCurrentPlayer = indexOfCurrentPlayer {
-                if indexOfCurrentPlayer < serverStatus.playersInOrder.count - 1 {
-                    nextPlayer = serverStatus.playersInOrder[indexOfCurrentPlayer + 1]
-                } else if indexOfCurrentPlayer == serverStatus.playersInOrder.count - 1 {
-                    nextPlayer = serverStatus.playersInOrder.first
-                }
-            }
-            
-            // Get next player's peerID
-            if let nextPlayer = nextPlayer {
-                for (key, _) in nextPlayer {
-                    let nextPlayersPeerID = key as? MCPeerID
-                    serverStatus.nextPlayer = nextPlayersPeerID
+                    
+                    //                    // Find the next player
+                    //                    var nextPlayer: NSDictionary?
+                    //
+                    //                    if let indexOfCurrentPlayer = indexOfCurrentPlayer {
+                    //                        if indexOfCurrentPlayer < serverStatus.playersInOrder.count - 1 {
+                    //                            nextPlayer = playersInOrder[indexOfCurrentPlayer + 1]
+                    //                        } else if indexOfCurrentPlayer == serverStatus.playersInOrder.count - 1 {
+                    //                            nextPlayer = playersInOrder.first
+                    //                        }
+                    //                    }
+                    
+                    //                    // Get next player's peerID
+                    //                    if let nextPlayer = nextPlayer {
+                    //                        for (key, _) in nextPlayer {
+                    //                            let nextPlayersPeerID = key as? MCPeerID
+                    //                            serverStatus.nextPlayer = nextPlayersPeerID
+                    //                        }
+                    //                    }
                 }
             }
         }
@@ -126,41 +128,39 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             timer.invalidate()
             let caption = captionLabel.text
             if let caption = caption {
-                stackArray.append(caption)
-            }
-            
-            let message = messageHandler.createMessage(string: nil, object: stackArray, ready: nil)
-            print("---------------- \n \(serverStatus?.nextPlayer)  \n --------------")
-            if let nextPlayer = serverStatus?.nextPlayer {
-                messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
-                print(">>>>>>>>  \n  \(message)  \n >>>>>>>>>>>")
+                
+                let message = messageHandler.createMessage(string: nil, object: caption, ready: nil)
+                messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
             }
         }
     }
     
     func handleReceivedData(notification: NSNotification) {
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
+        let userID = notification.userInfo!["peerID"] as! MCPeerID
         
         if let serverStatus = serverStatus {
             if let message = message {
-                if message.objectForKey("object")?.isEqual("") != true {
-                    let messageArray = message.objectForKey("object") as! Array<AnyObject>
-                    receivedArray = messageArray
-                    serverStatus.isReady()
-                    print("111111111111111111")
+                if serverStatus.isServer == true {
+                    if message.objectForKey("object")?.isEqual("") != true {
+                        let receivedCaption = message.objectForKey("object") as! Array<AnyObject>
+                        if let playersInOrder = serverStatus.playersInOrder {
+                            playersInOrder[userID][turnCounter] = receivedCaption
+                            
+                        }
+                    }
+                    //                    serverStatus.isReady()
                 }
                 
                 if message.objectForKey("ready")?.isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
-                        print("222222222222222222")
                     }
                 }
                 
                 
                 if message.objectForKey("string")?.isEqual("segue") == true {
                     performSegueWithIdentifier("ToDrawing", sender: self)
-                    print("3333333333333333333")
                     
                 }
             }

@@ -16,7 +16,7 @@ class Server: NSObject {
     
     var isServer = Bool()
     var id: MCPeerID?
-    var playersInOrder: Array<NSDictionary>
+    var playersInOrder: NSMutableDictionary?
     var nextPlayer: MCPeerID?
     
     // Init a Server object with a bool that declares whether the device is a server (true) or client (false) and the peerID in case we need that data later.
@@ -24,7 +24,6 @@ class Server: NSObject {
         
         isServer = serverStatus
         id = peerID
-        playersInOrder = []
         
     }
     
