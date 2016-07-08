@@ -125,8 +125,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             if let message = message {
                 if serverStatus.isServer == true {
                     if message.objectForKey("object")?.isEqual("") != true {
-                        let receivedCaption = message.objectForKey("object") as! String
+                        let receivedCaption = message.objectForKey("object")
+                        if let receivedCaption = receivedCaption {
                         gameDictionary[userID]![turnCounter] = receivedCaption
+                        }
                     }
                 }
                 
