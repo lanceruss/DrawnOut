@@ -18,6 +18,9 @@ import MultipeerConnectivity
 
 class MPCHandler: NSObject {
 
+    
+    var player: Player!
+    
     // This message is used so that the MPCHandler can identify that advertisements are for our game and so that the browser knows to look for advertisements for our game
     let gameServiceType = "play-fictionary"
     
@@ -42,7 +45,7 @@ class MPCHandler: NSObject {
     
     func setupPeerWithDisplayName (displayName: String) {
         
-        peerID = MCPeerID(displayName: displayName)
+            peerID = MCPeerID(displayName: displayName)
 
     }
     

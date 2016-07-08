@@ -35,6 +35,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D6P-3c-PIU">
                                 <rect key="frame" x="86" y="58" width="431" height="392"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player object info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vat-kg-nOK">
+                                <rect key="frame" x="20" y="559" width="560" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -42,13 +48,18 @@
                             <constraint firstItem="l2r-M6-ezt" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="71" id="9PG-0E-aX5"/>
                             <constraint firstItem="itD-LO-BH6" firstAttribute="centerX" secondItem="D6P-3c-PIU" secondAttribute="centerX" constant="-1" id="AUb-dV-vyG"/>
                             <constraint firstItem="D6P-3c-PIU" firstAttribute="top" secondItem="itD-LO-BH6" secondAttribute="bottom" constant="8" symbolic="YES" id="OJ9-la-8UR"/>
+                            <constraint firstItem="vat-kg-nOK" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="30" id="U8a-yh-vWT"/>
                             <constraint firstItem="Gi1-Wv-OVf" firstAttribute="top" secondItem="D6P-3c-PIU" secondAttribute="bottom" constant="49" id="cH1-BM-6Jg"/>
+                            <constraint firstAttribute="bottom" secondItem="vat-kg-nOK" secondAttribute="bottom" constant="20" symbolic="YES" id="gFl-g4-HBW"/>
                             <constraint firstItem="D6P-3c-PIU" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leadingMargin" constant="66" id="hId-Vc-ewO"/>
+                            <constraint firstItem="vat-kg-nOK" firstAttribute="centerX" secondItem="itD-LO-BH6" secondAttribute="centerX" id="p1m-1t-pra"/>
                             <constraint firstItem="D6P-3c-PIU" firstAttribute="centerX" secondItem="Gi1-Wv-OVf" secondAttribute="centerX" id="sZf-xw-cdA"/>
                             <constraint firstItem="itD-LO-BH6" firstAttribute="centerX" secondItem="DaA-i0-fZd" secondAttribute="centerX" id="uQi-OF-Lrk"/>
+                            <constraint firstItem="vat-kg-nOK" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leadingMargin" id="wPB-HC-mIK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="debugLabel" destination="vat-kg-nOK" id="RWc-kk-eNT"/>
                         <segue destination="Dae-Kl-rfp" kind="show" identifier="startGame" id="NA2-GD-U6O"/>
                     </connections>
                 </viewController>
