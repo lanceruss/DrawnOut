@@ -11,16 +11,25 @@ import MultipeerConnectivity
 
 class MessageHandler: NSObject {
 
-    func createMessage(string string: String?, object: AnyObject?, ready: String?) -> [String : AnyObject] {
+    func createMessage(string string: String?, object: AnyObject?, keyForDictionary: MCPeerID?, ready: String?) -> [String : AnyObject] {
        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
         var stringForMessage: String!
         var objectForMessage: AnyObject!
         var readyMessage: String!
+        var key: MCPeerID!
         
         if object == nil {
             objectForMessage = ""
         } else {
             objectForMessage = object
+        }
+        
+        if keyForDictionary == nil {
+            key = appDelegate.mpcHandler.mcSession.myPeerID
+        } else {
+            key = keyForDictionary
         }
         
         if string == nil {
@@ -35,7 +44,7 @@ class MessageHandler: NSObject {
             readyMessage = ready
         }
         
-        let messageDictionary: [String : AnyObject] = ["string" : stringForMessage, "object" : objectForMessage, "ready" : readyMessage]
+        let messageDictionary: [String : AnyObject] = ["string" : stringForMessage, "object" : objectForMessage, "key" : key, "ready" : readyMessage]
         
         return messageDictionary
     }

@@ -84,7 +84,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
                     }
                     
                     //send message to trigger segue on Client phones and perform segue on Server phone
-                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, ready: nil)
+                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: nil, ready: nil)
                     self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
                 }
                 self.performSegueWithIdentifier("startGame", sender: self)
@@ -111,10 +111,8 @@ func handleReceivedData(notification: NSNotification) {
     if let message = message {
         
         if message.objectForKey("object")?.isEqual("") != true {
-            let playersInOrder = message.objectForKey("object") as! NSMutableDictionary
-            if let serverStatus = serverStatus {
-                serverStatus.playersInOrder = playersInOrder
-            }
+            let receivedDictionary = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+            gameDictionary = receivedDictionary
         }
         
         if message.objectForKey("string")?.isEqual("start_game") == true {
@@ -130,6 +128,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Pass along the serverStatus object so that we can keep checking the server/client status of each device. This object should be passed along for the duration fo the game!!!
     let dvc = segue.destinationViewController as! RandomCaptionViewController
     dvc.serverStatus = serverStatus
+    dvc.gameDictionary = gameDictionary
     
 }
 }

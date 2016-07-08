@@ -42,8 +42,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     var archiveHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
-    var receivedArray: Array = [AnyObject]()
     var arrayForOrder: Array<MCPeerID> = [MCPeerID]()
+    var gameDictionary = [MCPeerID : [Int : AnyObject]]()
     
     var turnCounter = 1
     
@@ -75,34 +75,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         // Find the next player and store that player's PeerID
         if let serverStatus = serverStatus {
             if serverStatus.isServer == true {
-                if let playersInOrder = serverStatus.playersInOrder {
-                    // Find next player
-                    
-                    //                    var indexOfCurrentPlayer: Int?
-                    
-                    // Get the index of the player in the playersInOrder array
-                    for (key, _) in playersInOrder {
-                        arrayForOrder.append(key as! MCPeerID)
-                    }
-                    
-                    //                    // Find the next player
-                    //                    var nextPlayer: NSDictionary?
-                    //
-                    //                    if let indexOfCurrentPlayer = indexOfCurrentPlayer {
-                    //                        if indexOfCurrentPlayer < serverStatus.playersInOrder.count - 1 {
-                    //                            nextPlayer = playersInOrder[indexOfCurrentPlayer + 1]
-                    //                        } else if indexOfCurrentPlayer == serverStatus.playersInOrder.count - 1 {
-                    //                            nextPlayer = playersInOrder.first
-                    //                        }
-                    //                    }
-                    
-                    //                    // Get next player's peerID
-                    //                    if let nextPlayer = nextPlayer {
-                    //                        for (key, _) in nextPlayer {
-                    //                            let nextPlayersPeerID = key as? MCPeerID
-                    //                            serverStatus.nextPlayer = nextPlayersPeerID
-                    //                        }
-                    //                    }
+                for (key, _) in gameDictionary {
+                    arrayForOrder.append(key)
                 }
             }
         }
@@ -127,10 +101,18 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         if seconds == 0 {
             timer.invalidate()
             let caption = captionLabel.text
-            if let caption = caption {
+            if let serverStatus = serverStatus {
                 
-                let message = messageHandler.createMessage(string: nil, object: caption, ready: nil)
-                messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                if let caption = caption {
+                    if serverStatus.isServer == true {
+                        let myPeerID = appDelegate.mpcHandler.mcSession.myPeerID
+                        gameDictionary[myPeerID]![turnCounter] = caption
+                    } else {
+                        let message = messageHandler.createMessage(string: nil, object: caption, keyForDictionary: nil, ready: nil)
+                        messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                        serverStatus.isReady()
+                    }
+                }
             }
         }
     }
@@ -143,13 +125,9 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             if let message = message {
                 if serverStatus.isServer == true {
                     if message.objectForKey("object")?.isEqual("") != true {
-                        let receivedCaption = message.objectForKey("object") as! Array<AnyObject>
-                        if let playersInOrder = serverStatus.playersInOrder {
-                            playersInOrder[userID][turnCounter] = receivedCaption
-                            
-                        }
+                        let receivedCaption = message.objectForKey("object") as! String
+                        gameDictionary[userID]![turnCounter] = receivedCaption
                     }
-                    //                    serverStatus.isReady()
                 }
                 
                 if message.objectForKey("ready")?.isEqual("ready") == true {
@@ -172,7 +150,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             serverStatus.countForReadyCheck = 0
         }
         
-        let segueMessage = messageHandler.createMessage(string: "segue", object: nil, ready: nil)
+        let segueMessage = messageHandler.createMessage(string: "segue", object: nil, keyForDictionary: nil, ready: nil)
         messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
         
         performSegueWithIdentifier("ToDrawing", sender: self)
@@ -182,11 +160,17 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        turnCounter = turnCounter + 1
+        
+        print("Rando Caption - \(turnCounter) - \n \(gameDictionary) \n")
+        print("arrayForOrder - \(arrayForOrder)")
         
         if segue.identifier == "ToDrawing" {
             let dvc = segue.destinationViewController as! DrawViewController
-            dvc.receivedArray = receivedArray
             dvc.serverStatus = serverStatus
+            dvc.turnCounter = turnCounter
+            dvc.gameDictionary = gameDictionary
+            dvc.arrayForOrder = arrayForOrder
         }
     }
     

@@ -35,7 +35,7 @@ class Server: NSObject {
         
         if isServer == false {
             
-            let readyMessage = messageHandler.createMessage(string: nil, object: nil, ready: "ready")
+            let readyMessage = messageHandler.createMessage(string: nil, object: nil, keyForDictionary: nil, ready: "ready")
             
             messageHandler.sendMessage(messageDictionary: readyMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
         }

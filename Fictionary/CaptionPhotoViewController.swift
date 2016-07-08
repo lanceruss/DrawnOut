@@ -75,7 +75,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 receivedArray.append(caption)
                 print("CVC - receivedArray.count at append caption: \(receivedArray.count)")
 
-                let message = messageHandler.createMessage(string: nil, object: receivedArray, ready: nil)
+                let message = messageHandler.createMessage(string: nil, object: receivedArray, keyForDictionary: nil, ready: nil)
                 if let nextPlayer = serverStatus?.nextPlayer {
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
                 }
@@ -166,12 +166,12 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
             if switchForSeque {
                 
-                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: nil, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ExitSegue", sender: self)
             } else {
                 
-                let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ToDraw", sender: self)
             }
