@@ -13,10 +13,13 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
 
+    var receivedArray: Array = [AnyObject]()
     var drawnImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        drawnImage = receivedArray.last as? UIImage
         
         imageView.image = drawnImage
         
