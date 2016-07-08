@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		C720741A500D520BCBFC3DE6 /* Pods_Fictionary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257B97310A284A02CA560688 /* Pods_Fictionary.framework */; };
+		DB03E9111D2F20FD0098B7A8 /* DesignTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9101D2F20FC0098B7A8 /* DesignTestViewController.swift */; };
+		DB03E9131D2F210D0098B7A8 /* DesignTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB03E9121D2F210D0098B7A8 /* DesignTestStoryboard.storyboard */; };
+		DB03E9161D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */; };
+		DB03E9181D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E9171D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf */; };
+		DB03E91A1D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E9191D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf */; };
+		DB03E91C1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E91B1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf */; };
+		DB03E91E1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */; };
+		DB03E9201D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */; };
+		DB03E9221D300AD40098B7A8 /* DesignTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9211D300AD40098B7A8 /* DesignTestView.swift */; };
+		DB03E9241D301DAB0098B7A8 /* DesignCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */; };
+		DB03E9261D3029540098B7A8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9251D3029540098B7A8 /* UIColor+.swift */; };
 		DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */; };
 		DBCFB41F1D22DF5500200F10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41E1D22DF5500200F10 /* ViewController.swift */; };
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
@@ -76,6 +87,17 @@
 /* Begin PBXFileReference section */
 		257B97310A284A02CA560688 /* Pods_Fictionary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fictionary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFED090B4BC4624C0BA6982 /* Pods-Fictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.release.xcconfig"; sourceTree = "<group>"; };
+		DB03E9101D2F20FC0098B7A8 /* DesignTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTestViewController.swift; sourceTree = "<group>"; };
+		DB03E9121D2F210D0098B7A8 /* DesignTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DesignTestStoryboard.storyboard; sourceTree = "<group>"; };
+		DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Text-Heavy.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-UI/SF-UI-Text-Heavy.otf"; sourceTree = "<group>"; };
+		DB03E9171D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Text-Bold.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-Compact/SF-Compact-Text-Bold.otf"; sourceTree = "<group>"; };
+		DB03E9191D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Text-Semibold.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-UI/SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
+		DB03E91B1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Text-RegularItalic.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-UI/SF-UI-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Text-Regular.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-Compact/SF-Compact-Text-Regular.otf"; sourceTree = "<group>"; };
+		DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Text-Bold.otf"; path = "../../../../../../Downloads/SF-Fonts-August-26/SF-UI/SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
+		DB03E9211D300AD40098B7A8 /* DesignTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTestView.swift; sourceTree = "<group>"; };
+		DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCreateAccountViewController.swift; sourceTree = "<group>"; };
+		DB03E9251D3029540098B7A8 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		DBCFB4191D22DF5500200F10 /* Fictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCFB41E1D22DF5500200F10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +203,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DB03E9141D2F21110098B7A8 /* DesignTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				DB03E9101D2F20FC0098B7A8 /* DesignTestViewController.swift */,
+				DB03E9211D300AD40098B7A8 /* DesignTestView.swift */,
+				DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */,
+				DB03E9251D3029540098B7A8 /* UIColor+.swift */,
+				DB03E9121D2F210D0098B7A8 /* DesignTestStoryboard.storyboard */,
+				DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */,
+				DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */,
+				DB03E91B1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf */,
+				DB03E9191D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf */,
+				DB03E9171D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf */,
+				DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */,
+			);
+			name = DesignTemplates;
+			sourceTree = "<group>";
+		};
 		DBCFB4101D22DF5500200F10 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +263,7 @@
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
 				DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */,
 				DBCFB4281D22DF5500200F10 /* Info.plist */,
+				DB03E9141D2F21110098B7A8 /* DesignTemplates */,
 			);
 			path = Fictionary;
 			sourceTree = "<group>";
@@ -400,7 +441,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = U7TP39P5Y5;
+						DevelopmentTeam = 3367DBVN8H;
 					};
 				};
 			};
@@ -427,9 +468,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB03E91E1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf in Resources */,
+				DB03E91A1D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf in Resources */,
 				FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */,
 				FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */,
 				FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */,
+				DB03E9161D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf in Resources */,
 				FA0C67CF1D26ACC2007ADE75 /* MyProfile.storyboard in Resources */,
 				FAB76FD51D23DFA30012A786 /* image1.jpeg in Resources */,
 				FA0C67D51D26F178007ADE75 /* Default-568h@2x.png in Resources */,
@@ -439,17 +483,21 @@
 				FAB76FDA1D23DFA30012A786 /* image6.jpg in Resources */,
 				FA0C67C71D259B20007ADE75 /* Game.storyboard in Resources */,
 				FAB76FC91D23DF660012A786 /* everythingbutthesink.png in Resources */,
+				DB03E9201D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf in Resources */,
 				F9E0F9421D2BFD0400229202 /* JoinGameStartGame.storyboard in Resources */,
 				FAB76FD71D23DFA30012A786 /* image3.jpg in Resources */,
 				FA0C67CC1D267860007ADE75 /* Demo.storyboard in Resources */,
 				FAB76FD61D23DFA30012A786 /* image2.jpg in Resources */,
 				DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */,
 				FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */,
+				DB03E9131D2F210D0098B7A8 /* DesignTestStoryboard.storyboard in Resources */,
 				FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */,
 				FAB76FB71D230F950012A786 /* penguin.jpg in Resources */,
 				DBCFB48B1D25714A00200F10 /* Drawing.storyboard in Resources */,
 				FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */,
+				DB03E9181D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf in Resources */,
 				FAB76FDB1D23DFA30012A786 /* image7.png in Resources */,
+				DB03E91C1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
 				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
@@ -529,8 +577,10 @@
 				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
 				DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */,
 				DBCFB4961D25769D00200F10 /* DrawCommands.swift in Sources */,
+				DB03E9241D301DAB0098B7A8 /* DesignCreateAccountViewController.swift in Sources */,
 				DBCFB48D1D25729500200F10 /* DrawView.swift in Sources */,
 				FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */,
+				DB03E9111D2F20FD0098B7A8 /* DesignTestViewController.swift in Sources */,
 				FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
@@ -539,11 +589,13 @@
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
 				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
+				DB03E9221D300AD40098B7A8 /* DesignTestView.swift in Sources */,
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				F9B48FF31D22E8620031C5FC /* MPCHandler.swift in Sources */,
 				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
 				FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
+				DB03E9261D3029540098B7A8 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
