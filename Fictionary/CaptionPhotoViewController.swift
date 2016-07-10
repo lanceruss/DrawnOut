@@ -31,6 +31,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     var shiftingOrderArray: Array<MCPeerID> = [MCPeerID]()
     
     var gameDictionary = [MCPeerID : [Int : AnyObject]]()
+    var exitDictionary = [MCPeerID : [Int : AnyObject]]()
     
     var dictionaryToDisplay = [Int : AnyObject]()
     var dictToDisplayReceivedFrom: MCPeerID?
@@ -157,6 +158,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 }
                 
                 if message.objectForKey("string")?.isEqual("ExitSegue") == true {
+                    let messageDict = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+                    exitDictionary = messageDict
                     
                     performSegueWithIdentifier("ExitSegue", sender: self)
                     
@@ -218,7 +221,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
             if switchForSeque {
                 
-                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: nil, keyForDictionary: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ExitSegue", sender: self)
             } else {
@@ -248,7 +251,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
         } else if segue.identifier == "ExitSegue" {
             //do something different
-            
+            let dvc = segue.destinationViewController as! DemoExitViewController
+            dvc.exitDictionary = exitDictionary
         }
         
     }

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class DemoExitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var exitDictionary = [MCPeerID : [Int : AnyObject]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -29,6 +29,8 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
     var gameDictionary = [MCPeerID : [Int : AnyObject]]()
     var arrayForOrder: Array<MCPeerID> = [MCPeerID]()
     var shiftingOrderArray: Array<MCPeerID> = [MCPeerID]()
+    
+    var exitDictionary = [MCPeerID : [Int : AnyObject]]()
 
     
     var dictionaryToDisplay = [Int : AnyObject]()
@@ -162,6 +164,9 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
                 
                 if message.objectForKey("string")?.isEqual("ExitSegue") == true {
                     
+                    let messageDict = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+                    exitDictionary = messageDict
+                    
                     performSegueWithIdentifier("ExitSegue", sender: self)
                     
                 } else if message.objectForKey("string")?.isEqual("ToCaption") == true {
@@ -190,7 +195,7 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
             
             if switchForSeque {
                 
-                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: nil, keyForDictionary: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 
                 performSegueWithIdentifier("ExitSegue", sender: self)
@@ -225,7 +230,8 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
             
         } else if segue.identifier == "ExitSegue" {
             // do something different
-            
+            let dvc = segue.destinationViewController as! DemoExitViewController
+            dvc.exitDictionary = exitDictionary
         }
     }
     
