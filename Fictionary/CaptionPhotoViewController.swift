@@ -15,7 +15,6 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     @IBOutlet weak var captionTextField: UITextField!
     
     var receivedArray: Array = [AnyObject]()
-    var drawnImage: UIImage?
     
     @IBOutlet var timerLabel: UILabel!
     var secondsAllowed = 25
@@ -27,12 +26,21 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     var archiveHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
+    var turnCounter = Int()
+    var arrayForOrder: Array<MCPeerID> = [MCPeerID]()
+    var shiftingOrderArray: Array<MCPeerID> = [MCPeerID]()
+    
+    var gameDictionary = [MCPeerID : [Int : AnyObject]]()
+    
+    var dictionaryToDisplay = [Int : AnyObject]()
+    var dictToDisplayReceivedFrom: MCPeerID?
+    
+    var keyForReceivedDictionary: MCPeerID?
+    
     var countdownFinished = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("CVC - receivedArray.count at caption page did load: \(receivedArray.count)")
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
@@ -40,8 +48,39 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
         
-        drawnImage = receivedArray.last as? UIImage
-        imageView.image = drawnImage
+        if let serverStatus = serverStatus {
+            if serverStatus.isServer == true {
+                // Find the next player
+                var nextPlayer: MCPeerID!
+                
+                for i in 0 ..< arrayForOrder.count {
+                    let currentPlayer = arrayForOrder[i]
+                    
+                    if i == (arrayForOrder.count - 1) {
+                        nextPlayer = shiftingOrderArray[0]
+                    } else {
+                        nextPlayer = shiftingOrderArray[i + 1]
+                    }
+                    let dictionaryToSend = gameDictionary[currentPlayer]
+                    
+                    print("\n dictionaryToSend from \(currentPlayer) \(dictionaryToSend) \n")
+                    
+                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
+                    messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+                    
+                    if nextPlayer == appDelegate.mpcHandler.mcSession.myPeerID {
+                        dictionaryToDisplay = dictionaryToSend!
+                        dictToDisplayReceivedFrom = currentPlayer
+                        
+                        let drawnImage = dictionaryToDisplay[turnCounter - 1] as? UIImage
+                        imageView.image = drawnImage
+                    }
+                    
+                }
+            }
+        }
+        
+        
         
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
@@ -72,12 +111,14 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     caption = captionTextField.text!
                 }
                 
-                receivedArray.append(caption)
-                print("CVC - receivedArray.count at append caption: \(receivedArray.count)")
-
-                let message = messageHandler.createMessage(string: nil, object: receivedArray, keyForDictionary: nil, ready: nil)
-                if let nextPlayer = serverStatus?.nextPlayer {
-                    messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+                if serverStatus?.isServer == true {
+                    gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = caption
+                } else {
+                    let message = messageHandler.createMessage(string: "timer_up", object: caption, keyForDictionary: keyForReceivedDictionary, ready: nil)
+                    messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                    
+                    serverStatus?.isReady()
+                    
                 }
             }
         }
@@ -89,10 +130,24 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if message.objectForKey("object")?.isEqual("") != true {
-                    let messageArray = message.objectForKey("object") as! Array<AnyObject>
-                    receivedArray = messageArray
-                    serverStatus.isReady()
+                if message.objectForKey("string")?.isEqual("viewDidLoad") == true {
+                    let messageDict = message.objectForKey("object") as! [Int : AnyObject]
+                    let receivedKey = message.objectForKey("key") as! MCPeerID
+                    keyForReceivedDictionary = receivedKey
+                    
+                    print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
+                    
+                    imageView.image = messageDict[turnCounter - 1] as? UIImage
+                    
+                }
+                
+                if message.objectForKey("string")?.isEqual("timer_up") == true {
+                    if serverStatus.isServer == true {
+                        let caption = message.objectForKey("object") as! String
+                        let receivedKey = message.objectForKey("key") as! MCPeerID
+                        
+                        gameDictionary[receivedKey]![turnCounter] = caption
+                    }
                 }
                 
                 if message.objectForKey("ready")?.isEqual("ready") == true {
@@ -102,9 +157,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 }
                 
                 if message.objectForKey("string")?.isEqual("ExitSegue") == true {
-
+                    
                     performSegueWithIdentifier("ExitSegue", sender: self)
-               
+                    
                 } else if message.objectForKey("string")?.isEqual("ToDraw") == true {
                     
                     performSegueWithIdentifier("ToDraw", sender: self)
@@ -158,11 +213,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     func segueSwitch() {
         
-        print("CVC - receivedArray.count at caption segueSwitch: \(receivedArray.count)")
-        
         if let serverStatus = serverStatus {
-            let switchForSeque = serverStatus.gameOverCheck(receivedArray)
-            print("CVC - receivedArray.count after gOC: \(receivedArray.count)")
+            let switchForSeque = serverStatus.gameOverCheck(turnCounter)
             
             if switchForSeque {
                 
@@ -180,20 +232,24 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        turnCounter = turnCounter + 1
+        
         
         if segue.identifier == "ToDraw" {
             let dvc = segue.destinationViewController as! DrawViewController
-            dvc.receivedArray = receivedArray
             dvc.serverStatus = serverStatus
+            dvc.turnCounter = turnCounter
+            dvc.gameDictionary = gameDictionary
+            dvc.arrayForOrder = arrayForOrder
             
-            print("CVC - receivedArray.count at segue from caption: \(receivedArray.count)")
-            print("CVC - \(receivedArray)")
+            if serverStatus?.isServer == true {
+                dvc.shiftingOrderArray = (serverStatus?.reorderArray(shiftingOrderArray))!
+            }
             
         } else if segue.identifier == "ExitSegue" {
             //do something different
             
-            print("DVC - receivedArray.count at exit segue: \(receivedArray.count)")
-            print("DVC - \(receivedArray)")        }
+        }
+        
     }
-    
 }

@@ -48,16 +48,26 @@ class Server: NSObject {
             }
     }
     
-    func gameOverCheck(arrayToCheck: [AnyObject]) -> Bool {
+    func gameOverCheck(turn: Int) -> Bool {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         var isGameOver = false
         
-        if arrayToCheck.count == (appDelegate.mpcHandler.mcSession.connectedPeers.count + 2) {
+        if turn == (appDelegate.mpcHandler.mcSession.connectedPeers.count + 2) {
             isGameOver = true
         }
         
         return isGameOver
+    }
+    
+    func reorderArray(arrayToReorder: [MCPeerID]) -> [MCPeerID] {
+        
+        var reorderedArray = arrayToReorder
+        
+        let itemToMove = reorderedArray.first
+        reorderedArray.removeFirst()
+        reorderedArray.append(itemToMove!)
+        return reorderedArray
     }
     
 }

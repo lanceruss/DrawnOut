@@ -13,8 +13,6 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
     
     private var drawController: FreehandDrawController!
     
-    var receivedArray: Array = [AnyObject]()
-    
     @IBOutlet var captionLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
     
@@ -30,6 +28,8 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
     var turnCounter = Int()
     var gameDictionary = [MCPeerID : [Int : AnyObject]]()
     var arrayForOrder: Array<MCPeerID> = [MCPeerID]()
+    var shiftingOrderArray: Array<MCPeerID> = [MCPeerID]()
+
     
     var dictionaryToDisplay = [Int : AnyObject]()
     var dictToDisplayReceivedFrom: MCPeerID?
@@ -56,20 +56,21 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
                     let currentPlayer = arrayForOrder[i]
                     
                     if i == (arrayForOrder.count - 1) {
-                        nextPlayer = arrayForOrder[0]
+                        nextPlayer = shiftingOrderArray[0]
                     } else {
-                        nextPlayer = arrayForOrder[i + 1]
+                        nextPlayer = shiftingOrderArray[i + 1]
                     }
                     let dictionaryToSend = gameDictionary[currentPlayer]
                     
-                    print("\n dictionaryToSend from \(currentPlayer) \(dictionaryToSend) \n")
-                    
-                    let message = messageHandler.createMessage(string: nil, object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
+                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
                     
                     if nextPlayer == appDelegate.mpcHandler.mcSession.myPeerID {
                         dictionaryToDisplay = dictionaryToSend!
                         dictToDisplayReceivedFrom = currentPlayer
+                        
+                        let caption = dictionaryToDisplay[turnCounter - 1] as? String
+                        captionLabel.text = caption
                     }
                     
                 }
@@ -88,8 +89,7 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
         
-        let caption = dictionaryToDisplay[turnCounter - 1] as? String
-        captionLabel.text = caption
+        
         
     }
     
@@ -112,21 +112,20 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
                 // We need to fix this so it will still transition if a person draws nothing.
                 if self.drawView.buffer != nil {
                     let passImage = UIImage(CGImage: self.drawView.buffer!.CGImage!)
-                    
-                    
-                    let message = messageHandler.createMessage(string: nil, object: receivedArray, keyForDictionary: nil, ready: nil)
-                    if let nextPlayer = serverStatus?.nextPlayer {
-                        messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
+                    if serverStatus?.isServer == true {
+                        gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = passImage
+                    } else {
+                       
+                        let message = messageHandler.createMessage(string: "timer_up", object: passImage, keyForDictionary: keyForReceivedDictionary, ready: nil)
+                        messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                        
+                        serverStatus?.isReady()
                     }
-                    
-                }
-            }
+                }}
+            
         }
     }
-    
-    func sendLastItem(){
-        
-    }
+
     
     func handleReceivedData(notification: NSNotification){
         
@@ -135,14 +134,24 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if message.objectForKey("object")?.isEqual("") != true {
-                    let messageArray = message.objectForKey("object") as! [Int : AnyObject]
+                if message.objectForKey("string")?.isEqual("viewDidLoad") == true {
+                    let messageDict = message.objectForKey("object") as! [Int : AnyObject]
                     let receivedKey = message.objectForKey("key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
                     
-                    print("handleReceivedData: messageArray = \(messageArray) and receivedKey = \(receivedKey)")
+                    print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
                     
-                    captionLabel.text = messageArray[turnCounter - 1] as? String
+                    captionLabel.text = messageDict[turnCounter - 1] as? String
+                    
+                }
+                
+                if message.objectForKey("string")?.isEqual("timer_up") == true {
+                    if serverStatus.isServer == true {
+                        let image = message.objectForKey("object") as! UIImage
+                        let receivedKey = message.objectForKey("key") as! MCPeerID
+                        
+                        gameDictionary[receivedKey]![turnCounter] = image
+                    }
                 }
                 
                 if message.objectForKey("ready")?.isEqual("ready") == true {
@@ -177,7 +186,7 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
         
         if let serverStatus = serverStatus {
             
-            let switchForSeque = serverStatus.gameOverCheck(receivedArray)
+            let switchForSeque = serverStatus.gameOverCheck(turnCounter)
             
             if switchForSeque {
                 
@@ -198,11 +207,21 @@ class DrawViewController: UIViewController, MPCHandlerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        turnCounter = turnCounter + 1
+        
+        print("DrawVC - \(turnCounter) - \n \(gameDictionary) \n")
+        print("arrayForOrder - \(arrayForOrder)")
         
         if segue.identifier == "ToCaption" {
             let dvc = segue.destinationViewController as! CaptionPhotoViewController
-            dvc.receivedArray = receivedArray
             dvc.serverStatus = serverStatus
+            dvc.turnCounter = turnCounter
+            dvc.gameDictionary = gameDictionary
+            dvc.arrayForOrder = arrayForOrder
+            
+            if serverStatus?.isServer == true {
+                 dvc.shiftingOrderArray = (serverStatus?.reorderArray(shiftingOrderArray))!
+            }
             
         } else if segue.identifier == "ExitSegue" {
             // do something different

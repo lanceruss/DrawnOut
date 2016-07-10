@@ -19,23 +19,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     var seconds = 0
     var timer = NSTimer()
     
-    var captions = ["making a pizza",
-                    "delivering mail",
-                    "playing hopscotch",
-                    "setting up a tent",
-                    "the cow jumped over the moon",
-                    "shopping at the mall",
-                    "baking bread",
-                    "decorating for a party",
-                    "asking for an autograph",
-                    "playing with play dough",
-                    "flying a kite",
-                    "being a flight attendant",
-                    "walking with crutches",
-                    "filming a movie",
-                    "walking through a haunted house",
-                    "milking a cow",
-                    "operating a jackhammer"]
+    var captions = ["iPad", "iPhone", "Sim"]
     
     var serverStatus: Server?
     var appDelegate: AppDelegate!
@@ -173,6 +157,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             dvc.turnCounter = turnCounter
             dvc.gameDictionary = gameDictionary
             dvc.arrayForOrder = arrayForOrder
+            dvc.shiftingOrderArray = arrayForOrder
         }
     }
     
