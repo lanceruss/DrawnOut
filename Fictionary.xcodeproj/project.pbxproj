@@ -34,6 +34,8 @@
 		DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4971D2576B000200F10 /* LineDrawCommand.swift */; };
 		DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */; };
 		DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */; };
+		F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */; };
+		F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */; };
 		F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */; };
 		F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */; };
 		F9B48FF01D22E7F10031C5FC /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */; };
@@ -103,7 +105,7 @@
 		DB03E9251D3029540098B7A8 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		DBCFB4191D22DF5500200F10 /* Fictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBCFB41E1D22DF5500200F10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBCFB41E1D22DF5500200F10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Fictionary/ViewController.swift; sourceTree = "<group>"; };
 		DBCFB4211D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBCFB4231D22DF5500200F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBCFB4261D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawCommand.swift; sourceTree = "<group>"; };
 		DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedCommand.swift; sourceTree = "<group>"; };
 		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
+		F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DemoExit.storyboard; path = Fictionary/DemoExit.storyboard; sourceTree = "<group>"; };
+		F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoExitViewController.swift; sourceTree = "<group>"; };
 		F9B48FEB1D22E68A0031C5FC /* JoinGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameViewController.swift; sourceTree = "<group>"; };
 		F9B48FEF1D22E7F10031C5FC /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -231,10 +235,11 @@
 			isa = PBXGroup;
 			children = (
 				FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */,
-				DBCFB41B1D22DF5500200F10 /* Fictionary */,
-				FAB76FDE1D24220B0012A786 /* Random Caption */,
-				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
+				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
+				F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */,
+				F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */,
 				F9B48FF11D22E84A0031C5FC /* Networking */,
+				DBCFB41B1D22DF5500200F10 /* Fictionary */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
 				5A662609D5D658A4549107B8 /* Pods */,
 				5312449890C5E1B6CBC5E1DB /* Frameworks */,
@@ -265,9 +270,10 @@
 				FAB76FBD1D234E340012A786 /* SwipeStacks */,
 				FAB76FB81D234A5A0012A786 /* Timer */,
 				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
-				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
 				DBCFB4891D25713300200F10 /* Drawing */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
+				FAB76FDE1D24220B0012A786 /* Random Caption */,
+				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
 				DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */,
 				DBCFB4281D22DF5500200F10 /* Info.plist */,
@@ -280,8 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				DBCFB48E1D2572A300200F10 /* DrawCommands */,
-				DBCFB48C1D25729500200F10 /* DrawView.swift */,
 				DBCFB4871D25712400200F10 /* DrawViewController.swift */,
+				DBCFB48C1D25729500200F10 /* DrawView.swift */,
 				DBCFB48F1D25763500200F10 /* FreehandDrawController.swift */,
 				DBCFB4911D25764A00200F10 /* Segment.swift */,
 				DBCFB4931D25766600200F10 /* WidthModulation.swift */,
@@ -309,6 +315,7 @@
 				F9B48FED1D22E6BE0031C5FC /* StartGameViewController.swift */,
 			);
 			name = JoinandStartGame;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F9B48FF11D22E84A0031C5FC /* Networking */ = {
@@ -400,7 +407,6 @@
 				FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */,
 			);
 			name = "Random Caption";
-			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FAB76FE51D244CBD0012A786 /* Home */ = {
@@ -518,6 +524,7 @@
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
 				FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
+				F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */,
 				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
 				FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */,
 				DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */,
@@ -603,6 +610,7 @@
 				FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
+				F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */,
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
 				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,

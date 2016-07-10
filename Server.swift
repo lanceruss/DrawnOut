@@ -15,16 +15,13 @@ class Server: NSObject {
     let messageHandler = MessageHandler()
     
     var isServer = Bool()
-    var id: MCPeerID?
-    var playersInOrder: Array<NSDictionary>
+    var playersInOrder: NSMutableDictionary?
     var nextPlayer: MCPeerID?
     
     // Init a Server object with a bool that declares whether the device is a server (true) or client (false) and the peerID in case we need that data later.
-    init(serverStatus: Bool, peerID: MCPeerID) {
+    init(serverStatus: Bool) {
         
         isServer = serverStatus
-        id = peerID
-        playersInOrder = []
         
     }
     
@@ -36,7 +33,7 @@ class Server: NSObject {
         
         if isServer == false {
             
-            let readyMessage = messageHandler.createMessage(string: nil, object: nil, ready: "ready")
+            let readyMessage = messageHandler.createMessage(string: nil, object: nil, keyForDictionary: nil, ready: "ready")
             
             messageHandler.sendMessage(messageDictionary: readyMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
         }
@@ -49,6 +46,28 @@ class Server: NSObject {
             if countForReadyCheck == appDelegate.mpcHandler.mcSession.connectedPeers.count {
                 NSNotificationCenter.defaultCenter().postNotificationName("Server_Ready", object: nil)
             }
+    }
+    
+    func gameOverCheck(turn: Int) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var isGameOver = false
+        
+        if turn == (appDelegate.mpcHandler.mcSession.connectedPeers.count + 2) {
+            isGameOver = true
+        }
+        
+        return isGameOver
+    }
+    
+    func reorderArray(arrayToReorder: [MCPeerID]) -> [MCPeerID] {
+        
+        var reorderedArray = arrayToReorder
+        
+        let itemToMove = reorderedArray.first
+        reorderedArray.removeFirst()
+        reorderedArray.append(itemToMove!)
+        return reorderedArray
     }
     
 }
