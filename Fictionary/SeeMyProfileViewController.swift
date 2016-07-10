@@ -9,64 +9,60 @@
 import UIKit
 import Firebase
 
-class SeeMyProfileViewController: UIViewController {
+class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var displayNameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var facebookIDLabel: UILabel!
-    @IBOutlet weak var firebaseIDLabel: UILabel!
-    @IBOutlet weak var profileImageview: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backButton: UIButton!
     
-    var player: Player!
+    var stacks: [String] = ["stack1.jpg", "stack2.jpg", "stack3.jpg"]
+    
     var ref = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // July 10, 2016:
+        // get user from firebase now that we are NOT using a player object
         
-        print("player: \(player)")
+        self.view.backgroundColor = UIColor.pastelGreen()
+        self.collectionView.backgroundColor = UIColor.shamrock()
         
-        displayNameLabel.text = "\(player.displayName!)"
-        
-        emailLabel.text = "\(player.email!)"
-        facebookIDLabel.text = "\(player.facebookUID!)"
-        firebaseIDLabel.text = "\(player.firebaseUID!)"
-        
-        
-        
-        // start of profile pic
-        if let data = NSData(contentsOfURL: player.photoURL!) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            // Get user value
+            let name = snapshot.value!["name"] as! String
+            self.nameLabel.text = "\(name)"
             
-            profileImageview.clipsToBounds = true
-            //profileImageview.layer.cornerRadius = profileImageview.frame.size.width/2
-            profileImageview.image = UIImage(data: data)
-            
-            let profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":250, "width": 250, "redirect":false], HTTPMethod: "GET")
-            profilePic.startWithCompletionHandler({ (connection, result, error) in
-                
-                if (error == nil) {
-                    
-                    let dict = result as! NSDictionary
-                    let data = dict.objectForKey("data")
-                    
-                    let picURL = (data?.objectForKey("url")) as! String
-                    
-                    if let imageData = NSData(contentsOfURL: NSURL(string: picURL)!) {
-                        self.profileImageview.image = UIImage(data:imageData)
-                    }
-                    print(dict)
-                }
-            })
-        } else {
-            profileImageview.backgroundColor = UIColor.redColor()
+        }) { (error) in
+            print(error.localizedDescription)
         }
-        // end of profile pic
+
+        
+    }
+    
+    @IBAction func onBackButtonTapped(sender: AnyObject) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return stacks.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell: Custom2CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! Custom2CollectionViewCell
+        cell.imageView.image = UIImage(named: stacks[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("cell: \(indexPath.row) selected")
     }
     
     @IBAction func seeAllStacks(sender: AnyObject) {
-        
-        print("seeAllStacks > player.firebaseUID \(player.firebaseUID!)")
-        print("seeAllStatcks > player.isAnonymous \(player.isAnonymous)")
+
         
     }
     

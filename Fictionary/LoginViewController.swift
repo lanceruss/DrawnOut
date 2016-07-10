@@ -8,13 +8,19 @@
 
 import UIKit
 import Firebase
-import FBSDKLoginKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController {
     
-    @IBOutlet weak var loginButton: FBSDKLoginButton!
     @IBOutlet weak var debugInfo: UITextView!
+    @IBOutlet weak var deletePlayerObjectsButton: UIButton!
+    @IBOutlet weak var loginAsGuestButton: UIButton!
+    @IBOutlet weak var viewMyProfileButton: UIButton!
     @IBOutlet weak var enterGameButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var loginAsUserButton: UIButton!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     var player: Player!
     var ref = FIRDatabase.database().reference()
@@ -23,158 +29,221 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.pastelGreen()
+
         // ----------- RESET ALL LOGIN SESSION VALUES ----------- //
         print("RESET ALL LOGIN SESSION VALUES WHEN THIS PAGE LOADS\n")
         player = nil
+        
+        print("** REMINDER THAT WE LOG OUT ALL FIRAUTH SESSION - TESTING / DEBUGGING ***")
         try! FIRAuth.auth()!.signOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-        FBSDKProfile.setCurrentProfile(nil)
+        
+        debugInfo.hidden = true
+        deletePlayerObjectsButton.hidden = true
         
         enterGameButton.hidden = true
         
-        loginButton.delegate = self
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        logoutButton.hidden = true
+        logoutButton.backgroundColor = UIColor.medAquamarine()
+        logoutButton.layer.cornerRadius = 0.5 * logoutButton.bounds.size.height
 
+        loginButton.backgroundColor = UIColor.medAquamarine()
+        loginButton.layer.cornerRadius = 0.5 * loginButton.bounds.size.height
+        
+        loginAsGuestButton.layer.cornerRadius = 0.5 * loginAsGuestButton.bounds.size.height
+        loginAsGuestButton.backgroundColor = UIColor.shamrock()
+        
+        loginAsUserButton.hidden = true
+        loginAsUserButton.layer.cornerRadius = 0.5 * loginAsUserButton.bounds.size.height
+        loginAsUserButton.backgroundColor = UIColor.shamrock()
+        
+        viewMyProfileButton.layer.cornerRadius = 0.5 * viewMyProfileButton.bounds.size.height
+        viewMyProfileButton.userInteractionEnabled = false
+        //viewMyProfileButton.tintColor = UIColor.grayColor()
+        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        
+        welcomeLabel.hidden = true
+        welcomeLabel.text = ""
     
     
     }
     
+    @IBAction func enterGameButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("joinGame", sender: self)
+    }
 
     
+    @IBAction func onViewMyProfileTapped(sender: AnyObject) {
+        
+    }
+    
+    func getLoggedInUserInfo() {
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            // Get user value
+            let email = snapshot.value!["email"] as! String
+            let password = snapshot.value!["password"] as! String
+            let name = snapshot.value!["name"] as! String
+            let isAnonymous = snapshot.value!["isAnonymous"] as! String
+            
+            self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+
+            self.debugInfo.text = self.debugInfo.text + "FIRDatabase > uid, email, pass & name: \(userID!) \(email), \(password), \(name), \(isAnonymous)"
+            
+            
+
+
+        }) { (error) in
+            print(error.localizedDescription)
+            print("-from getLoggedInUserInfo")
+        }
+        
+    }
     
     
     override func viewDidAppear(animated: Bool) {
         
         // ----- DEBUG INFO ------ //
         debugInfo.text = ""
+        debugInfo.hidden = true
         
         if let user = FIRAuth.auth()?.currentUser {
             // User is signed in.
-            debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: \(FIRAuth.auth()?.currentUser!)\n"
-        } else {
-            // No user is signed in.
-            debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: NONE\n"
-        }
-        
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
-            debugInfo.text = debugInfo.text + "FBSDKAccessToken.currentAccessToken(): \(FBSDKAccessToken.currentAccessToken()!)\n"
-        } else {
-            debugInfo.text = debugInfo.text + "FBSDKAccessToken.currentAccessToken(): NONE\n"
-        }
-            self.debugInfo.text = self.debugInfo.text + "D-player: \(self.player)\n"
-    }
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("loginButton > didCompleteWithResult function running...")
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
+            print("user is signed in: \(user.uid)")
+            debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: \(FIRAuth.auth()!.currentUser!.uid)\n"
+            
+            getLoggedInUserInfo()
+            
+            self.loginButton.hidden = true
+            self.createAccountButton.hidden = true
+            self.loginAsGuestButton.hidden = true
+            self.logoutButton.hidden = false
+            
+            viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+            viewMyProfileButton.userInteractionEnabled = true
+            
+            welcomeLabel.hidden = false
+            
+            loginAsUserButton.hidden = false
 
-        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-       
-        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-            if let user = FIRAuth.auth()?.currentUser {
-                print(user.displayName)
+            
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                // Get user value
+                let name = snapshot.value!["name"] as! String
+                self.welcomeLabel.text = "Hi, \(name)!"
                 
-                for profile in user.providerData {
-                    
-                    self.player = Player(displayName: profile.displayName!)
-                    self.player.email = profile.email
-                    self.player.facebookUID = profile.uid
-                    self.player.firebaseUID = user.uid
-                    self.player.photoURL = profile.photoURL
-                    
-                    
-                    
-                    
-                    print(self.player)
+                if snapshot.value!["isAnonymous"] as! String  == "1" {
+                    self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+                    self.viewMyProfileButton.userInteractionEnabled = false
+                } else {
+                    self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+                    self.viewMyProfileButton.userInteractionEnabled = true
                 }
                 
-                self.debugInfo.text = self.debugInfo.text + "player: \(self.player)\n"
                 
-                self.enterGameButton.hidden = false
- 
+            }) { (error) in
+                print(error.localizedDescription)
             }
-
+            
+        
+        } else {
+            // No user is signed in.
+            print("user is not signed in")
+            debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: NONE\n"
+            
+            self.logoutButton.hidden = true
         }
         
-        
+            self.debugInfo.text = self.debugInfo.text + "D-player: \(self.player)\n"
     }
     
     @IBAction func startAnonymousGameTapped(sender: AnyObject) {
         
-        self.player = Player(displayName: "Anonymous")
+        self.player = Player(displayName: "Guest")
         self.player.email = ""
         self.player.facebookUID = ""
         self.player.photoURL = NSURL(string: "")
         self.player.firebaseUID = ""
         
+        //self.loginButton.hidden = true
+        
         FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
             // ...
             self.player.firebaseUID = user!.uid
             self.player.isAnonymous = true
-            self.performSegueWithIdentifier("anonymousSegue", sender: self)
-
+            self.performSegueWithIdentifier("joinGame", sender: self)
             
+            self.ref.child("users/\(user!.uid)/dateTimeCreated").setValue("")
+            self.ref.child("users/\(user!.uid)/email").setValue("")
+            self.ref.child("users/\(user!.uid)/password").setValue("")
+            self.ref.child("users/\(user!.uid)/name").setValue("Guest")
+            self.ref.child("users/\(user!.uid)/isAnonymous").setValue("1")
+            
+            self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+
+
+
         }
         
+    }
+    
+    @IBAction func startGameAsUserLoggedIn(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func onLogoutTapped(sender: AnyObject) {
+        deleteAllUsersAuthObjects()
+        self.logoutButton.hidden = true
+        self.loginAsGuestButton.hidden = false
+        self.loginButton.hidden = false
+        self.createAccountButton.hidden = false
+        
+        welcomeLabel.hidden = true
+        welcomeLabel.text = "Hi, "
+        
+        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        viewMyProfileButton.userInteractionEnabled = false
 
         
-        
+        self.debugInfo.text = "NO USER AUTH OBJECTS!"
+        print("USER LOGGED OUT")
         
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dvc = segue.destinationViewController as! SeeMyProfileViewController
-        dvc.player = player
-    }
-    
-    @IBAction func enterGame(sender: AnyObject) {
-    
+        if segue.identifier == "viewProfileSegue" {
+            let dvc = segue.destinationViewController as! SeeMyProfileViewController
+            //dvc.player = player
+            
+        } else if segue.identifier == "joinGame" {
+            let dvc = segue.destinationViewController as! JoinGameViewController
+            //dvc.player = player
+        }
+        
     }
     
     
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("loginButtonDidLogOut running...")
+        loginAsGuestButton.hidden = false
+        viewMyProfileButton.userInteractionEnabled = false
+        // viewMyProfileButton.tintColor = UIColor.grayColor()
+        enterGameButton.hidden = true
+        
+
+    }
+    
+    func deleteAllUsersAuthObjects() {
+        player = nil
+        try! FIRAuth.auth()!.signOut()
     }
     
     
     @IBAction func deletePlayerAuthObjects(sender: AnyObject) {
-        player = nil
-        try! FIRAuth.auth()!.signOut()
-        
-        // start of trying to force logout user from FB
-
-//        let cookie = NSHTTPCookie()
-//        let storage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-//        for cookie in storage {
-//            var domainName: String = cookie.domain()
-//            var domainRange: NSRange = domainName.rangeOfString("facebook")
-//            if domainRange.length > 0 {
-//                storage.deleteCookie(cookie)
-//        }
-//        
-//        NSHTTPCookie *cookie;
-//        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//        for (cookie in [storage cookies])
-//        {
-//            NSString* domainName = [cookie domain];
-//            NSRange domainRange = [domainName rangeOfString:@"facebook"];
-//            if(domainRange.length > 0)
-//            {
-//                [storage deleteCookie:cookie];
-//            }
-//        }
-        // end
-        
-    }
-    
-    @IBAction func dismissButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        deleteAllUsersAuthObjects()
     }
 
 }
