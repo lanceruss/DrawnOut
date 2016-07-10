@@ -9,34 +9,60 @@
 import UIKit
 import Firebase
 
-class SeeMyProfileViewController: UIViewController {
+class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var displayNameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var firebaseIDLabel: UILabel!
-    @IBOutlet weak var profileImageview: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backButton: UIButton!
     
-    var player: Player!
+    var stacks: [String] = ["stack1.jpg", "stack2.jpg", "stack3.jpg"]
+    
     var ref = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // July 10, 2016:
+        // get user from firebase now that we are NOT using a player object
         
-        print("player: \(player)")
+        self.view.backgroundColor = UIColor.pastelGreen()
+        self.collectionView.backgroundColor = UIColor.shamrock()
         
-        displayNameLabel.text = "\(player.displayName!)"
-        
-        emailLabel.text = "\(player.email!)"
-        firebaseIDLabel.text = "\(player.firebaseUID!)"
-        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            // Get user value
+            let name = snapshot.value!["name"] as! String
+            self.nameLabel.text = "\(name)"
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
         
     }
     
-    @IBAction func seeAllStacks(sender: AnyObject) {
+    @IBAction func onBackButtonTapped(sender: AnyObject) {
         
-        print("seeAllStacks > player.firebaseUID \(player.firebaseUID!)")
-        print("seeAllStatcks > player.isAnonymous \(player.isAnonymous)")
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return stacks.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell: Custom2CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! Custom2CollectionViewCell
+        cell.imageView.image = UIImage(named: stacks[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("cell: \(indexPath.row) selected")
+    }
+    
+    @IBAction func seeAllStacks(sender: AnyObject) {
+
         
     }
     

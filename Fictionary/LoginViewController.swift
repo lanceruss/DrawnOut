@@ -12,7 +12,6 @@ import Firebase
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var debugInfo: UITextView!
-    @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var deletePlayerObjectsButton: UIButton!
     @IBOutlet weak var loginAsGuestButton: UIButton!
     @IBOutlet weak var viewMyProfileButton: UIButton!
@@ -20,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var loginAsUserButton: UIButton!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     var player: Player!
     var ref = FIRDatabase.database().reference()
@@ -28,6 +29,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.pastelGreen()
+
         // ----------- RESET ALL LOGIN SESSION VALUES ----------- //
         print("RESET ALL LOGIN SESSION VALUES WHEN THIS PAGE LOADS\n")
         player = nil
@@ -36,14 +39,31 @@ class LoginViewController: UIViewController {
         try! FIRAuth.auth()!.signOut()
         
         debugInfo.hidden = true
-        dismissButton.hidden = true
-        deletePlayerObjectsButton.hidden = false
-        
-        viewMyProfileButton.userInteractionEnabled = false
-        viewMyProfileButton.tintColor = UIColor.grayColor()
+        deletePlayerObjectsButton.hidden = true
         
         enterGameButton.hidden = true
+        
         logoutButton.hidden = true
+        logoutButton.backgroundColor = UIColor.medAquamarine()
+        logoutButton.layer.cornerRadius = 0.5 * logoutButton.bounds.size.height
+
+        loginButton.backgroundColor = UIColor.medAquamarine()
+        loginButton.layer.cornerRadius = 0.5 * loginButton.bounds.size.height
+        
+        loginAsGuestButton.layer.cornerRadius = 0.5 * loginAsGuestButton.bounds.size.height
+        loginAsGuestButton.backgroundColor = UIColor.shamrock()
+        
+        loginAsUserButton.hidden = true
+        loginAsUserButton.layer.cornerRadius = 0.5 * loginAsUserButton.bounds.size.height
+        loginAsUserButton.backgroundColor = UIColor.shamrock()
+        
+        viewMyProfileButton.layer.cornerRadius = 0.5 * viewMyProfileButton.bounds.size.height
+        viewMyProfileButton.userInteractionEnabled = false
+        //viewMyProfileButton.tintColor = UIColor.grayColor()
+        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        
+        welcomeLabel.hidden = true
+        welcomeLabel.text = ""
     
     
     }
@@ -66,10 +86,14 @@ class LoginViewController: UIViewController {
             let password = snapshot.value!["password"] as! String
             let name = snapshot.value!["name"] as! String
             let isAnonymous = snapshot.value!["isAnonymous"] as! String
+            
+            self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
 
             self.debugInfo.text = self.debugInfo.text + "FIRDatabase > uid, email, pass & name: \(userID!) \(email), \(password), \(name), \(isAnonymous)"
+            
+            
 
-            // ...
+
         }) { (error) in
             print(error.localizedDescription)
             print("-from getLoggedInUserInfo")
@@ -82,7 +106,7 @@ class LoginViewController: UIViewController {
         
         // ----- DEBUG INFO ------ //
         debugInfo.text = ""
-        debugInfo.hidden = false
+        debugInfo.hidden = true
         
         if let user = FIRAuth.auth()?.currentUser {
             // User is signed in.
@@ -96,12 +120,40 @@ class LoginViewController: UIViewController {
             self.loginAsGuestButton.hidden = true
             self.logoutButton.hidden = false
             
+            viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+            viewMyProfileButton.userInteractionEnabled = true
+            
+            welcomeLabel.hidden = false
+            
+            loginAsUserButton.hidden = false
+
+            
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                // Get user value
+                let name = snapshot.value!["name"] as! String
+                self.welcomeLabel.text = "Hi, \(name)!"
+                
+                if snapshot.value!["isAnonymous"] as! String  == "1" {
+                    self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+                    self.viewMyProfileButton.userInteractionEnabled = false
+                } else {
+                    self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+                    self.viewMyProfileButton.userInteractionEnabled = true
+                }
+                
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
             
         
         } else {
             // No user is signed in.
             print("user is not signed in")
             debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: NONE\n"
+            
+            self.logoutButton.hidden = true
         }
         
             self.debugInfo.text = self.debugInfo.text + "D-player: \(self.player)\n"
@@ -115,6 +167,8 @@ class LoginViewController: UIViewController {
         self.player.photoURL = NSURL(string: "")
         self.player.firebaseUID = ""
         
+        //self.loginButton.hidden = true
+        
         FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
             // ...
             self.player.firebaseUID = user!.uid
@@ -126,11 +180,18 @@ class LoginViewController: UIViewController {
             self.ref.child("users/\(user!.uid)/password").setValue("")
             self.ref.child("users/\(user!.uid)/name").setValue("Guest")
             self.ref.child("users/\(user!.uid)/isAnonymous").setValue("1")
+            
+            self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+
+
 
         }
         
     }
     
+    @IBAction func startGameAsUserLoggedIn(sender: AnyObject) {
+        
+    }
     
     @IBAction func onLogoutTapped(sender: AnyObject) {
         deleteAllUsersAuthObjects()
@@ -138,6 +199,13 @@ class LoginViewController: UIViewController {
         self.loginAsGuestButton.hidden = false
         self.loginButton.hidden = false
         self.createAccountButton.hidden = false
+        
+        welcomeLabel.hidden = true
+        welcomeLabel.text = "Hi, "
+        
+        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        viewMyProfileButton.userInteractionEnabled = false
+
         
         self.debugInfo.text = "NO USER AUTH OBJECTS!"
         print("USER LOGGED OUT")
@@ -147,11 +215,11 @@ class LoginViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewProfileSegue" {
             let dvc = segue.destinationViewController as! SeeMyProfileViewController
-            dvc.player = player
+            //dvc.player = player
             
         } else if segue.identifier == "joinGame" {
             let dvc = segue.destinationViewController as! JoinGameViewController
-            dvc.player = player
+            //dvc.player = player
         }
         
     }
@@ -162,8 +230,10 @@ class LoginViewController: UIViewController {
         print("loginButtonDidLogOut running...")
         loginAsGuestButton.hidden = false
         viewMyProfileButton.userInteractionEnabled = false
-        viewMyProfileButton.tintColor = UIColor.grayColor()
+        // viewMyProfileButton.tintColor = UIColor.grayColor()
         enterGameButton.hidden = true
+        
+
     }
     
     func deleteAllUsersAuthObjects() {
@@ -174,10 +244,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func deletePlayerAuthObjects(sender: AnyObject) {
         deleteAllUsersAuthObjects()
-    }
-    
-    @IBAction func dismissButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

@@ -54,6 +54,7 @@
 		FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */; };
 		FA0C67D51D26F178007ADE75 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */; };
 		FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */; };
+		FA76CECD1D32962A006FEE31 /* Custom2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */; };
 		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
 		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
 		FAB76FB71D230F950012A786 /* penguin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB61D230F950012A786 /* penguin.jpg */; };
@@ -158,6 +159,7 @@
 		FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom2CollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
 		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
 		FAB76FB61D230F950012A786 /* penguin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin.jpg; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				FACB72251D2C1A0C0029AE1B /* Login.storyboard */,
+				FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */,
 				FAC507721D2EEFD20092568C /* LoginVC.swift */,
 				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
 				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
@@ -671,6 +674,7 @@
 			files = (
 				FA0C67C91D259D00007ADE75 /* GameViewController.swift in Sources */,
 				DBCFB4881D25712400200F10 /* DrawViewController.swift in Sources */,
+				FA76CECD1D32962A006FEE31 /* Custom2CollectionViewCell.swift in Sources */,
 				DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */,
 				DBCFB4921D25764A00200F10 /* Segment.swift in Sources */,
 				FAC5074D1D2D96FD0092568C /* ViewStackViewController.swift in Sources */,

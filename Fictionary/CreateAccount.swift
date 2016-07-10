@@ -25,6 +25,10 @@ class CreateAccount: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.pastelGreen()
+        createAccountButton.layer.cornerRadius = 0.5 * createAccountButton.bounds.size.height
+        createAccountButton.backgroundColor = UIColor.shamrock()
+        
         errorMessageLabel.hidden = true
         cancelButton.hidden = true
         

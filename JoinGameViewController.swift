@@ -50,7 +50,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         
         // Update the debug label to show player object info
-        debugLabel.text = "I am \(player.displayName!)"
+        // debugLabel.text = "I am \(player.displayName!)"
         
     }
     
