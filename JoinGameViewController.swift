@@ -11,6 +11,13 @@ import MultipeerConnectivity
 
 class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserViewControllerDelegate {
     
+    // Added by Ernie to allow debug info about player object
+    @IBOutlet weak var debugLabel: UILabel!
+    
+    // Added by Ernie to allow passing the player object from the Login process,
+    // specifically the LoginViewController.swift
+    var player: Player!
+    
     var userName: String!
     
     var imageData: NSData?
@@ -43,6 +50,10 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         
         // Create an observer in order to be notified if new data has been received by the mpcHandler. This observer fires the handleReceivedData function when new data is received.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
+        
+        // Update the debug label to show player object info
+        // debugLabel.text = "I am \(player.displayName!)"
+        
     }
     
     // Present the view controller to allow the devices to invite other devices to connect
@@ -50,6 +61,8 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         if appDelegate.mpcHandler.mcSession != nil {
             appDelegate.mpcHandler.setupBrowser()
             appDelegate.mpcHandler.serviceBrowser.delegate = self
+            
+            
             
             self.presentViewController(appDelegate.mpcHandler.serviceBrowser, animated: true, completion: nil)
         }
