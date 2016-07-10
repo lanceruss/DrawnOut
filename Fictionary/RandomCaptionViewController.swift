@@ -15,6 +15,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     
     @IBOutlet var timerLabel: UILabel!
     
+    @IBOutlet weak var randomButton: UIButton!
+    
     var secondsAllowed = 10
     var seconds = 0
     var timer = NSTimer()
@@ -38,6 +40,11 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
+        randomButton.backgroundColor = UIColor.shamrock()
+        randomButton.layer.cornerRadius = 0.5 * randomButton.bounds.size.height
         
         // Set up the AppDelegate to reference the MPCHandler and references to the ArchiverHelper and the MessageHandler
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

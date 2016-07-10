@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-Compact-Text-Bold.otf">
+            <string>SFCompactText-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Random Caption View Controller-->
         <scene sceneID="EM5-SF-iMR">
@@ -17,23 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJd-Ch-Ham">
-                                <rect key="frame" x="20" y="266" width="560" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJd-Ch-Ham">
+                                <rect key="frame" x="0.0" y="289.5" width="600" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-p7-BCc">
-                                <rect key="frame" x="241" y="348" width="119" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="IeG-pv-2sU"/>
-                                    <constraint firstAttribute="width" constant="119" id="t5w-4w-wST"/>
-                                </constraints>
-                                <state key="normal" title="Shuffle"/>
-                                <connections>
-                                    <action selector="onShuffleButtonTapped:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="eVT-hG-HAM"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-pK-lWO">
                                 <rect key="frame" x="557" y="28" width="23" height="21"/>
                                 <constraints>
@@ -44,31 +39,60 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a phrase here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vic-es-ToX">
+                                <rect key="frame" x="20" y="285" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-p7-BCc">
+                                <rect key="frame" x="228" y="329" width="145" height="45"/>
+                                <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="CiT-aQ-NRt"/>
+                                    <constraint firstAttribute="height" constant="45" id="T4d-VG-7q4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="17"/>
+                                <state key="normal" title="RANDOM">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShuffleButtonTapped:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="eVT-hG-HAM"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2ac-pK-lWO" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" id="3t8-I3-ZaL"/>
+                            <constraint firstItem="vic-es-ToX" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="749-Fg-hkv"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" constant="63" id="Bnq-4d-DfW"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="EtR-DA-H4p"/>
                             <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="20" id="Lhf-Ru-dDc"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="TiY-zx-YJA"/>
+                            <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="19" id="WVX-wE-2sq"/>
+                            <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="Zvu-tI-sLG"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="246" id="aUZ-dX-23a"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="fpq-6X-DIN"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" id="g1K-Ok-MkV"/>
+                            <constraint firstItem="vic-es-ToX" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" id="irC-Eb-lrW"/>
                             <constraint firstAttribute="trailing" secondItem="qJd-Ch-Ham" secondAttribute="trailing" id="kRY-YY-0tq"/>
+                            <constraint firstItem="vic-es-ToX" firstAttribute="leading" secondItem="uqS-eA-MHk" secondAttribute="leadingMargin" id="ohq-Ig-EsP"/>
                             <constraint firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" symbolic="YES" id="rXQ-q1-2cV"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="sdU-YW-mx5"/>
+                            <constraint firstItem="vic-es-ToX" firstAttribute="trailing" secondItem="uqS-eA-MHk" secondAttribute="trailingMargin" id="wne-hh-UUt"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="aUZ-dX-23a"/>
+                                <exclude reference="Bnq-4d-DfW"/>
                                 <exclude reference="TiY-zx-YJA"/>
+                                <exclude reference="fpq-6X-DIN"/>
                                 <exclude reference="sdU-YW-mx5"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="captionLabel" destination="qJd-Ch-Ham" id="UmL-hl-rl1"/>
+                        <outlet property="randomButton" destination="TSd-p7-BCc" id="edI-ya-wph"/>
                         <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
                         <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>
                     </connections>

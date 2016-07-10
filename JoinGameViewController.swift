@@ -19,12 +19,24 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     var archiverHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
+    @IBOutlet weak var invitePlayersButton: UIButton!
+    @IBOutlet weak var letsPlayButton: UIButton!
+    
+    
     var serverStatus: Server?
     
     var gameDictionary = [MCPeerID : [Int : AnyObject]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
+        invitePlayersButton.backgroundColor = UIColor.medAquamarine()
+        invitePlayersButton.layer.cornerRadius = 0.5 * invitePlayersButton.bounds.size.height
+        
+        letsPlayButton.backgroundColor = UIColor.shamrock()
+        letsPlayButton.layer.cornerRadius = 0.5 * letsPlayButton.bounds.size.height
         
         // Get an instance of the appDelegate (which houses the mpcHandler so the whole app has access to it) and set the mpcHandlerDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -43,6 +55,10 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         
         // Create an observer in order to be notified if new data has been received by the mpcHandler. This observer fires the handleReceivedData function when new data is received.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
+    }
+    
+    var drawView: JoinGameRuleView {
+        return self.view as! JoinGameRuleView
     }
     
     // Present the view controller to allow the devices to invite other devices to connect
