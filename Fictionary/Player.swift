@@ -15,6 +15,7 @@ class Player: NSObject {
     var firebaseUID: String?
     var facebookUID: String?
     var photoURL: NSURL?
+    var isAnonymous = false
     
     init(displayName: String) {
         self.displayName = displayName

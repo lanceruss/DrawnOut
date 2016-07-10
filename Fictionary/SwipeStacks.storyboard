@@ -197,12 +197,24 @@
                                     <constraint firstAttribute="width" constant="357" id="lIt-bX-X3y"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puH-CN-diS">
+                                <rect key="frame" x="20" y="559" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="cU0-fs-niQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZFz-dE-vlP" firstAttribute="leading" secondItem="067-da-TGs" secondAttribute="leading" id="1kB-vA-0Id"/>
                             <constraint firstItem="ZFz-dE-vlP" firstAttribute="centerX" secondItem="067-da-TGs" secondAttribute="centerX" constant="-54" id="33K-bi-35Y"/>
                             <constraint firstItem="KfX-4v-Uae" firstAttribute="top" secondItem="oJc-HG-Qjv" secondAttribute="bottom" constant="8" id="4tI-JK-NdF"/>
+                            <constraint firstItem="puH-CN-diS" firstAttribute="leading" secondItem="067-da-TGs" secondAttribute="leadingMargin" id="9TX-Tg-RH3"/>
+                            <constraint firstItem="puH-CN-diS" firstAttribute="centerX" secondItem="ZFz-dE-vlP" secondAttribute="centerX" id="DiJ-6b-nQB"/>
+                            <constraint firstAttribute="bottom" secondItem="puH-CN-diS" secondAttribute="bottom" constant="20" symbolic="YES" id="EPL-5b-qJ0"/>
                             <constraint firstItem="IXq-B9-fK9" firstAttribute="top" secondItem="ZFz-dE-vlP" secondAttribute="bottom" id="JIF-hG-IbY"/>
                             <constraint firstItem="ZFz-dE-vlP" firstAttribute="bottom" secondItem="IXq-B9-fK9" secondAttribute="top" id="PI6-5E-iY4"/>
                             <constraint firstItem="KfX-4v-Uae" firstAttribute="top" secondItem="oJc-HG-Qjv" secondAttribute="bottom" constant="8" symbolic="YES" id="aEw-iY-ST9"/>
@@ -229,6 +241,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="debugLabel" destination="puH-CN-diS" id="hhY-WK-D3S"/>
                         <outlet property="imagePreview" destination="ZFz-dE-vlP" id="pYi-2H-irx"/>
                     </connections>
                 </viewController>
