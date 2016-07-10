@@ -21,6 +21,8 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     
     var serverStatus: Server?
     
+    var gameDictionary = [MCPeerID : [Int : AnyObject]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,21 +72,21 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         let okButton = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (UIAlertAction) in
             
             // Set phone which taps button to act as Server
-            self.serverStatus = Server(serverStatus: true, peerID: self.appDelegate.mpcHandler.mcSession.myPeerID)
+            self.serverStatus = Server(serverStatus: true)
             
-            if let serverStatus = self.serverStatus {
-                if let peerID = serverStatus.id {
-                    serverStatus.playersInOrder = [[peerID : []]]
-                    for peer in self.appDelegate.mpcHandler.mcSession.connectedPeers {
-                        serverStatus.playersInOrder.append([peer : []])
-                    }
+            if self.serverStatus?.isServer == true {
+                self.gameDictionary = [self.appDelegate.mpcHandler.mcSession.myPeerID : [:]]
+                for peer in self.appDelegate.mpcHandler.mcSession.connectedPeers {
+                    self.gameDictionary[peer] = [:]
+                    
+                    
+                    
+                    //send message to trigger segue on Client phones and perform segue on Server phone
+                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: nil, ready: nil)
+                    self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
                 }
-                
-                //send message to trigger segue on Client phones and perform segue on Server phone
-                let message = self.messageHandler.createMessage(string: "start_game", object: serverStatus.playersInOrder, ready: nil)
-                self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
+                self.performSegueWithIdentifier("startGame", sender: self)
             }
-            self.performSegueWithIdentifier("startGame", sender: self)
         }
         
         let cancelButton = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -94,11 +96,12 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         
     }
     
+    
     // When a notification comes in that data has been received, this function is run.
     func handleReceivedData(notification: NSNotification) {
         
         // Because the first data that is sent among phones is the message to start the game, I set the "client" status of the non-server phones here. Only the "client" phones receive the "start_game" message, so any phone that receives that message declares itself as a server by instantiating a serverStatus object with false for the isServer bool.
-        self.serverStatus = Server(serverStatus: false, peerID: self.appDelegate.mpcHandler.mcSession.myPeerID)
+        self.serverStatus = Server(serverStatus: false)
         
         // Retreive the NSDictionary in the received data
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
@@ -107,10 +110,8 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         if let message = message {
             
             if message.objectForKey("object")?.isEqual("") != true {
-                let playersInOrder = message.objectForKey("object") as! Array<NSDictionary>
-                if let serverStatus = serverStatus {
-                    serverStatus.playersInOrder = playersInOrder
-                }
+                let receivedDictionary = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+                gameDictionary = receivedDictionary
             }
             
             if message.objectForKey("string")?.isEqual("start_game") == true {
@@ -126,6 +127,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         // Pass along the serverStatus object so that we can keep checking the server/client status of each device. This object should be passed along for the duration fo the game!!!
         let dvc = segue.destinationViewController as! RandomCaptionViewController
         dvc.serverStatus = serverStatus
+        dvc.gameDictionary = gameDictionary
         
     }
 }
