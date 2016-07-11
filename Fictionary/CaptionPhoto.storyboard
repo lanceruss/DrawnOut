@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="penguin.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-vv-fgq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="494"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-vv-fgq">
+                                <rect key="frame" x="0.0" y="49" width="600" height="445"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yI1-po-vu3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess the prompt..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yI1-po-vu3">
                                 <rect key="frame" x="20" y="523" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1ge-TN-2nD"/>
@@ -51,11 +51,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exd-za-uIW">
                                 <rect key="frame" x="20" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="0VR-kA-kYQ"/>
                             <constraint firstItem="ntf-vv-fgq" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" id="12U-fv-0CW"/>
@@ -82,7 +82,7 @@
                             <constraint firstItem="exd-za-uIW" firstAttribute="leading" secondItem="yI1-po-vu3" secondAttribute="leading" id="p1N-3b-bOA"/>
                             <constraint firstAttribute="trailing" secondItem="yI1-po-vu3" secondAttribute="trailing" constant="20" id="qAA-eB-Vtv"/>
                             <constraint firstItem="yI1-po-vu3" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="20" id="xkz-2P-umM"/>
-                            <constraint firstItem="ntf-vv-fgq" firstAttribute="top" secondItem="n3d-GR-RAA" secondAttribute="top" id="yRI-g1-32M"/>
+                            <constraint firstItem="ntf-vv-fgq" firstAttribute="top" secondItem="n3d-GR-RAA" secondAttribute="top" constant="49" id="yRI-g1-32M"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -133,7 +133,4 @@
             <point key="canvasLocation" x="1079.5" y="473"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="penguin.jpg" width="831" height="961"/>
-    </resources>
 </document>

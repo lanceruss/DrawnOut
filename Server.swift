@@ -15,6 +15,7 @@ class Server: NSObject {
     let messageHandler = MessageHandler()
     
     var isServer = Bool()
+    var serverPeerID: MCPeerID?
     var playersInOrder: NSMutableDictionary?
     var nextPlayer: MCPeerID?
     
@@ -68,6 +69,10 @@ class Server: NSObject {
         reorderedArray.removeFirst()
         reorderedArray.append(itemToMove!)
         return reorderedArray
+    }
+    
+    func droppedConnection() {
+        
     }
     
 }

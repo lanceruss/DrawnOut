@@ -39,7 +39,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a phrase here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vic-es-ToX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a prompt or hit the &quot;RANDOM&quot; button..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vic-es-ToX">
                                 <rect key="frame" x="20" y="285" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -76,12 +76,13 @@
                             <constraint firstItem="vic-es-ToX" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" id="irC-Eb-lrW"/>
                             <constraint firstAttribute="trailing" secondItem="qJd-Ch-Ham" secondAttribute="trailing" id="kRY-YY-0tq"/>
                             <constraint firstItem="vic-es-ToX" firstAttribute="leading" secondItem="uqS-eA-MHk" secondAttribute="leadingMargin" id="ohq-Ig-EsP"/>
-                            <constraint firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" symbolic="YES" id="rXQ-q1-2cV"/>
+                            <constraint firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" symbolic="YES" id="rXQ-q1-2cV"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="sdU-YW-mx5"/>
                             <constraint firstItem="vic-es-ToX" firstAttribute="trailing" secondItem="uqS-eA-MHk" secondAttribute="trailingMargin" id="wne-hh-UUt"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="rXQ-q1-2cV"/>
                                 <exclude reference="aUZ-dX-23a"/>
                                 <exclude reference="Bnq-4d-DfW"/>
                                 <exclude reference="TiY-zx-YJA"/>
@@ -91,7 +92,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="captionLabel" destination="qJd-Ch-Ham" id="UmL-hl-rl1"/>
+                        <outlet property="captionTextField" destination="vic-es-ToX" id="9J7-Xg-zuC"/>
                         <outlet property="randomButton" destination="TSd-p7-BCc" id="edI-ya-wph"/>
                         <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
                         <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>

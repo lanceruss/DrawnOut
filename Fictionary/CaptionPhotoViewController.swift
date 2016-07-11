@@ -43,6 +43,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
         

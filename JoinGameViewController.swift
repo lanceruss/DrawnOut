@@ -98,7 +98,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
                     
                     
                     //send message to trigger segue on Client phones and perform segue on Server phone
-                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: nil, ready: nil)
+                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: self.appDelegate.mpcHandler.mcSession.myPeerID, ready: nil)
                     self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
                 }
                 self.performSegueWithIdentifier("startGame", sender: self)
@@ -131,6 +131,10 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
             }
             
             if message.objectForKey("string")?.isEqual("start_game") == true {
+                
+                let serverPeerID = message.objectForKey("key") as? MCPeerID
+                self.serverStatus?.serverPeerID = serverPeerID
+                
                 performSegueWithIdentifier("startGame", sender: self)
             }
         }
