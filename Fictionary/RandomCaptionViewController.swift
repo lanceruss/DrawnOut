@@ -152,7 +152,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         print("arrayForOrder - \(arrayForOrder)")
         
         if segue.identifier == "ToDrawing" {
-            let dvc = segue.destinationViewController as! DrawViewController
+            let dvc = segue.destinationViewController as! NewDrawViewController
             dvc.serverStatus = serverStatus
             dvc.turnCounter = turnCounter
             dvc.gameDictionary = gameDictionary
