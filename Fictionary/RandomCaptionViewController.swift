@@ -11,9 +11,11 @@ import MultipeerConnectivity
 
 class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var captionTextField: UITextField!
     
     @IBOutlet var timerLabel: UILabel!
+    
+    @IBOutlet weak var randomButton: UIButton!
     
     var secondsAllowed = 10
     var seconds = 0
@@ -39,6 +41,11 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
+        randomButton.backgroundColor = UIColor.shamrock()
+        randomButton.layer.cornerRadius = 0.5 * randomButton.bounds.size.height
+        
         // Set up the AppDelegate to reference the MPCHandler and references to the ArchiverHelper and the MessageHandler
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
@@ -49,7 +56,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         // Get a randomIndex and use it to display a random caption
         let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
-        self.captionLabel.text = captions[randomIndex]
+        self.captionTextField.text = captions[randomIndex]
         
         // Set up timer
         seconds = secondsAllowed
@@ -67,6 +74,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
         
     }
     
@@ -74,7 +82,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     @IBAction func onShuffleButtonTapped(sender: AnyObject) {
         
         let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
-        self.captionLabel.text = captions[randomIndex]
+        self.captionTextField.text = captions[randomIndex]
     }
     
     func subtractTime() {
@@ -84,7 +92,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         if seconds == 0 {
             timer.invalidate()
-            let caption = captionLabel.text
+            let caption = captionTextField.text
             if let serverStatus = serverStatus {
                 
                 if let caption = caption {
@@ -159,6 +167,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             dvc.arrayForOrder = arrayForOrder
             dvc.shiftingOrderArray = arrayForOrder
         }
+    }
+    
+    func handleDroppedConnection() {
+        
     }
     
 }

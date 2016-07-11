@@ -26,12 +26,24 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     var archiverHelper: ArchiverHelper!
     var messageHandler: MessageHandler!
     
+    @IBOutlet weak var invitePlayersButton: UIButton!
+    @IBOutlet weak var letsPlayButton: UIButton!
+    
+    
     var serverStatus: Server?
     
     var gameDictionary = [MCPeerID : [Int : AnyObject]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
+        invitePlayersButton.backgroundColor = UIColor.medAquamarine()
+        invitePlayersButton.layer.cornerRadius = 0.5 * invitePlayersButton.bounds.size.height
+        
+        letsPlayButton.backgroundColor = UIColor.shamrock()
+        letsPlayButton.layer.cornerRadius = 0.5 * letsPlayButton.bounds.size.height
         
         // Get an instance of the appDelegate (which houses the mpcHandler so the whole app has access to it) and set the mpcHandlerDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -54,6 +66,10 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         // Update the debug label to show player object info
         // debugLabel.text = "I am \(player.displayName!)"
         
+    }
+    
+    var drawView: JoinGameRuleView {
+        return self.view as! JoinGameRuleView
     }
     
     // Present the view controller to allow the devices to invite other devices to connect
@@ -95,7 +111,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
                     
                     
                     //send message to trigger segue on Client phones and perform segue on Server phone
-                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: nil, ready: nil)
+                    let message = self.messageHandler.createMessage(string: "start_game", object: self.gameDictionary, keyForDictionary: self.appDelegate.mpcHandler.mcSession.myPeerID, ready: nil)
                     self.messageHandler.sendMessage(messageDictionary: message, toPeers: self.appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: self.appDelegate)
                 }
                 self.performSegueWithIdentifier("startGame", sender: self)
@@ -128,6 +144,10 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
             }
             
             if message.objectForKey("string")?.isEqual("start_game") == true {
+                
+                let serverPeerID = message.objectForKey("key") as? MCPeerID
+                self.serverStatus?.serverPeerID = serverPeerID
+                
                 performSegueWithIdentifier("startGame", sender: self)
             }
         }
