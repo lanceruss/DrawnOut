@@ -19,6 +19,12 @@
 		DB03E9221D300AD40098B7A8 /* DesignTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9211D300AD40098B7A8 /* DesignTestView.swift */; };
 		DB03E9241D301DAB0098B7A8 /* DesignCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */; };
 		DB03E9261D3029540098B7A8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03E9251D3029540098B7A8 /* UIColor+.swift */; };
+		DB26E3AD1D32F5F80029CE33 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3AC1D32F5F80029CE33 /* ColorPalette.swift */; };
+		DB26E3AF1D32FD740029CE33 /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3AE1D32FD740029CE33 /* LineSegment.swift */; };
+		DB26E3B11D32FDEF0029CE33 /* NewDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3B01D32FDEF0029CE33 /* NewDrawViewController.swift */; };
+		DB26E3B31D32FE0F0029CE33 /* NewDrawing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */; };
+		DB26E3B51D32FE4B0029CE33 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */; };
+		DB26E3B71D32FE5E0029CE33 /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */; };
 		DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */; };
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
 		DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4231D22DF5500200F10 /* Assets.xcassets */; };
@@ -122,6 +128,12 @@
 		DB03E9211D300AD40098B7A8 /* DesignTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTestView.swift; sourceTree = "<group>"; };
 		DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCreateAccountViewController.swift; sourceTree = "<group>"; };
 		DB03E9251D3029540098B7A8 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		DB26E3AC1D32F5F80029CE33 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		DB26E3AE1D32FD740029CE33 /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
+		DB26E3B01D32FDEF0029CE33 /* NewDrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDrawViewController.swift; sourceTree = "<group>"; };
+		DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewDrawing.storyboard; sourceTree = "<group>"; };
+		DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
 		DBCFB4191D22DF5500200F10 /* Fictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCFB4211D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,13 +281,25 @@
 			name = DesignTemplates;
 			sourceTree = "<group>";
 		};
+		DB26E3AB1D32F56E0029CE33 /* Drawing2 */ = {
+			isa = PBXGroup;
+			children = (
+				DB26E3B01D32FDEF0029CE33 /* NewDrawViewController.swift */,
+				DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */,
+				DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */,
+				DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */,
+				DB26E3AC1D32F5F80029CE33 /* ColorPalette.swift */,
+				DB26E3AE1D32FD740029CE33 /* LineSegment.swift */,
+			);
+			name = Drawing2;
+			sourceTree = "<group>";
+		};
 		DBCFB4101D22DF5500200F10 = {
 			isa = PBXGroup;
 			children = (
 				FAC507691D2EAC5A0092568C /* NewSwipes2 */,
 				FAC507491D2D95800092568C /* NewSwipeStacks */,
 				FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */,
-				DBCFB41E1D22DF5500200F10 /* ViewController.swift */,
 				F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */,
 				F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */,
 				F9B48FF11D22E84A0031C5FC /* Networking */,
@@ -310,6 +334,7 @@
 				FAB76FBD1D234E340012A786 /* SwipeStacks */,
 				FAB76FB81D234A5A0012A786 /* Timer */,
 				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
+				DB26E3AB1D32F56E0029CE33 /* Drawing2 */,
 				DBCFB4891D25713300200F10 /* Drawing */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				FAB76FDE1D24220B0012A786 /* Random Caption */,
@@ -546,7 +571,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2R38GBAXHV;
+						DevelopmentTeam = 3367DBVN8H;
 					};
 				};
 			};
@@ -617,6 +642,7 @@
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
 				FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */,
 				FAC507511D2D970C0092568C /* Storyboard.storyboard in Resources */,
+				DB26E3B31D32FE0F0029CE33 /* NewDrawing.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
 				F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */,
 				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
@@ -687,12 +713,14 @@
 				DBCFB4921D25764A00200F10 /* Segment.swift in Sources */,
 				FAC5074D1D2D96FD0092568C /* ViewStackViewController.swift in Sources */,
 				DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */,
+				DB26E3B51D32FE4B0029CE33 /* DrawingView.swift in Sources */,
 				FAB76FC31D2352A60012A786 /* StackCell.swift in Sources */,
 				FA0C67D11D26ACCF007ADE75 /* MyProfileViewController.swift in Sources */,
 				FAB76FBC1D234A8F0012A786 /* TimerViewController.swift in Sources */,
 				FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */,
 				FA0C67C21D25754D007ADE75 /* Player.swift in Sources */,
 				FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */,
+				DB26E3B11D32FDEF0029CE33 /* NewDrawViewController.swift in Sources */,
 				FACB72281D2C1A1E0029AE1B /* LoginViewController.swift in Sources */,
 				FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */,
 				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
@@ -708,6 +736,7 @@
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
 				F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */,
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
+				DB26E3AF1D32FD740029CE33 /* LineSegment.swift in Sources */,
 				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
@@ -723,8 +752,10 @@
 				FAC507731D2EEFD20092568C /* LoginVC.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 				FAC507531D2D97130092568C /* LGHorizontalLinearFlowLayout.swift in Sources */,
+				DB26E3B71D32FE5E0029CE33 /* ColorPaletteView.swift in Sources */,
 				FAC507711D2EBBF20092568C /* CreateAccount.swift in Sources */,
 				DB03E9261D3029540098B7A8 /* UIColor+.swift in Sources */,
+				DB26E3AD1D32F5F80029CE33 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
