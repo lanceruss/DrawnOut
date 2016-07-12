@@ -240,8 +240,6 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         
     }
 
-    
-    
     @objc private func handleDoubleTap(sender: UITapGestureRecognizer) {
         
         if imageHistory.count > 0 {

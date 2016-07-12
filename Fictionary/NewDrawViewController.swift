@@ -16,6 +16,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var colorTableView: UITableView!
     @IBOutlet weak var colorPaletteView: ColorPaletteView!
     @IBOutlet weak var colorPaletteViewHeight: NSLayoutConstraint!
+    @IBOutlet var drawingView: DrawingView!
     
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var captionLabel: UILabel!
@@ -119,10 +120,6 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
     }
-    
-    var drawingView: DrawingView {
-        return self.view as! DrawingView
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -150,7 +147,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         print("didTapView")
         if colorPaletteViewExpanded == false {
             
-            let newHeight = drawingView.bounds.size.height - 105
+            let newHeight = drawingView.bounds.size.height - 16
             
             ColorPaletteView.animateWithDuration(3.0, delay: 0.0, options: .CurveEaseIn, animations: {
                 
