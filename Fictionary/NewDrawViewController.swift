@@ -318,7 +318,12 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         } else if segue.identifier == "ExitSegue" {
             // do something different
             let dvc = segue.destinationViewController as! EndGameSwipeVC
-            dvc.exitDictionary = exitDictionary
+            
+            if serverStatus?.isServer == true {
+                dvc.exitDictionary = gameDictionary
+            } else {
+                dvc.exitDictionary = exitDictionary
+            }
         }
     }
 

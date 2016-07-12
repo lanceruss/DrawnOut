@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MultipeerConnectivity
 
 class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -15,6 +16,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var anotherGameButton: UIButton!
+    
+    var exitDictionary = [MCPeerID : [Int : AnyObject]]()
     
     var items = [AnyObject]()
     var itemsAllPlayers = [AnyObject]()
@@ -47,10 +50,10 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
         // ---------------- DICTIONARY OF DATA TO USE ---------------------- //
         
-        let image1:UIImage = UIImage(named: "strawberry")!
-        let image2:UIImage = UIImage(named: "kitten")!
-        let image3:UIImage = UIImage(named: "jackandjill")!
-        let image4:UIImage = UIImage(named: "etphonehome")!
+//        let image1:UIImage = UIImage(named: "strawberry")!
+//        let image2:UIImage = UIImage(named: "kitten")!
+//        let image3:UIImage = UIImage(named: "jackandjill")!
+//        let image4:UIImage = UIImage(named: "etphonehome")!
         
 
         /*
@@ -64,7 +67,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
         // THE FINAL RESULT WILL BE A DICTIONARY OF DICTIONARIES (ONE FOR EACH DEVICE)....
         //let finalDictionary = [dictionary, dictionary2]
-
+        
+        /* // 1
         let dictionary = ["<MCPeerID: 0x14590ff70 DisplayName = Ernie's iPhone>":
             ["2": image1,
                 "3": "Eating a Burger",
@@ -110,9 +114,12 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
                     "1": "Looking in the Fridge",
                     "4": image4]
         ]
+        */ // 1
         
         // for multiple player dictionary scenario:
-        for (key,value) in dictionary2 {
+        for (_,value) in exitDictionary {
+            
+            print("\(exitDictionary)")
             
             items = []
             
@@ -127,7 +134,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
             
             print("\nThis is the output ordered list: \n")
             for key in keyArray {
-                let value1 = dict2["\(key)"]
+                let keyAsInt = key as! Int
+                let value1 = dict2[keyAsInt]
                 print(value1)
                 items.append(value1!)
             }
