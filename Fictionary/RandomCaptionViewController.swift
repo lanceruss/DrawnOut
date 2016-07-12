@@ -169,21 +169,24 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         let state = notification.userInfo!["state"] as? MCSessionState
         let peerID = notification.userInfo!["peerID"] as? MCPeerID
         
-        if serverStatus?.isServer == true {
-            if let peerID = peerID {
-                gameDictionary.removeValueForKey(peerID)
-                
-                for i in 0 ..< arrayForOrder.count {
-                    if arrayForOrder[i] == peerID {
-                        arrayForOrder.removeAtIndex(i)
-                    }
-                }
-            }
-            
-            if state == MCSessionState.NotConnected {
-                if let serverPeerID = serverStatus?.serverPeerID {
-                    if peerID == serverPeerID {
+        if state == MCSessionState.NotConnected {
+            if let serverStatus = serverStatus {
+                if serverStatus.isServer == true {
+                    if let peerID = peerID {
+                        gameDictionary.removeValueForKey(peerID)
                         
+                        for i in 0 ..< arrayForOrder.count {
+                            if arrayForOrder[i] == peerID {
+                                arrayForOrder.removeAtIndex(i)
+                            }
+                        }
+                    }
+                    
+                    
+                    if let serverPeerID = serverStatus.serverPeerID {
+                        if peerID == serverPeerID {
+                            
+                        }
                     }
                 }
             }

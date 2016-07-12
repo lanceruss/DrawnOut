@@ -241,7 +241,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         
         
         if segue.identifier == "ToDraw" {
-            let dvc = segue.destinationViewController as! DrawViewController
+            let dvc = segue.destinationViewController as! NewDrawViewController
             dvc.serverStatus = serverStatus
             dvc.turnCounter = turnCounter
             dvc.gameDictionary = gameDictionary
@@ -253,7 +253,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
         } else if segue.identifier == "ExitSegue" {
             //do something different
-            let dvc = segue.destinationViewController as! DemoExitViewController
+            let dvc = segue.destinationViewController as! EndGameSwipeVC
             dvc.exitDictionary = exitDictionary
         }
         

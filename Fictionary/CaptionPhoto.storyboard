@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="511" y="418"/>
         </scene>
-        <!--DemoExit-->
+        <!--EndGameSwipe-->
         <scene sceneID="13m-pH-03i">
             <objects>
-                <viewControllerPlaceholder storyboardName="DemoExit" id="O5n-gi-e4i" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EndGameSwipe" id="O5n-gi-e4i" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9t-1k-BDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.5" y="224"/>
