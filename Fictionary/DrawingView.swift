@@ -112,7 +112,8 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         case .Failed:
             self.endAtPoint(point)
         default:
-            assert(false, "State not handled")
+            self.endAtPoint(point)
+//            assert(false, "State not handled")
         }
     }
     
@@ -155,6 +156,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     
                     var ls: [LineSegment]? = []
                     
+//                    for i in 0 ..< self.bufIdx {
                     for var i = 0; i < self.bufIdx; i += 4 {
                         
                         if self.isFirstTouchPoint == true {
