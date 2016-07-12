@@ -12,7 +12,7 @@ import MultipeerConnectivity
 @objc protocol MPCHandlerDelegate {
     
     // Currently unused, but this delegate method will allow you to monitor when connectedDevices changes in real time. You can use this to do things when devices are connecting (state.Connecting), become connected (state.Connected) or become disconnected (state.NotConnected).
-    optional func connectedDevicesChanged(manager : MPCHandler, connectedDevices: [String], state: MCSessionState)
+    optional func connectedDevicesChanged(manager : MPCHandler, peer: MCPeerID, state: MCSessionState)
     
 }
 

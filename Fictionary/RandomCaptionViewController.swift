@@ -75,7 +75,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
-        
     }
     
     
@@ -119,7 +118,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
                     if message.objectForKey("object")?.isEqual("") != true {
                         let receivedCaption = message.objectForKey("object")
                         if let receivedCaption = receivedCaption {
-                        gameDictionary[userID]![turnCounter] = receivedCaption
+                            gameDictionary[userID]![turnCounter] = receivedCaption
                         }
                     }
                 }
@@ -156,9 +155,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
         turnCounter = turnCounter + 1
         
-        print("Rando Caption - \(turnCounter) - \n \(gameDictionary) \n")
-        print("arrayForOrder - \(arrayForOrder)")
-        
         if segue.identifier == "ToDrawing" {
             let dvc = segue.destinationViewController as! NewDrawViewController
             dvc.serverStatus = serverStatus
@@ -169,7 +165,29 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         }
     }
     
-    func handleDroppedConnection() {
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? MCSessionState
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
+        
+        if serverStatus?.isServer == true {
+            if let peerID = peerID {
+                gameDictionary.removeValueForKey(peerID)
+                
+                for i in 0 ..< arrayForOrder.count {
+                    if arrayForOrder[i] == peerID {
+                        arrayForOrder.removeAtIndex(i)
+                    }
+                }
+            }
+            
+            if state == MCSessionState.NotConnected {
+                if let serverPeerID = serverStatus?.serverPeerID {
+                    if peerID == serverPeerID {
+                        
+                    }
+                }
+            }
+        }
     }
     
 }
