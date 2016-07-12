@@ -65,6 +65,7 @@
 		FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */; };
 		FA0C67D51D26F178007ADE75 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */; };
 		FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */; };
+		FA65783A1D33C57A00500690 /* MakeStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6578391D33C57A00500690 /* MakeStackViewController.swift */; };
 		FA76CECD1D32962A006FEE31 /* Custom2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */; };
 		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
 		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
@@ -115,6 +116,14 @@
 		FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACB72251D2C1A0C0029AE1B /* Login.storyboard */; };
 		FACB72281D2C1A1E0029AE1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */; };
 		FACB722C1D2C2A540029AE1B /* SeeMyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */; };
+		FAE3367E1D33F9BF006376AF /* EndGameSwipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE3367D1D33F9BF006376AF /* EndGameSwipe.storyboard */; };
+		FAE336801D33F9D4006376AF /* EndGameSwipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE3367F1D33F9D4006376AF /* EndGameSwipeVC.swift */; };
+		FAE336821D33FE32006376AF /* Custom2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE336811D33FE32006376AF /* Custom2TableViewCell.swift */; };
+		FAE336841D3419E1006376AF /* EndGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE336831D3419E1006376AF /* EndGameCollectionViewCell.swift */; };
+		FAE336861D3419FD006376AF /* EndGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE336851D3419FD006376AF /* EndGameTableViewCell.swift */; };
+		FAE336881D342B88006376AF /* EndGameViewImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE336871D342B88006376AF /* EndGameViewImageVC.swift */; };
+		FAE3368B1D352E34006376AF /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE336891D352E34006376AF /* strawberry.png */; };
+		FAE3368C1D352E34006376AF /* kitten.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE3368A1D352E34006376AF /* kitten.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +190,7 @@
 		FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		FA6578391D33C57A00500690 /* MakeStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeStackViewController.swift; sourceTree = "<group>"; };
 		FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom2CollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
 		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +241,14 @@
 		FACB72251D2C1A0C0029AE1B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeMyProfileViewController.swift; sourceTree = "<group>"; };
+		FAE3367D1D33F9BF006376AF /* EndGameSwipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EndGameSwipe.storyboard; sourceTree = "<group>"; };
+		FAE3367F1D33F9D4006376AF /* EndGameSwipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameSwipeVC.swift; sourceTree = "<group>"; };
+		FAE336811D33FE32006376AF /* Custom2TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom2TableViewCell.swift; sourceTree = "<group>"; };
+		FAE336831D3419E1006376AF /* EndGameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAE336851D3419FD006376AF /* EndGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameTableViewCell.swift; sourceTree = "<group>"; };
+		FAE336871D342B88006376AF /* EndGameViewImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameViewImageVC.swift; sourceTree = "<group>"; };
+		FAE336891D352E34006376AF /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
+		FAE3368A1D352E34006376AF /* kitten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kitten.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +348,7 @@
 		DBCFB41B1D22DF5500200F10 /* Fictionary */ = {
 			isa = PBXGroup;
 			children = (
+				FAE3367C1D33F97C006376AF /* EndGameStacks */,
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
 				FA0C67C11D25754D007ADE75 /* Player.swift */,
 				FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */,
@@ -425,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0C67CE1D26ACC2007ADE75 /* MyProfile.storyboard */,
+				FA6578391D33C57A00500690 /* MakeStackViewController.swift */,
 				FA0C67D21D26C559007ADE75 /* ProfileCardCollectionViewCell.swift */,
 				FA0C67D01D26ACCF007ADE75 /* MyProfileViewController.swift */,
 			);
@@ -454,9 +474,9 @@
 			isa = PBXGroup;
 			children = (
 				FAB76FBE1D234E680012A786 /* SwipeStacks.storyboard */,
-				FAB76FE31D2432280012A786 /* ViewImageViewController.swift */,
 				FAB76FC01D234E740012A786 /* SwipeStacksViewController.swift */,
 				FAB76FC21D2352A60012A786 /* StackCell.swift */,
+				FAB76FE31D2432280012A786 /* ViewImageViewController.swift */,
 				FAB76FDC1D23E0980012A786 /* CustomTableViewCell.swift */,
 				FAB76FC41D23DF660012A786 /* everythingbutthesink.png */,
 				FAB76FC51D23DF660012A786 /* bullinachinacloset.png */,
@@ -537,12 +557,27 @@
 			children = (
 				FACB72251D2C1A0C0029AE1B /* Login.storyboard */,
 				FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */,
+				FAE336811D33FE32006376AF /* Custom2TableViewCell.swift */,
 				FAC507721D2EEFD20092568C /* LoginVC.swift */,
 				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
 				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		FAE3367C1D33F97C006376AF /* EndGameStacks */ = {
+			isa = PBXGroup;
+			children = (
+				FAE3367D1D33F9BF006376AF /* EndGameSwipe.storyboard */,
+				FAE3367F1D33F9D4006376AF /* EndGameSwipeVC.swift */,
+				FAE336831D3419E1006376AF /* EndGameCollectionViewCell.swift */,
+				FAE336851D3419FD006376AF /* EndGameTableViewCell.swift */,
+				FAE336871D342B88006376AF /* EndGameViewImageVC.swift */,
+				FAE336891D352E34006376AF /* strawberry.png */,
+				FAE3368A1D352E34006376AF /* kitten.png */,
+			);
+			name = EndGameStacks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,7 +615,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = U7TP39P5Y5;
+						DevelopmentTeam = 3367DBVN8H;
 					};
 				};
 			};
@@ -611,6 +646,7 @@
 				DB03E91E1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf in Resources */,
 				DB03E91A1D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf in Resources */,
 				FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */,
+				FAE3368C1D352E34006376AF /* kitten.png in Resources */,
 				FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */,
 				FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */,
 				DB03E9161D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf in Resources */,
@@ -638,9 +674,11 @@
 				FAC507681D2EA3BF0092568C /* SwipeStacksStoryboard.storyboard in Resources */,
 				DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */,
 				FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */,
+				FAE3367E1D33F9BF006376AF /* EndGameSwipe.storyboard in Resources */,
 				DB03E9131D2F210D0098B7A8 /* DesignTestStoryboard.storyboard in Resources */,
 				FAB76FCD1D23DF660012A786 /* cowjumpedoverthemoon.png in Resources */,
 				FAC5076B1D2EAC870092568C /* NewSwipes2.storyboard in Resources */,
+				FAE3368B1D352E34006376AF /* strawberry.png in Resources */,
 				FAB76FB71D230F950012A786 /* penguin.jpg in Resources */,
 				FAC507601D2D97390092568C /* arrow-left@2x.png in Resources */,
 				DBCFB48B1D25714A00200F10 /* Drawing.storyboard in Resources */,
@@ -720,6 +758,7 @@
 				FA76CECD1D32962A006FEE31 /* Custom2CollectionViewCell.swift in Sources */,
 				DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */,
 				DBCFB4921D25764A00200F10 /* Segment.swift in Sources */,
+				FAE336821D33FE32006376AF /* Custom2TableViewCell.swift in Sources */,
 				FAC5074D1D2D96FD0092568C /* ViewStackViewController.swift in Sources */,
 				DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */,
 				DB26E3B51D32FE4B0029CE33 /* DrawingView.swift in Sources */,
@@ -739,21 +778,25 @@
 				DB03E9241D301DAB0098B7A8 /* DesignCreateAccountViewController.swift in Sources */,
 				DBCFB48D1D25729500200F10 /* DrawView.swift in Sources */,
 				FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */,
+				FAE336841D3419E1006376AF /* EndGameCollectionViewCell.swift in Sources */,
 				DB03E9111D2F20FD0098B7A8 /* DesignTestViewController.swift in Sources */,
 				FA0C67D31D26C559007ADE75 /* ProfileCardCollectionViewCell.swift in Sources */,
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
 				F96CBBBE1D33036C006184C8 /* CircleTimer.swift in Sources */,
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
 				F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */,
+				FAE336861D3419FD006376AF /* EndGameTableViewCell.swift in Sources */,
 				F96CBBBC1D32CAB9006184C8 /* JoinGameRuleView.swift in Sources */,
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
 				DB26E3AF1D32FD740029CE33 /* LineSegment.swift in Sources */,
 				F95FCD911D3417C700FD7C83 /* RevisedCircleTimerView.swift in Sources */,
 				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
 				FAB76FC11D234E740012A786 /* SwipeStacksViewController.swift in Sources */,
+				FAE336801D33F9D4006376AF /* EndGameSwipeVC.swift in Sources */,
 				F9B48FEC1D22E68A0031C5FC /* JoinGameViewController.swift in Sources */,
 				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
 				DB03E9221D300AD40098B7A8 /* DesignTestView.swift in Sources */,
+				FA65783A1D33C57A00500690 /* MakeStackViewController.swift in Sources */,
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				FACB722C1D2C2A540029AE1B /* SeeMyProfileViewController.swift in Sources */,
 				FAC507551D2D971A0092568C /* CollectionViewCell.swift in Sources */,
@@ -761,6 +804,7 @@
 				F9E341611D25E9AA00BD0017 /* Server.swift in Sources */,
 				FAC5074B1D2D96F60092568C /* SwipeViewController.swift in Sources */,
 				FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */,
+				FAE336881D342B88006376AF /* EndGameViewImageVC.swift in Sources */,
 				FAC507731D2EEFD20092568C /* LoginVC.swift in Sources */,
 				F9B48FEE1D22E6BE0031C5FC /* StartGameViewController.swift in Sources */,
 				FAC507531D2D97130092568C /* LGHorizontalLinearFlowLayout.swift in Sources */,
