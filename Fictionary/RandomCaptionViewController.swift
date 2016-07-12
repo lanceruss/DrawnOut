@@ -170,7 +170,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     }
     
     func handleDroppedConnection() {
-        
     }
     
 }
