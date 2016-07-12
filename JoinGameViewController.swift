@@ -91,6 +91,9 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
             self.serverStatus = Server(serverStatus: true)
             
             if self.serverStatus?.isServer == true {
+                
+                print("server peerID: \(self.appDelegate.mpcHandler.mcSession.myPeerID)")
+                
                 self.gameDictionary = [self.appDelegate.mpcHandler.mcSession.myPeerID : [:]]
                 for peer in self.appDelegate.mpcHandler.mcSession.connectedPeers {
                     self.gameDictionary[peer] = [:]
@@ -134,6 +137,8 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
                 
                 let serverPeerID = message.objectForKey("key") as? MCPeerID
                 self.serverStatus?.serverPeerID = serverPeerID
+                
+                print("The server's peerID is \(serverStatus?.serverPeerID)")
                 
                 performSegueWithIdentifier("startGame", sender: self)
             }
