@@ -9,12 +9,18 @@
 import UIKit
 import MultipeerConnectivity
 
-class DemoExitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DemoExitViewController: UIViewController {
 
     var exitDictionary = [MCPeerID : [Int : AnyObject]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.medAquamarine()
+        
+        let timer = RevisedCircleTimerView()
+        
+        timer.setUpTimer(45)
 
         // Do any additional setup after loading the view.
     }
@@ -24,17 +30,6 @@ class DemoExitViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellID", forIndexPath: indexPath)
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // d
-        return 0
-    }
     
 
 }
