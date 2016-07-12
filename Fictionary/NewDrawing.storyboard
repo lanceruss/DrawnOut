@@ -129,17 +129,17 @@
                         <outlet property="headerView" destination="gBl-Iu-Rl7" id="z8Q-WW-53B"/>
                         <outlet property="timerLabel" destination="dPC-Fu-kus" id="ANp-y2-ShT"/>
                         <segue destination="7vz-t9-o6L" kind="show" identifier="ToCaption" id="l2L-qx-SpS"/>
-                        <segue destination="obg-Eh-mQF" kind="show" id="khz-av-9dz"/>
+                        <segue destination="obg-Eh-mQF" kind="show" identifier="ExitSegue" id="khz-av-9dz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aC-CE-DQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="171" y="373"/>
         </scene>
-        <!--DemoExit-->
+        <!--EndGameSwipe-->
         <scene sceneID="Gkw-Re-5rg">
             <objects>
-                <viewControllerPlaceholder storyboardName="DemoExit" id="obg-Eh-mQF" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EndGameSwipe" id="obg-Eh-mQF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eio-h7-ey5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="679.5" y="221"/>
