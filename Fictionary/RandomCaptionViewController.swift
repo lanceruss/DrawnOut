@@ -138,6 +138,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
                 if message.objectForKey("string")?.isEqual("segue") == true {
                     performSegueWithIdentifier("ToDrawing", sender: self)
                     
+                } else if message.objectForKey("string")?.isEqual("Start Over") == true {
+                    performSegueWithIdentifier("RestartSegue", sender: self)
                 }
             }
         }
@@ -173,8 +175,22 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         }
     }
     
-    func handleDroppedConnection() {
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? String
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
         
+        print("the dropped peer in handleDroppedConnection is \(peerID)")
+        
+        if state == MCSessionState.NotConnected.stringValue() {
+            let alert = UIAlertController(title: "Start Over", message: "It looks like someone left the game. Unfortunately, that means you'll have to start over.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                
+                self.performSegueWithIdentifier("RestartSegue", sender: self)
+
+            })
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
 }

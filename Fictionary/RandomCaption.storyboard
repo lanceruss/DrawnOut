@@ -118,11 +118,20 @@
                         <outlet property="timerBackView" destination="k7G-uw-deq" id="4jo-Bx-eHo"/>
                         <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
                         <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>
+                        <segue destination="rq7-wC-K1s" kind="show" identifier="RestartSegue" id="B3O-0j-qEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-dE-AJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="555" y="496"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="6O2-lr-8uj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="rq7-wC-K1s" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YM2-U0-Vhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045.5" y="388"/>
         </scene>
         <!--NewDrawing-->
         <scene sceneID="6Rj-yl-gTK">

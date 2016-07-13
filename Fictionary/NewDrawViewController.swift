@@ -136,6 +136,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -292,6 +293,8 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     performSegueWithIdentifier("ToCaption", sender: self)
                     
+                } else if message.objectForKey("string")?.isEqual("Start Over") == true {
+                    performSegueWithIdentifier("RestartSegue", sender: self)
                 }
             }
         }
@@ -359,6 +362,21 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? String
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
+        
+        print("the dropped peer in handleDroppedConnection is \(peerID)")
+        
+        if state == MCSessionState.NotConnected.stringValue() {
+            let alert = UIAlertController(title: "Start Over", message: "It looks like someone left the game. Unfortunately, that means you'll have to start over.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                
+                self.performSegueWithIdentifier("RestartSegue", sender: self)
 
+            })
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
 }
