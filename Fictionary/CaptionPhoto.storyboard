@@ -145,6 +145,7 @@
                         <outlet property="timerLabel" destination="exd-za-uIW" id="Tr7-fF-2vG"/>
                         <segue destination="x4X-vX-Jew" kind="show" identifier="ToDraw" id="TJH-q2-KI6"/>
                         <segue destination="O5n-gi-e4i" kind="show" identifier="ExitSegue" id="rHV-Ag-PS5"/>
+                        <segue destination="Rh2-kK-LY3" kind="show" identifier="RestartSegue" id="Mdq-Xy-TRT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Oc-2V-5eJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,6 +159,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9t-1k-BDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.5" y="224"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="LGw-FJ-cfR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="Rh2-kK-LY3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHY-Bn-ZHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1142.5" y="318"/>
         </scene>
         <!--NewDrawing-->
         <scene sceneID="cwC-Hi-udP">
