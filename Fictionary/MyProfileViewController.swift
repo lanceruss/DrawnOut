@@ -25,7 +25,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileDisplayName.text = player.displayName
+        //profileDisplayName.text = player.displayName
         
 
         // get all my saved images

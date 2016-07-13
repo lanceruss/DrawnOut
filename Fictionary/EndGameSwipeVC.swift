@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MultipeerConnectivity
 
-class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, EndGameCellDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topLabel: UILabel!
@@ -18,6 +18,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var anotherGameButton: UIButton!
     
     var exitDictionary = [MCPeerID : [Int : AnyObject]]()
+    
+    var imageToPass = UIImage()
     
     var items = [AnyObject]()
     var itemsAllPlayers = [AnyObject]()
@@ -38,7 +40,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         self.collectionView.backgroundColor = UIColor.shamrock()
         
         // --------------- ORIGINAL ARRAY OF SAMPLE DATA THAT WORKS -------------------- //
-        
+        /*
         let array1 = ["jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
         let array2 = ["etphonehome", "image2.jpg", "jackandjill", "image1.jpeg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
         let array3 = ["bullinachinacloset", "image4.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
@@ -47,15 +49,10 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         let array6 = ["bullinachinacloset", "image4.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
         
         arrayOfArrays = [array1, array2, array3, array4, array5, array6]
+        */
         
         // ---------------- DICTIONARY OF DATA TO USE ---------------------- //
         
-//        let image1:UIImage = UIImage(named: "strawberry")!
-//        let image2:UIImage = UIImage(named: "kitten")!
-//        let image3:UIImage = UIImage(named: "jackandjill")!
-//        let image4:UIImage = UIImage(named: "etphonehome")!
-        
-
         /*
         let dictionary2 = ["<MCPeerID: 0x14590ff70 DisplayName = John's iPhone>":
             ["2": image3,
@@ -115,7 +112,97 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
                     "4": image4]
         ]
         */ // 1
+
         
+        // ------------------- TEST DATA: JULY 12, 2016 @ 3:22PM ------------------- //
+        // THIS IS THE DATA TO USE TO TEST WITHOUT HAVING TO GO THROUGH THE ENTIRE GAME:
+        // DONT FORGET TO SET THE MAIN APP ENTRY POINT AS "EndGameSwipe"
+
+        
+        let image1:UIImage = UIImage(named: "green.jpg")!
+        let image2:UIImage = UIImage(named: "yellow.jpg")!
+        let image3:UIImage = UIImage(named: "red.jpg")!
+        let image4:UIImage = UIImage(named: "blue.jpg")!
+        let image5:UIImage = UIImage(named: "sample1.jpg")!
+        let image6:UIImage = UIImage(named: "sample2.jpg")!
+        
+        let dictionary2 = [
+            // player 1
+            "<MCPeerID: 0x14590ff70 DisplayName = Ernie's iPhone>":
+                ["2": image1,
+                    "3": "Eating a Burger",
+                    "1": "Finding Nemo in the Ocean",
+                    "4": image2,
+                    "5": image5],
+            
+            // player 2
+            "<MCPeerID: 0x14590ff70 DisplayName = John iPhone>":
+                ["2": image3,
+                    "3": "Eating a Burger",
+                    "1": "Finding Nemo in the Ocean",
+                    "4": image2,
+                    "5": image4],
+            
+            // player 3
+            "<MCPeerID: 0x14590ff70 DisplayName = Caleb iPhone>":
+                ["2": image2,
+                    "3": "Eating a Burger",
+                    "1": "Finding Nemo in the Ocean",
+                    "4": image3,
+                    "5": image6],
+            
+            // player 4
+            "<MCPeerID: 0x14590ff70 DisplayName = Lance's iPhone>":
+                ["2": image6,
+                    "3": "Playing Golf",
+                    "1": "Looking in the Fridge",
+                    "4": image1,
+                    "5": image6]
+        ]
+
+
+        // for multiple player dictionary scenario:
+        for (_,value) in dictionary2 {
+            
+            print("\(exitDictionary)")
+            
+            items = []
+            
+            let dict2 = value as NSDictionary
+            var keyArray = dict2.allKeys
+            
+            keyArray.sortInPlace({ (element1, element2) -> Bool in
+                element1.intValue < element2.intValue
+            })
+            
+            // print(keyArray)
+            
+            print("\nThis is the output ordered list: \n")
+            for key in keyArray {
+                let value1 = dict2["\(key)"]
+                print(value1)
+                items.append(value1!)
+            }
+            
+            print("\n")
+            
+            itemsAllPlayers.append(items)
+            
+        } // end of for key-value in dictionary
+
+        print("itemsAllPlayers:\n")
+        print(itemsAllPlayers)
+        print("# of Players: \(itemsAllPlayers.count)")
+        
+        // ----------------- END OF TEST DATA SCENARIO ------------------------- //
+ 
+        
+        
+        /*
+        // -------------------- REAL GAME DATA FLOW -------------------------- //
+        // THE BELOW FOR LOOP IS USED FOR REAL GAME DICTIONARY FLOW
+        // USE THE CODE BELOW FOR PRODUCTION.
+        // DONT FORGET TO SET THE MAIN APP ENTRY POINT AS "LOGIN"
         // for multiple player dictionary scenario:
         for (_,value) in exitDictionary {
             
@@ -145,10 +232,14 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
             itemsAllPlayers.append(items)
             
         } // end of for key-value in dictionary
-
+        
         print("itemsAllPlayers:\n")
         print(itemsAllPlayers)
         print("# of Players: \(itemsAllPlayers.count)")
+
+        // --------------- END OF REAL GAME DATA FLOW -------------------- //
+        */
+        
         
         
     } // end of viewDidLoad
@@ -162,7 +253,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! EndGameCollectionViewCell
-        
+        cell.delegate = self
         //cell.imageView.image = UIImage(named: stacks[indexPath.row])
         //cell.array = arrayOfArrays[indexPath.row] as! [String]
         cell.array = itemsAllPlayers[indexPath.row] as! [AnyObject]
@@ -174,17 +265,31 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    func rowWasSelectedForImage(imageNamed: UIImage) {
+        print("rowWasSelected FOR IMAGE ******: \(imageNamed)")
+        imageToPass = imageNamed
+        print("imageToPass: \(imageToPass)")
+        performSegueWithIdentifier("imageSegue", sender: self)
+        
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dvc = segue.destinationViewController as! EndGameViewImageVC
-        //dvc.imagePassed =
+        if segue.identifier == "imageSegue" {
+            let dvc = segue.destinationViewController as! EndGameViewImageVC
+            dvc.imagePassed = imageToPass
+        }
     }
     
+    @IBAction func viewMyProfileTapped(sender: AnyObject) {
+        
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("******** COLLECTIONVIEW > cell selected: \(indexPath.row)")
     }
     
-    
+
 
     
 }
