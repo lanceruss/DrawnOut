@@ -12,8 +12,12 @@ protocol EndGameCellDelegate {
     func rowWasSelectedForImage(imageNamed: UIImage)
 }
 
+var arrayToPass = NSArray()
+
 
 class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var viewStackButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView? {
         didSet {
@@ -121,6 +125,13 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
         
     }
+    
+    @IBAction func onViewStackButtonTapped(sender: AnyObject) {
+        print("onViewStackButtonTapped")
+        arrayToPass = array
+    }
+    
+
 
     
 }
