@@ -21,7 +21,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     var seconds = 0
     var timer = NSTimer()
     
-    var captions = ["iPad", "iPhone", "Sim"]
+    var captions = ["beat around the bush", "burn the midnight oil", "cut the mustard", "elvis has left the building", "kill two birds with one stone", "piece of cake", "a ship lost in time", "new york minute", "a slap on the wrist", "a bird in the hand is worth two in the bush", "apple of my eye", "an arm and a leg", "back seat driver", "beating around the bush", "break a leg", "curiosity killed the cat", "don’t look a gift horse in the mouth", "everything but the kitchen sink", "flip the bird", "head over heels", "hocus pocus", "hit the books", "it’s a small world", "kick the bucket", "let the cat out of the bag", "nest egg", "out of the blue", "over my dead body", "put a sock in it", "saved by the bell", "son of a gun", "the best of both worlds", "water under the bridge", "bookworm", "kung fu", "milkshake", "funny bone", "mosquito bite", "pickpocket", "football field", "circus tent", "thunder and lightning", "ice breaker", "ace of spades", "carve a pumpkin", "rudolph the red-nosed reindeer", "astronaut", "cowboy", "teacher", "fire fighter", "police officer", "school bus", "doctor", "ballet dancer", "scientist", "athlete", "space ship", "basketball", "baseball", "pop star", "answer the phone", "surf the internet", "drive a car", "go fishing", "fly a plane", "paper airplane", "read a book", "listen to music", "play guitar", "play piano", "scary clown", "haunted house", "filming a movie", "take a picture", "over the moon"]
     
     var serverStatus: Server?
     var appDelegate: AppDelegate!
@@ -33,6 +33,9 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     
     var turnCounter = 1
     
+    var deviceDropped = false
+    var droppedPeers = [MCPeerID]()
+    
     @IBAction func dismissButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -40,6 +43,10 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //        if let serverID = serverStatus?.serverPeerID {
+        //            print("the server is: \(serverID)")
+        //        }
         
         self.view.backgroundColor = UIColor.pastelGreen()
         
@@ -69,6 +76,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
                 for (key, _) in gameDictionary {
                     arrayForOrder.append(key)
                 }
+                let message = messageHandler.createMessage(string: "arrayForOrder", object: arrayForOrder, keyForDictionary: nil, ready: nil)
+                messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
             }
         }
         
@@ -131,8 +140,19 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
                 
                 
                 if message.objectForKey("string")?.isEqual("segue") == true {
+                    
+                    let receivedDictionary = message.objectForKey("object") as? [MCPeerID : [Int : AnyObject]]
+                    if serverStatus.isServer == false {
+                        if let receivedDictionary = receivedDictionary {
+                            gameDictionary = receivedDictionary
+                        }
+                    }
+                    
                     performSegueWithIdentifier("ToDrawing", sender: self)
                     
+                } else if message.objectForKey("string")?.isEqual("arrayForOrder") == true {
+                    let receivedArray = message.objectForKey("object") as! [MCPeerID]
+                    arrayForOrder = receivedArray
                 }
             }
         }
@@ -143,14 +163,63 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             serverStatus.countForReadyCheck = 0
         }
         
-        let segueMessage = messageHandler.createMessage(string: "segue", object: nil, keyForDictionary: nil, ready: nil)
+        let segueMessage = messageHandler.createMessage(string: "segue", object: gameDictionary, keyForDictionary: nil, ready: nil)
         messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
         
         performSegueWithIdentifier("ToDrawing", sender: self)
         
     }
     
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? String
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
+        
+        print("the dropped peer in handleDroppedConnection is \(peerID)")
+        
+        if state == MCSessionState.NotConnected.stringValue() {            deviceDropped = true
+            if let peerID = peerID {
+                droppedPeers.append(peerID)
+                
+                var peerToRemove: Int?
+                for i in 0 ..< arrayForOrder.count {
+                    if arrayForOrder[i] == peerID {
+                        peerToRemove = i
+                    }
+                }
+                if let peerToRemove = peerToRemove {
+                    arrayForOrder.removeAtIndex(peerToRemove)
+                }
+                
+                let newServer = arrayForOrder.first
+                
+                if let serverPeerID = serverStatus!.serverPeerID {
+                    if peerID == serverPeerID {
+                        
+                        if appDelegate.mpcHandler.mcSession.myPeerID == newServer {
+                            serverStatus?.isServer = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if deviceDropped == true {
+            
+            for peerID in droppedPeers {
+                if let serverStatus = serverStatus {
+                    if serverStatus.isServer == true {
+                        gameDictionary.removeValueForKey(peerID)
+                        
+                        
+                    }
+                    
+                }
+            }
+        }
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
         turnCounter = turnCounter + 1
@@ -162,34 +231,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
             dvc.gameDictionary = gameDictionary
             dvc.arrayForOrder = arrayForOrder
             dvc.shiftingOrderArray = arrayForOrder
-        }
-    }
-    
-    func handleDroppedConnection (notification: NSNotification) {
-        let state = notification.userInfo!["state"] as? MCSessionState
-        let peerID = notification.userInfo!["peerID"] as? MCPeerID
-        
-        if state == MCSessionState.NotConnected {
-            if let serverStatus = serverStatus {
-                if serverStatus.isServer == true {
-                    if let peerID = peerID {
-                        gameDictionary.removeValueForKey(peerID)
-                        
-                        for i in 0 ..< arrayForOrder.count {
-                            if arrayForOrder[i] == peerID {
-                                arrayForOrder.removeAtIndex(i)
-                            }
-                        }
-                    }
-                    
-                    
-                    if let serverPeerID = serverStatus.serverPeerID {
-                        if peerID == serverPeerID {
-                            
-                        }
-                    }
-                }
-            }
         }
     }
     

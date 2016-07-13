@@ -71,8 +71,4 @@ class Server: NSObject {
         return reorderedArray
     }
     
-    func droppedConnection() {
-        
-    }
-    
 }

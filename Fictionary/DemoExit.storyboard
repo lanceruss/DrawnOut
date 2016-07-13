@@ -23,7 +23,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gi-PS-Hz7" customClass="RevisedCircleTimerView" customModule="Fictionary" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gi-PS-Hz7">
                                 <rect key="frame" x="236" y="236" width="128" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -40,6 +40,9 @@
                             <constraint firstItem="hjq-3h-2LU" firstAttribute="centerY" secondItem="VbT-i6-oKt" secondAttribute="centerY" constant="-261.5" id="v87-ry-jhP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="7Gi-PS-Hz7" id="W9s-45-oZA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcF-r3-iHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

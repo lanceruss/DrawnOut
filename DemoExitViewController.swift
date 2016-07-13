@@ -11,6 +11,7 @@ import MultipeerConnectivity
 
 class DemoExitViewController: UIViewController {
 
+    @IBOutlet weak var containerView: UIView!
     var exitDictionary = [MCPeerID : [Int : AnyObject]]()
     
     override func viewDidLoad() {
@@ -18,11 +19,11 @@ class DemoExitViewController: UIViewController {
         
         view.backgroundColor = UIColor.medAquamarine()
         
-        let timer = RevisedCircleTimerView()
         
-        timer.setUpTimer(45)
-
+ 
         // Do any additional setup after loading the view.
+     
+        
     }
 
     override func didReceiveMemoryWarning() {

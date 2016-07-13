@@ -40,6 +40,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     var countdownFinished = false
     
+    var deviceDropped = false
+    var droppedPeers = [MCPeerID]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,8 +68,6 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                         nextPlayer = shiftingOrderArray[i + 1]
                     }
                     let dictionaryToSend = gameDictionary[currentPlayer]
-                    
-                    print("\n dictionaryToSend from \(currentPlayer) \(dictionaryToSend) \n")
                     
                     let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
@@ -94,6 +95,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
     }
     
     func subtractTime() {
@@ -138,7 +140,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     let receivedKey = message.objectForKey("key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
                     
-                    print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
+                    if serverStatus.isServer == false {
+                        dictToDisplayReceivedFrom = receivedKey
+                    }
                     
                     imageView.image = messageDict[turnCounter - 1] as? UIImage
                     
@@ -166,7 +170,12 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     performSegueWithIdentifier("ExitSegue", sender: self)
                     
                 } else if message.objectForKey("string")?.isEqual("ToDraw") == true {
-                    
+                    let receivedDictionary = message.objectForKey("object") as? [MCPeerID : [Int : AnyObject]]
+                    if serverStatus.isServer == false {
+                        if let receivedDictionary = receivedDictionary {
+                            gameDictionary = receivedDictionary
+                        }
+                    }
                     performSegueWithIdentifier("ToDraw", sender: self)
                 }
                 
@@ -228,14 +237,65 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 performSegueWithIdentifier("ExitSegue", sender: self)
             } else {
                 
-                let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, keyForDictionary: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ToDraw", object: gameDictionary, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ToDraw", sender: self)
             }
         }
     }
     
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? String
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
+        
+        print("the dropped peer in handleDroppedConnection is \(peerID)")
+        
+        if state == MCSessionState.NotConnected.stringValue() {            deviceDropped = true
+            if let peerID = peerID {
+                droppedPeers.append(peerID)
+                
+                var peerToRemove: Int?
+                for i in 0 ..< arrayForOrder.count {
+                    if arrayForOrder[i] == peerID {
+                        peerToRemove = i
+                    }
+                }
+                if let peerToRemove = peerToRemove {
+                    arrayForOrder.removeAtIndex(peerToRemove)
+                }
+                
+                let newServer = arrayForOrder.first
+                
+                if let serverPeerID = serverStatus!.serverPeerID {
+                    if peerID == serverPeerID {
+                        
+                        if appDelegate.mpcHandler.mcSession.myPeerID == newServer {
+                            serverStatus?.isServer = true
+                            
+                            print("the new server is \(newServer)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if deviceDropped == true {
+            
+            for peerID in droppedPeers {
+                if let serverStatus = serverStatus {
+                    if serverStatus.isServer == true {
+                        gameDictionary.removeValueForKey(peerID)
+                        
+                        
+                    }
+                    
+                }
+            }
+        }
+        
         NSNotificationCenter.defaultCenter().removeObserver(self)
         turnCounter = turnCounter + 1
         
