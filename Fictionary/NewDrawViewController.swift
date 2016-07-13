@@ -53,6 +53,23 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        drawingView.setNeedsLayout()
+        
+        if drawingView.incrementalImage == nil {
+//        drawingView.incrementalImage = UIImage(named:"white")
+
+//        UIGraphicsBeginImageContextWithOptions(drawingView.bounds.size, true, 0.0)
+//        print("drawinView.bounds.size \(drawingView.bounds.size)")
+//        print("drawinView.bounds \(drawingView.bounds)")
+//
+//        let rectpath: UIBezierPath = UIBezierPath(rect: drawingView.bounds)
+//        UIColor.whiteColor().setFill()
+//        rectpath.fill()
+//        
+//        drawingView.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        }
+
         headerView.backgroundColor = UIColor.pastelGreen()
         captionView.backgroundColor = UIColor.medAquamarine()
         
@@ -129,6 +146,19 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         // Might actually need this this time.
     }
     
+    override func viewDidLayoutSubviews() {
+    
+        drawingView.setNeedsLayout()
+        
+        if drawingView.incrementalImage == nil {
+        UIGraphicsBeginImageContext(drawingView.bounds.size)
+        drawingView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        drawingView.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        }
+    }
+
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = colorTableView.dequeueReusableCellWithIdentifier("cellid", forIndexPath: indexPath)
@@ -146,7 +176,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func didTapView(view: ColorPaletteView) {
-        print("didTapView")
+        //print("didTapView")
         if colorPaletteViewExpanded == false {
             
             let newHeight = drawingView.bounds.size.height - 16
@@ -166,7 +196,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("didSelectRow")
+        //print("didSelectRow")
         if colorPaletteViewExpanded == true {
             
             ColorPaletteView.animateWithDuration(3.0, delay: 0.0, options: .CurveEaseIn, animations: {
@@ -210,10 +240,12 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                         
                         let message = messageHandler.createMessage(string: "timer_up", object: passImage, keyForDictionary: keyForReceivedDictionary, ready: nil)
                         messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-                        
+                        //let passImage = UIImage(CGImage: self.drawingView.incrementalImage!.CGImage!)
+
                         serverStatus?.isReady()
                     }
-                }}
+                }
+            }
             
         }
     }

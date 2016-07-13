@@ -1,17 +1,16 @@
 //
-//  EndGameTableViewCell.swift
+//  CardCustomTableViewCell.swift
 //  Fictionary
 //
-//  Created by Ernie Barojas on 7/11/16.
+//  Created by Ernie Barojas on 7/13/16.
 //  Copyright © 2016 Lance Russ. All rights reserved.
 //
 
 import UIKit
 
-class EndGameTableViewCell: UITableViewCell {
+class CardCustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var imageView5: UIImageView!
-    @IBOutlet weak var textCaption: UITextView!
+    @IBOutlet weak var cardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

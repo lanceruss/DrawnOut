@@ -65,6 +65,13 @@
 		FA0C67D71D26F9B4007ADE75 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */; };
 		FA65783A1D33C57A00500690 /* MakeStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6578391D33C57A00500690 /* MakeStackViewController.swift */; };
 		FA76CECD1D32962A006FEE31 /* Custom2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */; };
+		FA8F0CF21D3653B900919DD6 /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CEC1D3653B900919DD6 /* green.jpg */; };
+		FA8F0CF31D3653B900919DD6 /* yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CED1D3653B900919DD6 /* yellow.jpg */; };
+		FA8F0CF41D3653B900919DD6 /* red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CEE1D3653B900919DD6 /* red.jpg */; };
+		FA8F0CF51D3653B900919DD6 /* blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CEF1D3653B900919DD6 /* blue.jpg */; };
+		FA8F0CF61D3653B900919DD6 /* sample1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CF01D3653B900919DD6 /* sample1.jpg */; };
+		FA8F0CF71D3653B900919DD6 /* sample2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8F0CF11D3653B900919DD6 /* sample2.jpg */; };
+		FA8F0CF91D369A3400919DD6 /* CardCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */; };
 		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
 		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
 		FAB76FB71D230F950012A786 /* penguin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB61D230F950012A786 /* penguin.jpg */; };
@@ -188,6 +195,13 @@
 		FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		FA6578391D33C57A00500690 /* MakeStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeStackViewController.swift; sourceTree = "<group>"; };
 		FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom2CollectionViewCell.swift; sourceTree = "<group>"; };
+		FA8F0CEC1D3653B900919DD6 /* green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green.jpg; sourceTree = "<group>"; };
+		FA8F0CED1D3653B900919DD6 /* yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yellow.jpg; sourceTree = "<group>"; };
+		FA8F0CEE1D3653B900919DD6 /* red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = red.jpg; sourceTree = "<group>"; };
+		FA8F0CEF1D3653B900919DD6 /* blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blue.jpg; sourceTree = "<group>"; };
+		FA8F0CF01D3653B900919DD6 /* sample1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample1.jpg; sourceTree = "<group>"; };
+		FA8F0CF11D3653B900919DD6 /* sample2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample2.jpg; sourceTree = "<group>"; };
+		FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCustomTableViewCell.swift; sourceTree = "<group>"; };
 		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
 		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
 		FAB76FB61D230F950012A786 /* penguin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin.jpg; sourceTree = "<group>"; };
@@ -556,6 +570,7 @@
 				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
 				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
+				FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -570,6 +585,12 @@
 				FAE336871D342B88006376AF /* EndGameViewImageVC.swift */,
 				FAE336891D352E34006376AF /* strawberry.png */,
 				FAE3368A1D352E34006376AF /* kitten.png */,
+				FA8F0CEC1D3653B900919DD6 /* green.jpg */,
+				FA8F0CED1D3653B900919DD6 /* yellow.jpg */,
+				FA8F0CEE1D3653B900919DD6 /* red.jpg */,
+				FA8F0CEF1D3653B900919DD6 /* blue.jpg */,
+				FA8F0CF01D3653B900919DD6 /* sample1.jpg */,
+				FA8F0CF11D3653B900919DD6 /* sample2.jpg */,
 			);
 			name = EndGameStacks;
 			sourceTree = "<group>";
@@ -609,7 +630,7 @@
 				TargetAttributes = {
 					DBCFB4181D22DF5500200F10 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = U7TP39P5Y5;
+						DevelopmentTeam = 2R38GBAXHV;
 					};
 				};
 			};
@@ -643,6 +664,7 @@
 				FAE3368C1D352E34006376AF /* kitten.png in Resources */,
 				FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */,
 				FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */,
+				FA8F0CF51D3653B900919DD6 /* blue.jpg in Resources */,
 				DB03E9161D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf in Resources */,
 				FA0C67CF1D26ACC2007ADE75 /* MyProfile.storyboard in Resources */,
 				FAB76FD51D23DFA30012A786 /* image1.jpeg in Resources */,
@@ -654,6 +676,7 @@
 				FAB76FDA1D23DFA30012A786 /* image6.jpg in Resources */,
 				FAC5074F1D2D97040092568C /* ViewController.xib in Resources */,
 				FA0C67C71D259B20007ADE75 /* Game.storyboard in Resources */,
+				FA8F0CF71D3653B900919DD6 /* sample2.jpg in Resources */,
 				FAC507631D2D97390092568C /* arrow-right@2x.png in Resources */,
 				FAB76FC91D23DF660012A786 /* everythingbutthesink.png in Resources */,
 				FAC5075F1D2D97390092568C /* arrow-left.png in Resources */,
@@ -661,6 +684,7 @@
 				F9E0F9421D2BFD0400229202 /* JoinGameStartGame.storyboard in Resources */,
 				FAC5076F1D2EB6690092568C /* test2.storyboard in Resources */,
 				FAC507571D2D97220092568C /* CollectionViewCell.xib in Resources */,
+				FA8F0CF41D3653B900919DD6 /* red.jpg in Resources */,
 				FAB76FD71D23DFA30012A786 /* image3.jpg in Resources */,
 				FAC507641D2D97390092568C /* arrow-right@3x.png in Resources */,
 				FA0C67CC1D267860007ADE75 /* Demo.storyboard in Resources */,
@@ -675,14 +699,17 @@
 				FAE3368B1D352E34006376AF /* strawberry.png in Resources */,
 				FAB76FB71D230F950012A786 /* penguin.jpg in Resources */,
 				FAC507601D2D97390092568C /* arrow-left@2x.png in Resources */,
+				FA8F0CF21D3653B900919DD6 /* green.jpg in Resources */,
 				DBCFB48B1D25714A00200F10 /* Drawing.storyboard in Resources */,
 				FAB76FBF1D234E680012A786 /* SwipeStacks.storyboard in Resources */,
+				FA8F0CF31D3653B900919DD6 /* yellow.jpg in Resources */,
 				DB03E9181D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf in Resources */,
 				FAB76FDB1D23DFA30012A786 /* image7.png in Resources */,
 				DB03E91C1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				FAB76FBA1D234A740012A786 /* Timer.storyboard in Resources */,
 				FACB72261D2C1A0C0029AE1B /* Login.storyboard in Resources */,
 				FAC507511D2D970C0092568C /* Storyboard.storyboard in Resources */,
+				FA8F0CF61D3653B900919DD6 /* sample1.jpg in Resources */,
 				DB26E3B31D32FE0F0029CE33 /* NewDrawing.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
 				F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */,
@@ -789,6 +816,7 @@
 				F9E341631D2622CF00BD0017 /* MessageHandler.swift in Sources */,
 				DB03E9221D300AD40098B7A8 /* DesignTestView.swift in Sources */,
 				FA65783A1D33C57A00500690 /* MakeStackViewController.swift in Sources */,
+				FA8F0CF91D369A3400919DD6 /* CardCustomTableViewCell.swift in Sources */,
 				F9B48FF71D2344880031C5FC /* ArchiverHelper.swift in Sources */,
 				FACB722C1D2C2A540029AE1B /* SeeMyProfileViewController.swift in Sources */,
 				FAC507551D2D971A0092568C /* CollectionViewCell.swift in Sources */,

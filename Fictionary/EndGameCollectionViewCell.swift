@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol EndGameCellDelegate {
+    func rowWasSelectedForImage(imageNamed: UIImage)
+}
+
+
 class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView? {
@@ -16,9 +21,18 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
             tableView?.dataSource = self
         }
     }
+    
+    var delegate: EndGameCellDelegate?
+    
+    func rowWasSelectedForImage(imageNamed: UIImage) {
+        delegate?.rowWasSelectedForImage(imageNamed)
+    }
+
+    
     @IBOutlet weak var testCVLabel: UILabel!
     
     //var array = ["jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
+    
     var array = [AnyObject]()
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,11 +45,27 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
         if let image = array[indexPath.row] as? UIImage {
             //cell.imageView?.image = items[indexPath.row] as! UIImage
+            cell.textCaption.hidden = true
+            cell.imageView5.hidden = false
+            tableView.rowHeight = 250
             cell.imageView5.image = array[indexPath.row] as! UIImage
         } else {
             //cell.textLabel?.text = "\(items[indexPath.row])"
+            
+            // image from text
+            /*
             let image1 = drawImagesAndText("\(array[indexPath.row])")
+            tableView.rowHeight = 100
             cell.imageView5?.image = image1
+            */
+            
+            // just display text
+            cell.imageView5.hidden = true
+            cell.textCaption.hidden = false
+            tableView.rowHeight = 100
+            cell.textCaption.text = "\(array[indexPath.row])"
+            
+            
         }
         
         return cell
@@ -56,9 +86,9 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .Center
         
-        let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 48)!, NSParagraphStyleAttributeName: paragraphStyle]
+        let attrs = [NSFontAttributeName: UIFont(name: "SF UI Text", size: 72)!, NSParagraphStyleAttributeName: paragraphStyle]
         
-        string.drawWithRect(CGRect(x: 32, y: 32, width: 400, height: 200), options: .UsesLineFragmentOrigin, attributes: attrs, context: nil)
+        string.drawWithRect(CGRect(x: 32, y: 100, width: 400, height: 400), options: .UsesLineFragmentOrigin, attributes: attrs, context: nil)
         
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -67,18 +97,30 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
     }
 
-    
-    
-
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         print("****** didSelectRowAtIndexPath: \(indexPath) - \(array[indexPath.row])")
+        
+        if let image = array[indexPath.row] as? UIImage {
+            rowWasSelectedForImage(array[indexPath.row] as! UIImage)
+            
+        } else {
+            print("Item not an image so no action on didselectrow")
+        }
+        
+
+        
+        
         //print("from: \(array)")
         //            self.messageLabel.text = array[indexPath.row]
         
         //rowWasSelectedForImage("\(array[indexPath.row])")
         
+        
+        
     }
+
     
 }

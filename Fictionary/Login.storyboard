@@ -600,6 +600,9 @@
                                         <state key="normal" title="CARDS">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCardsButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="dDe-v4-LIe"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC1-8i-QNJ">
                                         <rect key="frame" x="505" y="0.0" width="95" height="34"/>
@@ -612,6 +615,9 @@
                                         <state key="normal" title="STACKS">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onStacksButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="rKO-El-3F4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -681,6 +687,38 @@
                                     <action selector="onBackButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="dJP-7Q-Ar4"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wCl-S1-BEj">
+                                <rect key="frame" x="0.0" y="129" width="600" height="471"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="176" id="pRF-XI-4Du" customClass="CardCustomTableViewCell" customModule="Fictionary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="176"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRF-XI-4Du" id="Bon-bc-vP6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-fI-sHh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3Gd-fI-sHh" secondAttribute="bottom" id="37h-Nd-FAb"/>
+                                                <constraint firstItem="3Gd-fI-sHh" firstAttribute="top" secondItem="Bon-bc-vP6" secondAttribute="top" id="745-db-WiO"/>
+                                                <constraint firstItem="3Gd-fI-sHh" firstAttribute="leading" secondItem="Bon-bc-vP6" secondAttribute="leading" id="WGe-kG-V1z"/>
+                                                <constraint firstAttribute="trailing" secondItem="3Gd-fI-sHh" secondAttribute="trailing" id="etp-qt-cof"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardImageView" destination="3Gd-fI-sHh" id="jce-gL-ZbO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ag8-TN-YsP" id="78i-1L-WAe"/>
+                                    <outlet property="delegate" destination="ag8-TN-YsP" id="wbB-sx-Zvc"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -691,11 +729,15 @@
                             <constraint firstItem="aTm-Gf-YWy" firstAttribute="trailing" secondItem="HiL-VJ-ZZc" secondAttribute="trailingMargin" id="8ra-Bb-cvm"/>
                             <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="PFd-T6-Nys" secondAttribute="bottom" id="He4-TP-8pn"/>
                             <constraint firstItem="7AG-ob-taE" firstAttribute="top" secondItem="xNf-FD-YE6" secondAttribute="bottom" constant="26" id="IM2-2w-dkU"/>
+                            <constraint firstAttribute="trailing" secondItem="wCl-S1-BEj" secondAttribute="trailing" id="PQf-VT-qub"/>
+                            <constraint firstItem="wCl-S1-BEj" firstAttribute="top" secondItem="7AG-ob-taE" secondAttribute="bottom" constant="2" id="Psv-Vt-6JL"/>
                             <constraint firstAttribute="trailing" secondItem="ja2-VO-ewD" secondAttribute="trailing" constant="251" id="U0y-oe-1sD"/>
+                            <constraint firstItem="wCl-S1-BEj" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="ZLH-VH-I3o"/>
                             <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="ja2-VO-ewD" secondAttribute="bottom" constant="498" id="c4r-iJ-4kb"/>
                             <constraint firstAttribute="trailing" secondItem="PFd-T6-Nys" secondAttribute="trailing" id="ds4-GC-Ddu"/>
                             <constraint firstItem="7AG-ob-taE" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="j6M-bE-TjR"/>
                             <constraint firstItem="xNf-FD-YE6" firstAttribute="leading" secondItem="T3n-23-1qU" secondAttribute="leading" id="jHg-Hu-hI9"/>
+                            <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="wCl-S1-BEj" secondAttribute="bottom" id="jal-kR-ET6"/>
                             <constraint firstItem="xNf-FD-YE6" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leadingMargin" id="kIY-zk-ear"/>
                             <constraint firstItem="7AG-ob-taE" firstAttribute="top" secondItem="HiL-VJ-ZZc" secondAttribute="top" constant="93" id="kid-Nv-fwx"/>
                             <constraint firstItem="PFd-T6-Nys" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="sYf-7R-Uvs"/>
@@ -704,8 +746,12 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="aTm-Gf-YWy" id="TWg-ue-uSg"/>
+                        <outlet property="cardTableView" destination="wCl-S1-BEj" id="QxL-qh-KMY"/>
+                        <outlet property="cardsButton" destination="461-5E-AAB" id="jgY-0w-yVj"/>
                         <outlet property="collectionView" destination="PFd-T6-Nys" id="6Gf-km-1e3"/>
                         <outlet property="nameLabel" destination="xNf-FD-YE6" id="bTl-nR-mps"/>
+                        <outlet property="recentMatchesButton" destination="qGa-2v-hoF" id="UA2-4k-8n7"/>
+                        <outlet property="stacksButton" destination="NC1-8i-QNJ" id="Rtl-7g-6JU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdj-LH-bsL" userLabel="First Responder" sceneMemberID="firstResponder"/>

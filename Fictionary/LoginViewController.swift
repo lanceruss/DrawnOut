@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         player = nil
         
         print("** REMINDER THAT WE LOG OUT ALL FIRAUTH SESSION - TESTING / DEBUGGING ***")
-        try! FIRAuth.auth()!.signOut()
+        //try! FIRAuth.auth()!.signOut()
         
         debugInfo.hidden = true
         deletePlayerObjectsButton.hidden = true
