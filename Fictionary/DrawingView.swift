@@ -45,9 +45,9 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        print("shouldRecieveTouch")
+        //print("shouldRecieveTouch")
         if touch.view == gestureRecognizer.view {
-            print("true")
+            //print("true")
             return true
         }
         return false
@@ -63,7 +63,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
     }
 
     @objc private func handleTap(sender: UITapGestureRecognizer) {
-        print("DrawingViewTap")
+        //print("DrawingViewTap")
         let point = sender.locationInView(sender.view)
         
         if sender.state == .Ended {
@@ -247,8 +247,18 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         if imageHistory.count > 0 {
             imageHistory.removeLast()
             if imageHistory.count == 0 {
+                
                 incrementalImage = nil
+                
                 setNeedsDisplay()
+                
+                if incrementalImage == nil {
+                    UIGraphicsBeginImageContext(self.bounds.size)
+                    self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+                    incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                }
+                
             } else  {
                 incrementalImage = imageHistory.last
                 setNeedsDisplay()

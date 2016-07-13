@@ -9,6 +9,9 @@
         <mutableArray key="SF-Compact-Text-Bold.otf">
             <string>SFCompactText-Bold</string>
         </mutableArray>
+        <mutableArray key="SF-UI-Text-Bold.otf">
+            <string>SFUIText-Bold</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Random Caption View Controller-->
@@ -24,19 +27,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJd-Ch-Ham">
-                                <rect key="frame" x="0.0" y="289.5" width="600" height="20.5"/>
+                                <rect key="frame" x="0.0" y="289" width="600" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-pK-lWO">
-                                <rect key="frame" x="557" y="28" width="23" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7G-uw-deq">
+                                <rect key="frame" x="529" y="29" width="206" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="23" id="Ewa-Q2-TaY"/>
-                                    <constraint firstAttribute="height" constant="21" id="NnP-YP-adN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="AOu-BG-UKc"/>
+                                    <constraint firstAttribute="height" constant="55" id="Eph-ih-fjC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="206" id="JxK-qs-S1n"/>
+                                    <constraint firstAttribute="width" constant="206" id="Y5q-Aj-Xj0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AOu-BG-UKc"/>
+                                        <exclude reference="JxK-qs-S1n"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-pK-lWO">
+                                <rect key="frame" x="559" y="39" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Ewa-Q2-TaY"/>
+                                    <constraint firstAttribute="height" constant="35" id="NnP-YP-adN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a prompt or hit the &quot;RANDOM&quot; button..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vic-es-ToX">
@@ -62,11 +81,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2ac-pK-lWO" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="8" id="3t8-I3-ZaL"/>
+                            <constraint firstItem="2ac-pK-lWO" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="19" id="3t8-I3-ZaL"/>
                             <constraint firstItem="vic-es-ToX" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="749-Fg-hkv"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" constant="63" id="Bnq-4d-DfW"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="EtR-DA-H4p"/>
-                            <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="20" id="Lhf-Ru-dDc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k7G-uw-deq" secondAttribute="trailing" constant="-155" id="H45-Zc-RxG"/>
+                            <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="1" id="Lhf-Ru-dDc"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="TiY-zx-YJA"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="19" id="WVX-wE-2sq"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="Zvu-tI-sLG"/>
@@ -79,6 +99,7 @@
                             <constraint firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" symbolic="YES" id="rXQ-q1-2cV"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="sdU-YW-mx5"/>
                             <constraint firstItem="vic-es-ToX" firstAttribute="trailing" secondItem="uqS-eA-MHk" secondAttribute="trailingMargin" id="wne-hh-UUt"/>
+                            <constraint firstItem="k7G-uw-deq" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="9" id="yX1-yG-y6j"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -94,6 +115,7 @@
                     <connections>
                         <outlet property="captionTextField" destination="vic-es-ToX" id="9J7-Xg-zuC"/>
                         <outlet property="randomButton" destination="TSd-p7-BCc" id="edI-ya-wph"/>
+                        <outlet property="timerBackView" destination="k7G-uw-deq" id="4jo-Bx-eHo"/>
                         <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
                         <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>
                     </connections>

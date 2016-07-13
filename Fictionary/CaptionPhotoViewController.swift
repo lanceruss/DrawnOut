@@ -13,6 +13,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
+    @IBOutlet var behindImageView: UIView!
+    @IBOutlet var backTimerView: UIView!
+    @IBOutlet var headerView: UIView!
     
     var receivedArray: Array = [AnyObject]()
     
@@ -20,6 +23,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     var secondsAllowed = 25
     var seconds = 0
     var timer = NSTimer()
+    var shadowIsSet: Bool = false
     
     var serverStatus: Server?
     var appDelegate: AppDelegate!
@@ -42,8 +46,13 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //view.addSubview(behindImageView)
+        //view.setNeedsLayout()
+        behindImageView.layoutIfNeeded()
+
         
-        self.view.backgroundColor = UIColor.pastelGreen()
+        headerView.backgroundColor = UIColor.pastelGreen()
+        //view.setNeedsLayout()
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
@@ -83,8 +92,6 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             }
         }
         
-        
-        
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
@@ -96,11 +103,55 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
     }
     
+    override func viewDidLayoutSubviews() {
+        
+        behindImageView.layoutIfNeeded()
+        backTimerView.layoutIfNeeded()
+        headerView.layoutIfNeeded()
+        
+        backTimerView.backgroundColor = UIColor.medAquamarine()
+        backTimerView.layer.cornerRadius = 0.5 * backTimerView.bounds.size.height
+        
+        if shadowIsSet == false {
+        self.behindImageView.backgroundColor = UIColor.medAquamarine()
+        self.view.backgroundColor = UIColor.pastelGreen()
+        
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.frame = behindImageView.bounds
+        
+        shadowLayer.shadowColor = UIColor(white: 0, alpha: 1).CGColor
+        shadowLayer.shadowOffset = CGSizeMake(0.0, 0.0)
+        shadowLayer.shadowOpacity = 0.25
+        shadowLayer.shadowRadius = 5
+        
+        shadowLayer.fillRule = kCAFillRuleEvenOdd
+        
+        let path = CGPathCreateMutable();
+        
+        CGPathAddRect(path, nil, CGRectInset(behindImageView.bounds, -42, -42))
+        
+        let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).CGPath
+        CGPathAddPath(path, nil, someInnerPath)
+        CGPathCloseSubpath(path)
+        
+        shadowLayer.path = path
+        
+        behindImageView.layer.addSublayer(shadowLayer)
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = someInnerPath
+        shadowLayer.mask = maskLayer
+        
+        shadowIsSet = true
+        }
+    }
+    
     func subtractTime() {
         
         seconds-=1
         timerLabel.text = "\(seconds)"
-        
+        timerLabel.textAlignment = NSTextAlignment.Left
+
         if seconds == 0 {
             timer.invalidate()
             
@@ -180,22 +231,27 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         }
         
         segueSwitch()
-        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         self.captionTextField.resignFirstResponder()
         return true
     }
     
     
     func keyboardWillHide(sender: NSNotification) {
+        
         let userInfo: [NSObject : AnyObject] = sender.userInfo!
         let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         self.view.frame.origin.y += keyboardSize.height
+        self.backTimerView.frame.origin.y -= keyboardSize.height
+        self.timerLabel.frame.origin.y -= keyboardSize.height
+        self.headerView.frame.origin.y -= keyboardSize.height
     }
     
     func keyboardWillShow(sender: NSNotification) {
+        
         let userInfo: [NSObject : AnyObject] = sender.userInfo!
         let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
@@ -203,15 +259,22 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if keyboardSize.height == offset.height {
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                 self.view.frame.origin.y -= keyboardSize.height
+                self.backTimerView.frame.origin.y += keyboardSize.height
+                self.timerLabel.frame.origin.y += keyboardSize.height
+                self.headerView.frame.origin.y += keyboardSize.height
             })
         } else {
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                 self.view.frame.origin.y += keyboardSize.height - offset.height
+                self.backTimerView.frame.origin.x -= keyboardSize.height - offset.height
+                self.timerLabel.frame.origin.x -= keyboardSize.height - offset.height
+                self.headerView.frame.origin.x -= keyboardSize.height - offset.height
             })
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
     }

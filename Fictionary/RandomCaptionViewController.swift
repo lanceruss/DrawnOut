@@ -14,6 +14,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     @IBOutlet weak var captionTextField: UITextField!
     
     @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var timerBackView: UIView!
     
     @IBOutlet weak var randomButton: UIButton!
     
@@ -42,6 +43,9 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.pastelGreen()
+        
+        timerBackView.backgroundColor = UIColor.shamrock()
+        timerBackView.layer.cornerRadius = 0.5 * timerBackView.bounds.size.height
         
         randomButton.backgroundColor = UIColor.shamrock()
         randomButton.layer.cornerRadius = 0.5 * randomButton.bounds.size.height
