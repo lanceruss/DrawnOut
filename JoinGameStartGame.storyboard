@@ -30,13 +30,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi1-Wv-OVf">
-                                <rect key="frame" x="166" y="449.5" width="269" height="61"/>
+                                <rect key="frame" x="166" y="449" width="269" height="61"/>
                                 <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="ANS-gU-Ndw"/>
                                     <constraint firstAttribute="width" constant="269" id="gHa-8L-QJE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="20"/>
                                 <state key="normal" title="LET'S PLAY!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -44,32 +44,29 @@
                                     <action selector="startGameButtonTapped:" destination="f7V-Fl-HhR" eventType="touchUpInside" id="Z3I-fS-JzP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Click &quot;Invite Players&quot; to  connect with friends " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH6-D6-OJh">
-                                <rect key="frame" x="0.0" y="82" width="600" height="48"/>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click &quot;Invite Players&quot; to   connect with friends " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH6-D6-OJh">
+                                <rect key="frame" x="0.0" y="130" width="600" height="41"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wait for an invitation  to play" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88v-1g-t90">
-                                <rect key="frame" x="0.0" y="191" width="600" height="48"/>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05X-uu-ExR">
-                                <rect key="frame" x="0.0" y="149" width="600" height="23"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Italic" family="SF UI Text" pointSize="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05X-uu-ExR">
+                                <rect key="frame" x="0.0" y="178.5" width="600" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="lVd-b6-bff"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Italic" family="SF UI Text" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itD-LO-BH6">
-                                <rect key="frame" x="167" y="369.5" width="269" height="61"/>
+                                <rect key="frame" x="167" y="369" width="269" height="61"/>
                                 <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="3zy-YP-Afu"/>
                                     <constraint firstAttribute="width" constant="269" id="yCA-Ba-zrO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="20"/>
                                 <state key="normal" title="INVITE PLAYERS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -77,23 +74,50 @@
                                     <action selector="joinGameButtonTapped:" destination="f7V-Fl-HhR" eventType="touchUpInside" id="L5I-Bv-PXh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxY-32-04q">
+                                <rect key="frame" x="0.0" y="20" width="600" height="102"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ga-HS-sen" userLabel="BackButtonView">
+                                        <rect key="frame" x="-145" y="23.5" width="206" height="55"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="206" id="hI3-l2-8UP"/>
+                                            <constraint firstAttribute="height" constant="55" id="j6I-T4-ms6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6Ga-HS-sen" firstAttribute="leading" secondItem="fxY-32-04q" secondAttribute="leading" constant="-145" id="Nfh-Az-FMQ"/>
+                                    <constraint firstItem="6Ga-HS-sen" firstAttribute="centerY" secondItem="fxY-32-04q" secondAttribute="centerY" id="WWT-FI-jNb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wait for an invitation  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88v-1g-t90">
+                                <rect key="frame" x="0.0" y="209.5" width="600" height="21"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="88v-1g-t90" firstAttribute="centerY" secondItem="DaA-i0-fZd" secondAttribute="centerY" constant="-85" id="3Cc-VX-brU"/>
+                            <constraint firstItem="88v-1g-t90" firstAttribute="centerY" secondItem="DaA-i0-fZd" secondAttribute="centerY" constant="-80" id="3Cc-VX-brU"/>
+                            <constraint firstItem="88v-1g-t90" firstAttribute="top" secondItem="05X-uu-ExR" secondAttribute="bottom" constant="8" id="6qW-Cf-FAj"/>
                             <constraint firstItem="Gi1-Wv-OVf" firstAttribute="centerX" secondItem="DaA-i0-fZd" secondAttribute="centerX" id="77y-CH-0tr"/>
                             <constraint firstItem="itD-LO-BH6" firstAttribute="top" secondItem="weE-pC-rP5" secondAttribute="bottom" constant="385" id="7YJ-5I-Rqz"/>
                             <constraint firstAttribute="trailing" secondItem="aH6-D6-OJh" secondAttribute="trailing" id="801-E2-77m"/>
                             <constraint firstItem="aH6-D6-OJh" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leading" id="8vS-Dw-3Sq"/>
                             <constraint firstItem="l2r-M6-ezt" firstAttribute="top" secondItem="Gi1-Wv-OVf" secondAttribute="bottom" constant="71" id="9PG-0E-aX5"/>
+                            <constraint firstItem="05X-uu-ExR" firstAttribute="leading" secondItem="88v-1g-t90" secondAttribute="leading" id="DM9-b1-53m"/>
+                            <constraint firstItem="fxY-32-04q" firstAttribute="top" secondItem="weE-pC-rP5" secondAttribute="bottom" id="MGj-V4-yte"/>
                             <constraint firstItem="88v-1g-t90" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leading" id="TM6-gk-KOX"/>
-                            <constraint firstAttribute="trailing" secondItem="05X-uu-ExR" secondAttribute="trailing" id="U0v-bk-QNs"/>
-                            <constraint firstItem="05X-uu-ExR" firstAttribute="top" secondItem="aH6-D6-OJh" secondAttribute="bottom" constant="19" id="f6S-qj-aac"/>
+                            <constraint firstItem="aH6-D6-OJh" firstAttribute="top" secondItem="fxY-32-04q" secondAttribute="bottom" constant="8" id="Ykc-Be-RTq"/>
+                            <constraint firstItem="05X-uu-ExR" firstAttribute="top" secondItem="aH6-D6-OJh" secondAttribute="bottom" constant="8" symbolic="YES" id="f3v-Eb-5H3"/>
+                            <constraint firstItem="05X-uu-ExR" firstAttribute="trailing" secondItem="88v-1g-t90" secondAttribute="trailing" id="jiR-Ro-LoL"/>
                             <constraint firstItem="Gi1-Wv-OVf" firstAttribute="top" secondItem="itD-LO-BH6" secondAttribute="bottom" constant="19" id="mrb-uj-xEe"/>
-                            <constraint firstItem="05X-uu-ExR" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leading" id="qMn-Hf-doN"/>
+                            <constraint firstItem="fxY-32-04q" firstAttribute="leading" secondItem="DaA-i0-fZd" secondAttribute="leadingMargin" constant="-20" id="rYr-Hl-FZK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fxY-32-04q" secondAttribute="trailing" constant="-20" id="rir-9X-xtf"/>
                             <constraint firstAttribute="trailing" secondItem="88v-1g-t90" secondAttribute="trailing" id="sNU-ay-eQf"/>
-                            <constraint firstItem="88v-1g-t90" firstAttribute="top" secondItem="05X-uu-ExR" secondAttribute="bottom" constant="19" id="sa2-rB-ohQ"/>
-                            <constraint firstItem="itD-LO-BH6" firstAttribute="centerX" secondItem="DaA-i0-fZd" secondAttribute="centerX" constant="1.5" id="uQi-OF-Lrk"/>
+                            <constraint firstItem="itD-LO-BH6" firstAttribute="centerX" secondItem="DaA-i0-fZd" secondAttribute="centerX" constant="2" id="uQi-OF-Lrk"/>
                             <constraint firstItem="itD-LO-BH6" firstAttribute="centerY" secondItem="DaA-i0-fZd" secondAttribute="centerY" constant="100" id="z8b-as-K4u"/>
                         </constraints>
                         <variation key="default">
@@ -104,6 +128,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backButtonView" destination="6Ga-HS-sen" id="hbC-tP-XLS"/>
                         <outlet property="invitePlayersButton" destination="itD-LO-BH6" id="LJq-ds-BPX"/>
                         <outlet property="letsPlayButton" destination="Gi1-Wv-OVf" id="HUB-kr-XqJ"/>
                         <segue destination="Dae-Kl-rfp" kind="show" identifier="startGame" id="NA2-GD-U6O"/>

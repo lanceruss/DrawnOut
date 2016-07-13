@@ -29,6 +29,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     @IBOutlet weak var invitePlayersButton: UIButton!
     @IBOutlet weak var letsPlayButton: UIButton!
     
+    @IBOutlet weak var backButtonView: UIView!
     
     var serverStatus: Server?
     
@@ -44,6 +45,9 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         
         letsPlayButton.backgroundColor = UIColor.shamrock()
         letsPlayButton.layer.cornerRadius = 0.5 * letsPlayButton.bounds.size.height
+        
+        backButtonView.backgroundColor = UIColor.medAquamarine()
+        backButtonView.layer.cornerRadius = 0.5 * backButtonView.bounds.size.height
         
         // Get an instance of the appDelegate (which houses the mpcHandler so the whole app has access to it) and set the mpcHandlerDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
