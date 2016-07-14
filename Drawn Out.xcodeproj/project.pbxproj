@@ -159,7 +159,7 @@
 		DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewDrawing.storyboard; sourceTree = "<group>"; };
 		DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
-		DBCFB4191D22DF5500200F10 /* Fictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBCFB4191D22DF5500200F10 /* Drawn Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawn Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCFB4211D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBCFB4231D22DF5500200F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		DBCFB41A1D22DF5500200F10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DBCFB4191D22DF5500200F10 /* Fictionary.app */,
+				DBCFB4191D22DF5500200F10 /* Drawn Out.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -622,9 +622,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DBCFB4181D22DF5500200F10 /* Fictionary */ = {
+		DBCFB4181D22DF5500200F10 /* Drawn Out */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DBCFB42B1D22DF5500200F10 /* Build configuration list for PBXNativeTarget "Fictionary" */;
+			buildConfigurationList = DBCFB42B1D22DF5500200F10 /* Build configuration list for PBXNativeTarget "Drawn Out" */;
 			buildPhases = (
 				197AFAC3364931BC563DE633 /* [CP] Check Pods Manifest.lock */,
 				DBCFB4151D22DF5500200F10 /* Sources */,
@@ -637,9 +637,9 @@
 			);
 			dependencies = (
 			);
-			name = Fictionary;
+			name = "Drawn Out";
 			productName = Fictionary;
-			productReference = DBCFB4191D22DF5500200F10 /* Fictionary.app */;
+			productReference = DBCFB4191D22DF5500200F10 /* Drawn Out.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -671,7 +671,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DBCFB4181D22DF5500200F10 /* Fictionary */,
+				DBCFB4181D22DF5500200F10 /* Drawn Out */,
 			);
 		};
 /* End PBXProject section */
@@ -1024,7 +1024,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DBCFB42B1D22DF5500200F10 /* Build configuration list for PBXNativeTarget "Fictionary" */ = {
+		DBCFB42B1D22DF5500200F10 /* Build configuration list for PBXNativeTarget "Drawn Out" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DBCFB42C1D22DF5500200F10 /* Debug */,
