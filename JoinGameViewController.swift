@@ -100,6 +100,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
     
     // Start the game and assign the phone that taps the button to be the server. This sends a message to the other devices to performSegue and does the same locally.
     @IBAction func startGameButtonTapped(sender: AnyObject) {
+        if appDelegate.mpcHandler.mcSession.connectedPeers.count >= 1 {
         let alert = UIAlertController(title: "Wait!", message: "Has everyone been invited to play?", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okButton = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (UIAlertAction) in
@@ -127,6 +128,14 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         alert.addAction(cancelButton)
         presentViewController(alert, animated: true, completion: nil)
         
+        } else {
+            
+            let alert = UIAlertController(title: "Grab a friend", message: "Drawn Out is meant to be played by 2 - 8 players. Invite a friend (or 7) to join you for a game!", preferredStyle: UIAlertControllerStyle.Alert)
+            let button = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(button)
+            presentViewController(alert, animated: true, completion: nil)
+            
+        }
     }
     
     
