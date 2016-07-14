@@ -252,9 +252,9 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
             
         } // end of for key-value in dictionary
         
-        print("itemsAllPlayers:\n")
-        print(itemsAllPlayers)
-        print("# of Players: \(itemsAllPlayers.count)")
+        //print("itemsAllPlayers:\n")
+        //print(itemsAllPlayers)
+        //print("# of Players: \(itemsAllPlayers.count)")
 
         // --------------- END OF REAL GAME DATA FLOW -------------------- //
         
@@ -276,7 +276,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         //cell.imageView.image = UIImage(named: stacks[indexPath.row])
         //cell.array = arrayOfArrays[indexPath.row] as! [String]
         cell.array = itemsAllPlayers[indexPath.row] as! [AnyObject]
-        print("\(cell.array)")
+        //print("\(cell.array)")
         
         // This DOES add the text label to the collection view cell:
         cell.testCVLabel.text = "TEST CV LABEL"

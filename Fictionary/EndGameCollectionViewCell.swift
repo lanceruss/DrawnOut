@@ -31,15 +31,16 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
     func rowWasSelectedForImage(imageNamed: UIImage) {
         delegate?.rowWasSelectedForImage(imageNamed)
     }
-
+    
     
     @IBOutlet weak var testCVLabel: UILabel!
     
     //var array = ["jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
     
     var array = [AnyObject]()
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("\(array.count)")
         return array.count
     }
     
@@ -47,39 +48,43 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EndGameTableViewCell
         
-        if let image = array[indexPath.row] as? UIImage {
-            //cell.imageView?.image = items[indexPath.row] as! UIImage
-            cell.textCaption.hidden = true
-            cell.imageView5.hidden = false
-            tableView.rowHeight = 250
-            cell.imageView5.image = array[indexPath.row] as! UIImage
-        } else {
-            //cell.textLabel?.text = "\(items[indexPath.row])"
+        if indexPath.row < array.count {
             
-            // image from text
-            /*
-            let image1 = drawImagesAndText("\(array[indexPath.row])")
-            tableView.rowHeight = 100
-            cell.imageView5?.image = image1
-            */
-            
-            // just display text
-            cell.imageView5.hidden = true
-            cell.textCaption.hidden = false
-            tableView.rowHeight = 100
-            cell.textCaption.text = "\(array[indexPath.row])"
-            
+            if let image = array[indexPath.row] as? UIImage {
+                //cell.imageView?.image = items[indexPath.row] as! UIImage
+                cell.textCaption.hidden = true
+                cell.imageView5.hidden = false
+                tableView.rowHeight = 250
+                cell.imageView5.image = array[indexPath.row] as! UIImage
+            } else {
+                //cell.textLabel?.text = "\(items[indexPath.row])"
+                
+                // image from text
+                /*
+                 let image1 = drawImagesAndText("\(array[indexPath.row])")
+                 tableView.rowHeight = 100
+                 cell.imageView5?.image = image1
+                 */
+                
+                // just display text
+                cell.imageView5.hidden = true
+                cell.textCaption.hidden = false
+                tableView.rowHeight = 100
+                cell.textCaption.text = "\(array[indexPath.row])"
+                
+                
+            }
             
         }
         
         return cell
-
+        
         /*
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EndGameTableViewCell
-        cell.imageView5.image = array[indexPath.row] as! UIImage
-        tableView.rowHeight = 130
-        return cell
-        */
+         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EndGameTableViewCell
+         cell.imageView5.image = array[indexPath.row] as! UIImage
+         tableView.rowHeight = 130
+         return cell
+         */
         
     }
     
@@ -105,8 +110,8 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         super.prepareForReuse()
         tableView?.reloadData()
     }
-
-
+    
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -119,7 +124,7 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
             print("Item not an image so no action on didselectrow")
         }
         
-
+        
         
         
         //print("from: \(array)")
@@ -136,7 +141,7 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         arrayToPass = array
     }
     
-
-
+    
+    
     
 }
