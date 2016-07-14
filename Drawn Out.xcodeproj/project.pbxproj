@@ -602,10 +602,10 @@
 			children = (
 				FAE3367D1D33F9BF006376AF /* EndGameSwipe.storyboard */,
 				FAE3367F1D33F9D4006376AF /* EndGameSwipeVC.swift */,
-				FA8F0CFC1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift */,
 				FAE336831D3419E1006376AF /* EndGameCollectionViewCell.swift */,
 				FAE336851D3419FD006376AF /* EndGameTableViewCell.swift */,
 				FAE336871D342B88006376AF /* EndGameViewImageVC.swift */,
+				FA8F0CFC1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift */,
 				FA8F0CFA1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift */,
 				FAE336891D352E34006376AF /* strawberry.png */,
 				FAE3368A1D352E34006376AF /* kitten.png */,

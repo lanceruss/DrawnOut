@@ -61,10 +61,10 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         /*
         let array1 = ["jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
         let array2 = ["etphonehome", "image2.jpg", "jackandjill", "image1.jpeg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
-        let array3 = ["bullinachinacloset", "image4.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
-        let array4 = ["jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
-        let array5 = ["etphonehome", "image2.jpg", "jackandjill", "image1.jpeg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
-        let array6 = ["bullinachinacloset", "image4.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
+        let array3 = ["bullinachinacloset", "image3.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
+        let array4 = ["jackandjill", "image4.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
+        let array5 = ["etphonehome", "image5.jpg", "jackandjill", "image1.jpeg", "everythingbutthesink", "image3.jpg", "bullinachinacloset", "image4.gif", "cowjumpedoverthemoon", "image5.jpg"]
+        let array6 = ["bullinachinacloset", "image6.gif","jackandjill", "image1.jpeg", "etphonehome", "image2.jpg", "everythingbutthesink", "image3.jpg",  "cowjumpedoverthemoon", "image5.jpg"]
         
         arrayOfArrays = [array1, array2, array3, array4, array5, array6]
         */
@@ -276,6 +276,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         //cell.imageView.image = UIImage(named: stacks[indexPath.row])
         //cell.array = arrayOfArrays[indexPath.row] as! [String]
         cell.array = itemsAllPlayers[indexPath.row] as! [AnyObject]
+        print("\(cell.array)")
         
         // This DOES add the text label to the collection view cell:
         cell.testCVLabel.text = "TEST CV LABEL"
@@ -292,7 +293,6 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
     }
 
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "imageSegue" {
             let dvc = segue.destinationViewController as! EndGameViewImageVC
@@ -307,8 +307,5 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("******** COLLECTIONVIEW > cell selected: \(indexPath.row)")
     }
-    
-
-
     
 }

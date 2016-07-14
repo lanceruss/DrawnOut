@@ -100,6 +100,11 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         return img
         
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tableView?.reloadData()
+    }
 
 
     
