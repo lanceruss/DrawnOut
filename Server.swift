@@ -45,7 +45,8 @@ class Server: NSObject {
         
             countForReadyCheck = countForReadyCheck + 1
             if countForReadyCheck == appDelegate.mpcHandler.mcSession.connectedPeers.count {
-                NSNotificationCenter.defaultCenter().postNotificationName("Server_Ready", object: nil)
+                let notification = NSNotification(name: "Server_Ready", object: nil)
+                NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
             }
     }
     

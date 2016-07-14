@@ -18,7 +18,6 @@ import MultipeerConnectivity
 
 class MPCHandler: NSObject {
 
-    let notificationQueue = NSNotificationQueue.init(notificationCenter: NSNotificationCenter.defaultCenter())
     var player: Player!
     
     // This message is used so that the MPCHandler can identify that advertisements are for our game and so that the browser knows to look for advertisements for our game
@@ -99,7 +98,7 @@ extension MPCHandler: MCSessionDelegate {
         let userInfo = ["peerID" : peerID, "state" : state.stringValue()]
         let notification = NSNotification(name: "MPC_NewPeerNotification", object: nil, userInfo: userInfo)
         dispatch_async(dispatch_get_main_queue()) {
-        self.notificationQueue.enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
+            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
             //            NSNotificationCenter.defaultCenter().postNotificationName("MPC_NewPeerNotification", object: nil, userInfo: userInfo)
         }
     }
@@ -113,7 +112,7 @@ extension MPCHandler: MCSessionDelegate {
         
         dispatch_async(dispatch_get_main_queue()) { 
 //            NSNotificationCenter.defaultCenter().postNotificationName("MPC_DataReceived", object: nil, userInfo: userInfo)
-            self.notificationQueue.enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
+            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
 
         }
     }

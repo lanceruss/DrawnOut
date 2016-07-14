@@ -321,12 +321,14 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 
                 performSegueWithIdentifier("ExitSegue", sender: self)
+                
             } else {
                 
                 let segueMessage = messageHandler.createMessage(string: "ToCaption", object: nil, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 
                 performSegueWithIdentifier("ToCaption", sender: self)
+                
             }
         }
     }

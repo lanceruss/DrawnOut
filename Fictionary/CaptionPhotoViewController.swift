@@ -44,12 +44,14 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     var countdownFinished = false
     
+    var captionToSave = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //view.addSubview(behindImageView)
         //view.setNeedsLayout()
         behindImageView.layoutIfNeeded()
-
+        
         
         headerView.backgroundColor = UIColor.pastelGreen()
         //view.setNeedsLayout()
@@ -114,36 +116,36 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         backTimerView.layer.cornerRadius = 0.5 * backTimerView.bounds.size.height
         
         if shadowIsSet == false {
-        self.behindImageView.backgroundColor = UIColor.medAquamarine()
-        self.view.backgroundColor = UIColor.pastelGreen()
-        
-        let shadowLayer = CAShapeLayer()
-        shadowLayer.frame = behindImageView.bounds
-        
-        shadowLayer.shadowColor = UIColor(white: 0, alpha: 1).CGColor
-        shadowLayer.shadowOffset = CGSizeMake(0.0, 0.0)
-        shadowLayer.shadowOpacity = 0.25
-        shadowLayer.shadowRadius = 5
-        
-        shadowLayer.fillRule = kCAFillRuleEvenOdd
-        
-        let path = CGPathCreateMutable();
-        
-        CGPathAddRect(path, nil, CGRectInset(behindImageView.bounds, -42, -42))
-        
-        let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).CGPath
-        CGPathAddPath(path, nil, someInnerPath)
-        CGPathCloseSubpath(path)
-        
-        shadowLayer.path = path
-        
-        behindImageView.layer.addSublayer(shadowLayer)
-        
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = someInnerPath
-        shadowLayer.mask = maskLayer
-        
-        shadowIsSet = true
+            self.behindImageView.backgroundColor = UIColor.medAquamarine()
+            self.view.backgroundColor = UIColor.pastelGreen()
+            
+            let shadowLayer = CAShapeLayer()
+            shadowLayer.frame = behindImageView.bounds
+            
+            shadowLayer.shadowColor = UIColor(white: 0, alpha: 1).CGColor
+            shadowLayer.shadowOffset = CGSizeMake(0.0, 0.0)
+            shadowLayer.shadowOpacity = 0.25
+            shadowLayer.shadowRadius = 5
+            
+            shadowLayer.fillRule = kCAFillRuleEvenOdd
+            
+            let path = CGPathCreateMutable();
+            
+            CGPathAddRect(path, nil, CGRectInset(behindImageView.bounds, -42, -42))
+            
+            let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).CGPath
+            CGPathAddPath(path, nil, someInnerPath)
+            CGPathCloseSubpath(path)
+            
+            shadowLayer.path = path
+            
+            behindImageView.layer.addSublayer(shadowLayer)
+            
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = someInnerPath
+            shadowLayer.mask = maskLayer
+            
+            shadowIsSet = true
         }
     }
     
@@ -152,7 +154,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         seconds-=1
         timerLabel.text = "\(seconds)"
         timerLabel.textAlignment = NSTextAlignment.Left
-
+        
         if seconds == 0 {
             timer.invalidate()
             
@@ -160,24 +162,21 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 
                 countdownFinished = true
                 
-                var caption = ""
                 
                 captionTextField.enabled = false
                 
                 if captionTextField.text != nil {
-                    caption = captionTextField.text!
+                    captionToSave = captionTextField.text!
                 } else {
-                    caption = ""
+                    captionToSave = ""
                 }
                 
                 if let isServer = serverStatus?.isServer {
-                if isServer == true {
-                    gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = caption
-                } else {
-                    let message = messageHandler.createMessage(string: "timer_up", object: caption, keyForDictionary: keyForReceivedDictionary, ready: nil)
-                    messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-                    
-                    serverStatus?.isReady()
+                    if isServer == false {
+                        let message = messageHandler.createMessage(string: "timer_up", object: captionToSave, keyForDictionary: keyForReceivedDictionary, ready: nil)
+                        messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
+                        
+                        serverStatus?.isReady()
                     }
                 }
             }
@@ -294,6 +293,12 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
             if switchForSeque {
                 
+                if serverStatus.isServer == true {
+                    if let dictToDisplayReceivedFrom = dictToDisplayReceivedFrom {
+                        gameDictionary[dictToDisplayReceivedFrom]![turnCounter] = captionToSave
+                    }
+                }
+                
                 let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ExitSegue", sender: self)
@@ -324,8 +329,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
         } else if segue.identifier == "ExitSegue" {
             //do something different
+            
+            
             let dvc = segue.destinationViewController as! EndGameSwipeVC
-            dvc.exitDictionary = exitDictionary
             
             if serverStatus?.isServer == true {
                 dvc.exitDictionary = gameDictionary
@@ -333,7 +339,6 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 dvc.exitDictionary = exitDictionary
             }
         }
-        
     }
     
     func handleDroppedConnection (notification: NSNotification) {
@@ -347,7 +352,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
                 
                 self.performSegueWithIdentifier("RestartSegue", sender: self)
-
+                
             })
             alert.addAction(action)
             self.presentViewController(alert, animated: true, completion: nil)
