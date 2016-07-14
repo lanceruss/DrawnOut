@@ -233,6 +233,7 @@ class LoginViewController: UIViewController {
         if segue.identifier == "viewProfileSegue" {
 //            let dvc = segue.destinationViewController as! SeeMyProfileViewController
 //            let dvc = segue.destinationViewController as! Profile2ViewController
+
             //dvc.player = player
             
         } else if segue.identifier == "joinGame" {

@@ -36,6 +36,7 @@
         </mutableArray>
         <mutableArray key="SF-UI-Text-Bold.otf">
             <string>SFUIText-Bold</string>
+            <string>SFUIText-Bold</string>
         </mutableArray>
         <mutableArray key="SF-UI-Text-Heavy.otf">
             <string>SFUIText-Heavy</string>
@@ -78,10 +79,13 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-oP-zo2">
                                 <rect key="frame" x="20" y="83" width="560" height="446"/>
-                                <string key="text">1. Write a word or phrase (i.e., a caption) to pass to the next player. Be creative! 
+                                <string key="text">1. Write a word or phrase (i.e., a caption) to pass to the next player. Be creative!
+
 2. Before the time runs out, draw a picture from the caption you received.
- 3. When you receive a picture, try to guess the caption from the drawing.
- 4. Repeat until the game is over!
+
+3. When you receive a picture, try to guess the caption from the drawing.
+
+4. Repeat until the game is over!
 
 Hint: Tap the screen with two fingers to undo the last stroke while drawing!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +150,124 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
             </objects>
             <point key="canvasLocation" x="1844" y="-178"/>
         </scene>
+        <!--Profile2 View Controller-->
+        <scene sceneID="Tgy-Yv-qkk">
+            <objects>
+                <viewController id="98Z-b7-cg2" customClass="Profile2ViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1aC-St-cFm"/>
+                        <viewControllerLayoutGuide type="bottom" id="hqc-q2-jLu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qGc-o7-4uw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTc-jc-qB5">
+                                <rect key="frame" x="279" y="45" width="301" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="301" id="mcL-H1-u44"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7yr-ez-BlJ">
+                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
+                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UCG-bI-vnS">
+                                    <size key="itemSize" width="150" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="u4D-B2-h9j" customClass="Profile2CustomCollectionViewCell" customModule="Fictionary" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="0.0" width="250" height="375"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="375"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-ul-jFt">
+                                                    <rect key="frame" x="15" y="15" width="220" height="346"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="leading" secondItem="u4D-B2-h9j" secondAttribute="leadingMargin" constant="7" id="AzW-Zr-JvD"/>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="leading" secondItem="u4D-B2-h9j" secondAttribute="leading" id="CRb-Xo-R4A"/>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="top" secondItem="u4D-B2-h9j" secondAttribute="top" id="KoJ-IP-twm"/>
+                                            <constraint firstAttribute="trailing" secondItem="2mj-ul-jFt" secondAttribute="trailing" id="QRR-v7-oKt"/>
+                                            <constraint firstAttribute="bottom" secondItem="2mj-ul-jFt" secondAttribute="bottom" id="ZxV-M9-raL"/>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="top" secondItem="u4D-B2-h9j" secondAttribute="topMargin" constant="7" id="eCv-tg-c9t"/>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="centerY" secondItem="u4D-B2-h9j" secondAttribute="centerY" id="tLx-lb-4G1"/>
+                                            <constraint firstItem="2mj-ul-jFt" firstAttribute="centerX" secondItem="u4D-B2-h9j" secondAttribute="centerX" id="wWs-zn-UTq"/>
+                                        </constraints>
+                                        <size key="customSize" width="250" height="375"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="CRb-Xo-R4A"/>
+                                                <exclude reference="KoJ-IP-twm"/>
+                                                <exclude reference="QRR-v7-oKt"/>
+                                                <exclude reference="ZxV-M9-raL"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="cardImageView" destination="2mj-ul-jFt" id="kU6-eX-tUv"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="98Z-b7-cg2" id="084-DW-M12"/>
+                                    <outlet property="delegate" destination="98Z-b7-cg2" id="xVy-PY-Jra"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGt-5K-5qd">
+                                <rect key="frame" x="-140" y="38" width="206" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="206" id="HJk-BS-Yrl"/>
+                                    <constraint firstAttribute="height" constant="55" id="sEV-my-MSY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ph-c2-tpu">
+                                <rect key="frame" x="5" y="45" width="49" height="39"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="45"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBackButtonTapped:" destination="98Z-b7-cg2" eventType="touchUpInside" id="jQA-IQ-6pi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7yr-ez-BlJ" secondAttribute="trailing" id="2Mz-09-rug"/>
+                            <constraint firstItem="8Ph-c2-tpu" firstAttribute="top" secondItem="1aC-St-cFm" secondAttribute="bottom" constant="25" id="aMJ-sM-tZH"/>
+                            <constraint firstItem="SGt-5K-5qd" firstAttribute="leading" secondItem="qGc-o7-4uw" secondAttribute="leading" constant="-140" id="gJf-ui-DHf"/>
+                            <constraint firstItem="7yr-ez-BlJ" firstAttribute="top" secondItem="8Ph-c2-tpu" secondAttribute="bottom" constant="31" id="ihi-aU-4Sc"/>
+                            <constraint firstItem="8Ph-c2-tpu" firstAttribute="leading" secondItem="qGc-o7-4uw" secondAttribute="leadingMargin" constant="-15" id="jjI-g3-xwk"/>
+                            <constraint firstItem="7yr-ez-BlJ" firstAttribute="bottom" secondItem="hqc-q2-jLu" secondAttribute="top" id="omz-uD-zsg"/>
+                            <constraint firstItem="8Ph-c2-tpu" firstAttribute="top" secondItem="QTc-jc-qB5" secondAttribute="top" id="pqA-t8-XN3"/>
+                            <constraint firstItem="QTc-jc-qB5" firstAttribute="trailing" secondItem="qGc-o7-4uw" secondAttribute="trailingMargin" id="t6E-Ap-S4n"/>
+                            <constraint firstItem="7yr-ez-BlJ" firstAttribute="top" secondItem="QTc-jc-qB5" secondAttribute="bottom" constant="28" id="tLk-x4-DUd"/>
+                            <constraint firstItem="7yr-ez-BlJ" firstAttribute="leading" secondItem="qGc-o7-4uw" secondAttribute="leading" id="vV5-m3-Wae"/>
+                            <constraint firstItem="SGt-5K-5qd" firstAttribute="centerY" secondItem="QTc-jc-qB5" secondAttribute="centerY" id="ziA-R1-rNS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="8Ph-c2-tpu" id="gDR-uQ-tcc"/>
+                        <outlet property="backButtonView" destination="SGt-5K-5qd" id="VJC-Ml-flA"/>
+                        <outlet property="collectionView" destination="7yr-ez-BlJ" id="pZv-at-Dhv"/>
+                        <outlet property="nameLabel" destination="QTc-jc-qB5" id="tJ9-pw-loJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce9-bh-3Gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2070" y="327"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="xVy-tq-l8J">
             <objects>
@@ -184,7 +306,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </variation>
                                 <connections>
                                     <action selector="onViewMyProfileTapped:" destination="LG5-yw-6YA" eventType="touchUpInside" id="KeO-oL-4qx"/>
-                                    <segue destination="ag8-TN-YsP" kind="show" identifier="viewProfileSegue" id="w67-QC-yxB"/>
+                                    <segue destination="98Z-b7-cg2" kind="presentation" identifier="viewProfileSegue" id="9W0-RR-Fdr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbA-Bj-DvO">
@@ -699,72 +821,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
-                                <rect key="frame" x="20" y="28" width="265" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="265" id="cwX-4c-CME"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3n-23-1qU">
-                                <rect key="frame" x="20" y="61" width="194" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="9kr-1Q-RPh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
-                                <state key="normal" title="EDIT ACCOUNT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AG-ob-taE">
-                                <rect key="frame" x="0.0" y="93" width="600" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGa-2v-hoF">
-                                        <rect key="frame" x="0.0" y="0.0" width="410" height="34"/>
-                                        <color key="backgroundColor" red="0.30980392156862746" green="0.8784313725490196" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="16"/>
-                                        <state key="normal" title="RECENT MATCHES">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="461-5E-AAB">
-                                        <rect key="frame" x="410" y="0.0" width="95" height="34"/>
-                                        <color key="backgroundColor" red="0.30980392156862746" green="0.8784313725490196" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="e0E-Rd-WuM"/>
-                                            <constraint firstAttribute="height" constant="34" id="jwZ-Su-XOI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="16"/>
-                                        <state key="normal" title="CARDS">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onCardsButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="dDe-v4-LIe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC1-8i-QNJ">
-                                        <rect key="frame" x="505" y="0.0" width="95" height="34"/>
-                                        <color key="backgroundColor" red="0.21568627450980393" green="0.80784313725490198" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="KPd-NH-9kn"/>
-                                            <constraint firstAttribute="height" constant="34" id="cpT-NE-BOz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="16"/>
-                                        <state key="normal" title="STACKS">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onStacksButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="rKO-El-3F4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="9Hg-Af-4A5"/>
-                                </constraints>
-                            </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-T6-Nys">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-T6-Nys">
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tpn-J6-nTt">
@@ -775,7 +832,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Dny-PX-hAG" customClass="Custom2CollectionViewCell" customModule="Fictionary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.5" width="197" height="470"/>
+                                        <rect key="frame" x="0.0" y="1" width="197" height="470"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="197" height="470"/>
@@ -816,18 +873,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <segue destination="meu-xs-9Fz" kind="show" id="lJR-bv-BQx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
-                                <rect key="frame" x="546" y="20" width="34" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="U4i-ut-4wd"/>
-                                    <constraint firstAttribute="width" constant="34" id="f1h-DT-4Tj"/>
-                                </constraints>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="onBackButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="dJP-7Q-Ar4"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wCl-S1-BEj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wCl-S1-BEj">
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -835,7 +881,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                         <rect key="frame" x="0.0" y="28" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRF-XI-4Du" id="Bon-bc-vP6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-fI-sHh">
@@ -859,44 +905,53 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="ag8-TN-YsP" id="wbB-sx-Zvc"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
+                                <rect key="frame" x="315" y="46" width="265" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="cwX-4c-CME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
+                                <rect key="frame" x="20" y="33" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U4i-ut-4wd"/>
+                                    <constraint firstAttribute="width" constant="34" id="f1h-DT-4Tj"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="onBackButtonTapped:" destination="ag8-TN-YsP" eventType="touchUpInside" id="dJP-7Q-Ar4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="7AG-ob-taE" firstAttribute="top" secondItem="T3n-23-1qU" secondAttribute="bottom" constant="2" id="0bz-O9-Zlg"/>
                             <constraint firstItem="aTm-Gf-YWy" firstAttribute="top" secondItem="3bk-3p-Ioy" secondAttribute="bottom" id="13S-dH-zCd"/>
                             <constraint firstItem="xNf-FD-YE6" firstAttribute="top" secondItem="3bk-3p-Ioy" secondAttribute="bottom" constant="8" id="4bg-Ys-u3x"/>
-                            <constraint firstAttribute="trailing" secondItem="7AG-ob-taE" secondAttribute="trailing" id="8rJ-aw-0ko"/>
                             <constraint firstItem="aTm-Gf-YWy" firstAttribute="trailing" secondItem="HiL-VJ-ZZc" secondAttribute="trailingMargin" id="8ra-Bb-cvm"/>
                             <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="PFd-T6-Nys" secondAttribute="bottom" id="He4-TP-8pn"/>
-                            <constraint firstItem="7AG-ob-taE" firstAttribute="top" secondItem="xNf-FD-YE6" secondAttribute="bottom" constant="26" id="IM2-2w-dkU"/>
                             <constraint firstAttribute="trailing" secondItem="wCl-S1-BEj" secondAttribute="trailing" id="PQf-VT-qub"/>
-                            <constraint firstItem="wCl-S1-BEj" firstAttribute="top" secondItem="7AG-ob-taE" secondAttribute="bottom" constant="2" id="Psv-Vt-6JL"/>
                             <constraint firstAttribute="trailing" secondItem="ja2-VO-ewD" secondAttribute="trailing" constant="251" id="U0y-oe-1sD"/>
                             <constraint firstItem="wCl-S1-BEj" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="ZLH-VH-I3o"/>
                             <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="ja2-VO-ewD" secondAttribute="bottom" constant="498" id="c4r-iJ-4kb"/>
                             <constraint firstAttribute="trailing" secondItem="PFd-T6-Nys" secondAttribute="trailing" id="ds4-GC-Ddu"/>
-                            <constraint firstItem="7AG-ob-taE" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="j6M-bE-TjR"/>
-                            <constraint firstItem="xNf-FD-YE6" firstAttribute="leading" secondItem="T3n-23-1qU" secondAttribute="leading" id="jHg-Hu-hI9"/>
                             <constraint firstItem="DwQ-Dr-k4h" firstAttribute="top" secondItem="wCl-S1-BEj" secondAttribute="bottom" id="jal-kR-ET6"/>
                             <constraint firstItem="xNf-FD-YE6" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leadingMargin" id="kIY-zk-ear"/>
-                            <constraint firstItem="7AG-ob-taE" firstAttribute="top" secondItem="HiL-VJ-ZZc" secondAttribute="top" constant="93" id="kid-Nv-fwx"/>
                             <constraint firstItem="PFd-T6-Nys" firstAttribute="leading" secondItem="HiL-VJ-ZZc" secondAttribute="leading" id="sYf-7R-Uvs"/>
-                            <constraint firstItem="PFd-T6-Nys" firstAttribute="top" secondItem="7AG-ob-taE" secondAttribute="bottom" constant="2" id="xQp-d1-Ldv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="aTm-Gf-YWy" id="TWg-ue-uSg"/>
                         <outlet property="cardTableView" destination="wCl-S1-BEj" id="QxL-qh-KMY"/>
-                        <outlet property="cardsButton" destination="461-5E-AAB" id="jgY-0w-yVj"/>
                         <outlet property="collectionView" destination="PFd-T6-Nys" id="6Gf-km-1e3"/>
                         <outlet property="nameLabel" destination="xNf-FD-YE6" id="bTl-nR-mps"/>
-                        <outlet property="recentMatchesButton" destination="qGa-2v-hoF" id="UA2-4k-8n7"/>
-                        <outlet property="stacksButton" destination="NC1-8i-QNJ" id="Rtl-7g-6JU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdj-LH-bsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2053" y="337"/>
+            <point key="canvasLocation" x="2716" y="380"/>
         </scene>
         <!--SwipeStacks-->
         <scene sceneID="fyu-YG-76q">
@@ -904,7 +959,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 <viewControllerPlaceholder storyboardName="SwipeStacks" id="meu-xs-9Fz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9o-l6-a5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2512.5" y="345"/>
+            <point key="canvasLocation" x="3161" y="-10"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
