@@ -214,7 +214,7 @@ class LoginViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewProfileSegue" {
-            let dvc = segue.destinationViewController as! SeeMyProfileViewController
+            let dvc = segue.destinationViewController as! Profile2ViewController
             //dvc.player = player
             
         } else if segue.identifier == "joinGame" {

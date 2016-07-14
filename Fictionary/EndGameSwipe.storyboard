@@ -71,7 +71,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="s3Y-hP-jc8" customClass="EndGameCollectionViewCell" customModule="Fictionary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1.5" width="197" height="509"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="197" height="495"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="197" height="495"/>
