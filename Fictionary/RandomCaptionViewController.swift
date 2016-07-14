@@ -18,7 +18,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
     
     @IBOutlet weak var randomButton: UIButton!
     
-    var secondsAllowed = 10
+    var secondsAllowed = 20
     var seconds = 0
     var timer = NSTimer()
     

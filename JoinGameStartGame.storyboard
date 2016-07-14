@@ -21,12 +21,12 @@
         <!--Join Game View Controller-->
         <scene sceneID="LYN-qm-LFv">
             <objects>
-                <viewController id="f7V-Fl-HhR" customClass="JoinGameViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f7V-Fl-HhR" customClass="JoinGameViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="weE-pC-rP5"/>
                         <viewControllerLayoutGuide type="bottom" id="l2r-M6-ezt"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DaA-i0-fZd" customClass="JoinGameRuleView" customModule="Fictionary" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="DaA-i0-fZd" customClass="JoinGameRuleView" customModule="Drawn_Out" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -165,7 +165,7 @@
         <!--Start Game View Controller-->
         <scene sceneID="7xP-oB-0EA">
             <objects>
-                <viewController id="Hih-l8-fdx" customClass="StartGameViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hih-l8-fdx" customClass="StartGameViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cu9-x5-Txd"/>
                         <viewControllerLayoutGuide type="bottom" id="K5S-Ff-YZi"/>

@@ -283,24 +283,10 @@
                                 <rect key="frame" x="19" y="105" width="562" height="425"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qLz-DK-DrE">
-                                <rect key="frame" x="140" y="550" width="320" height="30"/>
+                                <rect key="frame" x="195" y="550" width="210" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ja1-Tu-e0Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                        <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Woz-2d-sxc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
-                                        <state key="normal" title="CLOSE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onCloseButtonTapped:" destination="ueK-L4-KhO" eventType="touchUpInside" id="bAU-CI-qEQ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icE-aK-LaH">
-                                        <rect key="frame" x="110" y="0.0" width="100" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="PVg-wJ-x1Q"/>
@@ -314,7 +300,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd9-Dx-vjE">
-                                        <rect key="frame" x="220" y="0.0" width="100" height="30"/>
+                                        <rect key="frame" x="110" y="0.0" width="100" height="30"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="MFz-HR-bD8"/>
@@ -330,7 +316,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Dd9-Dx-vjE" firstAttribute="leading" secondItem="icE-aK-LaH" secondAttribute="trailing" constant="10" id="E8r-Xq-m2a"/>
-                                    <constraint firstItem="icE-aK-LaH" firstAttribute="leading" secondItem="ja1-Tu-e0Z" secondAttribute="trailing" constant="10" id="nWZ-jv-GJn"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oya-9l-ovN">
@@ -340,9 +325,26 @@
                                     <constraint firstAttribute="height" constant="20" id="bWC-SP-wZF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrw-N5-u64">
+                                <rect key="frame" x="-43" y="39" width="100" height="55"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="D8H-Mc-vgx"/>
+                                    <constraint firstAttribute="width" constant="100" id="G8Y-TU-Ovq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="Iax-dZ-8D6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
+                                <state key="normal" title="          &lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCloseButtonTapped:" destination="ueK-L4-KhO" eventType="touchUpInside" id="hCg-jS-Oyq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yrw-N5-u64" firstAttribute="top" secondItem="gIL-BN-h60" secondAttribute="bottom" constant="19" id="2eK-oD-uLr"/>
                             <constraint firstItem="J3M-uI-Dpk" firstAttribute="leading" secondItem="u9c-CS-e70" secondAttribute="leading" constant="19" id="AZl-4V-q8W"/>
                             <constraint firstItem="J3M-uI-Dpk" firstAttribute="centerX" secondItem="qLz-DK-DrE" secondAttribute="centerX" id="FgF-XP-boC"/>
                             <constraint firstAttribute="trailing" secondItem="oya-9l-ovN" secondAttribute="trailing" id="QBU-Qb-eZC"/>
@@ -359,6 +361,7 @@
                             <constraint firstItem="qLz-DK-DrE" firstAttribute="top" secondItem="J3M-uI-Dpk" secondAttribute="bottom" constant="20" id="rWM-de-SZe"/>
                             <constraint firstItem="G8E-nG-9kk" firstAttribute="top" secondItem="J3M-uI-Dpk" secondAttribute="bottom" id="tvK-h4-DmS"/>
                             <constraint firstAttribute="bottom" secondItem="qLz-DK-DrE" secondAttribute="bottom" constant="20" symbolic="YES" id="w1D-Gt-Fpe"/>
+                            <constraint firstItem="Yrw-N5-u64" firstAttribute="leading" secondItem="u9c-CS-e70" secondAttribute="leading" constant="-43" id="xvz-AZ-4Ez"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -373,7 +376,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="ja1-Tu-e0Z" id="7JU-0U-7vt"/>
+                        <outlet property="closeButton" destination="Yrw-N5-u64" id="uhD-vL-lmw"/>
                         <outlet property="headerView" destination="oya-9l-ovN" id="Zq3-5y-pqJ"/>
                         <outlet property="imagePreview" destination="J3M-uI-Dpk" id="CBO-Q1-oKX"/>
                         <outlet property="saveMyProfileButton" destination="icE-aK-LaH" id="bDU-wB-8MF"/>

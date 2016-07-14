@@ -20,7 +20,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     var receivedArray: Array = [AnyObject]()
     
     @IBOutlet var timerLabel: UILabel!
-    var secondsAllowed = 25
+    var secondsAllowed = 20
     var seconds = 0
     var timer = NSTimer()
     var shadowIsSet: Bool = false
