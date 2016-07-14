@@ -51,7 +51,9 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             print("firebase > database > users > saved-image: \n")
             print(snapshot)
             
-            for item in snapshot.value as! NSDictionary {
+            let dictionaryToCheck = snapshot.value as? NSDictionary
+            if let dictionaryToCheck = dictionaryToCheck {
+            for item in dictionaryToCheck {
                 //print("-\(item)")
                 
                 
@@ -70,6 +72,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             print(self.imageFilenames)
             print(self.userID!)
             
+            }
             
         }) { (error) in
             print(error.localizedDescription)
