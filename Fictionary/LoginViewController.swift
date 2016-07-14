@@ -252,4 +252,8 @@ class LoginViewController: UIViewController {
         deleteAllUsersAuthObjects()
     }
 
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
+    }
+    
 }

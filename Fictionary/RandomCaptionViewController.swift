@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
+class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var captionTextField: UITextField!
     
@@ -57,11 +57,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
         
-        
-        // Get a randomIndex and use it to display a random caption
-        let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
-        self.captionTextField.text = captions[randomIndex]
-        
         // Set up timer
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
@@ -87,6 +82,11 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
         self.captionTextField.text = captions[randomIndex]
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func subtractTime() {

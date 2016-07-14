@@ -162,9 +162,11 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         NSNotificationCenter.defaultCenter().removeObserver(self)
         
         // Pass along the serverStatus object so that we can keep checking the server/client status of each device. This object should be passed along for the duration fo the game!!!
+        if segue.identifier == "startGame" {
         let dvc = segue.destinationViewController as! RandomCaptionViewController
         dvc.serverStatus = serverStatus
         dvc.gameDictionary = gameDictionary
+        } 
         
     }
 }

@@ -81,12 +81,12 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-oP-zo2">
                                 <rect key="frame" x="20" y="83" width="560" height="446"/>
-                                <mutableString key="text">1. Write a word or phrase (i.e., a caption) to pass to the next player. Be creative! 
+                                <string key="text">1. Write a word or phrase (i.e., a caption) to pass to the next player. Be creative! 
 2. Before the time runs out, draw a picture from the caption you received.
  3. When you receive a picture, try to guess the caption from the drawing.
  4. Repeat until the game is over!
 
-Hint: Tap the screen with two fingers to undo the last stroke while drawing!</mutableString>
+Hint: Tap the screen with two fingers to undo the last stroke while drawing!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -147,7 +147,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</mu
                 <viewControllerPlaceholder storyboardName="JoinGameStartGame" id="P4m-BU-wqV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtw-zr-mMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660.5" y="-42"/>
+            <point key="canvasLocation" x="1844" y="-178"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="xVy-tq-l8J">
@@ -322,8 +322,8 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</mu
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="OKN-d5-Kgt"/>
                                         <exclude reference="I49-xh-BZb"/>
+                                        <exclude reference="OKN-d5-Kgt"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -829,7 +829,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</mu
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-fI-sHh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -898,6 +898,6 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</mu
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xIx-Mf-P47"/>
+        <segue reference="9AQ-8X-7Jd"/>
     </inferredMetricsTieBreakers>
 </document>
