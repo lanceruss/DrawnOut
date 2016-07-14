@@ -26,7 +26,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.pastelGreen()
+        self.view.backgroundColor = UIColor.shamrock()
         
         bigHeader.backgroundColor = UIColor.pastelGreen()
         
@@ -37,7 +37,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         collectionView.backgroundColor = UIColor.shamrock()
         
-        backButtonView.backgroundColor = UIColor.medAquamarine()
+        backButtonView.backgroundColor = UIColor.shamrock()
         backButtonView.layer.cornerRadius = 0.5 * backButtonView.bounds.size.height
         
         self.backButton.setTitle("<", forState: UIControlState.Normal)
@@ -102,6 +102,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Create a reference to the file you want to download
         // NEED TO FINISH THIS BY PUTTING THE FILENAME BELOW ON NEXT LINE.....
+    
         
         let userStorageRef = storageRef.child(self.userID!)
         let userImageFilename = userStorageRef.child("\(self.imageFilenames[indexPath.row])")
@@ -126,14 +127,24 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         }
 
         cell.cardImageView.image = UIImage(named: self.imageFilenames[indexPath.row])
-        cell.cardImageView.layer.shadowOpacity = 0.7
-        cell.cardImageView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        cell.cardImageView.layer.shadowRadius = 5.0
+        cell.cardImageView.layer.shadowOpacity = 0.3
+        cell.cardImageView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        cell.cardImageView.layer.shadowRadius = 4.0
 
         return cell
         
         
         
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        //device screen size
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        //calculation of cell size
+        return CGSize(width: ((width / 2) - 15), height: (height / 2.5) - 10)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
