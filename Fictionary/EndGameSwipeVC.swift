@@ -300,6 +300,20 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func collectionView(collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        //device screen size
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        //calculation of cell size
+        if itemsAllPlayers.count == 2 {
+        return CGSize(width: (width / 2), height: height - 157)
+        } else {
+        return CGSize(width: (width / 2.8), height: height - 157)
+        }
+    }
+    
     @IBAction func viewMyProfileTapped(sender: AnyObject) {
         
     }

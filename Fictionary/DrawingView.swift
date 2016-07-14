@@ -25,11 +25,13 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
     var drawingQueue: dispatch_queue_t?
     var isFirstTouchPoint: Bool?
     var lastSegmentOfPrevious: LineSegment?
-
+    
     var color: UIColor? = UIColor.blackColor()
-
+    
+    var didHit40: Bool? = false
+    
     var imageHistory: Array<UIImage> = []
-
+    
     func setupGestureRecognizersInView(view: UIView) {
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DrawingView.handlePan(_:)))
@@ -61,7 +63,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         
         incrementalImage?.drawInRect(rect)
     }
-
+    
     @objc private func handleTap(sender: UITapGestureRecognizer) {
         //print("DrawingViewTap")
         let point = sender.locationInView(sender.view)
@@ -96,6 +98,11 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.setNeedsDisplay()
+        if imageHistory.count > 40 {
+            imageHistory.removeAtIndex(0)
+            didHit40 = true
+            print(imageHistory.count)
+        }
         imageHistory.append(incrementalImage!) // full line
     }
     
@@ -113,7 +120,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
             self.endAtPoint(point)
         default:
             self.endAtPoint(point)
-//            assert(false, "State not handled")
+            //            assert(false, "State not handled")
         }
     }
     
@@ -156,7 +163,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     
                     var ls: [LineSegment]? = []
                     
-//                    for i in 0 ..< self.bufIdx {
+                    //                    for i in 0 ..< self.bufIdx {
                     for var i = 0; i < self.bufIdx; i += 4 {
                         
                         if self.isFirstTouchPoint == true {
@@ -232,56 +239,70 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
             }
         }
     }
-
+    
     private func endAtPoint(point: CGPoint) {
         
         setNeedsDisplay()
         if incrementalImage != nil {
+            if imageHistory.count > 40 {
+                imageHistory.removeAtIndex(0)
+                didHit40 = true
+                print(imageHistory.count)
+            }
             imageHistory.append(incrementalImage!) // full line
         }
         
     }
-
+    
     @objc private func handleDoubleTap(sender: UITapGestureRecognizer) {
         
         if imageHistory.count > 0 {
-            imageHistory.removeLast()
-            if imageHistory.count == 0 {
+            if didHit40 == true && imageHistory.count > 1 {
                 
-                incrementalImage = nil
-                
-                setNeedsDisplay()
-                
-                if incrementalImage == nil {
-                    UIGraphicsBeginImageContext(self.bounds.size)
-                    self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-                    incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
+                imageHistory.removeLast()
+                if imageHistory.count == 0 {
+                    
+                    incrementalImage = nil
+                    
+                    setNeedsDisplay()
+                    
+                    if incrementalImage == nil {
+                        UIGraphicsBeginImageContext(self.bounds.size)
+                        self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+                        incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                    }
+                    
+                } else  {
+                    incrementalImage = imageHistory.last
+                    setNeedsDisplay()
                 }
+            } else if didHit40 == false {
                 
-            } else  {
-                incrementalImage = imageHistory.last
-                setNeedsDisplay()
+                imageHistory.removeLast()
+                if imageHistory.count == 0 {
+                    
+                    incrementalImage = nil
+                    
+                    setNeedsDisplay()
+                    
+                    if incrementalImage == nil {
+                        UIGraphicsBeginImageContext(self.bounds.size)
+                        self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+                        incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                    }
+                    
+                } else  {
+                    incrementalImage = imageHistory.last
+                    setNeedsDisplay()
+
             }
         }
-        //        undo()
+        }
     }
     
-//    func undo() {
-//        
-//        if imageHistory.count > 0 {
-//            imageHistory.removeLast()
-//            if imageHistory.count == 0 {
-//                incrementalImage = nil
-//                setNeedsDisplay()
-//            } else  {
-//                incrementalImage = imageHistory.last
-//                setNeedsDisplay()
-//            }
-//        }
-//        
-//    }
-
-
-
+    
+    
+    
 }

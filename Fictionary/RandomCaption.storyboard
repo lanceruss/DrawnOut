@@ -17,7 +17,7 @@
         <!--Random Caption View Controller-->
         <scene sceneID="EM5-SF-iMR">
             <objects>
-                <viewController id="0GZ-bg-VcQ" customClass="RandomCaptionViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0GZ-bg-VcQ" customClass="RandomCaptionViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PDd-ku-OiN"/>
                         <viewControllerLayoutGuide type="bottom" id="0Ju-Jg-mjv"/>

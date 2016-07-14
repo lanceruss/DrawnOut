@@ -43,7 +43,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var countdownFinished = false
     
-    var secondsAllowed = 15
+    var secondsAllowed = 45
     var seconds = 0
     var timer = NSTimer()
 
