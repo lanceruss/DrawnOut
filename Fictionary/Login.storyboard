@@ -563,6 +563,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <rect key="frame" x="20" y="178" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rCx-cs-lRg" id="g7e-g8-jNX"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-ZI-xgO">
                                 <rect key="frame" x="193" y="228" width="215" height="50"/>
@@ -604,6 +607,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <rect key="frame" x="20" y="108" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rCx-cs-lRg" id="iaU-YF-vxm"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2o-mi-ECi">
                                 <rect key="frame" x="20" y="78" width="103" height="22"/>
