@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginAsUserButton: UIButton!
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    @IBOutlet weak var howToPlayButton: UIButton!
+    
     var player: Player!
     var ref = FIRDatabase.database().reference()
     
@@ -36,7 +38,7 @@ class LoginViewController: UIViewController {
         player = nil
         
         print("** REMINDER THAT WE LOG OUT ALL FIRAUTH SESSION - TESTING / DEBUGGING ***")
-        //try! FIRAuth.auth()!.signOut()
+//        try! FIRAuth.auth()!.signOut()
         
         debugInfo.hidden = true
         deletePlayerObjectsButton.hidden = true
@@ -62,6 +64,9 @@ class LoginViewController: UIViewController {
         //viewMyProfileButton.tintColor = UIColor.grayColor()
         viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
         
+        howToPlayButton.layer.cornerRadius = 0.5 * howToPlayButton.bounds.size.height
+        howToPlayButton.backgroundColor = UIColor.medAquamarine()
+        
         welcomeLabel.hidden = true
         welcomeLabel.text = ""
     
@@ -76,6 +81,7 @@ class LoginViewController: UIViewController {
     @IBAction func onViewMyProfileTapped(sender: AnyObject) {
         
     }
+    
     
     func getLoggedInUserInfo() {
         
@@ -214,7 +220,7 @@ class LoginViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewProfileSegue" {
-            let dvc = segue.destinationViewController as! SeeMyProfileViewController
+            let dvc = segue.destinationViewController as! Profile2ViewController
             //dvc.player = player
             
         } else if segue.identifier == "joinGame" {
@@ -246,4 +252,8 @@ class LoginViewController: UIViewController {
         deleteAllUsersAuthObjects()
     }
 
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
+    }
+    
 }

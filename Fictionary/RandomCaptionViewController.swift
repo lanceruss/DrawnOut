@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
+class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var captionTextField: UITextField!
     
@@ -57,11 +57,6 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
         
-        
-        // Get a randomIndex and use it to display a random caption
-        let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
-        self.captionTextField.text = captions[randomIndex]
-        
         // Set up timer
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
@@ -87,6 +82,11 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         
         let randomIndex = Int(arc4random_uniform(UInt32(self.captions.count)))
         self.captionTextField.text = captions[randomIndex]
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func subtractTime() {
@@ -182,8 +182,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         print("the dropped peer in handleDroppedConnection is \(peerID)")
         
         if state == MCSessionState.NotConnected.stringValue() {
-            let alert = UIAlertController(title: "Start Over", message: "It looks like someone left the game. Unfortunately, that means you'll have to start over.", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
                 
                 self.performSegueWithIdentifier("RestartSegue", sender: self)
 

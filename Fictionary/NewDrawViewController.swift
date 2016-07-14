@@ -369,8 +369,8 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         print("the dropped peer in handleDroppedConnection is \(peerID)")
         
         if state == MCSessionState.NotConnected.stringValue() {
-            let alert = UIAlertController(title: "Start Over", message: "It looks like someone left the game. Unfortunately, that means you'll have to start over.", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
                 
                 self.performSegueWithIdentifier("RestartSegue", sender: self)
 

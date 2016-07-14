@@ -41,6 +41,7 @@
 		DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */; };
 		DBF398F71D371BB3002EE34F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF398F61D371BB3002EE34F /* LaunchViewController.swift */; };
 		F95FCD911D3417C700FD7C83 /* RevisedCircleTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FCD901D3417C700FD7C83 /* RevisedCircleTimerView.swift */; };
+		F96C5EC71D36F21700D3FA47 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */; };
 		F96CBBBC1D32CAB9006184C8 /* JoinGameRuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96CBBBB1D32CAB9006184C8 /* JoinGameRuleView.swift */; };
 		F96CBBBE1D33036C006184C8 /* CircleTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96CBBBD1D33036C006184C8 /* CircleTimer.swift */; };
 		F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */; };
@@ -77,6 +78,8 @@
 		FA8F0CF91D369A3400919DD6 /* CardCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */; };
 		FA8F0CFB1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0CFA1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift */; };
 		FA8F0CFD1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0CFC1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift */; };
+		FA8F0CFF1D370D0300919DD6 /* Profile2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0CFE1D370D0300919DD6 /* Profile2ViewController.swift */; };
+		FA8F0D011D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0D001D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift */; };
 		FAB76FB31D2309220012A786 /* CaptionPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */; };
 		FAB76FB51D2309340012A786 /* CaptionPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */; };
 		FAB76FB71D230F950012A786 /* penguin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FB61D230F950012A786 /* penguin.jpg */; };
@@ -175,6 +178,7 @@
 		DBF398F61D371BB3002EE34F /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
 		F95FCD901D3417C700FD7C83 /* RevisedCircleTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisedCircleTimerView.swift; sourceTree = "<group>"; };
+		F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		F96CBBBB1D32CAB9006184C8 /* JoinGameRuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameRuleView.swift; sourceTree = "<group>"; };
 		F96CBBBD1D33036C006184C8 /* CircleTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTimer.swift; sourceTree = "<group>"; };
 		F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DemoExit.storyboard; path = Fictionary/DemoExit.storyboard; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCustomTableViewCell.swift; sourceTree = "<group>"; };
 		FA8F0CFA1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameStackOnlyViewController.swift; sourceTree = "<group>"; };
 		FA8F0CFC1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameStackOnlyCustomTableViewCell.swift; sourceTree = "<group>"; };
+		FA8F0CFE1D370D0300919DD6 /* Profile2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile2ViewController.swift; sourceTree = "<group>"; };
+		FA8F0D001D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile2CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB76FB21D2309220012A786 /* CaptionPhoto.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CaptionPhoto.storyboard; sourceTree = "<group>"; };
 		FAB76FB41D2309340012A786 /* CaptionPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPhotoViewController.swift; sourceTree = "<group>"; };
 		FAB76FB61D230F950012A786 /* penguin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = penguin.jpg; sourceTree = "<group>"; };
@@ -577,6 +583,8 @@
 			isa = PBXGroup;
 			children = (
 				FACB72251D2C1A0C0029AE1B /* Login.storyboard */,
+				FA8F0CFE1D370D0300919DD6 /* Profile2ViewController.swift */,
+				FA8F0D001D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift */,
 				FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */,
 				FAE336811D33FE32006376AF /* Custom2TableViewCell.swift */,
 				FAC507721D2EEFD20092568C /* LoginVC.swift */,
@@ -584,6 +592,7 @@
 				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
 				FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */,
+				F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -800,6 +809,7 @@
 				DB26E3B51D32FE4B0029CE33 /* DrawingView.swift in Sources */,
 				FAB76FC31D2352A60012A786 /* StackCell.swift in Sources */,
 				FA0C67D11D26ACCF007ADE75 /* MyProfileViewController.swift in Sources */,
+				FA8F0CFF1D370D0300919DD6 /* Profile2ViewController.swift in Sources */,
 				FAB76FBC1D234A8F0012A786 /* TimerViewController.swift in Sources */,
 				FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */,
 				FA0C67C21D25754D007ADE75 /* Player.swift in Sources */,
@@ -820,12 +830,14 @@
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
 				FA8F0CFD1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift in Sources */,
 				F96CBBBE1D33036C006184C8 /* CircleTimer.swift in Sources */,
+				F96C5EC71D36F21700D3FA47 /* InstructionsViewController.swift in Sources */,
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
 				F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */,
 				FA8F0CFB1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift in Sources */,
 				FAE336861D3419FD006376AF /* EndGameTableViewCell.swift in Sources */,
 				F96CBBBC1D32CAB9006184C8 /* JoinGameRuleView.swift in Sources */,
 				FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */,
+				FA8F0D011D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift in Sources */,
 				DB26E3AF1D32FD740029CE33 /* LineSegment.swift in Sources */,
 				F95FCD911D3417C700FD7C83 /* RevisedCircleTimerView.swift in Sources */,
 				DBCFB4901D25763500200F10 /* FreehandDrawController.swift in Sources */,
