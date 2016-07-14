@@ -168,14 +168,15 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     caption = captionTextField.text!
                 }
                 
-                if serverStatus?.isServer == true {
+                if let isServer = serverStatus?.isServer {
+                if isServer == true {
                     gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = caption
                 } else {
                     let message = messageHandler.createMessage(string: "timer_up", object: caption, keyForDictionary: keyForReceivedDictionary, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                     
                     serverStatus?.isReady()
-                    
+                    }
                 }
             }
         }
