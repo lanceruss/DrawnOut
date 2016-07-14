@@ -107,8 +107,12 @@ extension MPCHandler: MCSessionDelegate {
         
         let userInfo = ["data" : data, "peerID" : peerID]
         
+        let notification = NSNotification(name: "MPC_DataReceived", object: nil, userInfo: userInfo)
+        
         dispatch_async(dispatch_get_main_queue()) { 
-            NSNotificationCenter.defaultCenter().postNotificationName("MPC_DataReceived", object: nil, userInfo: userInfo)
+//            NSNotificationCenter.defaultCenter().postNotificationName("MPC_DataReceived", object: nil, userInfo: userInfo)
+            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
+
         }
     }
     
