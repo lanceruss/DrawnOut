@@ -162,6 +162,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 
                 var caption = ""
                 
+                captionTextField.enabled = false
+                
                 if captionTextField.text != nil {
                     caption = captionTextField.text!
                 }

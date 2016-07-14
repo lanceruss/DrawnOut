@@ -96,6 +96,9 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
         
         if seconds == 0 {
             timer.invalidate()
+            
+            captionTextField.enabled = false
+            
             let caption = captionTextField.text
             if let serverStatus = serverStatus {
                 
