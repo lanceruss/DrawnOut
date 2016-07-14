@@ -46,7 +46,7 @@
         <!--Instructions View Controller-->
         <scene sceneID="Far-Rn-2rw">
             <objects>
-                <viewController id="gm2-t8-UBH" customClass="InstructionsViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gm2-t8-UBH" customClass="InstructionsViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wcf-HV-gnA"/>
                         <viewControllerLayoutGuide type="bottom" id="bAq-8h-awB"/>
@@ -153,7 +153,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
         <!--Profile2 View Controller-->
         <scene sceneID="Tgy-Yv-qkk">
             <objects>
-                <viewController id="98Z-b7-cg2" customClass="Profile2ViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="98Z-b7-cg2" customClass="Profile2ViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1aC-St-cFm"/>
                         <viewControllerLayoutGuide type="bottom" id="hqc-q2-jLu"/>
@@ -172,7 +172,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="u4D-B2-h9j" customClass="Profile2CustomCollectionViewCell" customModule="Drawn_Out" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="u4D-B2-h9j" customClass="Profile2CustomCollectionViewCell" customModule="Fictionary" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="250" height="375"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -296,12 +296,12 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
         <!--Login View Controller-->
         <scene sceneID="xVy-tq-l8J">
             <objects>
-                <viewController id="LG5-yw-6YA" customClass="LoginViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LG5-yw-6YA" customClass="LoginViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LA3-kK-mSd"/>
                         <viewControllerLayoutGuide type="bottom" id="PZT-bm-mMc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="feU-iF-jL7" customClass="DesignTestView" customModule="Drawn_Out" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="feU-iF-jL7" customClass="DesignTestView" customModule="Fictionary" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -550,7 +550,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
         <!--LoginVC-->
         <scene sceneID="502-2x-c1M">
             <objects>
-                <viewController id="rCx-cs-lRg" customClass="LoginVC" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rCx-cs-lRg" customClass="LoginVC" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zEF-9O-HT4"/>
                         <viewControllerLayoutGuide type="bottom" id="oH4-iT-gK1"/>
@@ -660,7 +660,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
         <!--Create Account-->
         <scene sceneID="neO-3x-QXZ">
             <objects>
-                <viewController id="hpt-Xu-sDH" customClass="CreateAccount" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hpt-Xu-sDH" customClass="CreateAccount" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="awU-aN-rgH"/>
                         <viewControllerLayoutGuide type="bottom" id="LYJ-gK-3iu"/>
@@ -837,7 +837,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
         <!--See My Profile View Controller-->
         <scene sceneID="U28-PP-cKv">
             <objects>
-                <viewController id="ag8-TN-YsP" customClass="SeeMyProfileViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ag8-TN-YsP" customClass="SeeMyProfileViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3bk-3p-Ioy"/>
                         <viewControllerLayoutGuide type="bottom" id="DwQ-Dr-k4h"/>
@@ -856,7 +856,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Dny-PX-hAG" customClass="Custom2CollectionViewCell" customModule="Drawn_Out" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Dny-PX-hAG" customClass="Custom2CollectionViewCell" customModule="Fictionary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.5" width="197" height="470"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -902,7 +902,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="176" id="pRF-XI-4Du" customClass="CardCustomTableViewCell" customModule="Drawn_Out" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="176" id="pRF-XI-4Du" customClass="CardCustomTableViewCell" customModule="Fictionary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRF-XI-4Du" id="Bon-bc-vP6">
