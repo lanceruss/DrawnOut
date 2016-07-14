@@ -40,6 +40,7 @@
 		DBCFB49A1D2576CB00200F10 /* CircleDrawCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB4991D2576CB00200F10 /* CircleDrawCommand.swift */; };
 		DBCFB49C1D2576DB00200F10 /* ComposedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */; };
 		F95FCD911D3417C700FD7C83 /* RevisedCircleTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FCD901D3417C700FD7C83 /* RevisedCircleTimerView.swift */; };
+		F96C5EC71D36F21700D3FA47 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */; };
 		F96CBBBC1D32CAB9006184C8 /* JoinGameRuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96CBBBB1D32CAB9006184C8 /* JoinGameRuleView.swift */; };
 		F96CBBBE1D33036C006184C8 /* CircleTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96CBBBD1D33036C006184C8 /* CircleTimer.swift */; };
 		F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */; };
@@ -175,6 +176,7 @@
 		DBCFB49B1D2576DB00200F10 /* ComposedCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedCommand.swift; sourceTree = "<group>"; };
 		EAD9C72FCD96518D196323B0 /* Pods-Fictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fictionary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fictionary/Pods-Fictionary.debug.xcconfig"; sourceTree = "<group>"; };
 		F95FCD901D3417C700FD7C83 /* RevisedCircleTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisedCircleTimerView.swift; sourceTree = "<group>"; };
+		F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		F96CBBBB1D32CAB9006184C8 /* JoinGameRuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameRuleView.swift; sourceTree = "<group>"; };
 		F96CBBBD1D33036C006184C8 /* CircleTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTimer.swift; sourceTree = "<group>"; };
 		F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DemoExit.storyboard; path = Fictionary/DemoExit.storyboard; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
 				FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */,
+				F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */,
 				FA8F0CFD1D36C30B00919DD6 /* EndGameStackOnlyCustomTableViewCell.swift in Sources */,
 				F96CBBBE1D33036C006184C8 /* CircleTimer.swift in Sources */,
+				F96C5EC71D36F21700D3FA47 /* InstructionsViewController.swift in Sources */,
 				DBCFB4941D25766600200F10 /* WidthModulation.swift in Sources */,
 				F9A17AE61D2F01E1002FD1D2 /* DemoExitViewController.swift in Sources */,
 				FA8F0CFB1D36BC6200919DD6 /* EndGameStackOnlyViewController.swift in Sources */,
