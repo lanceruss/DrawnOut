@@ -111,7 +111,7 @@ extension MPCHandler: MCSessionDelegate {
         
         dispatch_async(dispatch_get_main_queue()) { 
 //            NSNotificationCenter.defaultCenter().postNotificationName("MPC_DataReceived", object: nil, userInfo: userInfo)
-            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
+            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostNow)
 
         }
     }
