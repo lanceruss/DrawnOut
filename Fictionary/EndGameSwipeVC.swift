@@ -16,6 +16,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var anotherGameButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet var headerView: UIView!
     
     var exitDictionary = [MCPeerID : [Int : AnyObject]]()
     
@@ -36,8 +38,24 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         // July 10, 2016:
         // get user from firebase now that we are NOT using a player object
         
-        self.view.backgroundColor = UIColor.pastelGreen()
-        self.collectionView.backgroundColor = UIColor.shamrock()
+        headerView.backgroundColor = UIColor.pastelGreen()
+        self.view.backgroundColor = UIColor.medAquamarine()
+        
+        headerView.layer.shadowColor = UIColor.blackColor().CGColor
+        headerView.layer.shadowOpacity = 0.25
+        headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        headerView.layer.shadowRadius = 3.5
+        
+        self.collectionView.backgroundColor = UIColor.medAquamarine()
+        self.backgroundView.backgroundColor = UIColor.medAquamarine()
+        
+        homeButton.layer.cornerRadius = 0.5 * homeButton.bounds.size.height
+        homeButton.backgroundColor = UIColor.shamrock()
+        
+        anotherGameButton.layer.cornerRadius = 0.5 * anotherGameButton.bounds.size.height
+        anotherGameButton.backgroundColor = UIColor.shamrock()
+        
+
         
         // --------------- ORIGINAL ARRAY OF SAMPLE DATA THAT WORKS -------------------- //
         /*
@@ -114,6 +132,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         */ // 1
 
         
+        /*
         // ------------------- TEST DATA: JULY 12, 2016 @ 3:22PM ------------------- //
         // THIS IS THE DATA TO USE TO TEST WITHOUT HAVING TO GO THROUGH THE ENTIRE GAME:
         // DONT FORGET TO SET THE MAIN APP ENTRY POINT AS "EndGameSwipe"
@@ -163,7 +182,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
 
         // for multiple player dictionary scenario:
         for (_,value) in dictionary2 {
-            
+         
             print("\(exitDictionary)")
             
             items = []
@@ -195,10 +214,10 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         print("# of Players: \(itemsAllPlayers.count)")
         
         // ----------------- END OF TEST DATA SCENARIO ------------------------- //
- 
+        */
         
         
-        /*
+        
         // -------------------- REAL GAME DATA FLOW -------------------------- //
         // THE BELOW FOR LOOP IS USED FOR REAL GAME DICTIONARY FLOW
         // USE THE CODE BELOW FOR PRODUCTION.
@@ -238,7 +257,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         print("# of Players: \(itemsAllPlayers.count)")
 
         // --------------- END OF REAL GAME DATA FLOW -------------------- //
-        */
+        
         
         
         

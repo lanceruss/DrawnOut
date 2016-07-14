@@ -14,6 +14,8 @@ class EndGameViewImageVC: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var saveMyProfileButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet var headerView: UIView!
     
     var imagePassed: UIImage = UIImage()
     
@@ -24,6 +26,23 @@ class EndGameViewImageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor.medAquamarine()
+        
+        headerView.backgroundColor = UIColor.pastelGreen()
+        headerView.layer.shadowColor = UIColor.blackColor().CGColor
+        headerView.layer.shadowOpacity = 0.25
+        headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        headerView.layer.shadowRadius = 3.5
+        
+        closeButton.backgroundColor = UIColor.shamrock()
+        saveMyProfileButton.backgroundColor = UIColor.shamrock()
+        shareButton.backgroundColor = UIColor.shamrock()
+        
+        closeButton.layer.cornerRadius = 0.5 * closeButton.bounds.size.height
+        saveMyProfileButton.layer.cornerRadius = 0.5 * saveMyProfileButton.bounds.size.height
+        shareButton.layer.cornerRadius = 0.5 * shareButton.bounds.size.height
+
+        
         saveMyProfileButton.hidden = true
         
         // Display image on the VC:

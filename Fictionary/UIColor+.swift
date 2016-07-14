@@ -21,4 +21,8 @@ extension UIColor {
     static func medAquamarine() -> UIColor {
         return UIColor(red:0.35, green:0.89, blue:0.69, alpha:1.00)
     }
+    
+    static func tuatara() -> UIColor {
+        return UIColor(red:0.26, green:0.26, blue:0.26, alpha:1.00)
+    }
 }

@@ -96,8 +96,8 @@ extension MPCHandler: MCSessionDelegate {
     func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
         print("peer: \(peerID) did changeState: \(state.stringValue())")
         
-        let userInfo = ["peerID" : peerID, "state" : state.rawValue]
-        dispatch_async(dispatch_get_main_queue()) { 
+        let userInfo = ["peerID" : peerID, "state" : state.stringValue()]
+        dispatch_async(dispatch_get_main_queue()) {
             NSNotificationCenter.defaultCenter().postNotificationName("MPC_NewPeerNotification", object: nil, userInfo: userInfo)
         }
     }

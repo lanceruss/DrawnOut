@@ -22,7 +22,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
     var seconds = 0
     var timer = NSTimer()
     
-    var captions = ["iPad", "iPhone", "Sim"]
+    var captions = ["beat around the bush", "burn the midnight oil", "cut the mustard", "elvis has left the building", "kill two birds with one stone", "piece of cake", "a ship lost in time", "new york minute", "a slap on the wrist", "a bird in the hand is worth two in the bush", "apple of my eye", "an arm and a leg", "back seat driver", "beating around the bush", "break a leg", "curiosity killed the cat", "don’t look a gift horse in the mouth", "everything but the kitchen sink", "flip the bird", "head over heels", "hocus pocus", "hit the books", "it’s a small world", "kick the bucket", "let the cat out of the bag", "nest egg", "out of the blue", "over my dead body", "put a sock in it", "saved by the bell", "son of a gun", "the best of both worlds", "water under the bridge", "bookworm", "kung fu", "milkshake", "funny bone", "mosquito bite", "pickpocket", "football field", "circus tent", "thunder and lightning", "ice breaker", "ace of spades", "carve a pumpkin", "rudolph the red-nosed reindeer", "astronaut", "cowboy", "teacher", "fire fighter", "police officer", "school bus", "doctor", "ballet dancer", "scientist", "athlete", "space ship", "basketball", "baseball", "pop star", "answer the phone", "surf the internet", "drive a car", "go fishing", "fly a plane", "paper airplane", "read a book", "listen to music", "play guitar", "play piano", "scary clown", "haunted house", "filming a movie", "take a picture", "over the moon"]
     
     var serverStatus: Server?
     var appDelegate: AppDelegate!
@@ -138,6 +138,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
                 if message.objectForKey("string")?.isEqual("segue") == true {
                     performSegueWithIdentifier("ToDrawing", sender: self)
                     
+                } else if message.objectForKey("string")?.isEqual("Start Over") == true {
+                    performSegueWithIdentifier("RestartSegue", sender: self)
                 }
             }
         }
@@ -173,8 +175,22 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate {
         }
     }
     
-    func handleDroppedConnection() {
+    func handleDroppedConnection (notification: NSNotification) {
+        let state = notification.userInfo!["state"] as? String
+        let peerID = notification.userInfo!["peerID"] as? MCPeerID
         
+        print("the dropped peer in handleDroppedConnection is \(peerID)")
+        
+        if state == MCSessionState.NotConnected.stringValue() {
+            let alert = UIAlertController(title: "Start Over", message: "It looks like someone left the game. Unfortunately, that means you'll have to start over.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                
+                self.performSegueWithIdentifier("RestartSegue", sender: self)
+
+            })
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
 }
