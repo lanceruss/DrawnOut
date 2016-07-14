@@ -98,6 +98,10 @@ class EndGameViewImageVC: UIViewController {
         // Save filename to database
         ref.child("users").child(firebaseUID).child("saved-image").childByAutoId().setValue(["filename":"\(filename).jpg"])
         
+        let alert = UIAlertController(title: "Image Saved", message: "The image was successfully saved to your profile.", preferredStyle: UIAlertControllerStyle.Alert)
+        let button = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(button)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
     
