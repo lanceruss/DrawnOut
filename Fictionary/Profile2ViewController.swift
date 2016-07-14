@@ -11,6 +11,7 @@ import Firebase
 
 class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet var bigHeader: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -26,7 +27,15 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.pastelGreen()
-        collectionView.backgroundColor = UIColor.medAquamarine()
+        
+        bigHeader.backgroundColor = UIColor.pastelGreen()
+        
+        bigHeader.layer.shadowColor = UIColor.blackColor().CGColor
+        bigHeader.layer.shadowOpacity = 0.25
+        bigHeader.layer.shadowOffset = CGSize(width: 0, height: 1)
+        bigHeader.layer.shadowRadius = 3.5
+        
+        collectionView.backgroundColor = UIColor.shamrock()
         
         backButtonView.backgroundColor = UIColor.medAquamarine()
         backButtonView.layer.cornerRadius = 0.5 * backButtonView.bounds.size.height
