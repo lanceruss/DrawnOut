@@ -166,6 +166,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 
                 if captionTextField.text != nil {
                     caption = captionTextField.text!
+                } else {
+                    caption = ""
                 }
                 
                 if let isServer = serverStatus?.isServer {
