@@ -50,12 +50,12 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
         if indexPath.row < array.count {
             
-            if let image = array[indexPath.row] as? UIImage {
+            if array[indexPath.row] is UIImage {
                 //cell.imageView?.image = items[indexPath.row] as! UIImage
                 cell.textCaption.hidden = true
                 cell.imageView5.hidden = false
                 tableView.rowHeight = 250
-                cell.imageView5.image = array[indexPath.row] as! UIImage
+                cell.imageView5.image = array[indexPath.row] as? UIImage
             } else {
                 //cell.textLabel?.text = "\(items[indexPath.row])"
                 
