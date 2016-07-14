@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -32,6 +33,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.pastelGreen()
+        
+        var drawView: DesignTestView {
+            return self.view as! DesignTestView
+        }
+        
+        var drawViewTest: JoinGameRuleView {
+            return self.view as! JoinGameRuleView
+        }
 
         // ----------- RESET ALL LOGIN SESSION VALUES ----------- //
         print("RESET ALL LOGIN SESSION VALUES WHEN THIS PAGE LOADS\n")
@@ -39,6 +48,7 @@ class LoginViewController: UIViewController {
         
         print("** REMINDER THAT WE LOG OUT ALL FIRAUTH SESSION - TESTING / DEBUGGING ***")
 //        try! FIRAuth.auth()!.signOut()
+        
         
         debugInfo.hidden = true
         deletePlayerObjectsButton.hidden = true
@@ -143,6 +153,7 @@ class LoginViewController: UIViewController {
                 if snapshot.value!["isAnonymous"] as! String  == "1" {
                     self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
                     self.viewMyProfileButton.userInteractionEnabled = false
+                    
                 } else {
                     self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
                     self.viewMyProfileButton.userInteractionEnabled = true
@@ -221,10 +232,11 @@ class LoginViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewProfileSegue" {
             let dvc = segue.destinationViewController as! SeeMyProfileViewController
+//            let dvc = segue.destinationViewController as! Profile2ViewController
             //dvc.player = player
             
         } else if segue.identifier == "joinGame" {
-            let dvc = segue.destinationViewController as! JoinGameViewController
+//            let dvc = segue.destinationViewController as! JoinGameViewController
             //dvc.player = player
         }
         

@@ -33,9 +33,6 @@
             <string>SFCompactText-Bold</string>
             <string>SFCompactText-Bold</string>
             <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
         </mutableArray>
         <mutableArray key="SF-UI-Text-Bold.otf">
             <string>SFUIText-Bold</string>
@@ -157,11 +154,11 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="top" id="LA3-kK-mSd"/>
                         <viewControllerLayoutGuide type="bottom" id="PZT-bm-mMc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="feU-iF-jL7">
+                    <view key="view" contentMode="scaleToFill" id="feU-iF-jL7" customClass="DesignTestView" customModule="Fictionary" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Debug Info..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Efp-VE-EyF">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Debug Info..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Efp-VE-EyF">
                                 <rect key="frame" x="20" y="435" width="560" height="145"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -241,14 +238,14 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30v-7l-Zam">
                                 <rect key="frame" x="165" y="359" width="269" height="61"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="24"/>
-                                <state key="normal" title="Logout">
+                                <state key="normal" title="LOGOUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onLogoutTapped:" destination="LG5-yw-6YA" eventType="touchUpInside" id="vWw-U3-ZbZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FICTIONARY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-k6-Hrd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRAWN OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-k6-Hrd">
                                 <rect key="frame" x="164" y="95" width="273" height="51"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Heavy" family="SF UI Text" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,6 +363,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             <constraint firstItem="qUd-NK-n5w" firstAttribute="leading" secondItem="m9q-tu-nqR" secondAttribute="leading" id="p9F-Bt-z4k"/>
                             <constraint firstItem="qUd-NK-n5w" firstAttribute="centerY" secondItem="feU-iF-jL7" secondAttribute="centerY" id="pcT-6D-sSa"/>
                             <constraint firstItem="qUd-NK-n5w" firstAttribute="top" secondItem="1YY-yn-wrd" secondAttribute="bottom" constant="16" id="sAQ-Ha-CKH"/>
+                            <constraint firstItem="Efp-VE-EyF" firstAttribute="top" secondItem="5FG-Sv-0FH" secondAttribute="top" id="sQT-d5-k4z"/>
                             <constraint firstItem="ImX-oA-0yE" firstAttribute="centerX" secondItem="1YY-yn-wrd" secondAttribute="centerX" id="sZe-pK-gJu"/>
                             <constraint firstItem="jbA-Bj-DvO" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" constant="-9.5" id="sgH-cP-sBh"/>
                             <constraint firstItem="30v-7l-Zam" firstAttribute="top" secondItem="ImX-oA-0yE" secondAttribute="bottom" constant="28" id="wmE-aM-74F"/>
@@ -558,6 +556,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hpt-Xu-sDH" id="yPO-au-QAn"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvy-sn-DQW">
                                 <rect key="frame" x="20" y="132" width="560" height="30"/>
@@ -566,6 +567,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hpt-Xu-sDH" id="oBD-Sc-mQd"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="obN-GX-3Le">
                                 <rect key="frame" x="20" y="204" width="560" height="30"/>
@@ -574,6 +578,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hpt-Xu-sDH" id="JiM-YQ-lHv"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-rJ-jz3">
                                 <rect key="frame" x="20" y="283" width="560" height="30"/>
@@ -582,6 +589,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hpt-Xu-sDH" id="47n-0T-kc5"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-t3-Aal">
                                 <rect key="frame" x="20" y="37" width="103" height="22"/>

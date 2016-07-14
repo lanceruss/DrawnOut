@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateAccount: UIViewController {
+class CreateAccount: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -238,5 +238,10 @@ class CreateAccount: UIViewController {
         } // end of creating new user in firebase database
         
     } // end of onButtonTapped to Create Account
+ 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
