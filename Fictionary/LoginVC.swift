@@ -78,20 +78,20 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.signInWithEmail(self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error != nil {
-                    print("there was an error logging in the user into Firebase Auth: \n\(error)")
+                    print("there was an error logging in the user into Firebase Auth: \n\(error!)")
                     self.errorMessageLabel.hidden = false
                     self.errorMessageLabel.text = "We could not find a user with that info.\nPlease try again.\n"
                     self.passwordTextField.text = ""
 
                 } else {
                     
-                    // the user is logged in this block, so now grab the user info from Firbase Auth
+                    // the user is logged in this block, so now grab the user info from Firebase Auth
                     if let user = FIRAuth.auth()?.currentUser {
                         
                         // User is signed in.
                         let email = user.email
                         let userID = user.uid
-                        print("email: \(email)")
+                        print("email: \(email!)")
                         print("userID: \(userID)")
                         
                         self.dismissViewControllerAnimated(true, completion: nil)

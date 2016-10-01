@@ -65,8 +65,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-K1-aqS">
                                 <rect key="frame" x="0.0" y="20" width="600" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-46-J5a">
-                                        <rect key="frame" x="225" y="17" width="151.5" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-46-J5a">
+                                        <rect key="frame" x="225" y="15.5" width="151.5" height="29"/>
                                         <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWK-uS-fj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-447"/>
+            <point key="canvasLocation" x="399" y="1137"/>
         </scene>
         <!--JoinGameStartGame-->
         <scene sceneID="ndZ-PD-97x">
@@ -182,14 +182,23 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-ul-jFt">
                                                     <rect key="frame" x="0.0" y="8" width="250" height="367"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="rag-FG-Xor">
+                                                    <rect key="frame" x="115" y="178" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="2bR-ON-4b0"/>
+                                                        <constraint firstAttribute="height" constant="20" id="6IE-HK-TWX"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="leading" secondItem="u4D-B2-h9j" secondAttribute="leadingMargin" constant="-8" id="AzW-Zr-JvD"/>
+                                            <constraint firstItem="rag-FG-Xor" firstAttribute="centerY" secondItem="u4D-B2-h9j" secondAttribute="centerY" id="Bpk-vS-UVk"/>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="leading" secondItem="u4D-B2-h9j" secondAttribute="leading" id="CRb-Xo-R4A"/>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="top" secondItem="u4D-B2-h9j" secondAttribute="top" id="KoJ-IP-twm"/>
                                             <constraint firstAttribute="trailing" secondItem="2mj-ul-jFt" secondAttribute="trailing" id="QRR-v7-oKt"/>
+                                            <constraint firstItem="rag-FG-Xor" firstAttribute="centerX" secondItem="u4D-B2-h9j" secondAttribute="centerX" id="UGt-dE-HUb"/>
                                             <constraint firstAttribute="bottom" secondItem="2mj-ul-jFt" secondAttribute="bottom" id="ZxV-M9-raL"/>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="top" secondItem="u4D-B2-h9j" secondAttribute="topMargin" id="eCv-tg-c9t"/>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="centerY" secondItem="u4D-B2-h9j" secondAttribute="centerY" constant="4" id="tLx-lb-4G1"/>
@@ -205,6 +214,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="rag-FG-Xor" id="AEb-9X-y6F"/>
                                             <outlet property="cardImageView" destination="2mj-ul-jFt" id="kU6-eX-tUv"/>
                                         </connections>
                                     </collectionViewCell>
@@ -334,17 +344,6 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <segue destination="98Z-b7-cg2" kind="presentation" identifier="viewProfileSegue" id="9W0-RR-Fdr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbA-Bj-DvO">
-                                <rect key="frame" x="250" y="518" width="81" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="81" id="5Qz-SA-hJY"/>
-                                    <constraint firstAttribute="height" constant="30" id="mQT-eG-E5P"/>
-                                </constraints>
-                                <state key="normal" title="Enter Game"/>
-                                <connections>
-                                    <action selector="enterGameButtonTapped:" destination="LG5-yw-6YA" eventType="touchUpInside" id="9yu-pz-4N9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FG-Sv-0FH">
                                 <rect key="frame" x="236" y="435" width="127" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
@@ -379,7 +378,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rCx-cs-lRg" kind="presentation" id="El7-sS-hlH"/>
+                                    <segue destination="rCx-cs-lRg" kind="presentation" identifier="toLoginVC" id="El7-sS-hlH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30v-7l-Zam">
@@ -480,9 +479,8 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <constraints>
                             <constraint firstItem="xen-cf-NQ8" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" constant="-181" id="12q-a9-9eT"/>
                             <constraint firstItem="ImX-oA-0yE" firstAttribute="baseline" secondItem="qUd-NK-n5w" secondAttribute="firstBaseline" id="3Cl-gS-bfN"/>
+                            <constraint firstItem="SCd-k6-Hrd" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" id="B58-WT-xIm"/>
                             <constraint firstItem="1YY-yn-wrd" firstAttribute="trailing" secondItem="qUd-NK-n5w" secondAttribute="trailing" id="CFk-ef-87H"/>
-                            <constraint firstItem="m9q-tu-nqR" firstAttribute="centerX" secondItem="jbA-Bj-DvO" secondAttribute="centerX" constant="9" id="CzH-cU-t0Y"/>
-                            <constraint firstItem="jbA-Bj-DvO" firstAttribute="top" secondItem="LA3-kK-mSd" secondAttribute="bottom" constant="498" id="Duh-2x-kz2"/>
                             <constraint firstItem="RDW-B1-t9y" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" constant="185" id="JHC-3w-D5d"/>
                             <constraint firstAttribute="trailing" secondItem="RDW-B1-t9y" secondAttribute="trailing" constant="54" id="KAc-HE-ley"/>
                             <constraint firstItem="RDW-B1-t9y" firstAttribute="top" secondItem="ImX-oA-0yE" secondAttribute="bottom" constant="196" id="KWu-qt-RgF"/>
@@ -512,7 +510,6 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             <constraint firstItem="qUd-NK-n5w" firstAttribute="top" secondItem="1YY-yn-wrd" secondAttribute="bottom" constant="16" id="sAQ-Ha-CKH"/>
                             <constraint firstItem="Efp-VE-EyF" firstAttribute="top" secondItem="5FG-Sv-0FH" secondAttribute="top" id="sQT-d5-k4z"/>
                             <constraint firstItem="ImX-oA-0yE" firstAttribute="centerX" secondItem="1YY-yn-wrd" secondAttribute="centerX" id="sZe-pK-gJu"/>
-                            <constraint firstItem="jbA-Bj-DvO" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" constant="-9.5" id="sgH-cP-sBh"/>
                             <constraint firstItem="30v-7l-Zam" firstAttribute="top" secondItem="ImX-oA-0yE" secondAttribute="bottom" constant="28" id="wmE-aM-74F"/>
                             <constraint firstItem="PZT-bm-mMc" firstAttribute="top" secondItem="RDW-B1-t9y" secondAttribute="bottom" constant="27" id="wob-5B-SRY"/>
                             <constraint firstItem="xen-cf-NQ8" firstAttribute="top" secondItem="Efp-VE-EyF" secondAttribute="bottom" constant="-30" id="xo8-Fr-ZF4"/>
@@ -532,7 +529,6 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <outlet property="createAccountButton" destination="5FG-Sv-0FH" id="XA1-ay-ea7"/>
                         <outlet property="debugInfo" destination="Efp-VE-EyF" id="JXS-Kt-KO9"/>
                         <outlet property="deletePlayerObjectsButton" destination="xen-cf-NQ8" id="fCw-AP-0VD"/>
-                        <outlet property="enterGameButton" destination="jbA-Bj-DvO" id="XHR-PD-xbW"/>
                         <outlet property="howToPlayButton" destination="trz-dx-wNb" id="R6D-OF-Tfo"/>
                         <outlet property="loginAsGuestButton" destination="ImX-oA-0yE" id="VSH-o5-m25"/>
                         <outlet property="loginAsUserButton" destination="qUd-NK-n5w" id="qwl-YM-tAA"/>
@@ -545,7 +541,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCq-0g-PLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="337"/>
+            <point key="canvasLocation" x="1115" y="333"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="502-2x-c1M">
@@ -562,7 +558,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-aR-VUm">
                                 <rect key="frame" x="20" y="178" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="rCx-cs-lRg" id="g7e-g8-jNX"/>
                                 </connections>
@@ -606,7 +602,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-za-r4w">
                                 <rect key="frame" x="20" y="108" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="rCx-cs-lRg" id="iaU-YF-vxm"/>
                                 </connections>
@@ -661,7 +657,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnA-Mb-XXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="1141"/>
+            <point key="canvasLocation" x="1115" y="1137"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="neO-3x-QXZ">
@@ -675,8 +671,8 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-2U-KDp">
-                                <rect key="frame" x="20" y="450" width="560" height="43"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-2U-KDp">
+                                <rect key="frame" x="20" y="459" width="560" height="34"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Cancel &amp; Go Back to Login">
@@ -693,7 +689,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19w-i7-CvH">
-                                <rect key="frame" x="218.5" y="565" width="163" height="30"/>
+                                <rect key="frame" x="218" y="565" width="163" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
                                 <state key="normal" title="Cancel Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -708,7 +704,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <constraint firstAttribute="height" constant="30" id="D06-dc-eEk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="yPO-au-QAn"/>
                                 </connections>
@@ -719,7 +715,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <constraint firstAttribute="height" constant="30" id="lAS-9F-95s"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="oBD-Sc-mQd"/>
                                 </connections>
@@ -730,7 +726,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <constraint firstAttribute="height" constant="30" id="VxC-zs-EnN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="JiM-YQ-lHv"/>
                                 </connections>
@@ -741,7 +737,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <constraint firstAttribute="height" constant="30" id="1kb-Gd-Wu2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="47n-0T-kc5"/>
                                 </connections>
@@ -843,9 +839,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <exclude reference="INl-yy-OFb"/>
                                 <exclude reference="ATq-pv-9VX"/>
                                 <exclude reference="EdC-Nt-zXk"/>
-                                <exclude reference="uvR-NN-p75"/>
                                 <exclude reference="iGh-E1-z0k"/>
                                 <exclude reference="oLc-CW-IhB"/>
+                                <exclude reference="uvR-NN-p75"/>
                                 <exclude reference="YDT-Xr-lbZ"/>
                             </mask>
                         </variation>
@@ -862,7 +858,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePD-TH-wjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065" y="1045"/>
+            <point key="canvasLocation" x="1769" y="1137"/>
         </scene>
         <!--See My Profile View Controller-->
         <scene sceneID="U28-PP-cKv">
@@ -960,8 +956,8 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="ag8-TN-YsP" id="wbB-sx-Zvc"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
-                                <rect key="frame" x="315" y="46" width="265" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
+                                <rect key="frame" x="20" y="28" width="265" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="cwX-4c-CME"/>
                                 </constraints>
@@ -969,8 +965,8 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
-                                <rect key="frame" x="20" y="33" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
+                                <rect key="frame" x="546" y="20" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U4i-ut-4wd"/>
                                     <constraint firstAttribute="width" constant="34" id="f1h-DT-4Tj"/>
@@ -1006,7 +1002,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdj-LH-bsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2716" y="380"/>
+            <point key="canvasLocation" x="2740" y="327"/>
         </scene>
         <!--SwipeStacks-->
         <scene sceneID="fyu-YG-76q">
@@ -1014,10 +1010,10 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                 <viewControllerPlaceholder storyboardName="SwipeStacks" id="meu-xs-9Fz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9o-l6-a5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3161" y="-10"/>
+            <point key="canvasLocation" x="3313" y="-10"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9AQ-8X-7Jd"/>
+        <segue reference="xIx-Mf-P47"/>
     </inferredMetricsTieBreakers>
 </document>

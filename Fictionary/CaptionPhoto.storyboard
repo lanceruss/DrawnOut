@@ -14,7 +14,7 @@
         <!--Caption Photo View Controller-->
         <scene sceneID="zD1-O1-l3W">
             <objects>
-                <viewController id="KBr-6v-fDe" customClass="CaptionPhotoViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KBr-6v-fDe" customClass="CaptionPhotoViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hWI-Lh-lE0"/>
                         <viewControllerLayoutGuide type="bottom" id="AJf-aT-X8b"/>
@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="width" constant="560" id="ur1-82-2j7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1ge-TN-2nD"/>
@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="width" constant="206" id="Vh4-Yg-1tc"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exd-za-uIW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exd-za-uIW">
                                 <rect key="frame" x="558" y="44" width="27" height="24"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,12 +71,20 @@
                                     <constraint firstAttribute="height" constant="20" id="gf7-yL-Wje"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jjS-sE-f8Y">
+                                <rect key="frame" x="562" y="46" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Gtk-Bj-S6s"/>
+                                    <constraint firstAttribute="width" constant="20" id="J1Z-Sp-VrB"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="0VR-kA-kYQ"/>
                             <constraint firstAttribute="trailing" secondItem="mo0-nP-zDB" secondAttribute="trailing" constant="32" id="0zo-FV-ezI"/>
                             <constraint firstItem="ntf-vv-fgq" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="43" id="12U-fv-0CW"/>
+                            <constraint firstAttribute="trailing" secondItem="jjS-sE-f8Y" secondAttribute="trailing" constant="18" id="3IY-cT-ah7"/>
                             <constraint firstItem="yI1-po-vu3" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="20" id="4Vy-ve-yn7"/>
                             <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="60" id="A4g-UR-cq9"/>
                             <constraint firstItem="AJf-aT-X8b" firstAttribute="top" secondItem="yI1-po-vu3" secondAttribute="bottom" constant="47" id="AnV-8Y-oVg"/>
@@ -86,6 +94,7 @@
                             <constraint firstItem="ntf-vv-fgq" firstAttribute="top" secondItem="n3d-GR-RAA" secondAttribute="top" id="Dgw-3M-mfO"/>
                             <constraint firstItem="yI1-po-vu3" firstAttribute="top" secondItem="ntf-vv-fgq" secondAttribute="bottom" constant="29" id="GSf-eF-ljC"/>
                             <constraint firstAttribute="trailing" secondItem="exd-za-uIW" secondAttribute="trailing" constant="15" id="IYN-Su-uNw"/>
+                            <constraint firstItem="jjS-sE-f8Y" firstAttribute="top" secondItem="hWI-Lh-lE0" secondAttribute="bottom" constant="26" id="MiU-Cm-quD"/>
                             <constraint firstItem="ntf-vv-fgq" firstAttribute="leading" secondItem="n3d-GR-RAA" secondAttribute="leading" constant="43" id="OJt-eJ-nlU"/>
                             <constraint firstItem="exd-za-uIW" firstAttribute="top" secondItem="hWI-Lh-lE0" secondAttribute="bottom" constant="24" id="RoK-nP-jCa"/>
                             <constraint firstAttribute="trailing" secondItem="ntf-vv-fgq" secondAttribute="trailing" constant="43" id="S46-nI-X8h"/>
@@ -142,6 +151,7 @@
                         <outlet property="captionTextField" destination="yI1-po-vu3" id="2gi-hA-8ii"/>
                         <outlet property="headerView" destination="1lR-uk-lzm" id="0Ff-Qa-bXW"/>
                         <outlet property="imageView" destination="ntf-vv-fgq" id="jDC-dH-Iak"/>
+                        <outlet property="timerActivityIndicator" destination="jjS-sE-f8Y" id="OfT-9e-97l"/>
                         <outlet property="timerLabel" destination="exd-za-uIW" id="Tr7-fF-2vG"/>
                         <segue destination="x4X-vX-Jew" kind="show" identifier="ToDraw" id="TJH-q2-KI6"/>
                         <segue destination="O5n-gi-e4i" kind="show" identifier="ExitSegue" id="rHV-Ag-PS5"/>

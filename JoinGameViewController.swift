@@ -12,7 +12,7 @@ import MultipeerConnectivity
 class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserViewControllerDelegate {
     
     // Added by Ernie to allow debug info about player object
-//    @IBOutlet weak var debugLabel: UILabel!
+    // @IBOutlet weak var debugLabel: UILabel!
     
     // Added by Ernie to allow passing the player object from the Login process,
     // specifically the LoginViewController.swift
@@ -40,6 +40,7 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         
         self.view.backgroundColor = UIColor.pastelGreen()
         
+        // Setting the visual attributes of the buttons
         invitePlayersButton.backgroundColor = UIColor.medAquamarine()
         invitePlayersButton.layer.cornerRadius = 0.5 * invitePlayersButton.bounds.size.height
         

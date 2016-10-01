@@ -50,6 +50,7 @@ class Server: NSObject {
             }
     }
     
+    // This could be modified to create more dynamic experiences
     func gameOverCheck(turn: Int) -> Bool {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         

@@ -18,6 +18,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
     
     @IBOutlet weak var randomButton: UIButton!
     
+    @IBOutlet var whiteActivityIndicator: UIActivityIndicatorView!
+    
     var secondsAllowed = 20
     var seconds = 0
     var timer = NSTimer()
@@ -56,6 +58,8 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
         
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
+        
+        whiteActivityIndicator.hidden = true
         
         // Set up timer
         seconds = secondsAllowed
@@ -96,6 +100,11 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
         
         if seconds == 0 {
             timer.invalidate()
+            
+            timerLabel.hidden = true
+            
+            whiteActivityIndicator.startAnimating()
+            whiteActivityIndicator.hidden = false
             
             captionTextField.enabled = false
             

@@ -19,6 +19,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     
     var receivedArray: Array = [AnyObject]()
     
+    @IBOutlet var timerActivityIndicator: UIActivityIndicatorView!
     @IBOutlet var timerLabel: UILabel!
     var secondsAllowed = 20
     var seconds = 0
@@ -62,6 +63,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
         
+        timerActivityIndicator.hidden = true
+        
         if let serverStatus = serverStatus {
             if serverStatus.isServer == true {
                 // Find the next player
@@ -75,9 +78,10 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     } else {
                         nextPlayer = shiftingOrderArray[i + 1]
                     }
+                    
                     let dictionaryToSend = gameDictionary[currentPlayer]
                     
-                    print("\n dictionaryToSend from \(currentPlayer) \(dictionaryToSend) \n")
+                    print("\n dictionaryToSend from \(currentPlayer.displayName) \(dictionaryToSend) \n")
                     
                     let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
@@ -158,6 +162,11 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if seconds == 0 {
             timer.invalidate()
             
+            timerLabel.hidden = true
+            
+            timerActivityIndicator.startAnimating()
+            timerActivityIndicator.hidden = false
+            
             if !countdownFinished {
                 
                 countdownFinished = true
@@ -176,6 +185,8 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                         let message = messageHandler.createMessage(string: "timer_up", object: captionToSave, keyForDictionary: keyForReceivedDictionary, ready: nil)
                         messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                         
+                        print("non-server captionphoto turn over")
+                        
                         serverStatus?.isReady()
                     }
                 }
@@ -184,6 +195,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     }
     
     func handleReceivedData(notification: NSNotification){
+        
+        print("photocaption handle received data")
+        
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
         
         if let serverStatus = serverStatus {
@@ -302,6 +316,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 performSegueWithIdentifier("ExitSegue", sender: self)
+                
             } else {
                 
                 let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, keyForDictionary: nil, ready: nil)

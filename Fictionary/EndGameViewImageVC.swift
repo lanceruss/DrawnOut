@@ -20,7 +20,8 @@ class EndGameViewImageVC: UIViewController {
     var imagePassed: UIImage = UIImage()
     
     var ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://fictionary-7d24c.appspot.com")
+    let storage = FIRStorage.storage()
+    let storageRef = FIRStorage.storage().referenceForURL("gs://drawnout-81702.appspot.com")
     var firebaseUID = ""
 
     override func viewDidLoad() {
@@ -59,7 +60,7 @@ class EndGameViewImageVC: UIViewController {
         } else {
             // No user is signed in.
             
-            
+            saveMyProfileButton.hidden = true
         }
 
     
@@ -107,7 +108,7 @@ class EndGameViewImageVC: UIViewController {
     
     
     @IBAction func onShareButtonTapped(sender: AnyObject) {
-        let textToShare = "Fictionary Favorite Drawing!"
+        let textToShare = "Check out this drawing."
         let cardPhoto = imagePreview.image
         
         let activityViewController = UIActivityViewController(activityItems: [textToShare, cardPhoto!], applicationActivities: nil)

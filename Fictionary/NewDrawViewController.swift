@@ -20,6 +20,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var captionLabel: UILabel!
+    @IBOutlet var timerActivityIndicator: UIActivityIndicatorView!
     
     var colorPaletteViewExpanded: Bool = false
     
@@ -47,7 +48,6 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     var seconds = 0
     var timer = NSTimer()
 
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +68,8 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
 //        drawingView.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
 //        UIGraphicsEndImageContext()
         }
+        
+        timerActivityIndicator.hidden = true
 
         headerView.backgroundColor = UIColor.pastelGreen()
         captionView.backgroundColor = UIColor.medAquamarine()
@@ -76,7 +78,6 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         headerView.layer.shadowOpacity = 0.25
         headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         headerView.layer.shadowRadius = 3.5
-
 
         self.drawingView.multipleTouchEnabled = true
         drawingView.drawingQueue = dispatch_queue_create("drawingQueue", nil)
@@ -142,7 +143,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        // Might actually need this this time.
+        // Might actually need this.
     }
     
     override func viewDidLayoutSubviews() {
@@ -156,8 +157,9 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         UIGraphicsEndImageContext();
         }
     }
-
     
+    // MARK: Color Palette methods
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = colorTableView.dequeueReusableCellWithIdentifier("cellid", forIndexPath: indexPath)
@@ -190,7 +192,6 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.colorTableView.hidden = false
                     self.colorPaletteViewExpanded = true
             })
-            
         }
     }
     
@@ -220,36 +221,44 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func subtractTime() {
         
-        seconds-=1
+        seconds -= 1
         timerLabel.text = "\(seconds)"
         
         if seconds == 0 {
             timer.invalidate()
             
+            timerLabel.hidden = true
+
+            timerActivityIndicator.startAnimating()
+            timerActivityIndicator.hidden = false
+            
             if !countdownFinished {
                 
                 countdownFinished = true
                 
-                // We need to fix this so it will still transition if a person draws nothing.
+                
                 if self.drawingView.incrementalImage != nil {
                     let passImage = UIImage(CGImage: self.drawingView.incrementalImage!.CGImage!)
                     if serverStatus?.isServer == true {
                         gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = passImage
+                        
                     } else {
                         
                         let message = messageHandler.createMessage(string: "timer_up", object: passImage, keyForDictionary: keyForReceivedDictionary, ready: nil)
                         messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                         //let passImage = UIImage(CGImage: self.drawingView.incrementalImage!.CGImage!)
-
+                        print("time up non-server drawVC")
+                        
                         serverStatus?.isReady()
                     }
                 }
             }
-            
         }
     }
 
     func handleReceivedData(notification: NSNotification){
+        
+        print("recieved data drawVC")
         
         let message = messageHandler.unwrapReceivedMessage(notification: notification)
         
@@ -264,7 +273,6 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
                     
                     captionLabel.text = messageDict[turnCounter - 1] as? String
-                    
                 }
                 
                 if message.objectForKey("string")?.isEqual("timer_up") == true {
@@ -283,6 +291,8 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
                 if message.objectForKey("string")?.isEqual("ExitSegue") == true {
+                    
+                    print("DrawVC ExitSegue message received")
                     
                     let messageDict = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
                     exitDictionary = messageDict
@@ -315,6 +325,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let switchForSeque = serverStatus.gameOverCheck(turnCounter)
             
+            // this sends messages for the segue
             if switchForSeque {
                 
                 let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
@@ -339,7 +350,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         turnCounter = turnCounter + 1
         
         print("DrawVC - \(turnCounter) - \n \(gameDictionary) \n")
-        print("arrayForOrder - \(arrayForOrder)")
+        print("arrayForOrder - \(arrayForOrder)\n")
         
         if segue.identifier == "ToCaption" {
             let dvc = segue.destinationViewController as! CaptionPhotoViewController

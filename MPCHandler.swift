@@ -54,7 +54,7 @@ class MPCHandler: NSObject {
         mcSession.delegate = self
     }
     
-    // Setup a service browser as an MCBrowswerViewController taht can be used to invite other devices to join the mcSession. The MCBrowserViewController is provided by Apple and is a standard interface for allowing devices to connect through MPC. You can use a different browser class (I forget the name) to create a custom invitation system.
+    // Setup a service browser as an MCBrowserViewController that can be used to invite other devices to join the mcSession. The MCBrowserViewController is provided by Apple and is a standard interface for allowing devices to connect through MPC. You can use a different browser class (I forget the name) to create a custom invitation system.
     func setupBrowser() {
         
         serviceBrowser = MCBrowserViewController(serviceType: gameServiceType, session: mcSession)
@@ -123,6 +123,8 @@ extension MPCHandler: MCSessionDelegate {
     }
     
     // Notifies the device that a resource has been received. We are not currently using this, but I have a notification in place in case we decide to go this route. Note that we MUST implement this function even if we do not use it because it is a required MCSessionDelegate method.
+    // There is maybe some potential with this? - L
+    // Oh nvm don't be an idiot Lance - L
     func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {
         
         let resource = ["name" : resourceName, "peerID" : peerID, "url" : localURL]

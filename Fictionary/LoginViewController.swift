@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var deletePlayerObjectsButton: UIButton!
     @IBOutlet weak var loginAsGuestButton: UIButton!
     @IBOutlet weak var viewMyProfileButton: UIButton!
-    @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
@@ -27,6 +26,8 @@ class LoginViewController: UIViewController {
     
     var player: Player!
     var ref = FIRDatabase.database().reference()
+    
+    var userIsLoggedIn: Bool?
     
 
     override func viewDidLoad() {
@@ -53,8 +54,6 @@ class LoginViewController: UIViewController {
         debugInfo.hidden = true
         deletePlayerObjectsButton.hidden = true
         
-        enterGameButton.hidden = true
-        
         logoutButton.hidden = true
         logoutButton.backgroundColor = UIColor.medAquamarine()
         logoutButton.layer.cornerRadius = 0.5 * logoutButton.bounds.size.height
@@ -69,10 +68,16 @@ class LoginViewController: UIViewController {
         loginAsUserButton.layer.cornerRadius = 0.5 * loginAsUserButton.bounds.size.height
         loginAsUserButton.backgroundColor = UIColor.shamrock()
         
+        if userIsLoggedIn == true {
+            viewMyProfileButton.hidden = false
+        } else {
+            viewMyProfileButton.hidden = true
+        }
+        
         viewMyProfileButton.layer.cornerRadius = 0.5 * viewMyProfileButton.bounds.size.height
         viewMyProfileButton.userInteractionEnabled = false
         //viewMyProfileButton.tintColor = UIColor.grayColor()
-        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        //viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
         
         howToPlayButton.layer.cornerRadius = 0.5 * howToPlayButton.bounds.size.height
         howToPlayButton.backgroundColor = UIColor.medAquamarine()
@@ -82,11 +87,35 @@ class LoginViewController: UIViewController {
     
     
     }
-    
-    @IBAction func enterGameButtonTapped(sender: AnyObject) {
-        performSegueWithIdentifier("joinGame", sender: self)
-    }
 
+//    override func viewWillAppear(animated: Bool) {
+//        
+//        let userID = FIRAuth.auth()?.currentUser?.uid
+//        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+//            // Get user value
+//            let name = snapshot.value!["name"] as! String
+//            
+//            if snapshot.value!["isAnonymous"] as! String  == "1" {
+//                //self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+//                //self.viewMyProfileButton.userInteractionEnabled = false
+//                self.viewMyProfileButton.hidden = true
+//                self.logoutButton.titleLabel?.text = "LOGIN"
+//                print("Logged in as Guest")
+//                
+//            } else {
+//                self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
+//                self.viewMyProfileButton.userInteractionEnabled = true
+//                self.welcomeLabel.text = "Hi, \(name)!"
+//                self.logoutButton.titleLabel?.text = "LOGOUT"
+//                self.createAccountButton.hidden = true
+//                self.viewMyProfileButton.hidden = false
+//            }
+//            
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//
+//    }
     
     @IBAction func onViewMyProfileTapped(sender: AnyObject) {
         
@@ -97,6 +126,7 @@ class LoginViewController: UIViewController {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
             // Get user value
             let email = snapshot.value!["email"] as! String
             let password = snapshot.value!["password"] as! String
@@ -108,8 +138,6 @@ class LoginViewController: UIViewController {
             self.debugInfo.text = self.debugInfo.text + "FIRDatabase > uid, email, pass & name: \(userID!) \(email), \(password), \(name), \(isAnonymous)"
             
             
-
-
         }) { (error) in
             print(error.localizedDescription)
             print("-from getLoggedInUserInfo")
@@ -131,10 +159,9 @@ class LoginViewController: UIViewController {
             
             getLoggedInUserInfo()
             
-            self.loginButton.hidden = true
-            self.createAccountButton.hidden = true
+            //self.loginButton.hidden = true
+            //self.createAccountButton.hidden = true
             self.loginAsGuestButton.hidden = true
-            self.logoutButton.hidden = false
             
             viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
             viewMyProfileButton.userInteractionEnabled = true
@@ -148,15 +175,30 @@ class LoginViewController: UIViewController {
             ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 // Get user value
                 let name = snapshot.value!["name"] as! String
-                self.welcomeLabel.text = "Hi, \(name)!"
                 
                 if snapshot.value!["isAnonymous"] as! String  == "1" {
-                    self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
-                    self.viewMyProfileButton.userInteractionEnabled = false
+                    //self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+                    //self.viewMyProfileButton.userInteractionEnabled = false
+                    
+                    dispatch_async(dispatch_get_main_queue(),{
+                        self.logoutButton.setTitle("LOGIN", forState: UIControlState.Normal)
+                        self.logoutButton.hidden = false
+
+                    })
+
+                    self.viewMyProfileButton.hidden = true
+                    print("Logged in as Guest")
+                    self.userIsLoggedIn = false
                     
                 } else {
                     self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
                     self.viewMyProfileButton.userInteractionEnabled = true
+                    self.welcomeLabel.text = "Hi, \(name)!"
+                    self.logoutButton.setTitle("LOGOUT", forState: UIControlState.Normal)
+                    self.logoutButton.hidden = false
+                    self.createAccountButton.hidden = true
+                    self.viewMyProfileButton.hidden = false
+                    self.userIsLoggedIn = true
                 }
                 
                 
@@ -169,8 +211,9 @@ class LoginViewController: UIViewController {
             // No user is signed in.
             print("user is not signed in")
             debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: NONE\n"
-            
+            self.viewMyProfileButton.hidden = true
             self.logoutButton.hidden = true
+            self.userIsLoggedIn = false
         }
         
             self.debugInfo.text = self.debugInfo.text + "D-player: \(self.player)\n"
@@ -185,7 +228,6 @@ class LoginViewController: UIViewController {
         self.player.firebaseUID = ""
         
         //self.loginButton.hidden = true
-        
         FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
             // ...
             self.player.firebaseUID = user!.uid
@@ -200,10 +242,7 @@ class LoginViewController: UIViewController {
             
             self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
 
-
-
         }
-        
     }
     
     @IBAction func startGameAsUserLoggedIn(sender: AnyObject) {
@@ -211,6 +250,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLogoutTapped(sender: AnyObject) {
+
         deleteAllUsersAuthObjects()
         self.logoutButton.hidden = true
         self.loginAsGuestButton.hidden = false
@@ -220,50 +260,57 @@ class LoginViewController: UIViewController {
         welcomeLabel.hidden = true
         welcomeLabel.text = "Hi, "
         
-        viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
-        viewMyProfileButton.userInteractionEnabled = false
-
+        //viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
+        //viewMyProfileButton.userInteractionEnabled = false
+        viewMyProfileButton.hidden = true
         
         self.debugInfo.text = "NO USER AUTH OBJECTS!"
         print("USER LOGGED OUT")
         
+        if logoutButton.titleLabel?.text == "LOGIN" {
+            performSegueWithIdentifier("toLoginVC", sender: sender)
+        }
+        
+        
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewProfileSegue" {
-//            let dvc = segue.destinationViewController as! SeeMyProfileViewController
-//            let dvc = segue.destinationViewController as! Profile2ViewController
-
-            //dvc.player = player
+            
+        // let dvc = segue.destinationViewController as! SeeMyProfileViewController
+        // let dvc = segue.destinationViewController as! Profile2ViewController
+        // dvc.player = player
             
         } else if segue.identifier == "joinGame" {
-//            let dvc = segue.destinationViewController as! JoinGameViewController
-            //dvc.player = player
+            // let dvc = segue.destinationViewController as! JoinGameViewController
+            // dvc.player = player
         }
         
     }
     
     
     
+    /*
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("loginButtonDidLogOut running...")
         loginAsGuestButton.hidden = false
         viewMyProfileButton.userInteractionEnabled = false
         // viewMyProfileButton.tintColor = UIColor.grayColor()
-        enterGameButton.hidden = true
-        
-
     }
+    */
+    
     
     func deleteAllUsersAuthObjects() {
         player = nil
         try! FIRAuth.auth()!.signOut()
     }
     
-    
+    /*
     @IBAction func deletePlayerAuthObjects(sender: AnyObject) {
         deleteAllUsersAuthObjects()
     }
+    */
 
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
         

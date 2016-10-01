@@ -20,7 +20,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
     var imageFilenames = [String]()
     
     var ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://fictionary-7d24c.appspot.com")
+    let storageRef = FIRStorage.storage().referenceForURL("gs://drawnout-81702.appspot.com")
     let userID = FIRAuth.auth()?.currentUser?.uid
 
     override func viewDidLoad() {
@@ -102,7 +102,8 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Create a reference to the file you want to download
         // NEED TO FINISH THIS BY PUTTING THE FILENAME BELOW ON NEXT LINE.....
-    
+        cell.activityIndicator.startAnimating()
+        cell.activityIndicator.hidden = false
         
         let userStorageRef = storageRef.child(self.userID!)
         let userImageFilename = userStorageRef.child("\(self.imageFilenames[indexPath.row])")
@@ -125,11 +126,15 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             
             //self.cardTableView.reloadData()
         }
+        
 
         cell.cardImageView.image = UIImage(named: self.imageFilenames[indexPath.row])
         cell.cardImageView.layer.shadowOpacity = 0.3
         cell.cardImageView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         cell.cardImageView.layer.shadowRadius = 4.0
+        
+        cell.activityIndicator.stopAnimating()
+        cell.activityIndicator.hidden = true
 
         return cell
         

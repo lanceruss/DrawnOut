@@ -11,6 +11,7 @@ import UIKit
 class Profile2CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cardImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
 }

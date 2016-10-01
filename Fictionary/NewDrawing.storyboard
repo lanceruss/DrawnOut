@@ -17,7 +17,7 @@
         <!--New Draw View Controller-->
         <scene sceneID="siv-SA-j7s">
             <objects>
-                <viewController id="t1f-E6-08u" customClass="NewDrawViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t1f-E6-08u" customClass="NewDrawViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AUt-nv-Xju"/>
                         <viewControllerLayoutGuide type="bottom" id="ekW-jY-UaU"/>
@@ -26,11 +26,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ax-VF-5Xh" customClass="DrawingView" customModule="Fictionary" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ax-VF-5Xh" customClass="DrawingView" customModule="Drawn_Out" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="105" width="600" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gss-15-nMo" customClass="ColorPaletteView" customModule="Fictionary" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gss-15-nMo" customClass="ColorPaletteView" customModule="Drawn_Out" customModuleProvider="target">
                                 <rect key="frame" x="552" y="552" width="40" height="40"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TOs-Ur-NIj">
@@ -84,15 +84,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPC-Fu-kus">
-                                <rect key="frame" x="532" y="50" width="52" height="24"/>
+                                <rect key="frame" x="538" y="50" width="34" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="Tpb-s4-Dkw"/>
+                                    <constraint firstAttribute="width" constant="34" id="Tpb-s4-Dkw"/>
                                     <constraint firstAttribute="height" constant="24" id="uQh-ne-J4P"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8f9-yN-MYO">
+                                <rect key="frame" x="549" y="52" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="hTx-ua-Yb4"/>
+                                    <constraint firstAttribute="height" constant="20" id="sLu-H1-KCL"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -100,15 +107,17 @@
                             <constraint firstItem="sm6-W1-khc" firstAttribute="top" secondItem="2gx-p0-ueI" secondAttribute="topMargin" constant="34" id="5Ia-G0-TUD"/>
                             <constraint firstAttribute="trailing" secondItem="A5X-Jc-Nru" secondAttribute="trailing" id="H1C-Bo-jmL"/>
                             <constraint firstItem="A5X-Jc-Nru" firstAttribute="leading" secondItem="sm6-W1-khc" secondAttribute="trailing" id="HBf-8e-vk0"/>
+                            <constraint firstItem="8f9-yN-MYO" firstAttribute="top" secondItem="AUt-nv-Xju" secondAttribute="bottom" constant="32" id="HWq-Vp-ho6"/>
                             <constraint firstItem="A5X-Jc-Nru" firstAttribute="top" secondItem="2gx-p0-ueI" secondAttribute="top" id="LC2-dL-bJ5"/>
                             <constraint firstItem="dPC-Fu-kus" firstAttribute="top" secondItem="AUt-nv-Xju" secondAttribute="bottom" constant="30" id="LSz-wQ-fNO"/>
                             <constraint firstItem="ekW-jY-UaU" firstAttribute="top" secondItem="0ax-VF-5Xh" secondAttribute="bottom" id="U5e-WG-ioF"/>
                             <constraint firstAttribute="trailing" secondItem="Gss-15-nMo" secondAttribute="trailing" constant="8" id="Ufi-kx-qTq"/>
                             <constraint firstItem="dPC-Fu-kus" firstAttribute="leading" secondItem="A5X-Jc-Nru" secondAttribute="trailing" id="VeD-qF-JK9"/>
                             <constraint firstItem="sm6-W1-khc" firstAttribute="leading" secondItem="2gx-p0-ueI" secondAttribute="leading" constant="13" id="WCn-Pw-8PJ"/>
-                            <constraint firstAttribute="trailing" secondItem="dPC-Fu-kus" secondAttribute="trailing" constant="16" id="alZ-ZH-9iA"/>
+                            <constraint firstAttribute="trailing" secondItem="dPC-Fu-kus" secondAttribute="trailing" constant="28" id="alZ-ZH-9iA"/>
                             <constraint firstItem="0ax-VF-5Xh" firstAttribute="leading" secondItem="2gx-p0-ueI" secondAttribute="leading" id="ewV-j2-9bS"/>
                             <constraint firstItem="ekW-jY-UaU" firstAttribute="top" secondItem="Gss-15-nMo" secondAttribute="bottom" constant="8" id="f7u-MJ-Hse"/>
+                            <constraint firstAttribute="trailing" secondItem="8f9-yN-MYO" secondAttribute="trailing" constant="31" id="s7u-SN-K8l"/>
                             <constraint firstItem="0ax-VF-5Xh" firstAttribute="top" secondItem="A5X-Jc-Nru" secondAttribute="bottom" id="v2d-ch-JH9"/>
                             <constraint firstAttribute="trailing" secondItem="0ax-VF-5Xh" secondAttribute="trailing" id="yT8-gh-qV4"/>
                         </constraints>
@@ -127,6 +136,7 @@
                         <outlet property="colorTableView" destination="TOs-Ur-NIj" id="QAm-Uf-XXj"/>
                         <outlet property="drawingView" destination="0ax-VF-5Xh" id="9J0-Sx-8vO"/>
                         <outlet property="headerView" destination="gBl-Iu-Rl7" id="z8Q-WW-53B"/>
+                        <outlet property="timerActivityIndicator" destination="8f9-yN-MYO" id="CL9-mB-GvN"/>
                         <outlet property="timerLabel" destination="dPC-Fu-kus" id="ANp-y2-ShT"/>
                         <segue destination="7vz-t9-o6L" kind="show" identifier="ToCaption" id="l2L-qx-SpS"/>
                         <segue destination="obg-Eh-mQF" kind="show" identifier="ExitSegue" id="khz-av-9dz"/>

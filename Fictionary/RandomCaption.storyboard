@@ -49,7 +49,7 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-pK-lWO">
-                                <rect key="frame" x="559" y="39" width="40" height="35"/>
+                                <rect key="frame" x="558" y="39" width="40" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Ewa-Q2-TaY"/>
                                     <constraint firstAttribute="height" constant="35" id="NnP-YP-adN"/>
@@ -61,7 +61,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a drawing prompt..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vic-es-ToX">
                                 <rect key="frame" x="20" y="285" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="0GZ-bg-VcQ" id="M32-5t-039"/>
                                 </connections>
@@ -81,15 +81,24 @@
                                     <action selector="onShuffleButtonTapped:" destination="0GZ-bg-VcQ" eventType="touchUpInside" id="eVT-hG-HAM"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mRZ-0L-PHp">
+                                <rect key="frame" x="552" y="47" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="JYa-yJ-KcG"/>
+                                    <constraint firstAttribute="height" constant="20" id="e25-hF-3MV"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2ac-pK-lWO" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="19" id="3t8-I3-ZaL"/>
                             <constraint firstItem="vic-es-ToX" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="749-Fg-hkv"/>
+                            <constraint firstItem="mRZ-0L-PHp" firstAttribute="top" secondItem="PDd-ku-OiN" secondAttribute="bottom" constant="27" id="8s6-5y-mI7"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerY" secondItem="uqS-eA-MHk" secondAttribute="centerY" constant="63" id="Bnq-4d-DfW"/>
                             <constraint firstItem="qJd-Ch-Ham" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="EtR-DA-H4p"/>
+                            <constraint firstAttribute="trailing" secondItem="mRZ-0L-PHp" secondAttribute="trailing" constant="28" id="H3z-b4-Vpw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="k7G-uw-deq" secondAttribute="trailing" constant="-155" id="H45-Zc-RxG"/>
-                            <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="1" id="Lhf-Ru-dDc"/>
+                            <constraint firstAttribute="trailing" secondItem="2ac-pK-lWO" secondAttribute="trailing" constant="2" id="Lhf-Ru-dDc"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="15" id="TiY-zx-YJA"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="top" secondItem="qJd-Ch-Ham" secondAttribute="bottom" constant="19" id="WVX-wE-2sq"/>
                             <constraint firstItem="TSd-p7-BCc" firstAttribute="centerX" secondItem="uqS-eA-MHk" secondAttribute="centerX" id="Zvu-tI-sLG"/>
@@ -120,6 +129,7 @@
                         <outlet property="randomButton" destination="TSd-p7-BCc" id="edI-ya-wph"/>
                         <outlet property="timerBackView" destination="k7G-uw-deq" id="4jo-Bx-eHo"/>
                         <outlet property="timerLabel" destination="2ac-pK-lWO" id="8xQ-FR-slG"/>
+                        <outlet property="whiteActivityIndicator" destination="mRZ-0L-PHp" id="CEA-nz-Uig"/>
                         <segue destination="Ec5-XY-tnl" kind="show" identifier="ToDrawing" id="qP1-Nz-MwW"/>
                         <segue destination="rq7-wC-K1s" kind="show" identifier="RestartSegue" id="B3O-0j-qEZ"/>
                     </connections>

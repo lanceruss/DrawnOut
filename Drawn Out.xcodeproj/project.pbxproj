@@ -25,6 +25,7 @@
 		DB26E3B31D32FE0F0029CE33 /* NewDrawing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */; };
 		DB26E3B51D32FE4B0029CE33 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */; };
 		DB26E3B71D32FE5E0029CE33 /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */; };
+		DB5C13911D91C26D0077EB4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB5C13901D91C26D0077EB4B /* GoogleService-Info.plist */; };
 		DBCFB41D1D22DF5500200F10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */; };
 		DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4201D22DF5500200F10 /* Main.storyboard */; };
 		DBCFB4241D22DF5500200F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB4231D22DF5500200F10 /* Assets.xcassets */; };
@@ -106,7 +107,6 @@
 		FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE31D2432280012A786 /* ViewImageViewController.swift */; };
 		FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FE61D244CCB0012A786 /* Home.storyboard */; };
 		FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE81D244CD50012A786 /* HomeViewController.swift */; };
-		FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */; };
 		FAC5074B1D2D96F60092568C /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5074A1D2D96F60092568C /* SwipeViewController.swift */; };
 		FAC5074D1D2D96FD0092568C /* ViewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5074C1D2D96FD0092568C /* ViewStackViewController.swift */; };
 		FAC5074F1D2D97040092568C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC5074E1D2D97040092568C /* ViewController.xib */; };
@@ -159,6 +159,7 @@
 		DB26E3B21D32FE0F0029CE33 /* NewDrawing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewDrawing.storyboard; sourceTree = "<group>"; };
 		DB26E3B41D32FE4B0029CE33 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		DB26E3B61D32FE5E0029CE33 /* ColorPaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
+		DB5C13901D91C26D0077EB4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBCFB4191D22DF5500200F10 /* Drawn Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawn Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCFB4211D22DF5500200F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,7 +245,6 @@
 		FAB76FE31D2432280012A786 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageViewController.swift; sourceTree = "<group>"; };
 		FAB76FE61D244CCB0012A786 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FAB76FE81D244CD50012A786 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAC5074A1D2D96F60092568C /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		FAC5074C1D2D96FD0092568C /* ViewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStackViewController.swift; sourceTree = "<group>"; };
 		FAC5074E1D2D97040092568C /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
@@ -319,7 +319,6 @@
 				DB03E9101D2F20FC0098B7A8 /* DesignTestViewController.swift */,
 				DB03E9211D300AD40098B7A8 /* DesignTestView.swift */,
 				DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */,
-				DB03E9251D3029540098B7A8 /* UIColor+.swift */,
 				DB03E9121D2F210D0098B7A8 /* DesignTestStoryboard.storyboard */,
 				DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */,
 				DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */,
@@ -329,6 +328,7 @@
 				DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */,
 			);
 			name = DesignTemplates;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		DB26E3AB1D32F56E0029CE33 /* Drawing2 */ = {
@@ -344,17 +344,40 @@
 			name = Drawing2;
 			sourceTree = "<group>";
 		};
+		DB629C821D91A5620041A45F /* References */ = {
+			isa = PBXGroup;
+			children = (
+				FAB76FE51D244CBD0012A786 /* Home */,
+				FAB76FB81D234A5A0012A786 /* Timer */,
+				F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */,
+				F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */,
+				FA0C67C31D259A3C007ADE75 /* GameStructure */,
+				FA0C67CA1D267852007ADE75 /* Demo */,
+				FAB76FBD1D234E340012A786 /* SwipeStacks */,
+				FAC507691D2EAC5A0092568C /* NewSwipes2 */,
+				FAC507491D2D95800092568C /* NewSwipeStacks */,
+				DB03E9141D2F21110098B7A8 /* DesignTemplates */,
+				DBCFB4891D25713300200F10 /* Drawing */,
+			);
+			name = References;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DB629C831D91A7260041A45F /* Launchscreen */ = {
+			isa = PBXGroup;
+			children = (
+				DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */,
+				DBF398F61D371BB3002EE34F /* LaunchViewController.swift */,
+			);
+			name = Launchscreen;
+			sourceTree = "<group>";
+		};
 		DBCFB4101D22DF5500200F10 = {
 			isa = PBXGroup;
 			children = (
-				FAC507691D2EAC5A0092568C /* NewSwipes2 */,
-				FAC507491D2D95800092568C /* NewSwipeStacks */,
 				FA0C67D41D26F178007ADE75 /* Default-568h@2x.png */,
-				F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */,
-				F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */,
 				F96CBBBD1D33036C006184C8 /* CircleTimer.swift */,
 				F95FCD901D3417C700FD7C83 /* RevisedCircleTimerView.swift */,
-				F9B48FF11D22E84A0031C5FC /* Networking */,
 				DBCFB41B1D22DF5500200F10 /* Fictionary */,
 				DBCFB41A1D22DF5500200F10 /* Products */,
 				5A662609D5D658A4549107B8 /* Pods */,
@@ -374,29 +397,24 @@
 		DBCFB41B1D22DF5500200F10 /* Fictionary */ = {
 			isa = PBXGroup;
 			children = (
-				FAE3367C1D33F97C006376AF /* EndGameStacks */,
 				DBCFB41C1D22DF5500200F10 /* AppDelegate.swift */,
 				FA0C67C11D25754D007ADE75 /* Player.swift */,
 				FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */,
-				FAB76FEA1D2450320012A786 /* GoogleService-Info.plist */,
-				FA0C67CD1D26ACB2007ADE75 /* MyProfile */,
-				FA0C67CA1D267852007ADE75 /* Demo */,
-				FA0C67C31D259A3C007ADE75 /* GameStructure */,
+				DB03E9251D3029540098B7A8 /* UIColor+.swift */,
 				FACB72241D2C19E50029AE1B /* Login */,
-				FAB76FE51D244CBD0012A786 /* Home */,
-				FAB76FBD1D234E340012A786 /* SwipeStacks */,
-				FAB76FB81D234A5A0012A786 /* Timer */,
-				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
-				DB26E3AB1D32F56E0029CE33 /* Drawing2 */,
-				DBCFB4891D25713300200F10 /* Drawing */,
-				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
-				FAB76FDE1D24220B0012A786 /* Random Caption */,
 				F9B48FEA1D22E4A60031C5FC /* JoinandStartGame */,
+				FAB76FDE1D24220B0012A786 /* Random Caption */,
+				DB26E3AB1D32F56E0029CE33 /* Drawing2 */,
+				FAB76FB11D2306F20012A786 /* CaptionPhoto */,
+				FAE3367C1D33F97C006376AF /* EndGameStacks */,
+				FA0C67CD1D26ACB2007ADE75 /* MyProfile */,
+				F9B48FF11D22E84A0031C5FC /* Networking */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
-				DBCFB4251D22DF5500200F10 /* LaunchScreen.storyboard */,
-				DBF398F61D371BB3002EE34F /* LaunchViewController.swift */,
+				DB629C831D91A7260041A45F /* Launchscreen */,
+				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
 				DBCFB4281D22DF5500200F10 /* Info.plist */,
-				DB03E9141D2F21110098B7A8 /* DesignTemplates */,
+				DB5C13901D91C26D0077EB4B /* GoogleService-Info.plist */,
+				DB629C821D91A5620041A45F /* References */,
 			);
 			path = Fictionary;
 			sourceTree = "<group>";
@@ -413,6 +431,7 @@
 				DBCFB48A1D25714A00200F10 /* Drawing.storyboard */,
 			);
 			name = Drawing;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		DBCFB48E1D2572A300200F10 /* DrawCommands */ = {
@@ -447,6 +466,7 @@
 				F9B48FF61D2344880031C5FC /* ArchiverHelper.swift */,
 			);
 			name = Networking;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FA0C67C31D259A3C007ADE75 /* GameStructure */ = {
@@ -456,6 +476,7 @@
 				FA0C67C61D259B20007ADE75 /* Game.storyboard */,
 			);
 			name = GameStructure;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FA0C67CA1D267852007ADE75 /* Demo */ = {
@@ -465,6 +486,7 @@
 				FA0C67D61D26F9B4007ADE75 /* DemoViewController.swift */,
 			);
 			name = Demo;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FA0C67CD1D26ACB2007ADE75 /* MyProfile */ = {
@@ -495,6 +517,7 @@
 				FAB76FBB1D234A8F0012A786 /* TimerViewController.swift */,
 			);
 			name = Timer;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FAB76FBD1D234E340012A786 /* SwipeStacks */ = {
@@ -519,6 +542,7 @@
 				FAB76FD41D23DFA30012A786 /* image7.png */,
 			);
 			name = SwipeStacks;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FAB76FDE1D24220B0012A786 /* Random Caption */ = {
@@ -538,6 +562,7 @@
 				FAB76FE81D244CD50012A786 /* HomeViewController.swift */,
 			);
 			name = Home;
+			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FAC507491D2D95800092568C /* NewSwipeStacks */ = {
@@ -583,13 +608,13 @@
 			isa = PBXGroup;
 			children = (
 				FACB72251D2C1A0C0029AE1B /* Login.storyboard */,
+				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
+				FAC507721D2EEFD20092568C /* LoginVC.swift */,
+				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FA8F0CFE1D370D0300919DD6 /* Profile2ViewController.swift */,
 				FA8F0D001D370F6100919DD6 /* Profile2CustomCollectionViewCell.swift */,
 				FA76CECC1D32962A006FEE31 /* Custom2CollectionViewCell.swift */,
 				FAE336811D33FE32006376AF /* Custom2TableViewCell.swift */,
-				FAC507721D2EEFD20092568C /* LoginVC.swift */,
-				FACB72271D2C1A1E0029AE1B /* LoginViewController.swift */,
-				FAC507701D2EBBF20092568C /* CreateAccount.swift */,
 				FACB722B1D2C2A540029AE1B /* SeeMyProfileViewController.swift */,
 				FA8F0CF81D369A3400919DD6 /* CardCustomTableViewCell.swift */,
 				F96C5EC61D36F21700D3FA47 /* InstructionsViewController.swift */,
@@ -706,6 +731,7 @@
 				FAC5075F1D2D97390092568C /* arrow-left.png in Resources */,
 				DB03E9201D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf in Resources */,
 				F9E0F9421D2BFD0400229202 /* JoinGameStartGame.storyboard in Resources */,
+				DB5C13911D91C26D0077EB4B /* GoogleService-Info.plist in Resources */,
 				FAC5076F1D2EB6690092568C /* test2.storyboard in Resources */,
 				FAC507571D2D97220092568C /* CollectionViewCell.xib in Resources */,
 				FA8F0CF41D3653B900919DD6 /* red.jpg in Resources */,
@@ -737,7 +763,6 @@
 				DB26E3B31D32FE0F0029CE33 /* NewDrawing.storyboard in Resources */,
 				FAB76FD91D23DFA30012A786 /* image5.jpg in Resources */,
 				F9A17AE41D2EE31F002FD1D2 /* DemoExit.storyboard in Resources */,
-				FAB76FEB1D2450320012A786 /* GoogleService-Info.plist in Resources */,
 				FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */,
 				DBCFB4221D22DF5500200F10 /* Main.storyboard in Resources */,
 			);
