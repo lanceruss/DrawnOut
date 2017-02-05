@@ -1,46 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LG5-yw-6YA">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LG5-yw-6YA">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SF-Compact-Text-Bold.otf">
+        <array key="SF-Compact-Text-Bold.otf">
             <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-            <string>SFCompactText-Bold</string>
-        </mutableArray>
-        <mutableArray key="SF-UI-Text-Bold.otf">
+        </array>
+        <array key="SF-UI-Text-Bold.otf">
             <string>SFUIText-Bold</string>
-            <string>SFUIText-Bold</string>
-        </mutableArray>
-        <mutableArray key="SF-UI-Text-Heavy.otf">
+        </array>
+        <array key="SF-UI-Text-Heavy.otf">
             <string>SFUIText-Heavy</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Instructions View Controller-->
@@ -52,23 +32,23 @@
                         <viewControllerLayoutGuide type="bottom" id="bAq-8h-awB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W6N-i2-3gK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afE-u9-fxB" userLabel="Title View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afE-u9-fxB" userLabel="Title View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
-                                <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="9d2-RN-fiN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-K1-aqS">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-K1-aqS">
                                 <rect key="frame" x="0.0" y="20" width="600" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-46-J5a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-46-J5a">
                                         <rect key="frame" x="225" y="15.5" width="151.5" height="29"/>
                                         <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -77,7 +57,7 @@
                                     <constraint firstItem="MkX-46-J5a" firstAttribute="centerX" secondItem="q8P-K1-aqS" secondAttribute="centerX" id="siq-EJ-Zkf"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-oP-zo2">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-oP-zo2">
                                 <rect key="frame" x="20" y="83" width="560" height="446"/>
                                 <string key="text">1. Write a word or phrase (i.e., a caption) to pass to the next player. Be creative!
 
@@ -88,26 +68,26 @@
 4. Repeat until the game is over!
 
 Hint: Tap the screen with two fingers to undo the last stroke while drawing!</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNs-id-kc3">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNs-id-kc3">
                                 <rect key="frame" x="458" y="550" width="122" height="30"/>
-                                <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40662357030000001" green="1" blue="0.60366806419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="1YZ-IK-SUZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
                                 <state key="normal" title="DONE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doneButtonPressed:" destination="gm2-t8-UBH" eventType="touchUpInside" id="tgI-RC-Ya7"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KHt-oP-zo2" firstAttribute="top" secondItem="afE-u9-fxB" secondAttribute="bottom" constant="3" id="0mh-OQ-FwM"/>
                             <constraint firstAttribute="trailing" secondItem="afE-u9-fxB" secondAttribute="trailing" id="4JF-5c-O7j"/>
@@ -159,12 +139,12 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="bottom" id="hqc-q2-jLu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qGc-o7-4uw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7yr-ez-BlJ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7yr-ez-BlJ">
                                 <rect key="frame" x="0.0" y="98" width="600" height="513"/>
-                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UCG-bI-vnS">
                                     <size key="itemSize" width="150" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -190,7 +170,6 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                                     </constraints>
                                                 </activityIndicatorView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="2mj-ul-jFt" firstAttribute="leading" secondItem="u4D-B2-h9j" secondAttribute="leadingMargin" constant="-8" id="AzW-Zr-JvD"/>
@@ -224,43 +203,43 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="98Z-b7-cg2" id="xVy-PY-Jra"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m38-Gc-tTD">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m38-Gc-tTD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="Ula-eb-2c9"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTc-jc-qB5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTc-jc-qB5">
                                 <rect key="frame" x="279" y="38" width="301" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="HGD-VL-cPe"/>
                                     <constraint firstAttribute="width" constant="301" id="mcL-H1-u44"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGt-5K-5qd">
                                 <rect key="frame" x="-164" y="36" width="206" height="37"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="206" id="HJk-BS-Yrl"/>
                                     <constraint firstAttribute="height" constant="37" id="sEV-my-MSY"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ph-c2-tpu">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ph-c2-tpu">
                                 <rect key="frame" x="5" y="38" width="30" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="&lt;">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onBackButtonTapped:" destination="98Z-b7-cg2" eventType="touchUpInside" id="jQA-IQ-6pi"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.2156862745" green="0.80784313730000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7yr-ez-BlJ" secondAttribute="trailing" id="2Mz-09-rug"/>
                             <constraint firstItem="SGt-5K-5qd" firstAttribute="top" secondItem="1aC-St-cFm" secondAttribute="bottom" constant="16" id="Dru-wk-VA5"/>
@@ -312,16 +291,16 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="bottom" id="PZT-bm-mMc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="feU-iF-jL7" customClass="DesignTestView" customModule="Drawn_Out" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Debug Info..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Efp-VE-EyF">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Debug Info..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Efp-VE-EyF">
                                 <rect key="frame" x="20" y="435" width="560" height="145"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-B1-t9y">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-B1-t9y">
                                 <rect key="frame" x="312" y="536" width="122" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="Lkq-Yk-2hC"/>
@@ -331,7 +310,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="13"/>
                                 <state key="normal" title="PROFILE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -344,17 +323,17 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <segue destination="98Z-b7-cg2" kind="presentation" identifier="viewProfileSegue" id="9W0-RR-Fdr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FG-Sv-0FH">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FG-Sv-0FH">
                                 <rect key="frame" x="236" y="435" width="127" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
                                 <state key="normal" title="CREATE ACCOUNT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="hpt-Xu-sDH" kind="presentation" id="zIe-zt-rPC"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xen-cf-NQ8">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xen-cf-NQ8">
                                 <rect key="frame" x="20" y="550" width="198" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Kfl-bq-eHD"/>
@@ -366,56 +345,56 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <action selector="deletePlayerAuthObjects:" destination="LG5-yw-6YA" eventType="touchUpInside" id="BJK-Lb-3ON"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9q-tu-nqR">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9q-tu-nqR">
                                 <rect key="frame" x="165" y="359" width="269" height="61"/>
-                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="269" id="UOZ-0q-6dn"/>
                                     <constraint firstAttribute="height" constant="61" id="cH2-W0-U9R"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="rCx-cs-lRg" kind="presentation" identifier="toLoginVC" id="El7-sS-hlH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30v-7l-Zam">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30v-7l-Zam">
                                 <rect key="frame" x="165" y="359" width="269" height="61"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="24"/>
                                 <state key="normal" title="LOGOUT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onLogoutTapped:" destination="LG5-yw-6YA" eventType="touchUpInside" id="vWw-U3-ZbZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRAWN OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-k6-Hrd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DRAWN OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-k6-Hrd">
                                 <rect key="frame" x="164" y="95" width="273" height="51"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Heavy" family="SF UI Text" pointSize="42"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-yn-wrd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-yn-wrd">
                                 <rect key="frame" x="164" y="223" width="270" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="LwG-eE-yZs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="19"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImX-oA-0yE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImX-oA-0yE">
                                 <rect key="frame" x="165" y="270" width="269" height="61"/>
-                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="W6T-hX-Z2u"/>
                                     <constraint firstAttribute="width" constant="102" id="y0a-HN-PnD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
                                 <state key="normal" title="START GAME">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -427,9 +406,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <action selector="startAnonymousGameTapped:" destination="LG5-yw-6YA" eventType="touchUpInside" id="epn-Ai-Tva"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-NK-n5w" userLabel="Login As User">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-NK-n5w" userLabel="Login As User">
                                 <rect key="frame" x="165" y="270" width="269" height="61"/>
-                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="269" id="gCX-fS-KkI"/>
                                     <constraint firstAttribute="height" constant="30" id="iPt-xZ-VYX"/>
@@ -438,7 +417,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
                                 <state key="normal" title="START GAME">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -451,7 +430,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <segue destination="P4m-BU-wqV" kind="show" id="9AQ-8X-7Jd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trz-dx-wNb">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trz-dx-wNb">
                                 <rect key="frame" x="165" y="536" width="122" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="I49-xh-BZb"/>
@@ -461,7 +440,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="13"/>
                                 <state key="normal" title="HOW TO PLAY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -475,7 +454,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xen-cf-NQ8" firstAttribute="centerX" secondItem="feU-iF-jL7" secondAttribute="centerX" constant="-181" id="12q-a9-9eT"/>
                             <constraint firstItem="ImX-oA-0yE" firstAttribute="baseline" secondItem="qUd-NK-n5w" secondAttribute="firstBaseline" id="3Cl-gS-bfN"/>
@@ -552,10 +531,10 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="bottom" id="oH4-iT-gK1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f7W-Iw-49F">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-aR-VUm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-aR-VUm">
                                 <rect key="frame" x="20" y="178" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -563,43 +542,43 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="rCx-cs-lRg" id="g7e-g8-jNX"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-ZI-xgO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-ZI-xgO">
                                 <rect key="frame" x="193" y="228" width="215" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="nqj-qz-djS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onLoginButtonTapped:" destination="rCx-cs-lRg" eventType="touchUpInside" id="be7-ip-zdn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOc-Je-kC1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOc-Je-kC1">
                                 <rect key="frame" x="20" y="151" width="103" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="Se0-i7-xst"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coU-qM-kAN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coU-qM-kAN">
                                 <rect key="frame" x="224" y="550" width="152" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="5IQ-Vt-kqN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
                                 <state key="normal" title="Cancel Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onCancelButtonTapped:" destination="rCx-cs-lRg" eventType="touchUpInside" id="O4u-pV-k1g"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-za-r4w">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-za-r4w">
                                 <rect key="frame" x="20" y="108" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -607,26 +586,26 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="rCx-cs-lRg" id="iaU-YF-vxm"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2o-mi-ECi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2o-mi-ECi">
                                 <rect key="frame" x="20" y="78" width="103" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="Bdn-NF-RvL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh3-sr-kUx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh3-sr-kUx">
                                 <rect key="frame" x="20" y="311" width="560" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="Opi-0l-lgS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9yW-ZI-xgO" firstAttribute="top" secondItem="Sh3-sr-kUx" secondAttribute="bottom" constant="-175" id="1Xo-gX-sok"/>
                             <constraint firstItem="MOc-Je-kC1" firstAttribute="leading" secondItem="FyV-aR-VUm" secondAttribute="leading" id="6JW-BN-6Ey"/>
@@ -668,37 +647,37 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="bottom" id="LYJ-gK-3iu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K5Q-T2-Frz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-2U-KDp">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8V-2U-KDp">
                                 <rect key="frame" x="20" y="459" width="560" height="34"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Cancel &amp; Go Back to Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onCancelButtonTapped:" destination="hpt-Xu-sDH" eventType="touchUpInside" id="abt-MI-hjb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-cf-LDF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-cf-LDF">
                                 <rect key="frame" x="20" y="427" width="560" height="14.5"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19w-i7-CvH">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19w-i7-CvH">
                                 <rect key="frame" x="218" y="565" width="163" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="15"/>
                                 <state key="normal" title="Cancel Create Account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onCancelButtonTapped:" destination="hpt-Xu-sDH" eventType="touchUpInside" id="dr7-vd-8k9"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dH2-hk-ycH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dH2-hk-ycH">
                                 <rect key="frame" x="20" y="115" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="D06-dc-eEk"/>
@@ -709,7 +688,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="yPO-au-QAn"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvy-sn-DQW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvy-sn-DQW">
                                 <rect key="frame" x="20" y="185" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lAS-9F-95s"/>
@@ -720,7 +699,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="oBD-Sc-mQd"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="obN-GX-3Le">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="obN-GX-3Le">
                                 <rect key="frame" x="20" y="255" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="VxC-zs-EnN"/>
@@ -731,7 +710,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="JiM-YQ-lHv"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-rJ-jz3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-rJ-jz3">
                                 <rect key="frame" x="20" y="325" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1kb-Gd-Wu2"/>
@@ -742,28 +721,28 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="hpt-Xu-sDH" id="47n-0T-kc5"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-t3-Aal">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-t3-Aal">
                                 <rect key="frame" x="28" y="88" width="103" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="RXs-76-OnX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YD-2I-55H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YD-2I-55H">
                                 <rect key="frame" x="28" y="228" width="83.5" height="22"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEe-2l-yEW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEe-2l-yEW">
                                 <rect key="frame" x="28" y="298" width="158" height="22"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-vw-ueE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-vw-ueE">
                                 <rect key="frame" x="193" y="369" width="215" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="hDL-Uz-E7K"/>
@@ -771,20 +750,20 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
                                 <state key="normal" title="CREATE ACCOUNT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onCreateAccountButtonTapped:" destination="hpt-Xu-sDH" eventType="touchUpInside" id="TI9-bu-neW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-si-Mqd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-si-Mqd">
                                 <rect key="frame" x="28" y="158" width="47.5" height="22"/>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mvy-sn-DQW" firstAttribute="top" secondItem="epF-si-Mqd" secondAttribute="bottom" constant="5" id="1R3-P8-KeE"/>
                             <constraint firstItem="obN-GX-3Le" firstAttribute="trailing" secondItem="dH2-hk-ycH" secondAttribute="trailing" id="1tA-YV-ue4"/>
@@ -869,12 +848,12 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                         <viewControllerLayoutGuide type="bottom" id="DwQ-Dr-k4h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HiL-VJ-ZZc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-T6-Nys">
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tpn-J6-nTt">
                                     <size key="itemSize" width="197" height="470"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -883,7 +862,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Dny-PX-hAG" customClass="Custom2CollectionViewCell" customModule="Drawn_Out" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.5" width="197" height="470"/>
+                                        <rect key="frame" x="0.0" y="1" width="197" height="470"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="197" height="470"/>
@@ -891,10 +870,9 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nRS-gh-wHA">
                                                     <rect key="frame" x="8" y="8" width="181" height="462"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="nRS-gh-wHA" firstAttribute="top" secondItem="Dny-PX-hAG" secondAttribute="topMargin" id="D31-XJ-VK3"/>
@@ -912,7 +890,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="ag8-TN-YsP" id="FQb-JE-qjd"/>
                                 </connections>
                             </collectionView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ja2-VO-ewD">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ja2-VO-ewD">
                                 <rect key="frame" x="252" y="72" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5Hz-y7-KhA"/>
@@ -926,17 +904,17 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wCl-S1-BEj">
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="176" id="pRF-XI-4Du" customClass="CardCustomTableViewCell" customModule="Drawn_Out" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRF-XI-4Du" id="Bon-bc-vP6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-fI-sHh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -956,16 +934,16 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                     <outlet property="delegate" destination="ag8-TN-YsP" id="wbB-sx-Zvc"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-FD-YE6">
                                 <rect key="frame" x="20" y="28" width="265" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="cwX-4c-CME"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactText-Bold" family="SF Compact Text" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTm-Gf-YWy">
                                 <rect key="frame" x="546" y="20" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U4i-ut-4wd"/>
@@ -977,7 +955,7 @@ Hint: Tap the screen with two fingers to undo the last stroke while drawing!</st
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.47675058269999998" green="1" blue="0.34395941050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aTm-Gf-YWy" firstAttribute="top" secondItem="3bk-3p-Ioy" secondAttribute="bottom" id="13S-dH-zCd"/>
                             <constraint firstItem="xNf-FD-YE6" firstAttribute="top" secondItem="3bk-3p-Ioy" secondAttribute="bottom" constant="8" id="4bg-Ys-u3x"/>
