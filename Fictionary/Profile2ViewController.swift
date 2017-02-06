@@ -20,7 +20,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
     var imageFilenames = [String]()
     
     var ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://drawnout-81702.appspot.com")
+    let storageRef = FIRStorage.storage().reference(forURL: "gs://drawnout-81702.appspot.com")
     let userID = FIRAuth.auth()?.currentUser?.uid
 
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         //header properties
         bigHeader.backgroundColor = UIColor.pastelGreen()
-        bigHeader.layer.shadowColor = UIColor.blackColor().CGColor
+        bigHeader.layer.shadowColor = UIColor.black.cgColor
         bigHeader.layer.shadowOpacity = 0.25
         bigHeader.layer.shadowOffset = CGSize(width: 0, height: 1)
         bigHeader.layer.shadowRadius = 3.5
@@ -43,10 +43,10 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         backButtonView.backgroundColor = UIColor.shamrock()
         backButtonView.layer.cornerRadius = 0.5 * backButtonView.bounds.size.height
         
-        self.backButton.setTitle("<", forState: UIControlState.Normal)
+        self.backButton.setTitle("<", for: UIControlState())
 
         
-        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let name = snapshot.value!["name"] as! String
             self.nameLabel.text = "\(name)"
@@ -58,7 +58,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         // ---------------- GET ANY IMAGES SAVED IN FIREBASE STORAGE ------------------- //
         
         // GET LIST OF FILES FROM FIREBASE DATABASE
-        ref.child("users").child(userID!).child("saved-image").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("users").child(userID!).child("saved-image").observeSingleEvent(of: .value, with: { (snapshot) in
             
             print("firebase > database > users > saved-image: \n")
             print(snapshot)
@@ -73,7 +73,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
                     print(imageFilename!)
                     self.imageFilenames.append(imageFilename! as! String)
                     
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         self.collectionView.reloadData()
                     })
                 }
@@ -95,23 +95,23 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageFilenames.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell: Profile2CustomCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! Profile2CustomCollectionViewCell
+        let cell: Profile2CustomCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Profile2CustomCollectionViewCell
         
         // Create a reference to the file you want to download
         // NEED TO FINISH THIS BY PUTTING THE FILENAME BELOW ON NEXT LINE.....
         cell.activityIndicator.startAnimating()
-        cell.activityIndicator.hidden = false
+        cell.activityIndicator.isHidden = false
         
         let userStorageRef = storageRef.child(self.userID!)
         let userImageFilename = userStorageRef.child("\(self.imageFilenames[indexPath.row])")
 
-        userImageFilename.dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+        userImageFilename.data(withMaxSize: 3 * 1024 * 1024) { (data, error) -> Void in
             
             if (error != nil) {
                 print(error)
@@ -119,7 +119,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
                 // Data for "images/island.jpg" is returned
                 // ... let islandImage: UIImage! = UIImage(data: data!)
                 cell.cardImageView.image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     cell.layoutSubviews()
                     
                 })
@@ -133,31 +133,31 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.cardImageView.layer.shadowRadius = 4.0
         
         cell.activityIndicator.stopAnimating()
-        cell.activityIndicator.hidden = true
+        cell.activityIndicator.isHidden = true
 
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+                               sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         /* device screen size */
-        let width = UIScreen.mainScreen().bounds.size.width
-        let height = UIScreen.mainScreen().bounds.size.height
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
         
         /* calculate and return cell size */
         return CGSize(width: ((width / 2) - 15), height: (height / 2.5) - 10)
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("cell: \(indexPath.row) selected")
     }
 
     
-    @IBAction func onBackButtonTapped(sender: AnyObject) {
+    @IBAction func onBackButtonTapped(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
         
 }

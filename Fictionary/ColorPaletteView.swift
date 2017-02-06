@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ColorPaletteViewDelegate {
-    func didTapView(view: ColorPaletteView)
+    func didTapView(_ view: ColorPaletteView)
 }
 
 class ColorPaletteView: UIView, UIGestureRecognizerDelegate {
@@ -18,22 +18,22 @@ class ColorPaletteView: UIView, UIGestureRecognizerDelegate {
     
     var delegate: ColorPaletteViewDelegate?
     
-    func setupGestureRecognizersInView(view: UIView) {
+    func setupGestureRecognizersInView(_ view: UIView) {
         
         tapRecognizer4 = UITapGestureRecognizer(target: self, action: #selector(ColorPaletteView.handlePaletteTap(_:)))
         view.addGestureRecognizer(tapRecognizer4!)
     }
 
-    @objc private func handlePaletteTap(sender: UITapGestureRecognizer) {
+    @objc fileprivate func handlePaletteTap(_ sender: UITapGestureRecognizer) {
         
-        let point = sender.locationInView(sender.view)
+        let point = sender.location(in: sender.view)
         
-        if sender.state == .Ended {
+        if sender.state == .ended {
             self.tapAtPalettePoint(point)
         }
     }
     
-    private func tapAtPalettePoint(point: CGPoint) {
+    fileprivate func tapAtPalettePoint(_ point: CGPoint) {
         print("tapPalette")
         delegate?.didTapView(self)
     }

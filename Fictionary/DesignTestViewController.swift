@@ -33,20 +33,20 @@ class DesignTestViewController: UIViewController {
         return self.view as! DesignTestView
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.Black
-        nav?.tintColor = UIColor.whiteColor()
-        nav?.barTintColor = UIColor.whiteColor()
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.white
+        nav?.barTintColor = UIColor.white
        // let navBarAppearance = UINavigationBar.appearance()
        // navBarAppearance.tintColor = UIColor.whiteColor()
        // navBarAppearance.barTintColor = UIColor(red:0.48, green:0.92, blue:0.51, alpha:1.00)
-        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
 
     }
 
-    @IBAction func createAccountButtonPressed(sender: AnyObject) {
+    @IBAction func createAccountButtonPressed(_ sender: AnyObject) {
         
     }
 

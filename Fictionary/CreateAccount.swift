@@ -8,6 +8,30 @@
 
 import UIKit
 import Firebase
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CreateAccount: UIViewController, UITextFieldDelegate {
     
@@ -29,30 +53,30 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
         createAccountButton.layer.cornerRadius = 0.5 * createAccountButton.bounds.size.height
         createAccountButton.backgroundColor = UIColor.shamrock()
         
-        errorMessageLabel.hidden = true
-        cancelButton.hidden = true
+        errorMessageLabel.isHidden = true
+        cancelButton.isHidden = true
         
         print("viewDidLoad > firebaseUID: \(self.firebaseUID)")
         
     }
     
-    @IBAction func onCancelButtonTapped(sender: UIButton) {
+    @IBAction func onCancelButtonTapped(_ sender: UIButton) {
         
         try! FIRAuth.auth()!.signOut()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func validateEmail(enteredEmail:String) -> Bool {
+    func validateEmail(_ enteredEmail:String) -> Bool {
         
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluateWithObject(enteredEmail)
+        return emailPredicate.evaluate(with: enteredEmail)
         
     }
     
     
     
-    @IBAction func onCreateAccountButtonTapped(sender: AnyObject) {
+    @IBAction func onCreateAccountButtonTapped(_ sender: AnyObject) {
         
         self.errorMessageLabel.text = ""
         
@@ -68,7 +92,7 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
             print("there is a firebase userid: \(self.firebaseUID)")
             
             // check to see if there is a record in the firebase database
-            refRoot.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            refRoot.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 print("checking to see if there is a user in Firebase Database:")
                 
@@ -91,29 +115,29 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
             
             // check to see if the 3 fields below are empty and show an errorMessage if necessary
             if emailAddressTextField.text == "" {
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "Your email address is required.\n"
             }
             
             if passwordTextField.text == "" {
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your password is required.\n"
             }
             
             if confirmPasswordTextField.text == "" {
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your confirm password is required.\n"
             }
             
             if nameTextField.text == "" {
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your name is required.\n"
             }
             
             if passwordTextField.text != "" && confirmPasswordTextField.text != "" {
                 
                 if passwordTextField.text != confirmPasswordTextField.text {
-                    errorMessageLabel.hidden = false
+                    errorMessageLabel.isHidden = false
                     errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your passwords do not match.\n"
                 }
                 
@@ -121,7 +145,7 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
             
             let passwordLength = passwordTextField.text
             if passwordLength?.characters.count < 6 {
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your password has to be at least 6 characters.\n"
             }
             
@@ -130,7 +154,7 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                 
             } else {
                 // if false
-                errorMessageLabel.hidden = false
+                errorMessageLabel.isHidden = false
                 errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your email address is not the right format.\n"
 
             }
@@ -155,11 +179,11 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                 
                 
                 // create an anonymous Firebase UserID
-                FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
+                FIRAuth.auth()?.signInAnonymously() { (user, error) in
                     
                     // query the database after sign in with anonymous auth as we need that in order to query the firebase database
-                    usersRef.queryOrderedByChild("email").queryEqualToValue(email)
-                        .observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    usersRef.queryOrdered(byChild: "email").queryEqual(toValue: email)
+                        .observeSingleEvent(of: .value, with: { (snapshot) in
                             
                             if snapshot.childrenCount > 0 {
                                 
@@ -167,9 +191,9 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                                 print("There are \(snapshot.childrenCount) snapshot.childrenCount")
                                 
                                 self.errorMessageLabel.text = "Sorry, but you already have an account. Please try to login."
-                                self.cancelButton.hidden = false
-                                self.createAccountButton.hidden = true
-                                self.errorMessageLabel.hidden = false
+                                self.cancelButton.isHidden = false
+                                self.createAccountButton.isHidden = true
+                                self.errorMessageLabel.isHidden = false
                                 
                                 
                             } else {
@@ -177,18 +201,18 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                                 // ------ THERE WAS NO EXISTING MATCH OF ANY EMAIL / PASSWORD IN FIREBASE DATABASE ------ //
                                 print("There are no children: \(snapshot.childrenCount)")
                                 
-                                self.errorMessageLabel.hidden = true
-                                self.cancelButton.hidden = true
+                                self.errorMessageLabel.isHidden = true
+                                self.cancelButton.isHidden = true
 
                                 self.firebaseUID  = user!.uid
                                 print ("created a new user ID in firebase Auth: \(self.firebaseUID!)")
                                 
                                 // create a date to insert into firebase database
-                                let dateformatter = NSDateFormatter()
+                                let dateformatter = DateFormatter()
                                 
                                 dateformatter.dateFormat = "MM-dd-yyyy hh:mm"
                                 
-                                let now = dateformatter.stringFromDate(NSDate())
+                                let now = dateformatter.string(from: Date())
                                 let final = ("\(now)")
                                 
                                 self.refRoot.child("users/\(self.firebaseUID!)/dateTimeCreated").setValue(final)
@@ -201,14 +225,14 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                                 print("added record to firebase database")
                                 
                                 // --------- CONVERT THE FIREBASE ANONYMOUS AUTH TO A FIREBASE EMAIL/PASSWORD ACCOUNT -------- //
-                                let credential = FIREmailPasswordAuthProvider.credentialWithEmail(self.emailAddressTextField.text!, password: self.passwordTextField.text!)
+                                let credential = FIREmailPasswordAuthProvider.credential(withEmail: self.emailAddressTextField.text!, password: self.passwordTextField.text!)
                                 
-                                FIRAuth.auth()?.currentUser!.linkWithCredential(credential) { (user, error) in
+                                FIRAuth.auth()?.currentUser!.link(with: credential) { (user, error) in
                                     
-                                    self.errorMessageLabel.hidden = true
-                                    self.cancelButton.hidden = true
+                                    self.errorMessageLabel.isHidden = true
+                                    self.cancelButton.isHidden = true
 
-                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                    self.dismiss(animated: true, completion: nil)
                                     
                                     if error != nil {
                                         print("there was an error trying to link the Firebase anonymous auth with a Firebase email/password.  The error is:\n\(error)")
@@ -222,7 +246,7 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
                                 
                             } // end of if snapshot.childrenCount > 0
                             
-                            }, withCancelBlock: { (error) in
+                            }, withCancel: { (error) in
                                 print(error.localizedDescription)
                         })
                     
@@ -239,7 +263,7 @@ class CreateAccount: UIViewController, UITextFieldDelegate {
         
     } // end of onButtonTapped to Create Account
  
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

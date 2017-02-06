@@ -32,8 +32,8 @@ class CircleTimer: UIView {
     }
     
     func setup() {
-        self.backgroundColor = UIColor.clearColor()
-        NSTimer.scheduledTimerWithTimeInterval(timeBetweenDraw, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        self.backgroundColor = UIColor.clear
+        Timer.scheduledTimer(timeInterval: timeBetweenDraw, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     // MARK: Drawing
@@ -47,17 +47,17 @@ class CircleTimer: UIView {
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         let context = UIGraphicsGetCurrentContext()
         
-        let path = CGPathCreateMutable()
+        let path = CGMutablePath()
         
         CGPathAddArc(path, nil, centerX, centerY, radius, -CGFloat(M_PI/2), CGFloat(GLKMathDegreesToRadians(currentAngle)), false)
         
-        CGContextAddPath(context, path)
-        CGContextSetStrokeColorWithColor(context, UIColor.blueColor().CGColor)
-        CGContextSetLineWidth(context, 5)
-        CGContextStrokePath(context)
+        context?.addPath(path)
+        context?.setStrokeColor(UIColor.blue.cgColor)
+        context?.setLineWidth(5)
+        context?.strokePath()
     }
 }

@@ -41,7 +41,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         headerView.backgroundColor = UIColor.pastelGreen()
         self.view.backgroundColor = UIColor.medAquamarine()
         
-        headerView.layer.shadowColor = UIColor.blackColor().CGColor
+        headerView.layer.shadowColor = UIColor.black.cgColor
         headerView.layer.shadowOpacity = 0.25
         headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         headerView.layer.shadowRadius = 3.5
@@ -232,8 +232,8 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
             let dict2 = value as NSDictionary
             var keyArray = dict2.allKeys
             
-            keyArray.sortInPlace({ (element1, element2) -> Bool in
-                element1.intValue < element2.intValue
+            keyArray.sort(by: { (element1, element2) -> Bool in
+                (element1 as AnyObject).int32Value < (element2 as AnyObject).int32Value
             })
             
             // print(keyArray)
@@ -243,12 +243,12 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
                 let keyAsInt = key as! Int
                 let value1 = dict2[keyAsInt]
                 print(value1)
-                items.append(value1!)
+                items.append(value1! as AnyObject)
             }
             
             print("\n")
             
-            itemsAllPlayers.append(items)
+            itemsAllPlayers.append(items as AnyObject)
             
         } // end of for key-value in dictionary
         
@@ -263,15 +263,15 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
     } // end of viewDidLoad
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // This DOES return the right # of collection view cells (columns):
         //return arrayOfArrays.count
         return itemsAllPlayers.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! EndGameCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EndGameCollectionViewCell
         cell.delegate = self
         //cell.imageView.image = UIImage(named: stacks[indexPath.row])
         //cell.array = arrayOfArrays[indexPath.row] as! [String]
@@ -285,27 +285,27 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
-    func rowWasSelectedForImage(imageNamed: UIImage) {
+    func rowWasSelectedForImage(_ imageNamed: UIImage) {
         print("rowWasSelected FOR IMAGE ******: \(imageNamed)")
         imageToPass = imageNamed
         print("imageToPass: \(imageToPass)")
-        performSegueWithIdentifier("imageSegue", sender: self)
+        performSegue(withIdentifier: "imageSegue", sender: self)
         
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "imageSegue" {
-            let dvc = segue.destinationViewController as! EndGameViewImageVC
+            let dvc = segue.destination as! EndGameViewImageVC
             dvc.imagePassed = imageToPass
         }
     }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+                               sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         //device screen size
-        let width = UIScreen.mainScreen().bounds.size.width
-        let height = UIScreen.mainScreen().bounds.size.height
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
         //calculation of cell size
         if itemsAllPlayers.count == 2 {
         return CGSize(width: (width / 2), height: height - 157)
@@ -314,11 +314,11 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    @IBAction func viewMyProfileTapped(sender: AnyObject) {
+    @IBAction func viewMyProfileTapped(_ sender: AnyObject) {
         
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("******** COLLECTIONVIEW > cell selected: \(indexPath.row)")
     }
     

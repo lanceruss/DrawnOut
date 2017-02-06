@@ -10,18 +10,18 @@ import UIKit
 
 class FreehandDrawController: NSObject {
     
-    private var commandQueue: Array<DrawCommand> = []
-    private var lastPoint: CGPoint = CGPointZero
-    private let canvas: protocol<Canvas, DrawCommandReceiver>
-    private var lineStrokeCommand: ComposedCommand?
-    private var lastSegment: Segment?
-    private var lastVelocity: CGPoint = CGPointZero
-    private var lastWidth: CGFloat?
+    fileprivate var commandQueue: Array<DrawCommand> = []
+    fileprivate var lastPoint: CGPoint = CGPoint.zero
+    fileprivate let canvas: Canvas & DrawCommandReceiver
+    fileprivate var lineStrokeCommand: ComposedCommand?
+    fileprivate var lastSegment: Segment?
+    fileprivate var lastVelocity: CGPoint = CGPoint.zero
+    fileprivate var lastWidth: CGFloat?
     
-    var color: UIColor = UIColor.blackColor()
+    var color: UIColor = UIColor.black
     var width: CGFloat = 4.2
     
-    required init(canvas: protocol<Canvas, DrawCommandReceiver>, view: UIView) {
+    required init(canvas: Canvas & DrawCommandReceiver, view: UIView) {
         
         self.canvas = canvas
         super.init()
@@ -29,7 +29,7 @@ class FreehandDrawController: NSObject {
         self.setUpGestureRecognizersInView(view)
     }
     
-    private func setUpGestureRecognizersInView(view: UIView) {
+    fileprivate func setUpGestureRecognizersInView(_ view: UIView) {
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(FreehandDrawController.handlePan(_:)))
         view.addGestureRecognizer(panRecognizer)
@@ -42,47 +42,47 @@ class FreehandDrawController: NSObject {
         view.addGestureRecognizer(doubleTapRecognizer)
     }
     
-    @objc private func handlePan(sender: UIPanGestureRecognizer) {
+    @objc fileprivate func handlePan(_ sender: UIPanGestureRecognizer) {
         
-        let point = sender.locationInView(sender.view)
+        let point = sender.location(in: sender.view)
         
         switch sender.state {
-        case .Began:
+        case .began:
             self.startAtPoint(point)
-        case .Changed:
-            self.continueAtPoint(point, velocity: sender.velocityInView(sender.view))
-        case .Ended:
+        case .changed:
+            self.continueAtPoint(point, velocity: sender.velocity(in: sender.view))
+        case .ended:
             self.endAtPoint(point)
-        case .Failed:
+        case .failed:
             self.endAtPoint(point)
         default:
             assert(false, "State not handled")
         }
     }
     
-    @objc private func handleTap(sender: UITapGestureRecognizer) {
+    @objc fileprivate func handleTap(_ sender: UITapGestureRecognizer) {
         
-        let point = sender.locationInView(sender.view)
-        if sender.state == .Ended {
+        let point = sender.location(in: sender.view)
+        if sender.state == .ended {
             self.tapAtPoint(point)
         }
     }
     
-    @objc private func handleDoubleTap(sender: UITapGestureRecognizer) {
+    @objc fileprivate func handleDoubleTap(_ sender: UITapGestureRecognizer) {
         undo()
     }
     
-    func gestureRecognizer(handleTap: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer handleDoubleTap: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ handleTap: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer handleDoubleTap: UIGestureRecognizer) -> Bool {
         return false
     }
     
-    private func startAtPoint(point: CGPoint) {
+    fileprivate func startAtPoint(_ point: CGPoint) {
         
         self.lastPoint = point
         self.lineStrokeCommand = ComposedCommand(commands: [])
     }
     
-    private func continueAtPoint(point: CGPoint, velocity: CGPoint) {
+    fileprivate func continueAtPoint(_ point: CGPoint, velocity: CGPoint) {
         
         let segmentWidth = modulatedWidth(self.width, velocity: velocity, previousVelocity: self.lastVelocity, previousWidth: self.lastWidth ?? self.width)
         let segment = Segment(a: self.lastPoint, b: point, width: segmentWidth)
@@ -97,20 +97,20 @@ class FreehandDrawController: NSObject {
         self.lastWidth = segmentWidth
     }
     
-    private func endAtPoint(point: CGPoint) {
+    fileprivate func endAtPoint(_ point: CGPoint) {
         
         if let lineStrokeCommand = self.lineStrokeCommand {
             self.commandQueue.append(lineStrokeCommand)
         }
         
-        self.lastPoint = CGPointZero
+        self.lastPoint = CGPoint.zero
         self.lastSegment = nil
         self.lineStrokeCommand = nil
-        self.lastVelocity = CGPointZero
+        self.lastVelocity = CGPoint.zero
         self.lastWidth = nil
     }
     
-    private func tapAtPoint(point: CGPoint) {
+    fileprivate func tapAtPoint(_ point: CGPoint) {
         
         let circleCommand = CircleDrawCommand(center: point, radius: self.width/2.0, color: self.color)
         self.canvas.executeCommands([circleCommand])

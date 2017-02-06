@@ -16,11 +16,21 @@ struct CircleDrawCommand : DrawCommand {
     let radius: CGFloat
     let color: UIColor
     
-    func execute(canvas: Canvas) {
+    func execute(_ canvas: Canvas) {
         
-        CGContextSetFillColorWithColor(canvas.context, self.color.CGColor)
+        canvas.context.setFillColor(self.color.cgColor)
         
-        CGContextAddArc(canvas.context, self.center.x, self.center.y, self.radius, 0, 2 * CGFloat(M_PI), 1)
-        CGContextFillPath(canvas.context)
+        canvas.context.addArc(center: center,
+                              radius: radius,
+                              startAngle: 0,
+                              endAngle: 2 * CGFloat(M_PI),
+                              clockwise: true)
+        //canvas.context.addArc(withCenter center: CGPoint(self.center.x, self.center.y),
+//               radius: radius,
+//               startAngle: 0,
+//               endAngle:  2 * CGFloat(M_PI),
+//               clockwise: true)
+        //CGContextAddArc(canvas.context, self.center.x, self.center.y, self.radius, 0, 2 * CGFloat(M_PI), 1)
+        (canvas.context).fillPath()
     }
 }

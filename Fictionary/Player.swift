@@ -14,7 +14,7 @@ class Player: NSObject {
     var email: String?
     var firebaseUID: String?
     var facebookUID: String?
-    var photoURL: NSURL?
+    var photoURL: URL?
     var isAnonymous = false
     
     init(displayName: String) {

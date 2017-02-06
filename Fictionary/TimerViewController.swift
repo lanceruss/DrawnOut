@@ -13,11 +13,11 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     var seconds = 0
-    var timer = NSTimer()
+    var timer = Timer()
     var secondsAllowed = 45
     
-    @IBAction func dismissButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissButton(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -39,10 +39,10 @@ class TimerViewController: UIViewController {
     func setupGame() {
         seconds = secondsAllowed
         timeLabel.text = "Time: \(seconds)"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TimerViewController.subtractTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TimerViewController.subtractTime), userInfo: nil, repeats: true)
     }
 
-    @IBAction func onButtonTapped(sender: AnyObject) {
+    @IBAction func onButtonTapped(_ sender: AnyObject) {
         // reset counter
         timer.invalidate()
         setupGame()

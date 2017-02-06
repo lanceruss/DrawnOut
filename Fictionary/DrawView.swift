@@ -12,7 +12,7 @@ class DrawView: UIView, Canvas, DrawCommandReceiver {
     
     var buffer: UIImage?
     
-    var context: CGContextRef {
+    var context: CGContext {
         return UIGraphicsGetCurrentContext()!
     }
     
@@ -21,17 +21,17 @@ class DrawView: UIView, Canvas, DrawCommandReceiver {
         self.layer.contents = nil
     }
     
-    func executeCommands(commands: [DrawCommand]) {
+    func executeCommands(_ commands: [DrawCommand]) {
         
         autoreleasepool {
             self.buffer = drawInContext { context in
                 commands.map { $0.execute(self) }
             }
-            self.layer.contents = self.buffer?.CGImage ?? nil
+            self.layer.contents = self.buffer?.cgImage ?? nil
         }
     }
     
-    func drawInContext(code:(context: CGContextRef) -> Void) -> UIImage {
+    func drawInContext(_ code:(_ context: CGContext) -> Void) -> UIImage {
         
         let size = self.bounds.size
         
@@ -39,18 +39,18 @@ class DrawView: UIView, Canvas, DrawCommandReceiver {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, self.backgroundColor?.CGColor ?? UIColor.whiteColor().CGColor)
-        CGContextFillRect(context, self.bounds)
+        context?.setFillColor(self.backgroundColor?.cgColor ?? UIColor.white.cgColor)
+        context?.fill(self.bounds)
         
         if let buffer = buffer {
-            buffer.drawInRect(self.bounds)
+            buffer.draw(in: self.bounds)
         }
         
-        code(context: context!)
+        code(context!)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
     
 }

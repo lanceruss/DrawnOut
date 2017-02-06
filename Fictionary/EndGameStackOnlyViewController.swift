@@ -23,19 +23,19 @@ class EndGameStackOnlyViewController: UIViewController, UITableViewDelegate, UIT
     
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayToPass.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EndGameStackOnlyCustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EndGameStackOnlyCustomTableViewCell
 
         if let image = arrayToPass[indexPath.row] as? UIImage {
             //cell.imageView?.image = items[indexPath.row] as! UIImage
-            cell.imageView6.hidden = false
+            cell.imageView6.isHidden = false
             cell.imageView6.image = arrayToPass[indexPath.row] as! UIImage
-            cell.cellCaptionTextView.hidden = true
+            cell.cellCaptionTextView.isHidden = true
             tableView.rowHeight = 250
 
             
@@ -50,9 +50,9 @@ class EndGameStackOnlyViewController: UIViewController, UITableViewDelegate, UIT
              */
             
             // just display text
-            cell.imageView6.hidden = true
+            cell.imageView6.isHidden = true
             cell.textLabel!.text = "\(arrayToPass[indexPath.row])"
-            cell.cellCaptionTextView.hidden = false
+            cell.cellCaptionTextView.isHidden = false
             tableView.rowHeight = 100
             
         }
@@ -61,8 +61,8 @@ class EndGameStackOnlyViewController: UIViewController, UITableViewDelegate, UIT
     }
 
 
-    @IBAction func onBackButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func onBackButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -20,7 +20,7 @@ class InstructionsViewController: UIViewController {
         self.view.backgroundColor = UIColor.medAquamarine()
         
         titleView.backgroundColor = UIColor.pastelGreen()
-        titleView.layer.shadowColor = UIColor.blackColor().CGColor
+        titleView.layer.shadowColor = UIColor.black.cgColor
         titleView.layer.shadowOpacity = 0.25
         titleView.layer.shadowOffset = CGSize(width: 0, height: 1)
         titleView.layer.shadowRadius = 3.5
@@ -36,8 +36,8 @@ class InstructionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func doneButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doneButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
     /*

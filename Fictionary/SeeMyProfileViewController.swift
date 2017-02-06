@@ -24,7 +24,7 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
     var imageFilenames = [String]()
     
     var ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://fictionary-7d24c.appspot.com")
+    let storageRef = FIRStorage.storage().reference(forURL: "gs://fictionary-7d24c.appspot.com")
     let userID = FIRAuth.auth()?.currentUser?.uid
 
     
@@ -37,12 +37,12 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
         self.view.backgroundColor = UIColor.pastelGreen()
         self.collectionView.backgroundColor = UIColor.shamrock()
         
-        cardTableView.hidden = false
+        cardTableView.isHidden = false
         cardsButton.backgroundColor = UIColor.shamrock()
         stacksButton.backgroundColor = UIColor.medAquamarine()
         recentMatchesButton.backgroundColor = UIColor.medAquamarine()
         
-        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let name = snapshot.value!["name"] as! String
             self.nameLabel.text = "\(name)"
@@ -54,7 +54,7 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
         // ---------------- GET ANY IMAGES SAVED IN FIREBASE STORAGE ------------------- //
         
         // GET LIST OF FILES FROM FIREBASE DATABASE
-        ref.child("users").child(userID!).child("saved-image").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("users").child(userID!).child("saved-image").observeSingleEvent(of: .value, with: { (snapshot) in
             
             print("firebase > database > users > saved-image: \n")
             print(snapshot)
@@ -67,7 +67,7 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
                     print(imageFilename!)
                     self.imageFilenames.append(imageFilename! as! String)
                     
-                    dispatch_async(dispatch_get_main_queue(), { 
+                    DispatchQueue.main.async(execute: { 
                         self.cardTableView.reloadData()
                     })
                 }
@@ -90,13 +90,13 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
     
     
     // ----------------- CARD TABLE VIEW ------------------------- //
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.imageFilenames.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cardCell", forIndexPath: indexPath) as! CardCustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell", for: indexPath) as! CardCustomTableViewCell
         
         cell.cardImageView.image = nil
         
@@ -109,7 +109,7 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
         //let imageRef = storageRef.child("\(FIRAuth.auth()?.currentUser?.uid)/\(self.imageFilenames[indexPath.row])")
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         //print(imageRef)
-        userImageFilename.dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+        userImageFilename.data(withMaxSize: 3 * 1024 * 1024) { (data, error) -> Void in
             
             if (error != nil) {
                 // Uh-oh, an error occurred!
@@ -118,7 +118,7 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
                 // Data for "images/island.jpg" is returned
                 // ... let islandImage: UIImage! = UIImage(data: data!)
                 cell.cardImageView.image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     cell.layoutSubviews()
 
                 })
@@ -142,34 +142,34 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
     
     
     
-    @IBAction func onBackButtonTapped(sender: AnyObject) {
+    @IBAction func onBackButtonTapped(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return stacks.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: Custom2CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! Custom2CollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: Custom2CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Custom2CollectionViewCell
         cell.imageView.image = UIImage(named: stacks[indexPath.row])
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("cell: \(indexPath.row) selected")
     }
     
-    @IBAction func seeAllStacks(sender: AnyObject) {
+    @IBAction func seeAllStacks(_ sender: AnyObject) {
         
         
     }
     
-    @IBAction func onCardsButtonTapped(sender: AnyObject) {
+    @IBAction func onCardsButtonTapped(_ sender: AnyObject) {
         
-        cardTableView.hidden = false
+        cardTableView.isHidden = false
         cardsButton.backgroundColor = UIColor.shamrock()
         stacksButton.backgroundColor = UIColor.medAquamarine()
         recentMatchesButton.backgroundColor = UIColor.medAquamarine()
@@ -177,9 +177,9 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     
-    @IBAction func onStacksButtonTapped(sender: AnyObject) {
+    @IBAction func onStacksButtonTapped(_ sender: AnyObject) {
         
-        cardTableView.hidden = true
+        cardTableView.isHidden = true
         cardsButton.backgroundColor = UIColor.medAquamarine()
         stacksButton.backgroundColor = UIColor.shamrock()
         recentMatchesButton.backgroundColor = UIColor.medAquamarine()

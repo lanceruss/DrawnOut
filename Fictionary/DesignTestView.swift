@@ -12,30 +12,30 @@ class DesignTestView: UIView {
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         print("drawRect")
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetLineWidth(context, 1.0)
+        context?.setLineWidth(1.0)
         //        let colorSpace = CGColorSpaceCreateDeviceRGB()
         //        let components: [CGFloat] = [1.0, 1.0, 1.0, 1.0]
         //        let color = CGColorCreate(colorSpace, components)
-        CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
+        context?.setStrokeColor(UIColor.white.cgColor)
         
-        CGContextMoveToPoint(context, (UIScreen.mainScreen().bounds.width / 2) - 136.25, 93)
-        CGContextAddLineToPoint(context, (UIScreen.mainScreen().bounds.width / 2) + 136.25, 93)
-        CGContextStrokePath(context)
+        context?.move(to: CGPoint(x: (UIScreen.main.bounds.width / 2) - 136.25, y: 93))
+        context?.addLine(to: CGPoint(x: (UIScreen.main.bounds.width / 2) + 136.25, y: 93))
+        context?.strokePath()
         
         let context2 = UIGraphicsGetCurrentContext()
-        CGContextSetLineWidth(context2, 1.0)
+        context2?.setLineWidth(1.0)
         //        let colorSpace = CGColorSpaceCreateDeviceRGB()
         //        let components: [CGFloat] = [1.0, 1.0, 1.0, 1.0]
         //        let color = CGColorCreate(colorSpace, components)
-        CGContextSetStrokeColorWithColor(context2, UIColor.whiteColor().CGColor)
+        context2?.setStrokeColor(UIColor.white.cgColor)
         
-        CGContextMoveToPoint(context2, (UIScreen.mainScreen().bounds.width / 2) - 136.25, 147.5)
-        CGContextAddLineToPoint(context2, (UIScreen.mainScreen().bounds.width / 2) + 136.25, 147.5)
-        CGContextStrokePath(context2)
+        context2?.move(to: CGPoint(x: (UIScreen.main.bounds.width / 2) - 136.25, y: 147.5))
+        context2?.addLine(to: CGPoint(x: (UIScreen.main.bounds.width / 2) + 136.25, y: 147.5))
+        context2?.strokePath()
     }
     
 }

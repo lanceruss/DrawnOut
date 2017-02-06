@@ -18,8 +18,8 @@ class DesignCreateAccountViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.pastelGreen()
-        emailTextField.borderStyle = UITextBorderStyle.RoundedRect
-        emailTextField.layer.borderColor = UIColor.whiteColor().CGColor //huh, no luck.
+        emailTextField.borderStyle = UITextBorderStyle.roundedRect
+        emailTextField.layer.borderColor = UIColor.white.cgColor //huh, no luck.
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.cornerRadius = 5
         emailTextField.layer.masksToBounds = true

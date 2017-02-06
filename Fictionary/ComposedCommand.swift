@@ -10,17 +10,17 @@ import UIKit
 
 struct ComposedCommand : DrawCommand {
     
-    private var commands: [DrawCommand]
+    fileprivate var commands: [DrawCommand]
     
     init(commands: [DrawCommand]) {
         self.commands = commands
     }
     
-    func execute(canvas: Canvas) {
+    func execute(_ canvas: Canvas) {
         self.commands.map { $0.execute(canvas) }
     }
     
-    mutating func addCommand(command: DrawCommand) {
+    mutating func addCommand(_ command: DrawCommand) {
         self.commands.append(command)
     }
 }

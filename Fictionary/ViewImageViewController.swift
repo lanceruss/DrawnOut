@@ -17,7 +17,7 @@ class ViewImageViewController: UIViewController {
     var imageNamePassed = ""
     
     var ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://fictionary-7d24c.appspot.com")
+    let storageRef = FIRStorage.storage().reference(forURL: "gs://fictionary-7d24c.appspot.com")
     var firebaseUID = ""
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class ViewImageViewController: UIViewController {
     
     
     }
-    @IBAction func onShareButtonTapped(sender: AnyObject) {
+    @IBAction func onShareButtonTapped(_ sender: AnyObject) {
         let textToShare = "Fictionary Favorite Drawing!"
         let cardPhoto = imagePreview.image
         
@@ -50,33 +50,33 @@ class ViewImageViewController: UIViewController {
         
         //activityViewController.excludedActivityTypes = [UIActivityTypeMail]
         
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        self.present(activityViewController, animated: true, completion: nil)
 
     }
     
-    @IBAction func onSaveButtonTapped(sender: AnyObject) {
+    @IBAction func onSaveButtonTapped(_ sender: AnyObject) {
         UIImageWriteToSavedPhotosAlbum(UIImage(named: imageNamePassed)!, self, nil, nil)
     }
     
-    @IBAction func onSaveToMyProfileButtonTapped(sender: AnyObject) {
+    @IBAction func onSaveToMyProfileButtonTapped(_ sender: AnyObject) {
         
         // Data in memory
-        let data: NSData = UIImagePNGRepresentation(imagePreview.image!)!
+        let data: Data = UIImagePNGRepresentation(imagePreview.image!)!
         
         // create random filename
-        let dateformatter = NSDateFormatter()
+        let dateformatter = DateFormatter()
         let randomNumber = arc4random_uniform(1000)
         
         dateformatter.dateFormat = "yyMMdd-hhmmss"
         
-        let now = dateformatter.stringFromDate(NSDate())
+        let now = dateformatter.string(from: Date())
         let filename = ("\(now)-\(randomNumber)")
         
         // Create a reference to the file you want to upload
         let uploadRef = storageRef.child(firebaseUID).child("\(filename).jpg")
         
         // Upload the file to the path 
-        let uploadTask = uploadRef.putData(data, metadata: nil) { metadata, error in
+        let uploadTask = uploadRef.put(data, metadata: nil) { metadata, error in
             if (error != nil) {
                 // Uh-oh, an error occurred!
             } else {
@@ -90,9 +90,9 @@ class ViewImageViewController: UIViewController {
         
     }
 
-    @IBAction func onCloseButtonTapped(sender: AnyObject) {
+    @IBAction func onCloseButtonTapped(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

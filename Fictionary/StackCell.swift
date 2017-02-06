@@ -9,7 +9,7 @@
 import UIKit
 
 protocol StackCellDelegate {
-    func rowWasSelectedForImage(imageNamed: String)
+    func rowWasSelectedForImage(_ imageNamed: String)
 }
 
 class StackCell: UICollectionViewCell {
@@ -21,7 +21,7 @@ class StackCell: UICollectionViewCell {
     
     var delegate: StackCellDelegate?
     
-    func rowWasSelectedForImage(imageNamed: String) {
+    func rowWasSelectedForImage(_ imageNamed: String) {
         delegate?.rowWasSelectedForImage(imageNamed)
     }
 
@@ -29,12 +29,12 @@ class StackCell: UICollectionViewCell {
 
     extension StackCell: UITableViewDataSource {
         
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return array.count
         }
         
-        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
             cell.cardImageView?.image = UIImage(named: array[indexPath.row])
             tableView.rowHeight = 100
             return cell
@@ -45,7 +45,7 @@ class StackCell: UICollectionViewCell {
 
     extension StackCell: UITableViewDelegate {
         
-        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("didSelectRowAtIndexPath: \(indexPath) - \(array[indexPath.row])")
             print("from: \(array)")
 //            self.messageLabel.text = array[indexPath.row]

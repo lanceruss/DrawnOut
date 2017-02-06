@@ -22,17 +22,17 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
     var ctr: Int = 0
     var pointsBuffer: [CGPoint] = []
     var bufIdx: Int = 0
-    var drawingQueue: dispatch_queue_t?
+    var drawingQueue: DispatchQueue?
     var isFirstTouchPoint: Bool?
     var lastSegmentOfPrevious: LineSegment?
     
-    var color: UIColor? = UIColor.blackColor()
+    var color: UIColor? = UIColor.black
     
     var didHit40: Bool? = false
     
     var imageHistory: Array<UIImage> = []
     
-    func setupGestureRecognizersInView(view: UIView) {
+    func setupGestureRecognizersInView(_ view: UIView) {
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DrawingView.handlePan(_:)))
         view.addGestureRecognizer(panRecognizer)
@@ -46,7 +46,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(doubleTapRecognizer)
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         //print("shouldRecieveTouch")
         if touch.view == gestureRecognizer.view {
             //print("true")
@@ -55,26 +55,26 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         return false
     }
     
-    func gestureRecognizer(handleTap: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer handleDoubleTap: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ handleTap: UIGestureRecognizer,shouldRecognizeSimultaneouslyWith handleDoubleTap: UIGestureRecognizer) -> Bool {
         return false
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
-        incrementalImage?.drawInRect(rect)
+        incrementalImage?.draw(in: rect)
     }
     
-    @objc private func handleTap(sender: UITapGestureRecognizer) {
+    @objc fileprivate func handleTap(_ sender: UITapGestureRecognizer) {
         //print("DrawingViewTap")
-        let point = sender.locationInView(sender.view)
+        let point = sender.location(in: sender.view)
         
-        if sender.state == .Ended {
+        if sender.state == .ended {
             
             self.tapAtPoint(point)
         }
     }
     
-    private func tapAtPoint(point: CGPoint) {
+    fileprivate func tapAtPoint(_ point: CGPoint) {
         
         let radius: CGFloat = 4.2
         
@@ -83,13 +83,13 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         if self.incrementalImage == nil {
             
             let rectpath: UIBezierPath = UIBezierPath(rect: self.bounds)
-            UIColor.whiteColor().setFill()
+            UIColor.white.setFill()
             rectpath.fill()
         }
         
-        let dotpath: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(point.x, point.y, radius, radius))
+        let dotpath: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: point.x, y: point.y, width: radius, height: radius))
         
-        self.incrementalImage?.drawAtPoint(CGPointZero)
+        self.incrementalImage?.draw(at: CGPoint.zero)
         self.color!.setStroke()
         self.color!.setFill()
         dotpath.fill()
@@ -99,24 +99,24 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         UIGraphicsEndImageContext()
         self.setNeedsDisplay()
         if imageHistory.count > 40 {
-            imageHistory.removeAtIndex(0)
+            imageHistory.remove(at: 0)
             didHit40 = true
             print(imageHistory.count)
         }
         imageHistory.append(incrementalImage!) // full line
     }
     
-    @objc private func handlePan(sender: UIPanGestureRecognizer) {
+    @objc fileprivate func handlePan(_ sender: UIPanGestureRecognizer) {
         
-        let point = sender.locationInView(sender.view)
+        let point = sender.location(in: sender.view)
         switch sender.state {
-        case .Began:
+        case .began:
             self.startAtPoint(point)
-        case .Changed:
+        case .changed:
             self.continueAtPoint(point)
-        case .Ended:
+        case .ended:
             self.endAtPoint(point)
-        case .Failed:
+        case .failed:
             self.endAtPoint(point)
         default:
             self.endAtPoint(point)
@@ -124,16 +124,16 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    private func startAtPoint(point: CGPoint) {
+    fileprivate func startAtPoint(_ point: CGPoint) {
         
         ctr = 0
         bufIdx = 0;
-        pts.insert(point, atIndex: 0)
+        pts.insert(point, at: 0)
         isFirstTouchPoint = true
         firstChange = true
     }
     
-    private func continueAtPoint(point: CGPoint) {
+    fileprivate func continueAtPoint(_ point: CGPoint) {
         if firstChange == true {
             firstChange = false
         } else {
@@ -142,19 +142,19 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
             
             ctr += 1
             
-            pts.insert(p, atIndex: ctr)
+            pts.insert(p, at: ctr)
             
             if ctr == 4 {
-                pts[3] = CGPointMake((pts[2].x + pts[4].x) / 2.0, (pts[2].y + pts[4].y) / 2.0)
+                pts[3] = CGPoint(x: (pts[2].x + pts[4].x) / 2.0, y: (pts[2].y + pts[4].y) / 2.0)
                 
                 for i in 0 ..< 4 {
-                    pointsBuffer.insert(pts[i], atIndex: bufIdx + i)
+                    pointsBuffer.insert(pts[i], at: bufIdx + i)
                 }
                 bufIdx += 4
                 
                 let bounds: CGRect = self.bounds
                 
-                dispatch_async(drawingQueue!, {
+                drawingQueue!.async(execute: {
                     
                     //offset path is each new path.
                     let offsetPath: UIBezierPath = UIBezierPath()
@@ -170,14 +170,14 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                             
                             let newLineSegment = LineSegment(firstPoint: self.pointsBuffer[0], secondPoint: self.pointsBuffer[0])
                             
-                            ls!.insert(newLineSegment, atIndex: 0)
+                            ls!.insert(newLineSegment, at: 0)
                             
-                            offsetPath.moveToPoint(ls![0].firstPoint!)
+                            offsetPath.move(to: ls![0].firstPoint!)
                             self.isFirstTouchPoint = false
                             
                         } else {
                             
-                            ls!.insert(self.lastSegmentOfPrevious!, atIndex: 0)
+                            ls!.insert(self.lastSegmentOfPrevious!, at: 0)
                             
                         }
                         
@@ -194,16 +194,16 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                         let frac3F = Float(frac3)
                         
                         // calculate the offset line segment.
-                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i], secondPoint: self.pointsBuffer[i+1]), ofRelativeLength: frac1F), atIndex: 1)
-                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i+1], secondPoint: self.pointsBuffer[i+2]), ofRelativeLength: frac2F), atIndex: 2)
-                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i+2], secondPoint: self.pointsBuffer[i+3]), ofRelativeLength: frac3F), atIndex: 3)
+                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i], secondPoint: self.pointsBuffer[i+1]), ofRelativeLength: frac1F), at: 1)
+                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i+1], secondPoint: self.pointsBuffer[i+2]), ofRelativeLength: frac2F), at: 2)
+                        ls!.insert(lineSegmentPerpendicularTo(LineSegment(firstPoint: self.pointsBuffer[i+2], secondPoint: self.pointsBuffer[i+3]), ofRelativeLength: frac3F), at: 3)
                         
                         // constructs the drawn line, made up of two subpaths
-                        offsetPath.moveToPoint(ls![0].firstPoint!)
-                        offsetPath.addCurveToPoint(ls![3].firstPoint!, controlPoint1: ls![1].firstPoint!, controlPoint2: ls![2].firstPoint!)
-                        offsetPath.addLineToPoint(ls![3].secondPoint!)
-                        offsetPath.addCurveToPoint(ls![0].secondPoint!, controlPoint1: ls![2].secondPoint!, controlPoint2: ls![1].secondPoint!)
-                        offsetPath.closePath()
+                        offsetPath.move(to: ls![0].firstPoint!)
+                        offsetPath.addCurve(to: ls![3].firstPoint!, controlPoint1: ls![1].firstPoint!, controlPoint2: ls![2].firstPoint!)
+                        offsetPath.addLine(to: ls![3].secondPoint!)
+                        offsetPath.addCurve(to: ls![0].secondPoint!, controlPoint1: ls![2].secondPoint!, controlPoint2: ls![1].secondPoint!)
+                        offsetPath.close()
                         
                         self.lastSegmentOfPrevious = ls![3] // makes sure that the paths line up with what came before.
                     }
@@ -213,11 +213,11 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     if self.incrementalImage == nil {
                         
                         let rectpath: UIBezierPath = UIBezierPath(rect: self.bounds)
-                        UIColor.whiteColor().setFill()
+                        UIColor.white.setFill()
                         rectpath.fill()
                     }
                     
-                    self.incrementalImage?.drawAtPoint(CGPointZero)
+                    self.incrementalImage?.draw(at: CGPoint.zero)
                     self.color!.setStroke()
                     self.color!.setFill()
                     offsetPath.fill()
@@ -226,7 +226,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
                     UIGraphicsEndImageContext()
                     offsetPath.removeAllPoints()
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         self.bufIdx = 0
                         self.setNeedsDisplay()
                     })
@@ -240,12 +240,12 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    private func endAtPoint(point: CGPoint) {
+    fileprivate func endAtPoint(_ point: CGPoint) {
         
         setNeedsDisplay()
         if incrementalImage != nil {
             if imageHistory.count > 40 {
-                imageHistory.removeAtIndex(0)
+                imageHistory.remove(at: 0)
                 didHit40 = true
                 print(imageHistory.count)
             }
@@ -254,7 +254,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
         
     }
     
-    @objc private func handleDoubleTap(sender: UITapGestureRecognizer) {
+    @objc fileprivate func handleDoubleTap(_ sender: UITapGestureRecognizer) {
         
         if imageHistory.count > 0 {
             if didHit40 == true && imageHistory.count > 1 {
@@ -268,7 +268,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     
                     if incrementalImage == nil {
                         UIGraphicsBeginImageContext(self.bounds.size)
-                        self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+                        self.layer.render(in: UIGraphicsGetCurrentContext()!)
                         incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
                         UIGraphicsEndImageContext()
                     }
@@ -288,7 +288,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     
                     if incrementalImage == nil {
                         UIGraphicsBeginImageContext(self.bounds.size)
-                        self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+                        self.layer.render(in: UIGraphicsGetCurrentContext()!)
                         incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
                         UIGraphicsEndImageContext()
                     }

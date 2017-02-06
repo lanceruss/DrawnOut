@@ -12,14 +12,24 @@ import Firebase
 
 
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+     */
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        //uh, code in here?
+    }
+
 
     var player: Player!
     var ref = FIRDatabase.database().reference()
     @IBOutlet weak var enterGameButton: UIButton!
     
-    @IBAction func dismissButton(sender: AnyObject) {
+    @IBAction func dismissButton(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -29,7 +39,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         try! FIRAuth.auth()!.signOut()
 
         
-        enterGameButton.hidden = true
+        enterGameButton.isHidden = true
         
         // add the Facebook Login button to the VC programmatically
         let loginButton = FBSDKLoginButton()
@@ -86,20 +96,20 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
        
         // added this to viewDidAppear as the FB SDK login process will come back to this VC so this request refreshes the status
         // was necessary during development & testing ,and I think it's useful for production
         
         print("\n\n*----------------VIEW-DID-APPEAR > Check for FBSDKAccessToken.currentAccessToken ------------------------*")
 
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
+        if(FBSDKAccessToken.current() != nil) {
             
             //They are logged in so show another view
             print("FB ACCESS TOKEN IS *NOT* EMPTY - FACEBOOK USER LOGGED IN")
-            print("FBSDKAccessToken.currentAccessToken: \(FBSDKAccessToken.currentAccessToken())")
+            print("FBSDKAccessToken.currentAccessToken: \(FBSDKAccessToken.current())")
 
-            enterGameButton.hidden = false
+            enterGameButton.isHidden = false
             
             
             // TEST to see if the VIEW DID APPEAR we will test to see if the user is LOGGED INTO FIREBASE
@@ -108,7 +118,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // User is signed in.
                 print("USER IS SIGNED INTO FIREBASE - DO NOT RE-SET ANOTHER CREDENTIAL")
                 print("- FIRAuth.auth()?.currentUser \(FIRAuth.auth()?.currentUser)")
-                print("- FBSDKAccessToken.currentAccessToken(): \(FBSDKAccessToken.currentAccessToken())")
+                print("- FBSDKAccessToken.currentAccessToken(): \(FBSDKAccessToken.current())")
 //                print(player.email)
 //                print(player.facebookUID)
 //                print(player.firebaseUID)
@@ -120,15 +130,15 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // FIREBASE USER NOT LOGGED IN - SO LOG IN THE FIREBASE USER
                 print("FIREBASE USER NOT LOGGED IN - SO LOG IN THE FIREBASE USER")
                 
-                let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 
-                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                     // ...
-                    self.enterGameButton.hidden = false
+                    self.enterGameButton.isHidden = false
                     
                     for profile in user!.providerData {
                         
-                        self.enterGameButton.hidden = false
+                        self.enterGameButton.isHidden = false
                         
                         print("* ASSIGN PROIVDER VARIABLES TO PLAYER OBJECT")
                         
@@ -169,7 +179,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("FACEBOOK ACCESS TOKEN IS EMPTY - USER NOT LOGGED INTO FACEBOOK")
             print("FBSDKAccessToken.currentAccessToken() * IS NIL *")
             player = nil
-            enterGameButton.hidden = true
+            enterGameButton.isHidden = true
 
         }
         
@@ -236,7 +246,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
 
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
        
         print("loginButton > didCompleteWithResult")
         
@@ -256,24 +266,24 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
 //
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dvc = segue.destinationViewController as! EnterGameViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! EnterGameViewController
         print("pass the dvc.player = player")
         print("player object: \(player)")
         dvc.player = player
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         // Actions for when the user logged out goes here
     }
 
-    @IBAction func onDeletePlayerTapped(sender: AnyObject) {
+    @IBAction func onDeletePlayerTapped(_ sender: AnyObject) {
         player = nil
         try! FIRAuth.auth()!.signOut()
         
     }
     
-    @IBAction func onEnterGameButtonTapped(sender: AnyObject) {
+    @IBAction func onEnterGameButtonTapped(_ sender: AnyObject) {
         
         
     }

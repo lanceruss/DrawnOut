@@ -11,39 +11,39 @@ import UIKit
 class GameViewController: UIViewController {
     
     var numberOfTurns = 5
-    var players = []
-    var players2 = []
+    var players = [String]()
+    var players2 = [String]()
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var textView6: UITextView!
     
-    @IBAction func dismissButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissButton(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func segmentedControl(sender: AnyObject) {
+    @IBAction func segmentedControl(_ sender: AnyObject) {
         if segmentedControl.selectedSegmentIndex == 0 {
-            textView.hidden = false
-            textView6.hidden = true
+            textView.isHidden = false
+            textView6.isHidden = true
         } else {
-            textView.hidden = true
-            textView6.hidden = false
+            textView.isHidden = true
+            textView6.isHidden = false
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.hidden = false
-        textView6.hidden = true
+        textView.isHidden = false
+        textView6.isHidden = true
 
         let player1 = "Ernie"
         let player2 = "Mike"
         let player3 = "Jacob"
         let player4 = "Tom"
         let player5 = "Gerry"
-        let player6 = "Debby"
+        //let player6 = "Debby"
         
         let players = [player1, player2, player3, player4]
         let players2 = [player1, player2, player3, player4, player5]

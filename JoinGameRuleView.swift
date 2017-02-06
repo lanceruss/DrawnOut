@@ -10,15 +10,15 @@ import UIKit
 
 class JoinGameRuleView: UIView {
 
-        override func drawRect(rect: CGRect) {
+        override func draw(_ rect: CGRect) {
             
             let context = UIGraphicsGetCurrentContext()
-            CGContextSetLineWidth(context, 1.0)
-            CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
+            context?.setLineWidth(1.0)
+            context?.setStrokeColor(UIColor.white.cgColor)
             
-            CGContextMoveToPoint(context, (UIScreen.mainScreen().bounds.width / 2) - 136.25, (UIScreen.mainScreen().bounds.height / 2))
-            CGContextAddLineToPoint(context, (UIScreen.mainScreen().bounds.width / 2) + 136.25, (UIScreen.mainScreen().bounds.height / 2))
-            CGContextStrokePath(context)
+            context?.move(to: CGPoint(x: (UIScreen.main.bounds.width / 2) - 136.25, y: (UIScreen.main.bounds.height / 2)))
+            context?.addLine(to: CGPoint(x: (UIScreen.main.bounds.width / 2) + 136.25, y: (UIScreen.main.bounds.height / 2)))
+            context?.strokePath()
     }
 
 }

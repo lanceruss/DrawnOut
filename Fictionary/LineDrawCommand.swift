@@ -15,7 +15,7 @@ struct LineDrawCommand: DrawCommand {
     let width: CGFloat
     let color: UIColor
     
-    func execute(canvas: Canvas) {
+    func execute(_ canvas: Canvas) {
         
         self.configure(canvas)
         
@@ -26,29 +26,29 @@ struct LineDrawCommand: DrawCommand {
         }
     }
     
-    func configure(canvas: Canvas) {
+    func configure(_ canvas: Canvas) {
         
-        CGContextSetStrokeColorWithColor(canvas.context, self.color.CGColor)
-        CGContextSetLineWidth(canvas.context, self.width)
-        CGContextSetLineCap(canvas.context, .Round)
+        canvas.context.setStrokeColor(self.color.cgColor)
+        canvas.context.setLineWidth(self.width)
+        canvas.context.setLineCap(.round)
     }
     
-    func drawLine(canvas: Canvas) {
+    func drawLine(_ canvas: Canvas) {
         
-        CGContextMoveToPoint(canvas.context, self.current.a.x, self.current.a.y)
-        CGContextAddLineToPoint(canvas.context, self.current.b.x, self.current.b.y)
-        CGContextStrokePath(canvas.context)
+        canvas.context.move(to: CGPoint(x: self.current.a.x, y: self.current.a.y))
+        canvas.context.addLine(to: CGPoint(x: self.current.b.x, y: self.current.b.y))
+        canvas.context.strokePath()
     }
     
-    func drawQuadraticCurve(canvas: Canvas) {
+    func drawQuadraticCurve(_ canvas: Canvas) {
         
         if let previousMid = self.previous?.midPoint {
             
             let currentMid = self.current.midPoint
             
-            CGContextMoveToPoint(canvas.context, previousMid.x, previousMid.y)
+            canvas.context.move(to: CGPoint(x: previousMid.x, y: previousMid.y))
             CGContextAddQuadCurveToPoint(canvas.context, current.a.x, current.a.y, currentMid.x, currentMid.y)
-            CGContextStrokePath(canvas.context)
+            canvas.context.strokePath()
         }
     }
 }

@@ -18,9 +18,9 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     var player: Player!
 
     let ref = FIRDatabase.database().reference()
-    let storageRef = FIRStorage.storage().referenceForURL("gs://fictionary-7d24c.appspot.com")
+    let storageRef = FIRStorage.storage().reference(forURL: "gs://fictionary-7d24c.appspot.com")
     
-    var imageFilenames = []
+    var imageFilenames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         //profileDisplayName.text = player.displayName
         
 
-        // get all my saved images
-        ref.child("users").child(player.firebaseUID!).child("saved-image").observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+        /* get all my saved images */
+        ref.child("users").child(player.firebaseUID!).child("saved-image").observe(FIRDataEventType.value, with: { (snapshot) in
             //print(self.player.firebaseUID)
             //print(self.player.description)
             //print(snapshot)
@@ -40,9 +40,9 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             for (key,value) in photoDict {
                 //let userid = key
                 //let photo = value
-                let imageFilename = value.objectForKey("filename") as! String
-                print(value.objectForKey("filename")!)
-                self.imageFilenames =  self.imageFilenames.arrayByAddingObject(imageFilename)
+                let imageFilename = value.object(forKey: "filename") as! String
+                print(value.object(forKey: "filename")!)
+                self.imageFilenames =  self.imageFilenames.append(imageFilename)
                 print("self.imageFilenames: \(self.imageFilenames)")
                 
                 self.collectionView.reloadData()
@@ -56,9 +56,9 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // ------------------------- FACEBOOK PROFILE PHOTO --------------------------- //
         // get photo http://everythingswift.com/blog/2015/12/26/swift-facebook-ios-sdk-retrieve-profile-picture/
-        if FBSDKAccessToken.currentAccessToken() != nil {
+        if FBSDKAccessToken.current() != nil {
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-            graphRequest.startWithCompletionHandler({
+            graphRequest?.start(completionHandler: {
                 (connection, result, error) -> Void in
                 if ((error) != nil)
                 {
@@ -66,15 +66,15 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
                 else if error == nil
                 {
-                    let facebookID: NSString = (result.valueForKey("id")
+                    let facebookID: NSString = (result.value(forKey: "id")
                         as? NSString)!
                     
                     let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
                     
-                    let URLRequest = NSURL(string: pictureURL)
-                    let URLRequestNeeded = NSURLRequest(URL: URLRequest!)
+                    let URLRequest = URL(string: pictureURL)
+                    let URLRequestNeeded = Foundation.URLRequest(url: URLRequest!)
                     
-                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?, error: NSError?) -> Void in
+                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: OperationQueue.main, completionHandler: {(response: URLResponse?,data: Data?, error: NSError?) -> Void in
                         
                         if error == nil {
                             let picture = UIImage(data: data!)
@@ -87,7 +87,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
                         else {
                             print("Error: \(error!.localizedDescription)")
                         }
-                    })
+                    } as! (URLResponse?, Data?, Error?) -> Void)
                 }
             })
         }
@@ -99,25 +99,25 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageFilenames.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ProfileCardCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProfileCardCollectionViewCell
         
         // download files into memory
         // Create a reference to the file you want to download
         let imageRef = self.storageRef.child(self.player.firebaseUID!).child("\(self.imageFilenames[indexPath.row])")
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        imageRef.dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+        imageRef.data(withMaxSize: 3 * 1024 * 1024) { (data, error) -> Void in
             if (error != nil) {
                 // Uh-oh, an error occurred!
             } else {
                 // Data for "images/island.jpg" is returned
                 // ... let islandImage: UIImage! = UIImage(data: data!)
                 let finalImage: UIImage! = UIImage(data: data!)
-                cell.imageView.contentMode = .ScaleAspectFit
+                cell.imageView.contentMode = .scaleAspectFit
                 cell.imageView.image = finalImage
 
             }

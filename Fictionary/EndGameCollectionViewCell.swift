@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EndGameCellDelegate {
-    func rowWasSelectedForImage(imageNamed: UIImage)
+    func rowWasSelectedForImage(_ imageNamed: UIImage)
 }
 
 var arrayToPass = NSArray()
@@ -28,7 +28,7 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
     
     var delegate: EndGameCellDelegate?
     
-    func rowWasSelectedForImage(imageNamed: UIImage) {
+    func rowWasSelectedForImage(_ imageNamed: UIImage) {
         delegate?.rowWasSelectedForImage(imageNamed)
     }
     
@@ -39,21 +39,21 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
     
     var array = [AnyObject]()
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("\(array.count)")
         return array.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EndGameTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EndGameTableViewCell
         
         if indexPath.row < array.count {
             
             if array[indexPath.row] is UIImage {
                 //cell.imageView?.image = items[indexPath.row] as! UIImage
-                cell.textCaption.hidden = true
-                cell.imageView5.hidden = false
+                cell.textCaption.isHidden = true
+                cell.imageView5.isHidden = false
                 tableView.rowHeight = 250
                 cell.imageView5.image = array[indexPath.row] as? UIImage
             } else {
@@ -67,8 +67,8 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
                  */
                 
                 // just display text
-                cell.imageView5.hidden = true
-                cell.textCaption.hidden = false
+                cell.imageView5.isHidden = true
+                cell.textCaption.isHidden = false
                 tableView.rowHeight = 100
                 cell.textCaption.text = "\(array[indexPath.row])"
                 
@@ -88,21 +88,21 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
     }
     
-    func drawImagesAndText(string: String) -> UIImage {
+    func drawImagesAndText(_ string: String) -> UIImage {
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Center
+        paragraphStyle.alignment = .center
         
         let attrs = [NSFontAttributeName: UIFont(name: "SF UI Text", size: 72)!, NSParagraphStyleAttributeName: paragraphStyle]
         
-        string.drawWithRect(CGRect(x: 32, y: 100, width: 400, height: 400), options: .UsesLineFragmentOrigin, attributes: attrs, context: nil)
+        string.draw(with: CGRect(x: 32, y: 100, width: 400, height: 400), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
         
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return img
+        return img!
         
     }
     
@@ -113,7 +113,7 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
     
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("****** didSelectRowAtIndexPath: \(indexPath) - \(array[indexPath.row])")
         
@@ -136,9 +136,9 @@ class EndGameCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UI
         
     }
     
-    @IBAction func onViewStackButtonTapped(sender: AnyObject) {
+    @IBAction func onViewStackButtonTapped(_ sender: AnyObject) {
         print("onViewStackButtonTapped")
-        arrayToPass = array
+        arrayToPass = array as NSArray
     }
     
     

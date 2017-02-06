@@ -7,21 +7,45 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class RevisedCircleTimerView: UIView {
 
     let timeLeftShapeLayer = CAShapeLayer()
     let bgShapeLayer = CAShapeLayer()
     
-    var timeLeft: NSTimeInterval?
-    var endTime: NSDate!
+    var timeLeft: TimeInterval?
+    var endTime: Date!
     
     var timeLabel = UILabel()
-    var timer = NSTimer()
+    var timer = Timer()
     
     let strokeIt = CABasicAnimation(keyPath: "strokeEnd")
     
-    func setUpTimer(numberOfSeconds: Double) {
+    func setUpTimer(_ numberOfSeconds: Double) {
         
         timeLeft = numberOfSeconds
         
@@ -35,31 +59,31 @@ class RevisedCircleTimerView: UIView {
         strokeIt.toValue = 1.0
         strokeIt.duration = 60.0
         
-        timeLeftShapeLayer.addAnimation(strokeIt, forKey: nil)
-        endTime = NSDate().dateByAddingTimeInterval(timeLeft!)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timeLeftShapeLayer.add(strokeIt, forKey: nil)
+        endTime = Date().addingTimeInterval(timeLeft!)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
     }
     
     func drawBgShape() {
-        bgShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX , y: self.frame.midY), radius: 100, startAngle: -90.degreesToRadians, endAngle: 270.degreesToRadians, clockwise: true).CGPath
-        bgShapeLayer.strokeColor = UIColor.orangeColor().CGColor
-        bgShapeLayer.fillColor = UIColor.greenColor().CGColor
+        bgShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX , y: self.frame.midY), radius: 100, startAngle: -90.degreesToRadians, endAngle: 270.degreesToRadians, clockwise: true).cgPath
+        bgShapeLayer.strokeColor = UIColor.orange.cgColor
+        bgShapeLayer.fillColor = UIColor.green.cgColor
         bgShapeLayer.lineWidth = 15
         self.layer.addSublayer(bgShapeLayer)
     }
     
     func drawTimeLeftShape() {
-        timeLeftShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX, y: self.frame.midY), radius: 100, startAngle: -90.degreesToRadians, endAngle: 270.degreesToRadians, clockwise: true).CGPath
-        timeLeftShapeLayer.strokeColor = UIColor.redColor().CGColor
-        timeLeftShapeLayer.fillColor = UIColor.blueColor().CGColor
+        timeLeftShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX, y: self.frame.midY), radius: 100, startAngle: -90.degreesToRadians, endAngle: 270.degreesToRadians, clockwise: true).cgPath
+        timeLeftShapeLayer.strokeColor = UIColor.red.cgColor
+        timeLeftShapeLayer.fillColor = UIColor.blue.cgColor
         timeLeftShapeLayer.lineWidth = 15
         self.layer.addSublayer(timeLeftShapeLayer)
     }
     
     func addTimeLabel() {
-        timeLabel = UILabel(frame: CGRectMake(self.frame.midX-50, self.frame.midY-25, 100, 50))
-        timeLabel.textAlignment = .Center
+        timeLabel = UILabel(frame: CGRect(x: self.frame.midX-50, y: self.frame.midY-25, width: 100, height: 50))
+        timeLabel.textAlignment = .center
         timeLabel.text = timeLeft!.time
         self.addSubview(timeLabel)
     }
@@ -83,9 +107,9 @@ extension Double {
     }
 }
 
-extension NSTimeInterval {
+extension TimeInterval {
     var time: String {
-        return String(format: "%02d:%02d", Int(self/60.0), Int(ceil(self%60)))
+        return String(format: "%02d:%02d", Int(self/60.0), Int(ceil(self.truncatingRemainder(dividingBy: 60))))
     }
 }
 

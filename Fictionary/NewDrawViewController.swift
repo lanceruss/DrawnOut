@@ -46,7 +46,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var secondsAllowed = 45
     var seconds = 0
-    var timer = NSTimer()
+    var timer = Timer()
 
     
     override func viewDidLoad() {
@@ -69,33 +69,33 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
 //        UIGraphicsEndImageContext()
         }
         
-        timerActivityIndicator.hidden = true
+        timerActivityIndicator.isHidden = true
 
         headerView.backgroundColor = UIColor.pastelGreen()
         captionView.backgroundColor = UIColor.medAquamarine()
         
-        headerView.layer.shadowColor = UIColor.blackColor().CGColor
+        headerView.layer.shadowColor = UIColor.black.cgColor
         headerView.layer.shadowOpacity = 0.25
         headerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         headerView.layer.shadowRadius = 3.5
 
-        self.drawingView.multipleTouchEnabled = true
-        drawingView.drawingQueue = dispatch_queue_create("drawingQueue", nil)
+        self.drawingView.isMultipleTouchEnabled = true
+        drawingView.drawingQueue = DispatchQueue(label: "drawingQueue", attributes: [])
         
         colorPaletteView.delegate = self
 
-        colorTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        colorTableView.scrollEnabled = false
-        colorPaletteView.userInteractionEnabled = true
+        colorTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        colorTableView.isScrollEnabled = false
+        colorPaletteView.isUserInteractionEnabled = true
         self.drawingView.setupGestureRecognizersInView(self.drawingView)
 
         self.colorPaletteView.setupGestureRecognizersInView(colorPaletteView)
-        self.colorTableView.hidden = true
-        self.colorPaletteView.backgroundColor = UIColor.blackColor()
+        self.colorTableView.isHidden = true
+        self.colorPaletteView.backgroundColor = UIColor.black
         self.colorPaletteView.layer.cornerRadius = 5
         self.colorPaletteView.layer.masksToBounds = true
         
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
         
         archiveHelper = ArchiverHelper()
@@ -116,7 +116,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                     let dictionaryToSend = gameDictionary[currentPlayer]
                     
-                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
+                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend as AnyObject?, keyForDictionary: currentPlayer, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
                     
                     if nextPlayer == appDelegate.mpcHandler.mcSession.myPeerID {
@@ -133,11 +133,11 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedData), name: NSNotification.Name(rawValue: "MPC_DataReceived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDroppedConnection), name: NSNotification.Name(rawValue: "MPC_NewPeerNotification"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -152,7 +152,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if drawingView.incrementalImage == nil {
         UIGraphicsBeginImageContext(drawingView.bounds.size)
-        drawingView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        drawingView.layer.render(in: UIGraphicsGetCurrentContext()!)
         drawingView.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
         }
@@ -160,10 +160,10 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: Color Palette methods
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = colorTableView.dequeueReusableCellWithIdentifier("cellid", forIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = colorTableView.dequeueReusableCell(withIdentifier: "cellid", for: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         if let colorPalette = ColorPalette(rawValue: indexPath.row) {
             cell.backgroundColor = colorPalette.color()
@@ -172,34 +172,34 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 22
     }
     
-    func didTapView(view: ColorPaletteView) {
+    func didTapView(_ view: ColorPaletteView) {
         //print("didTapView")
         if colorPaletteViewExpanded == false {
             
             let newHeight = drawingView.bounds.size.height - 16
             
-            ColorPaletteView.animateWithDuration(3.0, delay: 0.0, options: .CurveEaseIn, animations: {
+            ColorPaletteView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseIn, animations: {
                 
                 self.colorPaletteViewHeight.constant = newHeight
                 
                 }, completion: { finished in
-                    self.colorTableView.scrollEnabled = true
+                    self.colorTableView.isScrollEnabled = true
                     self.colorPaletteView.tapRecognizer4!.numberOfTapsRequired = 8
-                    self.colorTableView.hidden = false
+                    self.colorTableView.isHidden = false
                     self.colorPaletteViewExpanded = true
             })
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("didSelectRow")
         if colorPaletteViewExpanded == true {
             
-            ColorPaletteView.animateWithDuration(3.0, delay: 0.0, options: .CurveEaseIn, animations: {
+            ColorPaletteView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseIn, animations: {
                 
                 self.colorPaletteViewHeight.constant = 40
                 //                self.colorPaletteViewTop.constant = (self.colorPaletteViewTop.constant - 8) - newTop
@@ -207,8 +207,8 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                 }, completion: { finished in
                     self.colorPaletteView.tapRecognizer4!.numberOfTapsRequired = 1
                     self.colorPaletteViewExpanded = false
-                    self.colorTableView.scrollEnabled = false
-                    self.colorTableView.hidden = true
+                    self.colorTableView.isScrollEnabled = false
+                    self.colorTableView.isHidden = true
                     if let colorPalette = ColorPalette(rawValue: indexPath.row) {
                         self.drawingView.color = colorPalette.color()
                         self.colorPaletteView.backgroundColor = colorPalette.color()
@@ -227,10 +227,10 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         if seconds == 0 {
             timer.invalidate()
             
-            timerLabel.hidden = true
+            timerLabel.isHidden = true
 
             timerActivityIndicator.startAnimating()
-            timerActivityIndicator.hidden = false
+            timerActivityIndicator.isHidden = false
             
             if !countdownFinished {
                 
@@ -238,7 +238,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 
                 if self.drawingView.incrementalImage != nil {
-                    let passImage = UIImage(CGImage: self.drawingView.incrementalImage!.CGImage!)
+                    let passImage = UIImage(cgImage: self.drawingView.incrementalImage!.cgImage!)
                     if serverStatus?.isServer == true {
                         gameDictionary[dictToDisplayReceivedFrom!]![turnCounter] = passImage
                         
@@ -256,7 +256,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    func handleReceivedData(notification: NSNotification){
+    func handleReceivedData(_ notification: Notification){
         
         print("recieved data drawVC")
         
@@ -265,9 +265,9 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if message.objectForKey("string")?.isEqual("viewDidLoad") == true {
-                    let messageDict = message.objectForKey("object") as! [Int : AnyObject]
-                    let receivedKey = message.objectForKey("key") as! MCPeerID
+                if (message.object(forKey: "string")? as AnyObject).isEqual("viewDidLoad") == true {
+                    let messageDict = message.object(forKey: "object") as! [Int : AnyObject]
+                    let receivedKey = message.object(forKey: "key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
                     
                     print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
@@ -275,36 +275,36 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     captionLabel.text = messageDict[turnCounter - 1] as? String
                 }
                 
-                if message.objectForKey("string")?.isEqual("timer_up") == true {
+                if (message.object(forKey: "string")? as AnyObject).isEqual("timer_up") == true {
                     if serverStatus.isServer == true {
-                        let image = message.objectForKey("object") as! UIImage
-                        let receivedKey = message.objectForKey("key") as! MCPeerID
+                        let image = message.object(forKey: "object") as! UIImage
+                        let receivedKey = message.object(forKey: "key") as! MCPeerID
                         
                         gameDictionary[receivedKey]![turnCounter] = image
                     }
                 }
                 
-                if message.objectForKey("ready")?.isEqual("ready") == true {
+                if (message.object(forKey: "ready")? as AnyObject).isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
                     }
                 }
                 
-                if message.objectForKey("string")?.isEqual("ExitSegue") == true {
+                if (message.object(forKey: "string")? as AnyObject).isEqual("ExitSegue") == true {
                     
                     print("DrawVC ExitSegue message received")
                     
-                    let messageDict = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+                    let messageDict = message.object(forKey: "object") as! [MCPeerID : [Int : AnyObject]]
                     exitDictionary = messageDict
                     
-                    performSegueWithIdentifier("ExitSegue", sender: self)
+                    self.performSegue(withIdentifier: "ExitSegue", sender: self)
                     
-                } else if message.objectForKey("string")?.isEqual("ToCaption") == true {
+                } else if (message.object(forKey: "string")? as AnyObject).isEqual("ToCaption") == true {
                     
-                    performSegueWithIdentifier("ToCaption", sender: self)
+                    self.performSegue(withIdentifier: "ToCaption", sender: self)
                     
-                } else if message.objectForKey("string")?.isEqual("Start Over") == true {
-                    performSegueWithIdentifier("RestartSegue", sender: self)
+                } else if (message.object(forKey: "string")? as AnyObject).isEqual("Start Over") == true {
+                    self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 }
             }
         }
@@ -328,32 +328,32 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
             // this sends messages for the segue
             if switchForSeque {
                 
-                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary as AnyObject?, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 
-                performSegueWithIdentifier("ExitSegue", sender: self)
+                self.performSegue(withIdentifier: "ExitSegue", sender: self)
                 
             } else {
                 
                 let segueMessage = messageHandler.createMessage(string: "ToCaption", object: nil, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                 
-                performSegueWithIdentifier("ToCaption", sender: self)
+                self.performSegue(withIdentifier: "ToCaption", sender: self)
                 
             }
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
         turnCounter = turnCounter + 1
         
         print("DrawVC - \(turnCounter) - \n \(gameDictionary) \n")
         print("arrayForOrder - \(arrayForOrder)\n")
         
         if segue.identifier == "ToCaption" {
-            let dvc = segue.destinationViewController as! CaptionPhotoViewController
+            let dvc = segue.destination as! CaptionPhotoViewController
             dvc.serverStatus = serverStatus
             dvc.turnCounter = turnCounter
             dvc.gameDictionary = gameDictionary
@@ -365,7 +365,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
             
         } else if segue.identifier == "ExitSegue" {
             // do something different
-            let dvc = segue.destinationViewController as! EndGameSwipeVC
+            let dvc = segue.destination as! EndGameSwipeVC
             
             if serverStatus?.isServer == true {
                 dvc.exitDictionary = gameDictionary
@@ -375,21 +375,21 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    func handleDroppedConnection (notification: NSNotification) {
+    func handleDroppedConnection (_ notification: Notification) {
         let state = notification.userInfo!["state"] as? String
         let peerID = notification.userInfo!["peerID"] as? MCPeerID
         
         print("the dropped peer in handleDroppedConnection is \(peerID)")
         
-        if state == MCSessionState.NotConnected.stringValue() {
-            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+        if state == MCSessionState.notConnected.stringValue() {
+            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
                 
-                self.performSegueWithIdentifier("RestartSegue", sender: self)
+                self.performSegue(withIdentifier: "RestartSegue", sender: self)
 
             })
             alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

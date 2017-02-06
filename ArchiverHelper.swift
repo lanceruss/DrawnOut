@@ -11,15 +11,15 @@ import UIKit
 class ArchiverHelper: NSObject {
 
     // This function allows you to pass in an NSDictionary that you want to send through a message and returns an NSData object that can be sent to the other devices.
-    func archiveData(data data: NSDictionary) -> NSData? {
-        let archivedData = NSKeyedArchiver.archivedDataWithRootObject(data)
+    func archiveData(data: NSDictionary) -> Data? {
+        let archivedData = NSKeyedArchiver.archivedData(withRootObject: data)
         
         return archivedData
     }
     
     // This function takes in the NSData that is received from other devices and unwraps it into an NSDictionary optional which we can use to handle the incoming data.
-    func unarchiveData(data data: NSData) -> NSDictionary? {
-        let unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSDictionary
+    func unarchiveData(data: Data) -> NSDictionary? {
+        let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSDictionary
         
         return unarchivedData
     }

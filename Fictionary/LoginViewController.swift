@@ -51,10 +51,10 @@ class LoginViewController: UIViewController {
 //        try! FIRAuth.auth()!.signOut()
         
         
-        debugInfo.hidden = true
-        deletePlayerObjectsButton.hidden = true
+        debugInfo.isHidden = true
+        deletePlayerObjectsButton.isHidden = true
         
-        logoutButton.hidden = true
+        logoutButton.isHidden = true
         logoutButton.backgroundColor = UIColor.medAquamarine()
         logoutButton.layer.cornerRadius = 0.5 * logoutButton.bounds.size.height
 
@@ -64,25 +64,25 @@ class LoginViewController: UIViewController {
         loginAsGuestButton.layer.cornerRadius = 0.5 * loginAsGuestButton.bounds.size.height
         loginAsGuestButton.backgroundColor = UIColor.shamrock()
         
-        loginAsUserButton.hidden = true
+        loginAsUserButton.isHidden = true
         loginAsUserButton.layer.cornerRadius = 0.5 * loginAsUserButton.bounds.size.height
         loginAsUserButton.backgroundColor = UIColor.shamrock()
         
         if userIsLoggedIn == true {
-            viewMyProfileButton.hidden = false
+            viewMyProfileButton.isHidden = false
         } else {
-            viewMyProfileButton.hidden = true
+            viewMyProfileButton.isHidden = true
         }
         
         viewMyProfileButton.layer.cornerRadius = 0.5 * viewMyProfileButton.bounds.size.height
-        viewMyProfileButton.userInteractionEnabled = false
+        viewMyProfileButton.isUserInteractionEnabled = false
         //viewMyProfileButton.tintColor = UIColor.grayColor()
         //viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
         
         howToPlayButton.layer.cornerRadius = 0.5 * howToPlayButton.bounds.size.height
         howToPlayButton.backgroundColor = UIColor.medAquamarine()
         
-        welcomeLabel.hidden = true
+        welcomeLabel.isHidden = true
         welcomeLabel.text = ""
     
     
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController {
 //
 //    }
     
-    @IBAction func onViewMyProfileTapped(sender: AnyObject) {
+    @IBAction func onViewMyProfileTapped(_ sender: AnyObject) {
         
     }
     
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController {
     func getLoggedInUserInfo() {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get user value
             let email = snapshot.value!["email"] as! String
@@ -146,11 +146,11 @@ class LoginViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         // ----- DEBUG INFO ------ //
         debugInfo.text = ""
-        debugInfo.hidden = true
+        debugInfo.isHidden = true
         
         if let user = FIRAuth.auth()?.currentUser {
             // User is signed in.
@@ -161,18 +161,18 @@ class LoginViewController: UIViewController {
             
             //self.loginButton.hidden = true
             //self.createAccountButton.hidden = true
-            self.loginAsGuestButton.hidden = true
+            self.loginAsGuestButton.isHidden = true
             
             viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
-            viewMyProfileButton.userInteractionEnabled = true
+            viewMyProfileButton.isUserInteractionEnabled = true
             
-            welcomeLabel.hidden = false
+            welcomeLabel.isHidden = false
             
-            loginAsUserButton.hidden = false
+            loginAsUserButton.isHidden = false
 
             
             let userID = FIRAuth.auth()?.currentUser?.uid
-            ref.child("users").child(userID!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let name = snapshot.value!["name"] as! String
                 
@@ -180,24 +180,24 @@ class LoginViewController: UIViewController {
                     //self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
                     //self.viewMyProfileButton.userInteractionEnabled = false
                     
-                    dispatch_async(dispatch_get_main_queue(),{
-                        self.logoutButton.setTitle("LOGIN", forState: UIControlState.Normal)
-                        self.logoutButton.hidden = false
+                    DispatchQueue.main.async(execute: {
+                        self.logoutButton.setTitle("LOGIN", for: UIControlState())
+                        self.logoutButton.isHidden = false
 
                     })
 
-                    self.viewMyProfileButton.hidden = true
+                    self.viewMyProfileButton.isHidden = true
                     print("Logged in as Guest")
                     self.userIsLoggedIn = false
                     
                 } else {
                     self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
-                    self.viewMyProfileButton.userInteractionEnabled = true
+                    self.viewMyProfileButton.isUserInteractionEnabled = true
                     self.welcomeLabel.text = "Hi, \(name)!"
-                    self.logoutButton.setTitle("LOGOUT", forState: UIControlState.Normal)
-                    self.logoutButton.hidden = false
-                    self.createAccountButton.hidden = true
-                    self.viewMyProfileButton.hidden = false
+                    self.logoutButton.setTitle("LOGOUT", for: UIControlState())
+                    self.logoutButton.isHidden = false
+                    self.createAccountButton.isHidden = true
+                    self.viewMyProfileButton.isHidden = false
                     self.userIsLoggedIn = true
                 }
                 
@@ -211,28 +211,28 @@ class LoginViewController: UIViewController {
             // No user is signed in.
             print("user is not signed in")
             debugInfo.text = debugInfo.text + "FIRAuth.auth().currentUser: NONE\n"
-            self.viewMyProfileButton.hidden = true
-            self.logoutButton.hidden = true
+            self.viewMyProfileButton.isHidden = true
+            self.logoutButton.isHidden = true
             self.userIsLoggedIn = false
         }
         
             self.debugInfo.text = self.debugInfo.text + "D-player: \(self.player)\n"
     }
     
-    @IBAction func startAnonymousGameTapped(sender: AnyObject) {
+    @IBAction func startAnonymousGameTapped(_ sender: AnyObject) {
         
         self.player = Player(displayName: "Guest")
         self.player.email = ""
         self.player.facebookUID = ""
-        self.player.photoURL = NSURL(string: "")
+        self.player.photoURL = URL(string: "")
         self.player.firebaseUID = ""
         
         //self.loginButton.hidden = true
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
+        FIRAuth.auth()?.signInAnonymously() { (user, error) in
             // ...
             self.player.firebaseUID = user!.uid
             self.player.isAnonymous = true
-            self.performSegueWithIdentifier("joinGame", sender: self)
+            self.performSegue(withIdentifier: "joinGame", sender: self)
             
             self.ref.child("users/\(user!.uid)/dateTimeCreated").setValue("")
             self.ref.child("users/\(user!.uid)/email").setValue("")
@@ -245,37 +245,37 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func startGameAsUserLoggedIn(sender: AnyObject) {
+    @IBAction func startGameAsUserLoggedIn(_ sender: AnyObject) {
         
     }
     
-    @IBAction func onLogoutTapped(sender: AnyObject) {
+    @IBAction func onLogoutTapped(_ sender: AnyObject) {
 
         deleteAllUsersAuthObjects()
-        self.logoutButton.hidden = true
-        self.loginAsGuestButton.hidden = false
-        self.loginButton.hidden = false
-        self.createAccountButton.hidden = false
+        self.logoutButton.isHidden = true
+        self.loginAsGuestButton.isHidden = false
+        self.loginButton.isHidden = false
+        self.createAccountButton.isHidden = false
         
-        welcomeLabel.hidden = true
+        welcomeLabel.isHidden = true
         welcomeLabel.text = "Hi, "
         
         //viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
         //viewMyProfileButton.userInteractionEnabled = false
-        viewMyProfileButton.hidden = true
+        viewMyProfileButton.isHidden = true
         
         self.debugInfo.text = "NO USER AUTH OBJECTS!"
         print("USER LOGGED OUT")
         
         if logoutButton.titleLabel?.text == "LOGIN" {
-            performSegueWithIdentifier("toLoginVC", sender: sender)
+            performSegue(withIdentifier: "toLoginVC", sender: sender)
         }
         
         
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewProfileSegue" {
             
         // let dvc = segue.destinationViewController as! SeeMyProfileViewController
@@ -312,7 +312,7 @@ class LoginViewController: UIViewController {
     }
     */
 
-    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    @IBAction func unwindToLogin(_ segue: UIStoryboardSegue) {
         
     }
     

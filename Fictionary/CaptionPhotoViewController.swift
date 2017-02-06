@@ -23,7 +23,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
     @IBOutlet var timerLabel: UILabel!
     var secondsAllowed = 20
     var seconds = 0
-    var timer = NSTimer()
+    var timer = Timer()
     var shadowIsSet: Bool = false
     
     var serverStatus: Server?
@@ -57,13 +57,13 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         headerView.backgroundColor = UIColor.pastelGreen()
         //view.setNeedsLayout()
         
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.mpcHandler.mpcHandlerDelegate = self
         
         archiveHelper = ArchiverHelper()
         messageHandler = MessageHandler()
         
-        timerActivityIndicator.hidden = true
+        timerActivityIndicator.isHidden = true
         
         if let serverStatus = serverStatus {
             if serverStatus.isServer == true {
@@ -83,7 +83,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     
                     print("\n dictionaryToSend from \(currentPlayer.displayName) \(dictionaryToSend) \n")
                     
-                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend, keyForDictionary: currentPlayer, ready: nil)
+                    let message = messageHandler.createMessage(string: "viewDidLoad", object: dictionaryToSend as AnyObject?, keyForDictionary: currentPlayer, ready: nil)
                     messageHandler.sendMessage(messageDictionary: message, toPeers: [nextPlayer], appDelegate: appDelegate)
                     
                     if nextPlayer == appDelegate.mpcHandler.mcSession.myPeerID {
@@ -100,14 +100,14 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         
         seconds = secondsAllowed
         timerLabel.text = "\(seconds)"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: self.view.window)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleReceivedData), name: "MPC_DataReceived", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performSegue), name: "Server_Ready", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDroppedConnection), name: "MPC_NewPeerNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedData), name: NSNotification.Name(rawValue: "MPC_DataReceived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDroppedConnection), name: NSNotification.Name(rawValue: "MPC_NewPeerNotification"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,20 +126,20 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             let shadowLayer = CAShapeLayer()
             shadowLayer.frame = behindImageView.bounds
             
-            shadowLayer.shadowColor = UIColor(white: 0, alpha: 1).CGColor
-            shadowLayer.shadowOffset = CGSizeMake(0.0, 0.0)
+            shadowLayer.shadowColor = UIColor(white: 0, alpha: 1).cgColor
+            shadowLayer.shadowOffset = CGSize(width: 0.0, height: 0.0)
             shadowLayer.shadowOpacity = 0.25
             shadowLayer.shadowRadius = 5
             
             shadowLayer.fillRule = kCAFillRuleEvenOdd
             
-            let path = CGPathCreateMutable();
+            let path = CGMutablePath();
             
-            CGPathAddRect(path, nil, CGRectInset(behindImageView.bounds, -42, -42))
+            CGPathAddRect(path, nil, behindImageView.bounds.insetBy(dx: -42, dy: -42))
             
-            let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).CGPath
+            let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).cgPath
             CGPathAddPath(path, nil, someInnerPath)
-            CGPathCloseSubpath(path)
+            path.closeSubpath()
             
             shadowLayer.path = path
             
@@ -157,22 +157,22 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         
         seconds-=1
         timerLabel.text = "\(seconds)"
-        timerLabel.textAlignment = NSTextAlignment.Left
+        timerLabel.textAlignment = NSTextAlignment.left
         
         if seconds == 0 {
             timer.invalidate()
             
-            timerLabel.hidden = true
+            timerLabel.isHidden = true
             
             timerActivityIndicator.startAnimating()
-            timerActivityIndicator.hidden = false
+            timerActivityIndicator.isHidden = false
             
             if !countdownFinished {
                 
                 countdownFinished = true
                 
                 
-                captionTextField.enabled = false
+                captionTextField.isEnabled = false
                 
                 if captionTextField.text != nil {
                     captionToSave = captionTextField.text!
@@ -182,7 +182,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 
                 if let isServer = serverStatus?.isServer {
                     if isServer == false {
-                        let message = messageHandler.createMessage(string: "timer_up", object: captionToSave, keyForDictionary: keyForReceivedDictionary, ready: nil)
+                        let message = messageHandler.createMessage(string: "timer_up", object: captionToSave as AnyObject?, keyForDictionary: keyForReceivedDictionary, ready: nil)
                         messageHandler.sendMessage(messageDictionary: message, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
                         
                         print("non-server captionphoto turn over")
@@ -194,7 +194,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         }
     }
     
-    func handleReceivedData(notification: NSNotification){
+    func handleReceivedData(_ notification: Notification){
         
         print("photocaption handle received data")
         
@@ -203,9 +203,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if message.objectForKey("string")?.isEqual("viewDidLoad") == true {
-                    let messageDict = message.objectForKey("object") as! [Int : AnyObject]
-                    let receivedKey = message.objectForKey("key") as! MCPeerID
+                if message.object(forKey: "string")?.isEqual("viewDidLoad") == true {
+                    let messageDict = message.object(forKey: "object") as! [Int : AnyObject]
+                    let receivedKey = message.object(forKey: "key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
                     
                     print("handleReceivedData: messageArray = \(messageDict) and receivedKey = \(receivedKey)")
@@ -214,32 +214,32 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     
                 }
                 
-                if message.objectForKey("string")?.isEqual("timer_up") == true {
+                if message.object(forKey: "string")?.isEqual("timer_up") == true {
                     if serverStatus.isServer == true {
-                        let caption = message.objectForKey("object") as! String
-                        let receivedKey = message.objectForKey("key") as! MCPeerID
+                        let caption = message.object(forKey: "object") as! String
+                        let receivedKey = message.object(forKey: "key") as! MCPeerID
                         
                         gameDictionary[receivedKey]![turnCounter] = caption
                     }
                 }
                 
-                if message.objectForKey("ready")?.isEqual("ready") == true {
+                if message.object(forKey: "ready")?.isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
                     }
                 }
                 
-                if message.objectForKey("string")?.isEqual("ExitSegue") == true {
-                    let messageDict = message.objectForKey("object") as! [MCPeerID : [Int : AnyObject]]
+                if message.object(forKey: "string")?.isEqual("ExitSegue") == true {
+                    let messageDict = message.object(forKey: "object") as! [MCPeerID : [Int : AnyObject]]
                     exitDictionary = messageDict
                     
-                    performSegueWithIdentifier("ExitSegue", sender: self)
+                    self.performSegue(withIdentifier: "ExitSegue", sender: self)
                     
-                } else if message.objectForKey("string")?.isEqual("ToDraw") == true {
+                } else if message.object(forKey: "string")?.isEqual("ToDraw") == true {
                     
-                    performSegueWithIdentifier("ToDraw", sender: self)
-                } else if message.objectForKey("string")?.isEqual("Start Over") == true {
-                    performSegueWithIdentifier("RestartSegue", sender: self)
+                    self.performSegue(withIdentifier: "ToDraw", sender: self)
+                } else if message.object(forKey: "string")?.isEqual("Start Over") == true {
+                    self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 }
                 
             }
@@ -254,38 +254,38 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         segueSwitch()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         self.captionTextField.resignFirstResponder()
         return true
     }
     
     
-    func keyboardWillHide(sender: NSNotification) {
+    func keyboardWillHide(_ sender: Notification) {
         
-        let userInfo: [NSObject : AnyObject] = sender.userInfo!
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+        let userInfo: [AnyHashable: Any] = sender.userInfo!
+        let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size
         self.view.frame.origin.y += keyboardSize.height
         self.backTimerView.frame.origin.y -= keyboardSize.height
         self.timerLabel.frame.origin.y -= keyboardSize.height
         self.headerView.frame.origin.y -= keyboardSize.height
     }
     
-    func keyboardWillShow(sender: NSNotification) {
+    func keyboardWillShow(_ sender: Notification) {
         
-        let userInfo: [NSObject : AnyObject] = sender.userInfo!
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-        let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+        let userInfo: [AnyHashable: Any] = sender.userInfo!
+        let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size
+        let offset: CGSize = (userInfo[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue.size
         
         if keyboardSize.height == offset.height {
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
                 self.view.frame.origin.y -= keyboardSize.height
                 self.backTimerView.frame.origin.y += keyboardSize.height
                 self.timerLabel.frame.origin.y += keyboardSize.height
                 self.headerView.frame.origin.y += keyboardSize.height
             })
         } else {
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
                 self.view.frame.origin.y += keyboardSize.height - offset.height
                 self.backTimerView.frame.origin.x -= keyboardSize.height - offset.height
                 self.timerLabel.frame.origin.x -= keyboardSize.height - offset.height
@@ -294,10 +294,10 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
     }
     
     func segueSwitch() {
@@ -309,30 +309,30 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                 
                 if serverStatus.isServer == true {
                     if let dictToDisplayReceivedFrom = dictToDisplayReceivedFrom {
-                        gameDictionary[dictToDisplayReceivedFrom]![turnCounter] = captionToSave
+                        gameDictionary[dictToDisplayReceivedFrom]![turnCounter] = captionToSave as AnyObject?
                     }
                 }
                 
-                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary, keyForDictionary: nil, ready: nil)
+                let segueMessage = messageHandler.createMessage(string: "ExitSegue", object: gameDictionary as AnyObject?, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-                performSegueWithIdentifier("ExitSegue", sender: self)
+                self.performSegue(withIdentifier: "ExitSegue", sender: self)
                 
             } else {
                 
                 let segueMessage = messageHandler.createMessage(string: "ToDraw", object: nil, keyForDictionary: nil, ready: nil)
                 messageHandler.sendMessage(messageDictionary: segueMessage, toPeers: appDelegate.mpcHandler.mcSession.connectedPeers, appDelegate: appDelegate)
-                performSegueWithIdentifier("ToDraw", sender: self)
+                self.performSegue(withIdentifier: "ToDraw", sender: self)
             }
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NotificationCenter.default.removeObserver(self)
         turnCounter = turnCounter + 1
         
         
         if segue.identifier == "ToDraw" {
-            let dvc = segue.destinationViewController as! NewDrawViewController
+            let dvc = segue.destination as! NewDrawViewController
             dvc.serverStatus = serverStatus
             dvc.turnCounter = turnCounter
             dvc.gameDictionary = gameDictionary
@@ -346,7 +346,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             //do something different
             
             
-            let dvc = segue.destinationViewController as! EndGameSwipeVC
+            let dvc = segue.destination as! EndGameSwipeVC
             
             if serverStatus?.isServer == true {
                 dvc.exitDictionary = gameDictionary
@@ -356,21 +356,21 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         }
     }
     
-    func handleDroppedConnection (notification: NSNotification) {
+    func handleDroppedConnection (_ notification: Notification) {
         let state = notification.userInfo!["state"] as? String
         let peerID = notification.userInfo!["peerID"] as? MCPeerID
         
         print("the dropped peer in handleDroppedConnection is \(peerID)")
         
-        if state == MCSessionState.NotConnected.stringValue() {
-            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+        if state == MCSessionState.notConnected.stringValue() {
+            let alert = UIAlertController(title: "Uh oh!", message: "It looks like someone left the game.", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Start a New Game", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
                 
-                self.performSegueWithIdentifier("RestartSegue", sender: self)
+                self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 
             })
             alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

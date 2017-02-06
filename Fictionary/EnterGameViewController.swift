@@ -18,8 +18,8 @@ class EnterGameViewController: UIViewController {
     @IBOutlet weak var facebookStatusTextView: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    @IBAction func dismissButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissButton(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class EnterGameViewController: UIViewController {
 //        }
 
     
-        if(FBSDKAccessToken.currentAccessToken() == nil) {
+        if(FBSDKAccessToken.current() == nil) {
 
             print("FB User not logged in")
             self.facebookStatusTextView.text = "FACEBOOK USER *NOT* LOGGED IN!!!"
@@ -65,9 +65,9 @@ class EnterGameViewController: UIViewController {
         }
         
         // get photo http://everythingswift.com/blog/2015/12/26/swift-facebook-ios-sdk-retrieve-profile-picture/
-        if FBSDKAccessToken.currentAccessToken() != nil {
+        if FBSDKAccessToken.current() != nil {
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-            graphRequest.startWithCompletionHandler({
+            graphRequest?.start(completionHandler: {
                 (connection, result, error) -> Void in
                 if ((error) != nil)
                 {
@@ -75,15 +75,15 @@ class EnterGameViewController: UIViewController {
                 }
                 else if error == nil
                 {
-                    let facebookID: NSString = (result.valueForKey("id")
+                    let facebookID: NSString = (result.value(forKey: "id")
                         as? NSString)!
                     
                     let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
                     
-                    let URLRequest = NSURL(string: pictureURL)
-                    let URLRequestNeeded = NSURLRequest(URL: URLRequest!)
+                    let URLRequest = URL(string: pictureURL)
+                    let URLRequestNeeded = Foundation.URLRequest(url: URLRequest!)
                     
-                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?, error: NSError?) -> Void in
+                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: OperationQueue.main, completionHandler: {(response: URLResponse?,data: Data?, error: NSError?) -> Void in
                         
                         if error == nil {
                             let picture = UIImage(data: data!)
@@ -92,7 +92,7 @@ class EnterGameViewController: UIViewController {
                         else {
                             print("Error: \(error!.localizedDescription)")
                         }
-                    })
+                    } as! (URLResponse?, Data?, Error?) -> Void)
                 }
             })
         }
@@ -103,8 +103,8 @@ class EnterGameViewController: UIViewController {
     
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dvc = segue.destinationViewController as! MyProfileViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! MyProfileViewController
         dvc.player = player
     }
 

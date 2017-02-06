@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet public weak var pageLabel: UILabel!
+open class CollectionViewCell: UICollectionViewCell {
+    @IBOutlet open weak var pageLabel: UILabel!
     
     
     

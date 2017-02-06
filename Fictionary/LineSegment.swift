@@ -13,7 +13,7 @@ struct LineSegment {
     var secondPoint: CGPoint?
 }
 
-func lineSegmentPerpendicularTo(pp: LineSegment, ofRelativeLength fraction: Float) -> LineSegment {
+func lineSegmentPerpendicularTo(_ pp: LineSegment, ofRelativeLength fraction: Float) -> LineSegment {
     let x0: CGFloat = pp.firstPoint!.x
     let y0: CGFloat = pp.firstPoint!.y
     let x1: CGFloat = pp.secondPoint!.x
@@ -32,10 +32,10 @@ func lineSegmentPerpendicularTo(pp: LineSegment, ofRelativeLength fraction: Floa
     xb = x1 - fractionCG / 2 * dy
     yb = y1 + fractionCG / 2 * dx
     
-    return LineSegment(firstPoint: CGPointMake(xa, ya), secondPoint: CGPointMake(xb, yb))
+    return LineSegment(firstPoint: CGPoint(x: xa, y: ya), secondPoint: CGPoint(x: xb, y: yb))
 }
 
-func len_sq(p1: CGPoint, p2: CGPoint) -> CGFloat {
+func len_sq(_ p1: CGPoint, p2: CGPoint) -> CGFloat {
     
     let dx: CGFloat = p2.x - p1.x
     let dy: CGFloat = p2.y - p1.y
@@ -43,7 +43,7 @@ func len_sq(p1: CGPoint, p2: CGPoint) -> CGFloat {
     
 }
 
-func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
+func clamp<T: Comparable>(_ value: T, min: T, max: T) -> T {
     
     if (value < min) {
         return min

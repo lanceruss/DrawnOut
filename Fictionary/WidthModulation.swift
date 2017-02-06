@@ -8,7 +8,7 @@
 
 import UIKit
 
-func modulatedWidth(width: CGFloat, velocity: CGPoint, previousVelocity: CGPoint, previousWidth: CGFloat) -> CGFloat {
+func modulatedWidth(_ width: CGFloat, velocity: CGPoint, previousVelocity: CGPoint, previousWidth: CGFloat) -> CGFloat {
     
     let velocityAdjustment: CGFloat = 600.0
     let speed = velocity.length() / velocityAdjustment

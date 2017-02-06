@@ -22,8 +22,8 @@ class ViewStackViewController: UIViewController {
 
     }
 
-    @IBAction func onDismissTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func onDismissTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

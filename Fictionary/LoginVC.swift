@@ -8,6 +8,30 @@
 
 import UIKit
 import Firebase
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
@@ -24,32 +48,32 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         loginButton.layer.cornerRadius = 0.5 * loginButton.bounds.size.height
         loginButton.backgroundColor = UIColor.shamrock()
 
-        errorMessageLabel.hidden = true
+        errorMessageLabel.isHidden = true
         
         
     }
     
-    func validateEmail(enteredEmail:String) -> Bool {
+    func validateEmail(_ enteredEmail:String) -> Bool {
         
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluateWithObject(enteredEmail)
+        return emailPredicate.evaluate(with: enteredEmail)
         
     }
 
     
     
-    @IBAction func onLoginButtonTapped(sender: AnyObject) {
+    @IBAction func onLoginButtonTapped(_ sender: AnyObject) {
         
         self.errorMessageLabel.text = ""
         
         if emailTextField.text == "" {
-            errorMessageLabel.hidden = false
+            errorMessageLabel.isHidden = false
             errorMessageLabel.text = "Your email address is required.\n"
         }
         
         if passwordTextField.text == "" {
-            errorMessageLabel.hidden = false
+            errorMessageLabel.isHidden = false
             errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your password is required.\n"
         }
         
@@ -58,14 +82,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
         } else {
             // if false
-            errorMessageLabel.hidden = false
+            errorMessageLabel.isHidden = false
             errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your email address is not the right format.\n"
             
         }
         
         let passwordLength = passwordTextField.text
         if passwordLength?.characters.count < 6 {
-            errorMessageLabel.hidden = false
+            errorMessageLabel.isHidden = false
             errorMessageLabel.text = "\(self.errorMessageLabel.text!) Your password has to be at least 6 characters.\n"
         }
 
@@ -75,11 +99,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
             // both fields are not empty so go ahead and see if the user exists in Firebase Auth...
             
-            FIRAuth.auth()?.signInWithEmail(self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error != nil {
                     print("there was an error logging in the user into Firebase Auth: \n\(error!)")
-                    self.errorMessageLabel.hidden = false
+                    self.errorMessageLabel.isHidden = false
                     self.errorMessageLabel.text = "We could not find a user with that info.\nPlease try again.\n"
                     self.passwordTextField.text = ""
 
@@ -94,7 +118,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         print("email: \(email!)")
                         print("userID: \(userID)")
                         
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                         
                         
                     } else {
@@ -115,15 +139,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    @IBAction func onCancelButtonTapped(sender: AnyObject) {
+    @IBAction func onCancelButtonTapped(_ sender: AnyObject) {
         
         try! FIRAuth.auth()!.signOut()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     

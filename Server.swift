@@ -30,7 +30,7 @@ class Server: NSObject {
     // Call this to have each client send a message to the server that says they are ready
     
     func isReady(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         if isServer == false {
             
@@ -41,18 +41,18 @@ class Server: NSObject {
     }
     
     func checkReady() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
             countForReadyCheck = countForReadyCheck + 1
             if countForReadyCheck == appDelegate.mpcHandler.mcSession.connectedPeers.count {
-                let notification = NSNotification(name: "Server_Ready", object: nil)
-                NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: NSPostingStyle.PostASAP)
+                let notification = Notification(name: Notification.Name(rawValue: "Server_Ready"), object: nil)
+                NotificationQueue.default.enqueue(notification, postingStyle: NotificationQueue.PostingStyle.asap)
             }
     }
     
     // This could be modified to create more dynamic experiences
-    func gameOverCheck(turn: Int) -> Bool {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    func gameOverCheck(_ turn: Int) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         var isGameOver = false
         
@@ -63,7 +63,7 @@ class Server: NSObject {
         return isGameOver
     }
     
-    func reorderArray(arrayToReorder: [MCPeerID]) -> [MCPeerID] {
+    func reorderArray(_ arrayToReorder: [MCPeerID]) -> [MCPeerID] {
         
         var reorderedArray = arrayToReorder
         
