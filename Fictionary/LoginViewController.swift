@@ -180,12 +180,12 @@ class LoginViewController: UIViewController {
             let userID = FIRAuth.auth()?.currentUser?.uid
             ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                let snapVal = snapshot.value as? Dictionary<String, String>
+                let snapVal = snapshot.value as? NSDictionary
                 // Get user value
-                let name = snapVal?["name"]
+                let name = snapVal?["name"] as? String
                 //let name = snapshot.value!["name"] as! String
                 
-                if (snapVal?["isAnonymous"])! == "1" {
+                if ((snapVal?["isAnonymous"] as? String)! == "1") {
                 //if snapshot.value(forKey: "isAnonymous") as! String == "1" {
                 //if snapshot.value!["isAnonymous"] as! String  == "1" {
                     //self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
@@ -204,7 +204,7 @@ class LoginViewController: UIViewController {
                 } else {
                     self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
                     self.viewMyProfileButton.isUserInteractionEnabled = true
-                    self.welcomeLabel.text = "Hi, \(name)!"
+                    self.welcomeLabel.text = "Hi, \(name!)!"
                     self.logoutButton.setTitle("LOGOUT", for: UIControlState())
                     self.logoutButton.isHidden = false
                     self.createAccountButton.isHidden = true

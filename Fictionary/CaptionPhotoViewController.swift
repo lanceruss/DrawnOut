@@ -135,7 +135,9 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
             let path = CGMutablePath();
             
-            path.addRect(CGRect(dictionaryRepresentation: behindImageView.bounds.insetBy(dx: -42, dy: -42) as! CFDictionary)!)
+            //let viewBounds = CGRect
+            
+            path.addRect(behindImageView.bounds.insetBy(dx: -42, dy: -42))
             //CGPathAddRect(path, nil, behindImageView.bounds.insetBy(dx: -42, dy: -42))
             
             let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).cgPath
