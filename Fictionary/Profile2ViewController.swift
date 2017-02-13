@@ -59,9 +59,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             print(error.localizedDescription)
         }
 
-        // ---------------- GET ANY IMAGES SAVED IN FIREBASE STORAGE ------------------- //
-        
-        // GET LIST OF FILES FROM FIREBASE DATABASE
+        /* get any images saved in firebase storage */
         ref.child("users").child(userID!).child("saved-image").observeSingleEvent(of: .value, with: { (snapshot) in
             
             print("firebase > database > users > saved-image: \n")
@@ -70,11 +68,8 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             let dictionaryToCheck = snapshot.value as? NSDictionary
             if let dictionaryToCheck = dictionaryToCheck {
             for item in dictionaryToCheck {
-                //print("-\(item)")
                 
                 if let imageFilename = (item.value as AnyObject).value(forKey: "filename")  {
-                //if let imageFilename = item.value.va {
-                //if let imageFilename = item.value["filename"] {
                     print(imageFilename)
                     self.imageFilenames.append(imageFilename as! String)
                     
@@ -82,8 +77,6 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
                         self.collectionView.reloadData()
                     })
                 }
-                
-                //print(item.value["filename"])
             }
             
             print(self.imageFilenames)
