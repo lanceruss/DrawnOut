@@ -48,7 +48,9 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let name = snapshot.value(forKey: "name") as? String
+            let snapVal = snapshot.value as? NSDictionary
+            
+            let name = snapVal?["name"] as? String
             if name != nil {
                 self.nameLabel.text = "\(name!)"
             }
