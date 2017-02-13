@@ -44,8 +44,9 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
         
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let name = snapshot.value!["name"] as! String
-            self.nameLabel.text = "\(name)"
+            let snap = snapshot as AnyObject
+            let name = snap.value(forKey: "name") as? String
+            self.nameLabel.text = "\(name!)"
             
         }) { (error) in
             print(error.localizedDescription)
@@ -62,10 +63,10 @@ class SeeMyProfileViewController: UIViewController, UICollectionViewDataSource, 
             for item in snapshot.value as! NSDictionary {
                 //print("-\(item)")
                 
-                
-                if let imageFilename = item.value["filename"] {
-                    print(imageFilename!)
-                    self.imageFilenames.append(imageFilename! as! String)
+                if let imageFilename = (item.value as AnyObject).value(forKey: "filename") {
+                //if let imageFilename = item.value["filename"] {
+                    print(imageFilename)
+                    self.imageFilenames.append(imageFilename as! String)
                     
                     DispatchQueue.main.async(execute: { 
                         self.cardTableView.reloadData()

@@ -30,7 +30,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
     
     var ref = FIRDatabase.database().reference()
     
-    var arrayOfArrays=[]
+    //var arrayOfArrays = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -242,7 +242,7 @@ class EndGameSwipeVC: UIViewController, UICollectionViewDataSource, UICollection
             for key in keyArray {
                 let keyAsInt = key as! Int
                 let value1 = dict2[keyAsInt]
-                print(value1)
+                //print(value1!)
                 items.append(value1! as AnyObject)
             }
             

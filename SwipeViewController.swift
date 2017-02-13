@@ -132,7 +132,8 @@ extension SwipeViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        if --self.animationsCount == 0 {
+        let count = self.animationsCount - 1
+        if count == 0 {
             self.collectionView.isUserInteractionEnabled = true
         }
     }

@@ -66,9 +66,9 @@ class StartGameViewController: UIViewController, MPCHandlerDelegate {
         if let message = message {
             
             // Check the key of the received dictionary to see how to handle the data and handle it accordingly
-            if message.object(forKey: "string")?.isEqual("change_background") == true {
+            if (message.object(forKey: "string") as AnyObject).isEqual("change_background") == true {
                 self.view.backgroundColor = UIColor.blue
-            } else if message.object(forKey: "string")?.isEqual("dismiss_vc") == true {
+            } else if (message.object(forKey: "string") as AnyObject).isEqual("dismiss_vc") == true {
                 dismiss(animated: true, completion: nil)
             }
         }

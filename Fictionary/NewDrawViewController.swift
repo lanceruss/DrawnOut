@@ -136,7 +136,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(subtractTime), userInfo: nil, repeats: true)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedData), name: NSNotification.Name(rawValue: "MPC_DataReceived"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(performSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegueSwitch), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDroppedConnection), name: NSNotification.Name(rawValue: "MPC_NewPeerNotification"), object: nil)
     }
 
@@ -265,7 +265,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if (message.object(forKey: "string")? as AnyObject).isEqual("viewDidLoad") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("viewDidLoad") == true {
                     let messageDict = message.object(forKey: "object") as! [Int : AnyObject]
                     let receivedKey = message.object(forKey: "key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
@@ -275,7 +275,7 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     captionLabel.text = messageDict[turnCounter - 1] as? String
                 }
                 
-                if (message.object(forKey: "string")? as AnyObject).isEqual("timer_up") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("timer_up") == true {
                     if serverStatus.isServer == true {
                         let image = message.object(forKey: "object") as! UIImage
                         let receivedKey = message.object(forKey: "key") as! MCPeerID
@@ -284,13 +284,13 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                 }
                 
-                if (message.object(forKey: "ready")? as AnyObject).isEqual("ready") == true {
+                if (message.object(forKey: "ready") as AnyObject).isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
                     }
                 }
                 
-                if (message.object(forKey: "string")? as AnyObject).isEqual("ExitSegue") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("ExitSegue") == true {
                     
                     print("DrawVC ExitSegue message received")
                     
@@ -299,18 +299,18 @@ class NewDrawViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     self.performSegue(withIdentifier: "ExitSegue", sender: self)
                     
-                } else if (message.object(forKey: "string")? as AnyObject).isEqual("ToCaption") == true {
+                } else if (message.object(forKey: "string") as AnyObject).isEqual("ToCaption") == true {
                     
                     self.performSegue(withIdentifier: "ToCaption", sender: self)
                     
-                } else if (message.object(forKey: "string")? as AnyObject).isEqual("Start Over") == true {
+                } else if (message.object(forKey: "string") as AnyObject).isEqual("Start Over") == true {
                     self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 }
             }
         }
     }
     
-    func performSegue() {
+    func performSegueSwitch() {
         if let serverStatus = serverStatus {
             serverStatus.countForReadyCheck = 0
         }

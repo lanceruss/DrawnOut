@@ -47,7 +47,8 @@ struct LineDrawCommand: DrawCommand {
             let currentMid = self.current.midPoint
             
             canvas.context.move(to: CGPoint(x: previousMid.x, y: previousMid.y))
-            CGContextAddQuadCurveToPoint(canvas.context, current.a.x, current.a.y, currentMid.x, currentMid.y)
+            canvas.context.addQuadCurve(to: CGPoint(x: current.a.x, y: current.a.y), control: CGPoint(x: currentMid.x, y: currentMid.y))
+            //CGContextAddQuadCurveToPoint(canvas.context, current.a.x, current.a.y, currentMid.x, currentMid.y)
             canvas.context.strokePath()
         }
     }

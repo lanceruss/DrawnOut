@@ -76,7 +76,7 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedData), name: NSNotification.Name(rawValue: "MPC_DataReceived"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(performSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performDrawingSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDroppedConnection), name: NSNotification.Name(rawValue: "MPC_NewPeerNotification"), object: nil)
         
     }
@@ -132,32 +132,32 @@ class RandomCaptionViewController: UIViewController, MPCHandlerDelegate, UITextF
         if let serverStatus = serverStatus {
             if let message = message {
                 if serverStatus.isServer == true {
-                    if message.object(forKey: "object")?.isEqual("") != true {
+                    if (message.object(forKey: "object") as AnyObject).isEqual("") != true {
                         let receivedCaption = message.object(forKey: "object")
                         if let receivedCaption = receivedCaption {
-                        gameDictionary[userID]![turnCounter] = receivedCaption
+                        gameDictionary[userID]![turnCounter] = receivedCaption as AnyObject?
                         }
                     }
                 }
                 
-                if message.object(forKey: "ready")?.isEqual("ready") == true {
+                if (message.object(forKey: "ready") as AnyObject).isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
                     }
                 }
                 
                 
-                if message.object(forKey: "string")?.isEqual("segue") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("segue") == true {
                     self.performSegue(withIdentifier: "ToDrawing", sender: self)
                     
-                } else if message.object(forKey: "string")?.isEqual("Start Over") == true {
+                } else if (message.object(forKey: "string") as AnyObject).isEqual("Start Over") == true {
                     self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 }
             }
         }
     }
     
-    func performSegue() {
+    func performDrawingSegue() {
         if let serverStatus = serverStatus {
             serverStatus.countForReadyCheck = 0
         }

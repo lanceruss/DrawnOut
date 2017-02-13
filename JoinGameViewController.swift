@@ -150,12 +150,12 @@ class JoinGameViewController: UIViewController, MPCHandlerDelegate, MCBrowserVie
         // Handle the message to "start_game".
         if let message = message {
             
-            if message.object(forKey: "object")?.isEqual("") != true {
+            if (message.object(forKey: "object") as AnyObject).isEqual("") != true {
                 let receivedDictionary = message.object(forKey: "object") as! [MCPeerID : [Int : AnyObject]]
                 gameDictionary = receivedDictionary
             }
             
-            if message.object(forKey: "string")?.isEqual("start_game") == true {
+            if (message.object(forKey: "string") as AnyObject).isEqual("start_game") == true {
                 
                 let serverPeerID = message.object(forKey: "key") as? MCPeerID
                 self.serverStatus?.serverPeerID = serverPeerID

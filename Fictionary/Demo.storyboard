@@ -1,27 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lcM-UL-QC2">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lcM-UL-QC2">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Fictionary Demo-->
         <scene sceneID="1lE-DM-96S">
             <objects>
-                <viewController id="lcM-UL-QC2" customClass="DemoViewController" customModule="Fictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lcM-UL-QC2" customClass="DemoViewController" customModule="Drawn_Out" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KPw-u1-9wC"/>
                         <viewControllerLayoutGuide type="bottom" id="EwP-aI-Sot"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2ry-Gh-AFj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="jxZ-KZ-NN4">
                                 <rect key="frame" x="200" y="148" width="201" height="415"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNM-dm-Dxz">
-                                        <rect key="frame" x="82" y="0.0" width="38" height="30"/>
+                                        <rect key="frame" x="81.5" y="0.0" width="38" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <segue destination="qK2-NM-G9c" kind="show" id="J7e-Q8-yYq"/>
@@ -51,16 +55,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBy-Pa-5qj">
                                         <rect key="frame" x="0.0" y="220" width="201" height="30"/>
                                         <state key="normal" title="Write a caption for a drawing.">
-                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="m0w-9F-bvu" kind="show" id="giL-sB-aT2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-Bg-2lP">
-                                        <rect key="frame" x="81" y="275" width="40" height="30"/>
+                                        <rect key="frame" x="80.5" y="275" width="40" height="30"/>
                                         <state key="normal" title="Timer">
-                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="kWZ-C5-Mec" kind="show" id="uLP-SZ-l8O"/>
@@ -74,7 +78,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-S3-6FH">
-                                        <rect key="frame" x="60" y="385" width="82" height="30"/>
+                                        <rect key="frame" x="59.5" y="385" width="82" height="30"/>
                                         <state key="normal" title="Game Logic"/>
                                         <connections>
                                             <segue destination="Lov-Ua-sHo" kind="show" id="bjC-B3-EYa"/>
@@ -84,7 +88,7 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="🎨 Fictionary🖌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-pP-hKm">
                                 <rect key="frame" x="0.0" y="100" width="600" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="4nR-dw-No8"/>
                                     <constraint firstAttribute="height" constant="40" id="6dW-gg-fWN"/>
@@ -92,7 +96,7 @@
                                     <constraint firstAttribute="height" constant="40" id="wld-E5-7zD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -102,7 +106,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ebe-pP-hKm" firstAttribute="centerX" secondItem="2ry-Gh-AFj" secondAttribute="centerX" id="B3v-F3-GQ0"/>
                             <constraint firstItem="ebe-pP-hKm" firstAttribute="centerX" secondItem="jxZ-KZ-NN4" secondAttribute="centerX" id="LWA-Yy-QYD"/>
@@ -132,10 +136,10 @@
             </objects>
             <point key="canvasLocation" x="1780.5" y="166"/>
         </scene>
-        <!--Home-->
+        <!--CaptionPhoto-->
         <scene sceneID="ZFH-Kk-88g">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="qK2-NM-G9c" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CaptionPhoto" id="qK2-NM-G9c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzV-jd-BgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804" y="213"/>

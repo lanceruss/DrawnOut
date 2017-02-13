@@ -37,12 +37,14 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             let photoDict = snapshot.value as! [String : AnyObject]
             print(photoDict)
             
+            self.imageFilenames = []
+            
             for (key,value) in photoDict {
                 //let userid = key
                 //let photo = value
                 let imageFilename = value.object(forKey: "filename") as! String
                 print(value.object(forKey: "filename")!)
-                self.imageFilenames =  self.imageFilenames.append(imageFilename)
+                self.imageFilenames.append(imageFilename)
                 print("self.imageFilenames: \(self.imageFilenames)")
                 
                 self.collectionView.reloadData()
@@ -56,42 +58,39 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // ------------------------- FACEBOOK PROFILE PHOTO --------------------------- //
         // get photo http://everythingswift.com/blog/2015/12/26/swift-facebook-ios-sdk-retrieve-profile-picture/
-        if FBSDKAccessToken.current() != nil {
-            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-            graphRequest?.start(completionHandler: {
-                (connection, result, error) -> Void in
-                if ((error) != nil)
-                {
-                    print("Error: \(error)")
-                }
-                else if error == nil
-                {
-                    let facebookID: NSString = (result.value(forKey: "id")
-                        as? NSString)!
-                    
-                    let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
-                    
-                    let URLRequest = URL(string: pictureURL)
-                    let URLRequestNeeded = Foundation.URLRequest(url: URLRequest!)
-                    
-                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: OperationQueue.main, completionHandler: {(response: URLResponse?,data: Data?, error: NSError?) -> Void in
-                        
-                        if error == nil {
-                            let picture = UIImage(data: data!)
-                            self.profilePhoto.image = picture
-                            
-                            self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
-                            self.profilePhoto.clipsToBounds = true
-
-                        }
-                        else {
-                            print("Error: \(error!.localizedDescription)")
-                        }
-                    } as! (URLResponse?, Data?, Error?) -> Void)
-                }
-            })
-        }
-
+//        if FBSDKAccessToken.current() != nil {
+//            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+//            graphRequest?.start(completionHandler: {
+//                (connection, result, error) -> Void in
+//                if ((error) != nil)
+//                {
+//                    print("Error: \(error)")
+//                }
+//                else if error == nil
+//                {
+//                    let facebookID: NSString = (result.valueForKey("id")
+//                        as? NSString)!
+//                    
+//                    let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
+//                    
+//                    self.profileNameLbl.text = (result.valueForKey("name")             as? String)!
+//                    
+//                    let URLRequest = NSURL(string: pictureURL)
+//                    let URLRequestNeeded = NSURLRequest(URL: URLRequest!)
+//                    
+//                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?, error: NSError?) -> Void in
+//                        
+//                        if error == nil {
+//                            let picture = UIImage(data: data!)
+//                            self.profileImageView.image = picture
+//                        }
+//                        else {
+//                            print("Error: \(error!.localizedDescription)")
+//                        }
+//                    })
+//                }
+//            })
+//        }
         
         
     

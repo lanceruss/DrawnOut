@@ -106,7 +106,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         NotificationCenter.default.addObserver(self, selector: #selector(CaptionPhotoViewController.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedData), name: NSNotification.Name(rawValue: "MPC_DataReceived"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(performSegue), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegueSwitch), name: NSNotification.Name(rawValue: "Server_Ready"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDroppedConnection), name: NSNotification.Name(rawValue: "MPC_NewPeerNotification"), object: nil)
     }
     
@@ -135,10 +135,12 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
             
             let path = CGMutablePath();
             
-            CGPathAddRect(path, nil, behindImageView.bounds.insetBy(dx: -42, dy: -42))
+            path.addRect(CGRect(dictionaryRepresentation: behindImageView.bounds.insetBy(dx: -42, dy: -42) as! CFDictionary)!)
+            //CGPathAddRect(path, nil, behindImageView.bounds.insetBy(dx: -42, dy: -42))
             
             let someInnerPath = UIBezierPath(roundedRect: behindImageView.bounds, cornerRadius:0.0).cgPath
-            CGPathAddPath(path, nil, someInnerPath)
+            path.addPath(someInnerPath)
+            //CGPathAddPath(path, nil, someInnerPath)
             path.closeSubpath()
             
             shadowLayer.path = path
@@ -203,7 +205,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         if let serverStatus = serverStatus {
             if let message = message {
                 
-                if message.object(forKey: "string")?.isEqual("viewDidLoad") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("viewDidLoad") == true {
                     let messageDict = message.object(forKey: "object") as! [Int : AnyObject]
                     let receivedKey = message.object(forKey: "key") as! MCPeerID
                     keyForReceivedDictionary = receivedKey
@@ -214,31 +216,31 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
                     
                 }
                 
-                if message.object(forKey: "string")?.isEqual("timer_up") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("timer_up") == true {
                     if serverStatus.isServer == true {
                         let caption = message.object(forKey: "object") as! String
                         let receivedKey = message.object(forKey: "key") as! MCPeerID
                         
-                        gameDictionary[receivedKey]![turnCounter] = caption
+                        gameDictionary[receivedKey]![turnCounter] = caption as AnyObject?
                     }
                 }
                 
-                if message.object(forKey: "ready")?.isEqual("ready") == true {
+                if (message.object(forKey: "ready") as AnyObject).isEqual("ready") == true {
                     if serverStatus.isServer == true {
                         serverStatus.checkReady()
                     }
                 }
                 
-                if message.object(forKey: "string")?.isEqual("ExitSegue") == true {
+                if (message.object(forKey: "string") as AnyObject).isEqual("ExitSegue") == true {
                     let messageDict = message.object(forKey: "object") as! [MCPeerID : [Int : AnyObject]]
                     exitDictionary = messageDict
                     
                     self.performSegue(withIdentifier: "ExitSegue", sender: self)
                     
-                } else if message.object(forKey: "string")?.isEqual("ToDraw") == true {
+                } else if (message.object(forKey: "string") as AnyObject).isEqual("ToDraw") == true {
                     
                     self.performSegue(withIdentifier: "ToDraw", sender: self)
-                } else if message.object(forKey: "string")?.isEqual("Start Over") == true {
+                } else if (message.object(forKey: "string") as AnyObject).isEqual("Start Over") == true {
                     self.performSegue(withIdentifier: "RestartSegue", sender: self)
                 }
                 
@@ -246,7 +248,7 @@ class CaptionPhotoViewController: UIViewController, UITextFieldDelegate, MPCHand
         }
     }
     
-    func performSegue() {
+    func performSegueSwitch() {
         if let serverStatus = serverStatus {
             serverStatus.countForReadyCheck = 0
         }

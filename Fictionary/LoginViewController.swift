@@ -127,11 +127,17 @@ class LoginViewController: UIViewController {
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             
+            let snapVal = snapshot.value as? Dictionary<String, String>
             // Get user value
-            let email = snapshot.value!["email"] as! String
-            let password = snapshot.value!["password"] as! String
-            let name = snapshot.value!["name"] as! String
-            let isAnonymous = snapshot.value!["isAnonymous"] as! String
+            let email = snapVal?["email"]
+            let password = snapVal?["password"]
+            let name = snapVal?["name"]
+            let isAnonymous = snapVal?["isAnonymous"]
+            
+            //let email = snap.value(forKey: "email") as? String
+            //let password = snap.value(forKey: "password") as? String
+            //let name = snap.value(forKey: "name") as? String
+            //let isAnonymous = snap.value(forKey: "isAnonymous") as? String
             
             self.viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
 
@@ -161,7 +167,7 @@ class LoginViewController: UIViewController {
             
             //self.loginButton.hidden = true
             //self.createAccountButton.hidden = true
-            self.loginAsGuestButton.isHidden = true
+            loginAsGuestButton.isHidden = true
             
             viewMyProfileButton.backgroundColor = UIColor.medAquamarine()
             viewMyProfileButton.isUserInteractionEnabled = true
@@ -173,10 +179,15 @@ class LoginViewController: UIViewController {
             
             let userID = FIRAuth.auth()?.currentUser?.uid
             ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let name = snapshot.value!["name"] as! String
                 
-                if snapshot.value!["isAnonymous"] as! String  == "1" {
+                let snapVal = snapshot.value as? Dictionary<String, String>
+                // Get user value
+                let name = snapVal?["name"]
+                //let name = snapshot.value!["name"] as! String
+                
+                if (snapVal?["isAnonymous"])! == "1" {
+                //if snapshot.value(forKey: "isAnonymous") as! String == "1" {
+                //if snapshot.value!["isAnonymous"] as! String  == "1" {
                     //self.viewMyProfileButton.backgroundColor = UIColor.lightGrayColor()
                     //self.viewMyProfileButton.userInteractionEnabled = false
                     

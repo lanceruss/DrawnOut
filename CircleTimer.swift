@@ -53,7 +53,7 @@ class CircleTimer: UIView {
         
         let path = CGMutablePath()
         
-        CGPathAddArc(path, nil, centerX, centerY, radius, -CGFloat(M_PI/2), CGFloat(GLKMathDegreesToRadians(currentAngle)), false)
+        path.addArc(center: CGPoint(x: centerX, y: centerY), radius: radius, startAngle: -CGFloat(M_PI/2), endAngle: CGFloat(GLKMathDegreesToRadians(currentAngle)), clockwise: false)
         
         context?.addPath(path)
         context?.setStrokeColor(UIColor.blue.cgColor)

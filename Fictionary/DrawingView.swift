@@ -164,7 +164,12 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                     var ls: [LineSegment]? = []
                     
                     //                    for i in 0 ..< self.bufIdx {
-                    for var i = 0; i < self.bufIdx; i += 4 {
+                    //var i = 0
+                    for i in 0..<self.bufIdx {
+                       // i += 4
+                        if (i == 0) ||  ((i % 4) == 0) {
+                    //}
+                    //for var i = 0; i < self.bufIdx; i += 4 {
                         
                         if self.isFirstTouchPoint == true {
                             
@@ -207,6 +212,7 @@ class DrawingView: UIView, UIGestureRecognizerDelegate {
                         
                         self.lastSegmentOfPrevious = ls![3] // makes sure that the paths line up with what came before.
                     }
+                    } // ???????????????
                     
                     UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
                     

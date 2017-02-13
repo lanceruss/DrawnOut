@@ -48,8 +48,10 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let name = snapshot.value!["name"] as! String
-            self.nameLabel.text = "\(name)"
+            let name = snapshot.value(forKey: "name") as? String
+            if name != nil {
+                self.nameLabel.text = "\(name!)"
+            }
             
         }) { (error) in
             print(error.localizedDescription)
@@ -68,10 +70,11 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
             for item in dictionaryToCheck {
                 //print("-\(item)")
                 
-                
-                if let imageFilename = item.value["filename"] {
-                    print(imageFilename!)
-                    self.imageFilenames.append(imageFilename! as! String)
+                if let imageFilename = (item.value as AnyObject).value(forKey: "filename")  {
+                //if let imageFilename = item.value.va {
+                //if let imageFilename = item.value["filename"] {
+                    print(imageFilename)
+                    self.imageFilenames.append(imageFilename as! String)
                     
                     DispatchQueue.main.async(execute: {
                         self.collectionView.reloadData()
@@ -114,7 +117,7 @@ class Profile2ViewController: UIViewController, UICollectionViewDataSource, UICo
         userImageFilename.data(withMaxSize: 3 * 1024 * 1024) { (data, error) -> Void in
             
             if (error != nil) {
-                print(error)
+                print(error!)
             } else {
                 // Data for "images/island.jpg" is returned
                 // ... let islandImage: UIImage! = UIImage(data: data!)

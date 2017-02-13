@@ -58,7 +58,6 @@
 		FA0C67BB1D249B4C007ADE75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B81D249B4C007ADE75 /* FBSDKCoreKit.framework */; };
 		FA0C67BC1D249B4C007ADE75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */; };
 		FA0C67BD1D249B4C007ADE75 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */; };
-		FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */; };
 		FA0C67C21D25754D007ADE75 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67C11D25754D007ADE75 /* Player.swift */; };
 		FA0C67C71D259B20007ADE75 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0C67C61D259B20007ADE75 /* Game.storyboard */; };
 		FA0C67C91D259D00007ADE75 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C67C81D259D00007ADE75 /* GameViewController.swift */; };
@@ -105,8 +104,6 @@
 		FAB76FE01D24222D0012A786 /* RandomCaption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FDF1D24222D0012A786 /* RandomCaption.storyboard */; };
 		FAB76FE21D24223B0012A786 /* RandomCaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */; };
 		FAB76FE41D2432280012A786 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE31D2432280012A786 /* ViewImageViewController.swift */; };
-		FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB76FE61D244CCB0012A786 /* Home.storyboard */; };
-		FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76FE81D244CD50012A786 /* HomeViewController.swift */; };
 		FAC5074B1D2D96F60092568C /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5074A1D2D96F60092568C /* SwipeViewController.swift */; };
 		FAC5074D1D2D96FD0092568C /* ViewStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5074C1D2D96FD0092568C /* ViewStackViewController.swift */; };
 		FAC5074F1D2D97040092568C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC5074E1D2D97040092568C /* ViewController.xib */; };
@@ -196,7 +193,6 @@
 		FA0C67B91D249B4C007ADE75 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FA0C67BA1D249B4C007ADE75 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		FA0C67BE1D249CA1007ADE75 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterGameViewController.swift; sourceTree = "<group>"; };
 		FA0C67C11D25754D007ADE75 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FA0C67C61D259B20007ADE75 /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		FA0C67C81D259D00007ADE75 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -243,8 +239,6 @@
 		FAB76FDF1D24222D0012A786 /* RandomCaption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RandomCaption.storyboard; sourceTree = "<group>"; };
 		FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCaptionViewController.swift; sourceTree = "<group>"; };
 		FAB76FE31D2432280012A786 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageViewController.swift; sourceTree = "<group>"; };
-		FAB76FE61D244CCB0012A786 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		FAB76FE81D244CD50012A786 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAC5074A1D2D96F60092568C /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		FAC5074C1D2D96FD0092568C /* ViewStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStackViewController.swift; sourceTree = "<group>"; };
 		FAC5074E1D2D97040092568C /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
@@ -320,12 +314,6 @@
 				DB03E9211D300AD40098B7A8 /* DesignTestView.swift */,
 				DB03E9231D301DAB0098B7A8 /* DesignCreateAccountViewController.swift */,
 				DB03E9121D2F210D0098B7A8 /* DesignTestStoryboard.storyboard */,
-				DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */,
-				DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */,
-				DB03E91B1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf */,
-				DB03E9191D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf */,
-				DB03E9171D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf */,
-				DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */,
 			);
 			name = DesignTemplates;
 			path = Fictionary;
@@ -344,10 +332,22 @@
 			name = Drawing2;
 			sourceTree = "<group>";
 		};
+		DB3522231E51703B00A1A654 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DB03E91F1D2FEAE90098B7A8 /* SF-UI-Text-Bold.otf */,
+				DB03E91D1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf */,
+				DB03E91B1D2FEAA70098B7A8 /* SF-UI-Text-RegularItalic.otf */,
+				DB03E9191D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf */,
+				DB03E9171D2FEA540098B7A8 /* SF-Compact-Text-Bold.otf */,
+				DB03E9151D2FE9720098B7A8 /* SF-UI-Text-Heavy.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		DB629C821D91A5620041A45F /* References */ = {
 			isa = PBXGroup;
 			children = (
-				FAB76FE51D244CBD0012A786 /* Home */,
 				FAB76FB81D234A5A0012A786 /* Timer */,
 				F9A17AE31D2EE31F002FD1D2 /* DemoExit.storyboard */,
 				F9A17AE51D2F01E1002FD1D2 /* DemoExitViewController.swift */,
@@ -409,6 +409,7 @@
 				FAE3367C1D33F97C006376AF /* EndGameStacks */,
 				FA0C67CD1D26ACB2007ADE75 /* MyProfile */,
 				F9B48FF11D22E84A0031C5FC /* Networking */,
+				DB3522231E51703B00A1A654 /* Fonts */,
 				DBCFB4231D22DF5500200F10 /* Assets.xcassets */,
 				DB629C831D91A7260041A45F /* Launchscreen */,
 				DBCFB4201D22DF5500200F10 /* Main.storyboard */,
@@ -552,17 +553,6 @@
 				FAB76FE11D24223B0012A786 /* RandomCaptionViewController.swift */,
 			);
 			name = "Random Caption";
-			sourceTree = "<group>";
-		};
-		FAB76FE51D244CBD0012A786 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				FAB76FE61D244CCB0012A786 /* Home.storyboard */,
-				FA0C67BF1D24AA1B007ADE75 /* EnterGameViewController.swift */,
-				FAB76FE81D244CD50012A786 /* HomeViewController.swift */,
-			);
-			name = Home;
-			path = Fictionary;
 			sourceTree = "<group>";
 		};
 		FAC507491D2D95800092568C /* NewSwipeStacks */ = {
@@ -710,7 +700,6 @@
 				FAC507611D2D97390092568C /* arrow-left@3x.png in Resources */,
 				DB03E91E1D2FEAC90098B7A8 /* SF-Compact-Text-Regular.otf in Resources */,
 				DB03E91A1D2FEA760098B7A8 /* SF-UI-Text-Semibold.otf in Resources */,
-				FAB76FE71D244CCB0012A786 /* Home.storyboard in Resources */,
 				FAE3368C1D352E34006376AF /* kitten.png in Resources */,
 				FAB76FCC1D23DF660012A786 /* jackandjill.png in Resources */,
 				FAB76FCA1D23DF660012A786 /* bullinachinacloset.png in Resources */,
@@ -842,8 +831,6 @@
 				FAB76FDD1D23E0980012A786 /* CustomTableViewCell.swift in Sources */,
 				DB26E3B11D32FDEF0029CE33 /* NewDrawViewController.swift in Sources */,
 				FACB72281D2C1A1E0029AE1B /* LoginViewController.swift in Sources */,
-				FAB76FE91D244CD50012A786 /* HomeViewController.swift in Sources */,
-				FA0C67C01D24AA1B007ADE75 /* EnterGameViewController.swift in Sources */,
 				DBCFB4981D2576B000200F10 /* LineDrawCommand.swift in Sources */,
 				FAC5076D1D2EACDC0092568C /* NewSwipes2VC.swift in Sources */,
 				DBCFB4961D25769D00200F10 /* DrawCommands.swift in Sources */,
